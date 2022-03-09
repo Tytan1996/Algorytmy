@@ -5,12 +5,23 @@ using namespace AiSD;
 DynamicArray::DynamicArray(T rozmiar)
 {
     capacity=rozmiar;
+    size=0;
     tablica[capacity];
 }
 
 DynamicArray::~DynamicArray()
 {
     //dtor
+}
+void DynamicArray::Print(){
+    if(IsEmpty()==false){
+        for(size_t i=0;i<size;++i){
+            cout<<"element tablicy ["<<i<<"] ="<<tablica[i]<<endl;
+        }
+    }else{
+        cout<<"tablica jest pusta"<<endl;
+    }
+
 }
 bool DynamicArray::IsEmpty(){
 
@@ -30,7 +41,7 @@ size_t DynamicArray::Space(){
     return capacity-size;
 }
 void DynamicArray::PushBack(T t){
-    if(IsFull()==true){
+    if(IsFull()==false){
         tablica[size]=t;
         ++size;
     }
@@ -42,11 +53,13 @@ void DynamicArray::PopBack(){
     }
 }
 void DynamicArray::PushFront(T t){
-    if(IsFull()==true){
-        size_t rozmarTablicy==size;
+    if(IsFull()==false){
         size++;
-        for(size_t i=0; i<rozmarTablicy;++i){
-            tablica[i+1]=tablica[i];
+        size_t rozmiarTablicy=size-1;
+        for(size_t i=rozmiarTablicy;i>=0;--i){
+            tablica[i]=tablica[i-1];
+            if(i==0)
+                break;
         }
         tablica[0]=t;
     }

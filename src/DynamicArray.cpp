@@ -115,8 +115,19 @@ void DynamicArray::Erase(size_t i){
         tablica[size]=NULL;
         --size;
     }
-
-
-
-
 }
+T DynamicArray::wczytajLiczbeCalkowita()
+{
+    string wejscie = "";
+    T liczba = 0;
+    while (true)
+    {
+        getline(cin, wejscie);
+        stringstream myStream(wejscie);
+        if (myStream >> liczba)
+            break;
+        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
+    }
+    return liczba;
+}
+

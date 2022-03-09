@@ -6,6 +6,7 @@
 #include <iostream>
 #include <array>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -31,6 +32,7 @@ namespace AiSD{
         protected:
 
         private:
+            T wczytajLiczbeCalkowita();
             size_t capacity;
             size_t size;
             const string nazwaPliku="ZawartoscTablicy.txt";

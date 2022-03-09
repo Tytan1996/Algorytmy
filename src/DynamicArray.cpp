@@ -65,11 +65,13 @@ void DynamicArray::PushFront(T t){
     }
 }
 void DynamicArray::PopFront(){
-    --size;
-    for(size_t i=0;i<size;++i){
-        tablica[i]=tablica[i+1];
+    if(IsEmpty()==false){
+        --size;
+        for(size_t i=0;i<size;++i){
+            tablica[i]=tablica[i+1];
+        }
+        tablica[size]=NULL;
     }
-    tablica[size]=NULL;
 }
 void DynamicArray::Insert(T t, size_t i){
     if(IsFull()==true)

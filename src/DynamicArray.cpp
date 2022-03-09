@@ -47,9 +47,9 @@ void DynamicArray::PushBack(T t){
     }
 }
 void DynamicArray::PopBack(){
-    if(IsEmpty()==true){
-        tablica[size]=NULL;
+    if(IsEmpty()==false){
         --size;
+        tablica[size]=NULL;
     }
 }
 void DynamicArray::PushFront(T t){

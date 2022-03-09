@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\student\desktop\algorytm\algorytmy\main.cpp
+	<iostream>
+
+1646745853 source:c:\users\student\desktop\algorytm\algorytmy\src\dynamicarray.cpp
+	"DynamicArray.h"
+
+1646746143 c:\users\student\desktop\algorytm\algorytmy\include\dynamicarray.h
+	<cstddef>
+	<iostream>
+	<array>
+

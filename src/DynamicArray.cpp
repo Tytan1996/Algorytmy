@@ -71,3 +71,18 @@ void DynamicArray::PopFront(){
     }
     tablica[size]=NULL;
 }
+void DynamicArray::Insert(T t, size_t i){
+    if(IsFull()==true)
+        return;
+    if(i==0){
+        PushFront(t);
+    }else if(i==size){
+        PushBack(t);
+    }else{
+        ++size;
+        for(size_t j=size; j>=i;--j){
+            tablica[j+1]=tablica[j];
+        }
+        tablica[i]=t;
+    }
+}

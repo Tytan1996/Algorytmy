@@ -10,14 +10,14 @@
 	<iostream>
 	<array>
 
-1646851213 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
+1646852643 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 
-1646851530 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
+1646852767 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1646851213 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
+1646852078 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>

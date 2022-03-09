@@ -17,6 +17,7 @@ namespace AiSD{
         public:
             DynamicArray(T rozmiar);
             virtual ~DynamicArray();
+            void Print();
             bool IsEmpty();
             bool IsFull();
             size_t Space();

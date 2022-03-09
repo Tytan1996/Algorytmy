@@ -24,10 +24,9 @@ namespace AiSD{
             void PushBack(T t);
             void PopBack();
             void PushFront(T t);
+            void PopFront();
 
             /*
-            void PushFront(T t);
-            void PopFront();
             void Insert(T t, size_t i);
             void Erase(size_t i);
             */

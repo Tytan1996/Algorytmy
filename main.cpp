@@ -16,5 +16,7 @@ int main()
     dynamicArray.PushFront(102);
     dynamicArray.PushBack(103);
     dynamicArray.Print();
+    dynamicArray.PopFront();
+    dynamicArray.Print();
     return 0;
 }

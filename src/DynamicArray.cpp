@@ -64,4 +64,10 @@ void DynamicArray::PushFront(T t){
         tablica[0]=t;
     }
 }
-
+void DynamicArray::PopFront(){
+    --size;
+    for(size_t i=0;i<size;++i){
+        tablica[i]=tablica[i+1];
+    }
+    tablica[size]=NULL;
+}

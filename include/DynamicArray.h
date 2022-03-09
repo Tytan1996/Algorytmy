@@ -26,11 +26,7 @@ namespace AiSD{
             void PushFront(T t);
             void PopFront();
             void Insert(T t, size_t i);
-
-            /*
             void Erase(size_t i);
-            */
-
 
         protected:
 

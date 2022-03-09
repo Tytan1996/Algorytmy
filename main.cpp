@@ -20,5 +20,7 @@ int main()
     dynamicArray.Print();
     dynamicArray.Insert(321,4);
     dynamicArray.Print();
+    dynamicArray.Erase(2);
+    dynamicArray.Print();
     return 0;
 }

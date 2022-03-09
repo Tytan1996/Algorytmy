@@ -88,3 +88,23 @@ void DynamicArray::Insert(T t, size_t i){
         tablica[i]=t;
     }
 }
+void DynamicArray::Erase(size_t i){
+    if(IsEmpty()==true)
+        return;
+
+    if(i==0){
+        PopFront();
+    }else if(i==(size-1)){
+        PopBack();
+    }else{
+        for(size_t j=i; j<size; ++j){
+            tablica[j]=tablica[j+1];
+        }
+        tablica[size]=NULL;
+        --size;
+    }
+
+
+
+
+}

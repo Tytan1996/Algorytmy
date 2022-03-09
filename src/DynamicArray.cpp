@@ -16,10 +16,22 @@ DynamicArray::~DynamicArray()
 void DynamicArray::Print(){
     if(IsEmpty()==false){
         for(size_t i=0;i<size;++i){
-            cout<<"element tablicy ["<<i<<"] ="<<tablica[i]<<endl;
+            cout<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
         }
     }else{
         cout<<"tablica jest pusta"<<endl;
+    }
+
+}
+void DynamicArray::Save(){
+    ofstream plik(nazwaPliku, ios::out);
+    plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
+    if(IsEmpty()==true){
+        plik<<"tablica jest piusta"<<endl;
+        return;
+    }
+    for(size_t i=0;i<size;++i){
+        plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
     }
 
 }

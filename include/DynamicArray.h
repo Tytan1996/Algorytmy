@@ -5,19 +5,19 @@
 #include <cstddef>
 #include <iostream>
 #include <array>
+#include <fstream>
 
 using namespace std;
 
 namespace AiSD{
     class DynamicArray
     {
-        size_t capacity;
-        size_t size;
 
         public:
             DynamicArray(T rozmiar);
             virtual ~DynamicArray();
             void Print();
+            void Save();
             bool IsEmpty();
             bool IsFull();
             size_t Space();
@@ -31,7 +31,11 @@ namespace AiSD{
         protected:
 
         private:
+            size_t capacity;
+            size_t size;
+            const string nazwaPliku="ZawartoscTablicy.txt";
             T tablica[];
+
 
     };
 }

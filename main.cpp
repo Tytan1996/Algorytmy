@@ -22,5 +22,6 @@ int main()
     dynamicArray.Print();
     dynamicArray.Erase(2);
     dynamicArray.Print();
+    dynamicArray.Save();
     return 0;
 }

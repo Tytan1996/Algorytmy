@@ -16,10 +16,22 @@ DynamicArray::~DynamicArray()
 void DynamicArray::Print(){
     if(IsEmpty()==false){
         for(size_t i=0;i<size;++i){
-            cout<<"element tablicy ["<<i<<"] ="<<tablica[i]<<endl;
+            cout<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
         }
     }else{
         cout<<"tablica jest pusta"<<endl;
+    }
+
+}
+void DynamicArray::Save(){
+    ofstream plik(nazwaPliku, ios::out);
+    plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
+    if(IsEmpty()==true){
+        plik<<"tablica jest piusta"<<endl;
+        return;
+    }
+    for(size_t i=0;i<size;++i){
+        plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
     }
 
 }
@@ -64,4 +76,47 @@ void DynamicArray::PushFront(T t){
         tablica[0]=t;
     }
 }
+void DynamicArray::PopFront(){
+    if(IsEmpty()==false){
+        --size;
+        for(size_t i=0;i<size;++i){
+            tablica[i]=tablica[i+1];
+        }
+        tablica[size]=NULL;
+    }
+}
+void DynamicArray::Insert(T t, size_t i){
+    if(IsFull()==true)
+        return;
+    if(i==0){
+        PushFront(t);
+    }else if(i==size){
+        PushBack(t);
+    }else{
+        ++size;
+        for(size_t j=size; j>=i;--j){
+            tablica[j+1]=tablica[j];
+        }
+        tablica[i]=t;
+    }
+}
+void DynamicArray::Erase(size_t i){
+    if(IsEmpty()==true)
+        return;
 
+    if(i==0){
+        PopFront();
+    }else if(i==(size-1)){
+        PopBack();
+    }else{
+        for(size_t j=i; j<size; ++j){
+            tablica[j]=tablica[j+1];
+        }
+        tablica[size]=NULL;
+        --size;
+    }
+
+
+
+
+}

@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 
+
 using namespace std;
 
 namespace AiSD{
@@ -32,6 +33,8 @@ namespace AiSD{
         protected:
 
         private:
+            friend float BridgeFunction(DynamicArray& arr,int NO,T t,size_t i);
+
             T wczytajLiczbeCalkowita();
             size_t capacity;
             size_t size;

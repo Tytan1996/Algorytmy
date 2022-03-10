@@ -1,5 +1,3 @@
-ilosc wolnego miejsca: 1
-element tablicy [0] = 101
-element tablicy [1] = 100
-element tablicy [2] = 103
-element tablicy [3] = 321
+ilosc wolnego miejsca: 3
+element tablicy [0] = 850
+element tablicy [1] = 74

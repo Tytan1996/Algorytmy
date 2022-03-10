@@ -1,6 +1,6 @@
 #include <iostream>
 #include "DynamicArray.h"
-
+#include "TestingFunction.hpp"
 
 
 using namespace std;
@@ -8,8 +8,9 @@ using namespace AiSD;
 
 int main()
 {
+
     DynamicArray dynamicArray(5);
-    dynamicArray.Print();
+    /*dynamicArray.Print();
     dynamicArray.PushBack(1);
     dynamicArray.PushFront(100);
     dynamicArray.PushFront(101);
@@ -22,6 +23,13 @@ int main()
     dynamicArray.Print();
     dynamicArray.Erase(2);
     dynamicArray.Print();
-    dynamicArray.Save();
+    dynamicArray.Save();*/
+
+    dynamicArray.PushBack(850);
+    dynamicArray.PushBack(74);
+    dynamicArray.Insert(207,391);
+
+    //DistortionsSimulation(dynamicArray,1000);
+
     return 0;
 }

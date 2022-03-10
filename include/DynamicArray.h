@@ -33,7 +33,7 @@ namespace AiSD{
         protected:
 
         private:
-            friend float BridgeFunction(DynamicArray& arr,int NO,T t,size_t i);
+            friend size_t BridgeFunction(DynamicArray& arr,int NO,T t,size_t i);
 
             T wczytajLiczbeCalkowita();
             size_t capacity;

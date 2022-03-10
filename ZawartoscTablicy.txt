@@ -1,3 +1,2 @@
-ilosc wolnego miejsca: 3
-element tablicy [0] = 850
-element tablicy [1] = 74
+ilosc wolnego miejsca: 5
+tablica jest piusta

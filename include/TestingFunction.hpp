@@ -31,8 +31,9 @@ namespace AiSD
     void Log(string ,string );
 
     /**@brief
-    *   This function is performing Dynamic Array functions by "Numero Sign"
-    *   Returning measured time in float
+    *   This function is performing Dynamic Array functions by "Numero Sign".
+    *   Return is transfered from DynamicArray functions but in size_t (true = 1, false = 0)
+    *   Also saves all the operations to the file (LogFileName), and measures time.
     *
     *@param[out] arr
     *   Dynamic Array pointer
@@ -41,13 +42,12 @@ namespace AiSD
     *@param[out] t
     *   First parameter
     *@param[out] i
-    *   Secound parameter
+    *   Second parameter
     */
-    float BridgeFunction(DynamicArray& arr,int NO,T t,size_t i);
+    size_t BridgeFunction(DynamicArray& arr,int NO,T t,size_t i);
 
     /**@brief
     *   This function simulates distortions, and test potential crashes for random data entry
-    *   Its measures time of the operation and log it to the log.txt file
     *
     *@param[out] arr
     *   Dynamic Array pointer

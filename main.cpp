@@ -8,8 +8,15 @@ using namespace AiSD;
 
 int main()
 {
-
+    srand(time(NULL));
     DynamicArray dynamicArray(5);
+
+    //DistortionsSimulation(dynamicArray,1000);
+
+    dynamicArray.PushBack(850);
+    dynamicArray.PushBack(74);
+    dynamicArray.Insert(207,391);
+
     /*dynamicArray.Print();
     dynamicArray.PushBack(1);
     dynamicArray.PushFront(100);
@@ -24,12 +31,6 @@ int main()
     dynamicArray.Erase(2);
     dynamicArray.Print();
     dynamicArray.Save();*/
-
-    dynamicArray.PushBack(850);
-    dynamicArray.PushBack(74);
-    dynamicArray.Insert(207,391);
-
-    //DistortionsSimulation(dynamicArray,1000);
 
     return 0;
 }

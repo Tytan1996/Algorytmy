@@ -27,19 +27,19 @@
 1646946151 source:c:\users\user01\desktop\projekty\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1646949176 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
+1646951515 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
 	<fstream>
 	<sstream>
 
-1646949561 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
+1646951767 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 	"TestingFunction.hpp"
 
-1646949017 c:\users\user01\desktop\projekty\algorytmy\include\testingfunction.hpp
+1646951510 c:\users\user01\desktop\projekty\algorytmy\include\testingfunction.hpp
 	"DynamicArray.h"
 	<cstddef>
 	<sstream>
@@ -47,6 +47,6 @@
 	<chrono>
 	<string>
 
-1646949428 source:c:\users\user01\desktop\projekty\algorytmy\src\testingfunction.cpp
+1646951897 source:c:\users\user01\desktop\projekty\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 

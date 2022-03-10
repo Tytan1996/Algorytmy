@@ -12,7 +12,7 @@ void AiSD::Log(string src,string in)
     file.close();
 }
 
-float AiSD::BridgeFunction(DynamicArray& arr,int NO,T t,size_t i)
+size_t AiSD::BridgeFunction(DynamicArray& arr,int NO,T t,size_t i)
 {
     /*Myslalem nad tym dlugo i to chyba najbardziej optymalna metoda wywolania funckji*/
     #define ARGV (DynamicArray& a,T t1,size_t i1)
@@ -70,12 +70,12 @@ float AiSD::BridgeFunction(DynamicArray& arr,int NO,T t,size_t i)
 
     //podstawowe informacjedo logow
     std::stringstream ss;
-    ss<<"Operation "<<name<<" for arguments "<<t<<" & "<<i<<endl;
+    ss<<"Operation "<<name<<" for arguments "<<t<<" & "<<i<<endl<<"Array content: ";
     for(size_t i=0;i<arr.size;++i){
         ss<<arr.tablica[i]<<":";
-    }ss<<endl;
+    }
     Log(LogFileName,ss.str());
-    ss.clear();
+    ss.str("");//kasowanie dotychczasowej zawartosci
 
     //odliczanie czasu i wykonywanie funkcji
     std::chrono::_V2::system_clock::time_point startTime=std::chrono::high_resolution_clock::now();
@@ -84,8 +84,9 @@ float AiSD::BridgeFunction(DynamicArray& arr,int NO,T t,size_t i)
     std::chrono::__enable_if_is_duration<std::chrono::duration<long long int, std::ratio<1, 1000000>>> time=std::chrono::duration_cast<std::chrono::microseconds>(startTime-endTime);
 
     //informacja o sukcesie
-    ss<<"Success. Took "<<time.count()<<" microseconds"<<endl;
+    ss<<"Success. Took "<<time.count()<<" microseconds; returned "<<v;
     Log(LogFileName,ss.str());
+    return v;
 }
 void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
 {

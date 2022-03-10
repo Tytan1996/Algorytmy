@@ -160,3 +160,38 @@ size_t DynamicArray::EraseAll(const T t){
     }
     return iloscUsunietychElementow;
 }
+size_t DynamicArray::Erase(size_t from, size_t to){
+    size_t iloscUsunietychElementow=0;
+    if(IsEmpty()==true)
+        return 0;
+    if(from<0){
+        cout<<"wpisano rozmiar mniejszczy od 0!"<<endl;
+        return 0;
+    }else if(to>size){
+        cout<<"wpisanio zbyt duzy indeks!"<<endl;
+        return 0;
+    }else{
+        if((to-from)==1){
+            Erase(from);
+            return 1;
+        }else if(to==size && from==0){
+            Clear();
+        }else if(from==0){
+            for(size_t i=0;i<from;++i){
+                PopFront();
+                ++iloscUsunietychElementow;
+            }
+            return iloscUsunietychElementow;
+        }else if(to==size){
+            for(size_t i=from;i>to;--i){
+                PopBack();
+                ++iloscUsunietychElementow;
+            }
+            return iloscUsunietychElementow;
+        }else{
+            for(size_t i=from;i<to;++i){
+                Erase(from);
+            }
+        }
+    }
+}

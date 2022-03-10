@@ -136,4 +136,12 @@ void DynamicArray::Clear(){
     }
     size=0;
 }
+size_t DynamicArray::Search(T t){
+    for(size_t i=0; i<size; ++i){
+        if(tablica[i]==t){
+            return i;
+        }
+    }
+    return size;
+}
 

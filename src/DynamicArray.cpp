@@ -130,4 +130,10 @@ T DynamicArray::wczytajLiczbeCalkowita()
     }
     return liczba;
 }
+void DynamicArray::Clear(){
+    for(size_t i=0;i<size;++i){
+        tablica[i]=NULL;
+    }
+    size=0;
+}
 

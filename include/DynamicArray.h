@@ -28,6 +28,9 @@ namespace AiSD{
             void PopFront();
             void Insert(T t, size_t i);
             void Erase(size_t i);
+            //Funkcje na wymagania dodatkowe
+            void Clear();
+
 
         protected:
 

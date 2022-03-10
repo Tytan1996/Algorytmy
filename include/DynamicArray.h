@@ -30,7 +30,7 @@ namespace AiSD{
             void Erase(size_t i);
             //Funkcje na wymagania dodatkowe
             void Clear();
-            size_t Search(T t);
+            size_t Search(const T t);
 
         protected:
 

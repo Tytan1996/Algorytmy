@@ -23,6 +23,6 @@ int main()
     dynamicArray.Erase(2);
     dynamicArray.Print();
     dynamicArray.Save();
-    cout<<dynamicArray.Search(321)<<endl;
+    cout<<dynamicArray.Search(103)<<endl;
     return 0;
 }

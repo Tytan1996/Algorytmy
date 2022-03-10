@@ -31,6 +31,7 @@ namespace AiSD{
             //Funkcje na wymagania dodatkowe
             void Clear();
             size_t Search(const T t);
+            bool EraseFirst(const T t);
 
         protected:
 

@@ -24,5 +24,9 @@ int main()
     dynamicArray.Print();
     dynamicArray.Save();
     cout<<dynamicArray.Search(103)<<endl;
+    if(dynamicArray.EraseFirst(103)==true){
+        cout<<"usunieto"<<endl;
+    }
+    dynamicArray.Print();
     return 0;
 }

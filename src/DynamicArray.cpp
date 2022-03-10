@@ -153,3 +153,10 @@ bool DynamicArray::EraseFirst(const T t){
     }
     return false;
 }
+size_t DynamicArray::EraseAll(const T t){
+    size_t iloscUsunietychElementow=0;
+    while(EraseAll(t)){
+        ++iloscUsunietychElementow;
+    }
+    return iloscUsunietychElementow;
+}

@@ -32,6 +32,7 @@ namespace AiSD{
             void Clear();
             size_t Search(const T t);
             bool EraseFirst(const T t);
+            size_t EraseAll(const T t);
 
         protected:
 

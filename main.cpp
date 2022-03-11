@@ -10,6 +10,7 @@ int main() {
     DynamicArray dynamicArray(5);
     dynamicArray.Read();
     dynamicArray.Print();
+    dynamicArray.Clear();
     dynamicArray.PushBack(1);
     dynamicArray.PushFront(100);
     dynamicArray.PushFront(101);
@@ -30,5 +31,9 @@ int main() {
     dynamicArray.Print();
     dynamicArray[0]=1000;
     cout<<dynamicArray[0]<<endl;
+    dynamicArray.Erase(1,2);
+    dynamicArray.PowiekszanieTablicy();
+    dynamicArray.Print();
+    dynamicArray.Save();
     return 0;
 }

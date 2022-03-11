@@ -6,12 +6,16 @@ DynamicArray::DynamicArray(T rozmiar)
 {
     capacity=rozmiar;
     size=0;
-    tablica[capacity];
+    tablica= new T[capacity]();
+    wskaznikNaPoczatekTablice =tablica;
+    wskaznikNaAktualnaPozycjeTablicy=tablica;
+
+
 }
 
 DynamicArray::~DynamicArray()
 {
-    //dtor
+    delete [] tablica;
 }
 void DynamicArray::Print(){
     if(IsEmpty()==false){
@@ -21,7 +25,6 @@ void DynamicArray::Print(){
     }else{
         cout<<"tablica jest pusta"<<endl;
     }
-
 }
 void DynamicArray::Save(){
     ofstream plik(nazwaPliku, ios::out);
@@ -34,6 +37,7 @@ void DynamicArray::Save(){
        // plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
        plik<<tablica[i]<<endl;
     }
+    plik.close();
 
 }
 bool DynamicArray::IsEmpty(){
@@ -137,7 +141,7 @@ void DynamicArray::Clear(){
     }
     size=0;
 }
-size_t DynamicArray::Search(const T t){
+size_t DynamicArray::Search(const T& t){
     for(size_t i=0; i<size; ++i){
         if(tablica[i]==t){
             return i;
@@ -145,7 +149,7 @@ size_t DynamicArray::Search(const T t){
     }
     return size;
 }
-bool DynamicArray::EraseFirst(const T t){
+bool DynamicArray::EraseFirst(const T& t){
     for(size_t i=0;i<size;++i){
         if(tablica[i]==t){
             Erase(i);
@@ -154,7 +158,7 @@ bool DynamicArray::EraseFirst(const T t){
     }
     return false;
 }
-size_t DynamicArray::EraseAll(const T t){
+size_t DynamicArray::EraseAll(const T& t){
     size_t iloscUsunietychElementow=0;
     while(EraseAll(t)){
         ++iloscUsunietychElementow;
@@ -165,12 +169,14 @@ size_t DynamicArray::Erase(size_t from, size_t to){
     size_t iloscUsunietychElementow=0;
     if(IsEmpty()==true)
         return 0;
-    if(from<0){
+    if(-from>0 && int(from)<0){
         cout<<"wpisano rozmiar mniejszczy od 0!"<<endl;
         return 0;
     }else if(to>size){
         cout<<"wpisanio zbyt duzy indeks!"<<endl;
         return 0;
+    }else if(to<=from){
+        cout<<"priewsza liczba jest mniejsza lub rowna od drugiej!"<<endl;
     }else{
         if((to-from)==1){
             Erase(from);
@@ -192,9 +198,12 @@ size_t DynamicArray::Erase(size_t from, size_t to){
         }else{
             for(size_t i=from;i<to;++i){
                 Erase(from);
+                ++iloscUsunietychElementow;
             }
+            return iloscUsunietychElementow;
         }
     }
+    return iloscUsunietychElementow;
 }
 T &DynamicArray::operator [](size_t i){
     return tablica[i];
@@ -208,4 +217,16 @@ void DynamicArray::Read(){
         ++iloscDanychWczytanych;
     }
     size=iloscDanychWczytanych;
+    plik.close();
+}
+void DynamicArray::PowiekszanieTablicy(){
+    capacity*=2;
+    T *nowaTablica=new T[capacity];
+    for(size_t i=0;i<size;++i){
+        nowaTablica[i]=tablica[i];
+    }
+    tablica=nowaTablica;
+    wskaznikNaPoczatekTablice =tablica;
+    wskaznikNaAktualnaPozycjeTablicy=tablica;
+
 }

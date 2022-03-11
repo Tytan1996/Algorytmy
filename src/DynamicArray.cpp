@@ -25,13 +25,14 @@ void DynamicArray::Print(){
 }
 void DynamicArray::Save(){
     ofstream plik(nazwaPliku, ios::out);
-    plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
+    //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true){
-        plik<<"tablica jest piusta"<<endl;
+        plik<<"tablica jest pusta"<<endl;
         return;
     }
     for(size_t i=0;i<size;++i){
-        plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
+       // plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
+       plik<<tablica[i]<<endl;
     }
 
 }
@@ -197,4 +198,14 @@ size_t DynamicArray::Erase(size_t from, size_t to){
 }
 T &DynamicArray::operator [](size_t i){
     return tablica[i];
+}
+void DynamicArray::Read(){
+    fstream plik(nazwaPliku, ios::in);
+    size_t iloscDanychWczytanych=0;
+    string liniaZPliku="";
+    while(getline(plik, liniaZPliku)){
+        tablica[iloscDanychWczytanych]=atoi(liniaZPliku.c_str());
+        ++iloscDanychWczytanych;
+    }
+    size=iloscDanychWczytanych;
 }

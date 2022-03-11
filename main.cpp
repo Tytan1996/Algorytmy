@@ -8,6 +8,7 @@ using namespace AiSD;
 
 int main() {
     DynamicArray dynamicArray(5);
+    dynamicArray.Read();
     dynamicArray.Print();
     dynamicArray.PushBack(1);
     dynamicArray.PushFront(100);

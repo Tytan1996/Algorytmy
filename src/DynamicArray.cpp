@@ -25,7 +25,6 @@ void DynamicArray::Print(){
     }else{
         cout<<"tablica jest pusta"<<endl;
     }
-
 }
 void DynamicArray::Save(){
     ofstream plik(nazwaPliku, ios::out);
@@ -142,7 +141,7 @@ void DynamicArray::Clear(){
     }
     size=0;
 }
-size_t DynamicArray::Search(const T t){
+size_t DynamicArray::Search(const T& t){
     for(size_t i=0; i<size; ++i){
         if(tablica[i]==t){
             return i;
@@ -150,7 +149,7 @@ size_t DynamicArray::Search(const T t){
     }
     return size;
 }
-bool DynamicArray::EraseFirst(const T t){
+bool DynamicArray::EraseFirst(const T& t){
     for(size_t i=0;i<size;++i){
         if(tablica[i]==t){
             Erase(i);
@@ -159,7 +158,7 @@ bool DynamicArray::EraseFirst(const T t){
     }
     return false;
 }
-size_t DynamicArray::EraseAll(const T t){
+size_t DynamicArray::EraseAll(const T& t){
     size_t iloscUsunietychElementow=0;
     while(EraseAll(t)){
         ++iloscUsunietychElementow;

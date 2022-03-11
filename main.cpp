@@ -10,6 +10,7 @@ int main() {
     DynamicArray dynamicArray(5);
     dynamicArray.Read();
     dynamicArray.Print();
+    dynamicArray.Clear();
     dynamicArray.PushBack(1);
     dynamicArray.PushFront(100);
     dynamicArray.PushFront(101);
@@ -33,5 +34,6 @@ int main() {
     dynamicArray.Erase(-2,3);
     dynamicArray.PowiekszanieTablicy();
     dynamicArray.Print();
+    dynamicArray.Save();
     return 0;
 }

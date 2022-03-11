@@ -6,7 +6,7 @@ DynamicArray::DynamicArray(T rozmiar)
 {
     capacity=rozmiar;
     size=0;
-    tablica= new T[capacity];
+    tablica= new T[capacity]();
     wskaznikNaPoczatekTablice =tablica;
     wskaznikNaAktualnaPozycjeTablicy=tablica;
 

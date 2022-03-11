@@ -31,7 +31,7 @@ int main() {
     dynamicArray.Print();
     dynamicArray[0]=1000;
     cout<<dynamicArray[0]<<endl;
-    dynamicArray.Erase(-2,3);
+    dynamicArray.Erase(1,2);
     dynamicArray.PowiekszanieTablicy();
     dynamicArray.Print();
     dynamicArray.Save();

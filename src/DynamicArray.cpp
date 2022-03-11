@@ -27,7 +27,7 @@ void DynamicArray::Save(){
     ofstream plik(nazwaPliku, ios::out);
     plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true){
-        plik<<"tablica jest piusta"<<endl;
+        plik<<"tablica jest pusta"<<endl;
         return;
     }
     for(size_t i=0;i<size;++i){
@@ -86,8 +86,11 @@ void DynamicArray::PopFront(){
     }
 }
 void DynamicArray::Insert(T t, size_t i){
-    if(IsFull()==true)
+    if(IsFull()==true){
         return;
+    }else if(i<0 || i>size){
+        return;
+    }
     if(i==0){
         PushFront(t);
     }else if(i==size){

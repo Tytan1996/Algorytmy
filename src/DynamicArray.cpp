@@ -226,5 +226,7 @@ void DynamicArray::PowiekszanieTablicy(){
         nowaTablica[i]=tablica[i];
     }
     tablica=nowaTablica;
+    wskaznikNaPoczatekTablice =tablica;
+    wskaznikNaAktualnaPozycjeTablicy=tablica;
 
 }

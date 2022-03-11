@@ -25,13 +25,14 @@ void DynamicArray::Print(){
 }
 void DynamicArray::Save(){
     ofstream plik(nazwaPliku, ios::out);
-    plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
+    //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true){
-        plik<<"tablica jest piusta"<<endl;
+        plik<<"tablica jest pusta"<<endl;
         return;
     }
     for(size_t i=0;i<size;++i){
-        plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
+       // plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
+       plik<<tablica[i]<<endl;
     }
 
 }
@@ -130,4 +131,81 @@ T DynamicArray::wczytajLiczbeCalkowita()
     }
     return liczba;
 }
-
+void DynamicArray::Clear(){
+    for(size_t i=0;i<size;++i){
+        tablica[i]=NULL;
+    }
+    size=0;
+}
+size_t DynamicArray::Search(const T t){
+    for(size_t i=0; i<size; ++i){
+        if(tablica[i]==t){
+            return i;
+        }
+    }
+    return size;
+}
+bool DynamicArray::EraseFirst(const T t){
+    for(size_t i=0;i<size;++i){
+        if(tablica[i]==t){
+            Erase(i);
+            return true;
+        }
+    }
+    return false;
+}
+size_t DynamicArray::EraseAll(const T t){
+    size_t iloscUsunietychElementow=0;
+    while(EraseAll(t)){
+        ++iloscUsunietychElementow;
+    }
+    return iloscUsunietychElementow;
+}
+size_t DynamicArray::Erase(size_t from, size_t to){
+    size_t iloscUsunietychElementow=0;
+    if(IsEmpty()==true)
+        return 0;
+    if(from<0){
+        cout<<"wpisano rozmiar mniejszczy od 0!"<<endl;
+        return 0;
+    }else if(to>size){
+        cout<<"wpisanio zbyt duzy indeks!"<<endl;
+        return 0;
+    }else{
+        if((to-from)==1){
+            Erase(from);
+            return 1;
+        }else if(to==size && from==0){
+            Clear();
+        }else if(from==0){
+            for(size_t i=0;i<from;++i){
+                PopFront();
+                ++iloscUsunietychElementow;
+            }
+            return iloscUsunietychElementow;
+        }else if(to==size){
+            for(size_t i=from;i>to;--i){
+                PopBack();
+                ++iloscUsunietychElementow;
+            }
+            return iloscUsunietychElementow;
+        }else{
+            for(size_t i=from;i<to;++i){
+                Erase(from);
+            }
+        }
+    }
+}
+T &DynamicArray::operator [](size_t i){
+    return tablica[i];
+}
+void DynamicArray::Read(){
+    fstream plik(nazwaPliku, ios::in);
+    size_t iloscDanychWczytanych=0;
+    string liniaZPliku="";
+    while(getline(plik, liniaZPliku)){
+        tablica[iloscDanychWczytanych]=atoi(liniaZPliku.c_str());
+        ++iloscDanychWczytanych;
+    }
+    size=iloscDanychWczytanych;
+}

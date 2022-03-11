@@ -104,9 +104,11 @@ void DynamicArray::Insert(T t, size_t i){
     }
 }
 void DynamicArray::Erase(size_t i){
-    if(IsEmpty()==true)
+    if(IsEmpty()==true){
         return;
-
+    }else if(i<0 || i>size){
+        return;
+    }
     if(i==0){
         PopFront();
     }else if(i==(size-1)){

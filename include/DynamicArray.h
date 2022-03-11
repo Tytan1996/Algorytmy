@@ -37,6 +37,7 @@ namespace AiSD{
             size_t Erase(size_t from, size_t to);
             T& operator [](size_t i);
             void Read();
+            void PowiekszanieTablicy();
 
         protected:
 
@@ -45,10 +46,9 @@ namespace AiSD{
             size_t capacity;
             size_t size;
             const string nazwaPliku="ZawartoscTablicy.txt";
-            T *wskaznikNaTablice;
-            T tablica[];
-
-
+            T *wskaznikNaPoczatekTablice;
+            T *wskaznikNaAktualnaPozycjeTablicy;
+            T *tablica;
 
     };
 }

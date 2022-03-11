@@ -6,13 +6,16 @@ DynamicArray::DynamicArray(T rozmiar)
 {
     capacity=rozmiar;
     size=0;
-    tablica[capacity];
-    wskaznikNaTablice =tablica;
+    tablica= new T[capacity];
+    wskaznikNaPoczatekTablice =tablica;
+    wskaznikNaAktualnaPozycjeTablicy=tablica;
+
+
 }
 
 DynamicArray::~DynamicArray()
 {
-    //dtor
+    delete [] tablica;
 }
 void DynamicArray::Print(){
     if(IsEmpty()==false){
@@ -216,4 +219,13 @@ void DynamicArray::Read(){
     }
     size=iloscDanychWczytanych;
     plik.close();
+}
+void DynamicArray::PowiekszanieTablicy(){
+    capacity*=2;
+    T *nowaTablica=new T[capacity];
+    for(size_t i=0;i<size;++i){
+        nowaTablica[i]=tablica[i];
+    }
+    tablica=nowaTablica;
+
 }

@@ -30,6 +30,8 @@ int main() {
     dynamicArray.Print();
     dynamicArray[0]=1000;
     cout<<dynamicArray[0]<<endl;
-    dynamicArray.Erase(2,3);
+    dynamicArray.Erase(-2,3);
+    dynamicArray.PowiekszanieTablicy();
+    dynamicArray.Print();
     return 0;
 }

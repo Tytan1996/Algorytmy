@@ -7,6 +7,7 @@ DynamicArray::DynamicArray(T rozmiar)
     capacity=rozmiar;
     size=0;
     tablica[capacity];
+    wskaznikNaTablice =tablica;
 }
 
 DynamicArray::~DynamicArray()
@@ -34,6 +35,7 @@ void DynamicArray::Save(){
        // plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
        plik<<tablica[i]<<endl;
     }
+    plik.close();
 
 }
 bool DynamicArray::IsEmpty(){
@@ -208,4 +210,5 @@ void DynamicArray::Read(){
         ++iloscDanychWczytanych;
     }
     size=iloscDanychWczytanych;
+    plik.close();
 }

@@ -195,3 +195,6 @@ size_t DynamicArray::Erase(size_t from, size_t to){
         }
     }
 }
+T &DynamicArray::operator [](size_t i){
+    return tablica[i];
+}

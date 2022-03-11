@@ -6,8 +6,7 @@
 using namespace std;
 using namespace AiSD;
 
-int main()
-{
+int main() {
     DynamicArray dynamicArray(5);
     dynamicArray.Print();
     dynamicArray.PushBack(1);
@@ -24,9 +23,11 @@ int main()
     dynamicArray.Print();
     dynamicArray.Save();
     cout<<dynamicArray.Search(103)<<endl;
-    if(dynamicArray.EraseFirst(103)==true){
+    if(dynamicArray.EraseFirst(103)==true) {
         cout<<"usunieto"<<endl;
     }
     dynamicArray.Print();
+    dynamicArray[0]=1000;
+    cout<<dynamicArray[0]<<endl;
     return 0;
 }

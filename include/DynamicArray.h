@@ -34,6 +34,7 @@ namespace AiSD{
             bool EraseFirst(const T t);
             size_t EraseAll(const T t);
             size_t Erase(size_t from, size_t to);
+            T& operator [](size_t i);
 
         protected:
 
@@ -47,4 +48,5 @@ namespace AiSD{
 
     };
 }
+
 #endif // DYNAMICARRAY_H

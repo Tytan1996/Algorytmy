@@ -10,15 +10,15 @@
 	<iostream>
 	<array>
 
-1646980083 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
+1647259920 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 	"TestingFunction.hpp"
 
-1646981558 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
+1647260274 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1646980083 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
+1647260228 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
@@ -51,7 +51,7 @@
 1647255549 source:c:\users\user01\desktop\projekty\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
-1646980083 d:\-=uczelnia=-\sem4\algorytmy\include\testingfunction.hpp
+1647258497 d:\-=uczelnia=-\sem4\algorytmy\include\testingfunction.hpp
 	"DynamicArray.h"
 	<cstddef>
 	<sstream>
@@ -59,6 +59,6 @@
 	<chrono>
 	<string>
 
-1646980083 source:d:\-=uczelnia=-\sem4\algorytmy\src\testingfunction.cpp
+1647258497 source:d:\-=uczelnia=-\sem4\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 

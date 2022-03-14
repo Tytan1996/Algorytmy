@@ -4,14 +4,15 @@ using namespace AiSD;
 
 DynamicArray::DynamicArray(T rozmiar)
 {
-    capacity=rozmiar;
     size=0;
-    tablica[capacity];
+    tablica=new long[capacity];
 }
 
 DynamicArray::~DynamicArray()
 {
-    //dtor
+    delete [] tablica;
+    capacity=0;
+    size=0;
 }
 void DynamicArray::Print(){
     if(IsEmpty()==false){

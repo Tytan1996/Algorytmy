@@ -40,7 +40,7 @@ namespace AiSD{
             size_t capacity;
             size_t size;
             const string nazwaPliku="ZawartoscTablicy.txt";
-            T tablica[];
+            T *tablica;
 
 
     };

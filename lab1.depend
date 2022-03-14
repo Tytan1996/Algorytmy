@@ -28,14 +28,14 @@
 1647036539 source:c:\users\user01\desktop\projekty\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1647251794 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
+1647261237 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
 	<fstream>
 	<sstream>
 
-1647255519 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
+1647255614 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 	"TestingFunction.hpp"

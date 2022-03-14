@@ -144,6 +144,10 @@ void AiSD::OverflowTable(DynamicArray& arr)
         for(size_t i=0;i<arr.capacity;++i)
                 f(arr,i-1,i-1);
         chronotime endTime=_setNow();
+        //TESTOWANIE PRZEKROCZENIA TABLICY!!!
+        for(int i=0;i<10;i++)
+            f(arr,0,0);
+
         string time=_timeTook(startTime,endTime);
         std::cout<<nameV<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<endl;
     }

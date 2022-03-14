@@ -1,2 +1,0 @@
-ilosc wolnego miejsca: 5
-tablica jest piusta

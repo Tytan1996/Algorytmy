@@ -56,6 +56,14 @@ namespace AiSD
     */
     void DistortionsSimulation(DynamicArray& arr,int t);
 
+    /**@brief
+    *   Repeat the same functions until the array is full, and empty.
+    *
+    *@param[out] arr
+    *   Dynamic Array pointer
+    */
+    void OverflowTable(DynamicArray& arr);
+
 }
 
 #endif // TESTINGFUNCTION_HPP

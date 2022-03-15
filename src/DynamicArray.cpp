@@ -5,6 +5,7 @@ using namespace AiSD;
 DynamicArray::DynamicArray(T rozmiar)
 {
     size=0;
+    capacity=rozmiar;
     tablica=new long[capacity];
 }
 

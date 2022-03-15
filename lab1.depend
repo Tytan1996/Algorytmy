@@ -62,3 +62,30 @@
 1647258497 source:d:\-=uczelnia=-\sem4\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
+1647349493 source:c:\users\student\documents\github\algorytmy\main.cpp
+	<iostream>
+	"DynamicArray.h"
+	"TestingFunction.hpp"
+
+1647350281 c:\users\student\documents\github\algorytmy\include\dynamicarray.h
+	<cstddef>
+	<iostream>
+	<array>
+	<fstream>
+	<sstream>
+
+1647351678 c:\users\student\documents\github\algorytmy\include\testingfunction.hpp
+	"DynamicArray.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+
+1647346986 source:c:\users\student\documents\github\algorytmy\src\dynamicarray.cpp
+	"DynamicArray.h"
+
+1647352239 source:c:\users\student\documents\github\algorytmy\src\testingfunction.cpp
+	"TestingFunction.hpp"
+

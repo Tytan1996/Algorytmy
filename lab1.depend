@@ -25,11 +25,11 @@
 	<sstream>
 	<string>
 
-1647349056 source:f:\aisd\algorytmy\main.cpp
+1647349268 source:f:\aisd\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 
-1647348985 f:\aisd\algorytmy\include\dynamicarray.h
+1647349268 f:\aisd\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
@@ -37,6 +37,6 @@
 	<sstream>
 	<string>
 
-1647348919 source:f:\aisd\algorytmy\src\dynamicarray.cpp
+1647350626 source:f:\aisd\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 

@@ -11,7 +11,10 @@ DynamicArray::DynamicArray(size_t rozmiar)
 }
 DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t){
     capacity=rozmiar;
-    size=0;
+    size=N;
+    for(size_t i=0; i<N;++i){
+        tablica[i]=t;
+    }
     tablica= new T[capacity]();
 
 }

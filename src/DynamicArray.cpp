@@ -19,6 +19,7 @@ DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t){
 
 }
 
+
 DynamicArray::~DynamicArray()
 {
     delete [] tablica;
@@ -236,5 +237,13 @@ void DynamicArray::PowiekszanieTablicy(){
 }
 T& DynamicArray::at(size_t i){
     return tablica[i];
-
+}
+void DynamicArray::Insert(T t, size_t iloscElementow, size_t i){
+    if(i>size){
+        std::cout<<"i jest za duzy, i musi byc do "<<size<<"!"<<std::endl;
+        return;
+    }
+    for(size_t j=0;j<iloscElementow;++j){
+        Insert(t,i);
+    }
 }

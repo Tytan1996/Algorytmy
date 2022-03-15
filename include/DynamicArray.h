@@ -18,6 +18,25 @@ namespace AiSD{
         public:
             DynamicArray(size_t rozmiar);
             DynamicArray(size_t rozmiar, size_t N, const T& t);
+            DynamicArray(const DynamicArray &dynamicArray1){
+                capacity=dynamicArray1.capacity;
+                size=dynamicArray1.size;
+                for(size_t i=0;i<size;++i){
+                    tablica[i]=dynamicArray1.tablica[i];
+                }
+            }//copyconstruktor
+            DynamicArray(DynamicArray&& dynamicArray){
+                //capacity(std::move(dynamicArray.capacity));
+            }
+            DynamicArray & operator =(DynamicArray other){
+                std::swap(capacity,other.capacity);
+                std::swap(size,other.size);
+                std::swap(tablica,other.tablica);
+                return *this;
+            }
+            DynamicArray &operator=(DynamicArray&& other){
+                return *this;
+            }
             virtual ~DynamicArray();
             void Print();
             void Save();
@@ -40,6 +59,8 @@ namespace AiSD{
             void Read();
             void PowiekszanieTablicy();
             T& at(size_t i);
+            //funkcje z gwiazdka
+            void Insert(T t, size_t iloscElementow, size_t i);
 
         protected:
 

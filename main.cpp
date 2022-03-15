@@ -24,16 +24,18 @@ int main() {
     dynamicArray.Erase(2);
     dynamicArray.Print();
     dynamicArray.Save();
-    cout<<dynamicArray.Search(103)<<endl;
+    cout<<dynamicArray.Search(103)<<std::endl;
     if(dynamicArray.EraseFirst(103)==true) {
-        cout<<"usunieto"<<endl;
+        std::cout<<"usunieto"<<std::endl;
     }
     dynamicArray.Print();
     dynamicArray[0]=1000;
-    cout<<dynamicArray[0]<<endl;
+    std::cout<<dynamicArray[0]<<endl;
     dynamicArray.Erase(1,2);
     dynamicArray.PowiekszanieTablicy();
     dynamicArray.Print();
     dynamicArray.Save();
+    dynamicArray.at(4)=123;
+    dynamicArray.Print();
     return 0;
 }

@@ -2,12 +2,17 @@
 
 using namespace AiSD;
 
-DynamicArray::DynamicArray(T rozmiar)
+DynamicArray::DynamicArray(size_t rozmiar)
 {
     capacity=rozmiar;
     size=0;
     tablica= new T[capacity]();
 
+}
+DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t){
+    capacity=rozmiar;
+    size=0;
+    tablica= new T[capacity]();
 
 }
 
@@ -18,22 +23,22 @@ DynamicArray::~DynamicArray()
 void DynamicArray::Print(){
     if(IsEmpty()==false){
         for(size_t i=0;i<size;++i){
-            cout<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
+            std::cout<<"element tablicy ["<<i<<"] = "<<tablica[i]<<std::endl;
         }
     }else{
-        cout<<"tablica jest pusta"<<endl;
+        std::cout<<"tablica jest pusta"<<std::endl;
     }
 }
 void DynamicArray::Save(){
     ofstream plik(nazwaPliku, ios::out);
     //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true){
-        plik<<"tablica jest pusta"<<endl;
+        plik<<"tablica jest pusta"<<std::endl;
         return;
     }
     for(size_t i=0;i<size;++i){
        // plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
-       plik<<tablica[i]<<endl;
+       plik<<tablica[i]<<std::endl;
     }
     plik.close();
 
@@ -121,7 +126,7 @@ void DynamicArray::Erase(size_t i){
 }
 T DynamicArray::wczytajLiczbeCalkowita()
 {
-    string wejscie = "";
+    std::string wejscie = "";
     T liczba = 0;
     while (true)
     {
@@ -168,13 +173,13 @@ size_t DynamicArray::Erase(size_t from, size_t to){
     if(IsEmpty()==true)
         return 0;
     if(-from>0 && int(from)<0){
-        cout<<"wpisano rozmiar mniejszczy od 0!"<<endl;
+        std::cout<<"wpisano rozmiar mniejszczy od 0!"<<std::endl;
         return 0;
     }else if(to>size){
-        cout<<"wpisanio zbyt duzy indeks!"<<endl;
+        std::cout<<"wpisanio zbyt duzy indeks!"<<std::endl;
         return 0;
     }else if(to<=from){
-        cout<<"priewsza liczba jest mniejsza lub rowna od drugiej!"<<endl;
+        std::cout<<"priewsza liczba jest mniejsza lub rowna od drugiej!"<<std::endl;
     }else{
         if((to-from)==1){
             Erase(from);
@@ -209,7 +214,7 @@ T &DynamicArray::operator [](size_t i){
 void DynamicArray::Read(){
     fstream plik(nazwaPliku, ios::in);
     size_t iloscDanychWczytanych=0;
-    string liniaZPliku="";
+    std::string liniaZPliku="";
     while(getline(plik, liniaZPliku)){
         tablica[iloscDanychWczytanych]=atoi(liniaZPliku.c_str());
         ++iloscDanychWczytanych;
@@ -224,5 +229,12 @@ void DynamicArray::PowiekszanieTablicy(){
         nowaTablica[i]=tablica[i];
     }
     tablica=nowaTablica;
+
+}
+T& DynamicArray::at(size_t i){
+    if(size==0 || capacity==size){
+
+    }
+    return tablica[i];
 
 }

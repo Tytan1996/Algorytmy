@@ -16,7 +16,8 @@ namespace AiSD{
     {
 
         public:
-            DynamicArray(T rozmiar);
+            DynamicArray(size_t rozmiar);
+            DynamicArray(size_t rozmiar, size_t N, const T& t);
             virtual ~DynamicArray();
             void Print();
             void Save();
@@ -38,6 +39,7 @@ namespace AiSD{
             T& operator [](size_t i);
             void Read();
             void PowiekszanieTablicy();
+            T& at(size_t i);
 
         protected:
 
@@ -45,10 +47,13 @@ namespace AiSD{
             T wczytajLiczbeCalkowita();
             size_t capacity;
             size_t size;
-            const string nazwaPliku="ZawartoscTablicy.txt";
+            const std::string nazwaPliku="ZawartoscTablicy.txt";
             T *tablica;
 
     };
 }
-
+struct Record{
+    std::string name;
+    unsigned grade;
+};
 #endif // DYNAMICARRAY_H

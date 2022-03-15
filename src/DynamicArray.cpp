@@ -235,9 +235,6 @@ void DynamicArray::PowiekszanieTablicy(){
 
 }
 T& DynamicArray::at(size_t i){
-    if(size==0 || capacity==size){
-
-    }
     return tablica[i];
 
 }

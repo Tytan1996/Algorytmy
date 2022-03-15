@@ -1,0 +1,92 @@
+\hypertarget{class_ai_s_d_1_1_dynamic_array}{}\doxysection{Ai\+SD\+::Dynamic\+Array Class Reference}
+\label{class_ai_s_d_1_1_dynamic_array}\index{AiSD::DynamicArray@{AiSD::DynamicArray}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_ae1668f14f6bfe08fea85312074819c55}\label{class_ai_s_d_1_1_dynamic_array_ae1668f14f6bfe08fea85312074819c55}} 
+{\bfseries Dynamic\+Array} (T rozmiar)
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a94d5099adbff145248df0f0b401c5264}\label{class_ai_s_d_1_1_dynamic_array_a94d5099adbff145248df0f0b401c5264}} 
+void {\bfseries Print} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_af3f325abd7ba997083135f7a460834d6}\label{class_ai_s_d_1_1_dynamic_array_af3f325abd7ba997083135f7a460834d6}} 
+void {\bfseries Save} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a7ee02dc9d82e9388d257b5a3cea8b978}\label{class_ai_s_d_1_1_dynamic_array_a7ee02dc9d82e9388d257b5a3cea8b978}} 
+bool {\bfseries Is\+Empty} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a20259108aafba11ba98a8032299b3c3b}\label{class_ai_s_d_1_1_dynamic_array_a20259108aafba11ba98a8032299b3c3b}} 
+bool {\bfseries Is\+Full} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_afc99d99fd5b4a9a6ab5906f0d18ef90a}\label{class_ai_s_d_1_1_dynamic_array_afc99d99fd5b4a9a6ab5906f0d18ef90a}} 
+size\+\_\+t {\bfseries Space} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_ad22a0fc11a9cd66aee860832a71329df}\label{class_ai_s_d_1_1_dynamic_array_ad22a0fc11a9cd66aee860832a71329df}} 
+void {\bfseries Push\+Back} (T t)
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a5205dcbf95c966c237d3ed57268c4df1}\label{class_ai_s_d_1_1_dynamic_array_a5205dcbf95c966c237d3ed57268c4df1}} 
+void {\bfseries Pop\+Back} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a603eb0a7a8de51cb91ce03d021dd6a57}\label{class_ai_s_d_1_1_dynamic_array_a603eb0a7a8de51cb91ce03d021dd6a57}} 
+void {\bfseries Push\+Front} (T t)
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_aba66cdd16f7d9c6cd8ea3db89f2653ea}\label{class_ai_s_d_1_1_dynamic_array_aba66cdd16f7d9c6cd8ea3db89f2653ea}} 
+void {\bfseries Pop\+Front} ()
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a8d35abc470e5d928391c19a8093fe0cf}\label{class_ai_s_d_1_1_dynamic_array_a8d35abc470e5d928391c19a8093fe0cf}} 
+void {\bfseries Insert} (T t, size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_ae17ded6f3222efe3d652c39f1cebf52c}\label{class_ai_s_d_1_1_dynamic_array_ae17ded6f3222efe3d652c39f1cebf52c}} 
+void {\bfseries Erase} (size\+\_\+t i)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array_a0bbfb35b3113cc7d5162323ac63baee6}{Bridge\+Function}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&, int, T, size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This function is performing Dynamic Array functions by \char`\"{}\+Numero Sign\char`\"{}. Return is transfered from \mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} functions but in size\+\_\+t (true = 1, false = 0) Also saves all the operations to the file (Log\+File\+Name), and measures time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array_a31c46424bc5a2ece40b33e7e43b1987d}{Overflow\+Table}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&)
+\begin{DoxyCompactList}\small\item\em Repeat the same functions until the array is full, and empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a0bbfb35b3113cc7d5162323ac63baee6}\label{class_ai_s_d_1_1_dynamic_array_a0bbfb35b3113cc7d5162323ac63baee6}} 
+\index{AiSD::DynamicArray@{AiSD::DynamicArray}!BridgeFunction@{BridgeFunction}}
+\index{BridgeFunction@{BridgeFunction}!AiSD::DynamicArray@{AiSD::DynamicArray}}
+\doxysubsubsection{\texorpdfstring{BridgeFunction}{BridgeFunction}}
+{\footnotesize\ttfamily size\+\_\+t Bridge\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{,  }\item[{int}]{,  }\item[{T}]{,  }\item[{size\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+This function is performing Dynamic Array functions by \char`\"{}\+Numero Sign\char`\"{}. Return is transfered from \mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} functions but in size\+\_\+t (true = 1, false = 0) Also saves all the operations to the file (Log\+File\+Name), and measures time. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em arr} & Dynamic Array pointer \\
+\hline
+\mbox{\texttt{ out}}  & {\em NO} & Numero Sign of function \\
+\hline
+\mbox{\texttt{ out}}  & {\em t} & First parameter \\
+\hline
+\mbox{\texttt{ out}}  & {\em i} & Second parameter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ai_s_d_1_1_dynamic_array_a31c46424bc5a2ece40b33e7e43b1987d}\label{class_ai_s_d_1_1_dynamic_array_a31c46424bc5a2ece40b33e7e43b1987d}} 
+\index{AiSD::DynamicArray@{AiSD::DynamicArray}!OverflowTable@{OverflowTable}}
+\index{OverflowTable@{OverflowTable}!AiSD::DynamicArray@{AiSD::DynamicArray}}
+\doxysubsubsection{\texorpdfstring{OverflowTable}{OverflowTable}}
+{\footnotesize\ttfamily void Overflow\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Repeat the same functions until the array is full, and empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em arr} & Dynamic Array pointer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Dynamic\+Array.\+h\end{DoxyCompactItemize}

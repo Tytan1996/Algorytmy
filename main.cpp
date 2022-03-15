@@ -2,56 +2,40 @@
 #include "DynamicArray.h"
 #include "TestingFunction.hpp"
 
+/*! \mainpage My Personal Index Page
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the introduction.
+ *
+ * \section install_sec Installation
+ *
+ * \subsection step1 Step 1: Opening the box
+ *
+ * etc...
+ */
 
-using namespace std;
 using namespace AiSD;
 
 int main()
 {
-    DynamicArray dynamicArray(10000);
-    //862:966:631:-10:203:126:491:328:806
-    /*dynamicArray.PushBack(862);
-    dynamicArray.PushBack(966);
-    dynamicArray.PushBack(631);
-    dynamicArray.PushBack(-10);
-    dynamicArray.PushBack(203);
-    dynamicArray.PushBack(126);
-    dynamicArray.PushBack(491);
-    dynamicArray.PushBack(328);
-    dynamicArray.PushBack(806);
-    cout<<dynamicArray.IsEmpty()<<endl;*/
+    ClearLogTxt();
 
+    DynamicArray dynamicArray(20000);
 
-
-    cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<endl;
-    DistortionsSimulation(dynamicArray,1000);
+    std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl;
+    cout<<"Please wait. Testing is in progress..."<<endl;
+    for(int i=0;i<20;i++)
+    {
+        streambuf *old = cout.rdbuf();
+        cout<<char(219);
+        cout.rdbuf(0);
+        DistortionsSimulation(dynamicArray,1000);
+        cout.rdbuf(old);
+    }cout<<endl<<endl;
     OverflowTable(dynamicArray);
-
-
-
-
-
-    //dynamicArray.PushBack(850);
-    //dynamicArray.PushBack(NULL);
-    //dynamicArray.PushBack(-1);
-    //dynamicArray.Erase(NULL);
-    //dynamicArray.Insert(NULL,NULL);
-    //dynamicArray.Print();
-
-    /*dynamicArray.Print();
-    dynamicArray.PushBack(1);
-    dynamicArray.PushFront(100);
-    dynamicArray.PushFront(101);
-    dynamicArray.PushFront(102);
-    dynamicArray.PushBack(103);
-    dynamicArray.Print();
-    dynamicArray.PopFront();
-    dynamicArray.Print();
-    dynamicArray.Insert(321,4);
-    dynamicArray.Print();
-    dynamicArray.Erase(2);
-    dynamicArray.Print();
-    dynamicArray.Save();*/
+    cout<<endl;
+    Presentation(dynamicArray);
 
     return 0;
 }

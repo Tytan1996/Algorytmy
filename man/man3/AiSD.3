@@ -1,0 +1,152 @@
+.TH "AiSD" 3 "Tue Mar 15 2022" "Tablica Dynamiczna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AiSD
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDynamicArray\fP"
+.br
+.ti -1c
+.RI "struct \fBnoneV\fP"
+.br
+.RI "Pusta struktura\&. Varianty nie moga przyjmowac typ void\&. Alternatywnie moglem uzyc wbudowanego 'monostate'\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBLog\fP (std::string src, std::string in)"
+.br
+.RI "Ta funkcja zapisuje do pliku o sciezce src zawartosc in\&. "
+.ti -1c
+.RI "auto \fBDoFunction\fP (\fBDynamicArray\fP &arr, int NO, \fBT\fP t, size_t i)"
+.br
+.RI "Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) "
+.ti -1c
+.RI "auto \fBFunctionByNO\fP (int NO)"
+.br
+.RI "Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1)> "
+.ti -1c
+.RI "void \fBDistortionsSimulation\fP (\fBDynamicArray\fP &arr, int t)"
+.br
+.RI "Symulacja zaklocen funkcji\&. Wykonuje losowe funkcje dla losowych arguumentow\&. Mierzy czas\&. Zapisuje dane do pliku log, na wypadek crashu\&. "
+.ti -1c
+.RI "void \fBOverflowTable\fP (\fBDynamicArray\fP &arr)"
+.br
+.RI "Wykonuje te same funkcje Dynamic Array do pusta i pelna\&. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic\&. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy\&. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy\&. Robi to poza mierzeniem czasu\&. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie\&. "
+.ti -1c
+.RI "void \fBPresentation\fP (\fBDynamicArray\fP &arr)"
+.br
+.RI "NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen\&. (Reczne testowanie) "
+.ti -1c
+.RI "auto \fB_setNow\fP ()"
+.br
+.RI "Mala funkcja do otrzymania bierzacego czasu\&. "
+.ti -1c
+.RI "std::string \fB_timeTook\fP (auto a, auto b)"
+.br
+.RI "Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach\&. "
+.ti -1c
+.RI "void \fBClearLogTxt\fP ()"
+.br
+.RI "Oproznia plik Log\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "auto AiSD::_setNow ()"
+
+.PP
+Mala funkcja do otrzymania bierzacego czasu\&. 
+.SS "std::string AiSD::_timeTook (auto a, auto b)"
+
+.PP
+Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach\&. 
+.SS "void AiSD::ClearLogTxt ()"
+
+.PP
+Oproznia plik Log\&. 
+.SS "void AiSD::DistortionsSimulation (\fBDynamicArray\fP & arr, int t)"
+
+.PP
+Symulacja zaklocen funkcji\&. Wykonuje losowe funkcje dla losowych arguumentow\&. Mierzy czas\&. Zapisuje dane do pliku log, na wypadek crashu\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarr\fP Dynamic Array 
+.br
+\fIt\fP Ile losowych operacji ma sie wykonac 
+.RE
+.PP
+
+.SS "auto AiSD::DoFunction (\fBDynamicArray\fP & arr, int NO, \fBT\fP t, size_t i)"
+
+.PP
+Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarr\fP Dynamic Array 
+.br
+\fINO\fP Numer funkcji Dynamic Array od 0 
+.br
+\fIt\fP Pierwszy parametr funkcji Dynamic Array 
+.br
+\fIi\fP Drugi parametr funkcji Dynamic Array 
+.RE
+.PP
+
+.SS "auto AiSD::FunctionByNO (int NO)"
+
+.PP
+Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1)> 
+.PP
+\fBParameters\fP
+.RS 4
+\fINO\fP Numer funkcji Dynamic Array od 0 
+.RE
+.PP
+
+.SS "void AiSD::Log (std::string src, std::string in)"
+
+.PP
+Ta funkcja zapisuje do pliku o sciezce src zawartosc in\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsrc\fP Sciezka pliku 
+.br
+\fIin\fP Zawartosc do dodania do pliku 
+.RE
+.PP
+
+.SS "void AiSD::OverflowTable (\fBDynamicArray\fP & arr)"
+
+.PP
+Wykonuje te same funkcje Dynamic Array do pusta i pelna\&. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic\&. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy\&. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy\&. Robi to poza mierzeniem czasu\&. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarr\fP Dynamic Array 
+.RE
+.PP
+
+.SS "void AiSD::Presentation (\fBDynamicArray\fP & arr)"
+
+.PP
+NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen\&. (Reczne testowanie) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarr\fP Dynamic Array 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tablica Dynamiczna from the source code\&.

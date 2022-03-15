@@ -1,0 +1,41 @@
+\hypertarget{_testing_function_8hpp}{}\doxysection{include/\+Testing\+Function.hpp File Reference}
+\label{_testing_function_8hpp}\index{include/TestingFunction.hpp@{include/TestingFunction.hpp}}
+{\ttfamily \#include \char`\"{}Dynamic\+Array.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$variant$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_ai_s_d_1_1none_v}{Ai\+SD\+::noneV}}
+\begin{DoxyCompactList}\small\item\em Pusta struktura. Varianty nie moga przyjmowac typ void. Alternatywnie moglem uzyc wbudowanego \char`\"{}monostate\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_ai_s_d}{Ai\+SD}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_ai_s_d_ad56fc3fb0193c3d1f787b62ff807aa0c}{Ai\+SD\+::\+Log}} (std\+::string src, std\+::string in)
+\begin{DoxyCompactList}\small\item\em Ta funkcja zapisuje do pliku o sciezce src zawartosc in. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}{Ai\+SD\+::\+Do\+Function}} (Dynamic\+Array \&arr, int NO, \mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}} t, size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0. Zapisje wszystkie operacje do pliku (Log\+File\+Name \char`\"{}\+Log.\+txt\char`\"{}) na wypadek crashu. Mierzy takze czas wykonywania operacji w mikrosekundach. Zwraca variant$<$bool,size\+\_\+t,none\+V (nothing)$>$ (jako to co pierwotna funkcja Dynamic Array nam zwracala) \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespace_ai_s_d_ad5a49da0a96cc14aa6ca17c58873e7c9}{Ai\+SD\+::\+Function\+By\+NO}} (int NO)
+\begin{DoxyCompactList}\small\item\em Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1)\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_a9aca5856e755ad79b9074b0aa235fed6}{Ai\+SD\+::\+Distortions\+Simulation}} (Dynamic\+Array \&arr, int t)
+\begin{DoxyCompactList}\small\item\em Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mierzy czas. Zapisuje dane do pliku log, na wypadek crashu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_a0c7751849e8192abadb2b033b8f574e9}{Ai\+SD\+::\+Overflow\+Table}} (Dynamic\+Array \&arr)
+\begin{DoxyCompactList}\small\item\em Wykonuje te same funkcje Dynamic Array do pusta i pelna. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy. Robi to poza mierzeniem czasu. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_a5a9767d9b9a08e06c427d86fe8960389}{Ai\+SD\+::\+Presentation}} (Dynamic\+Array \&arr)
+\begin{DoxyCompactList}\small\item\em NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen. (Reczne testowanie) \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespace_ai_s_d_a6a622caa3601a39fe1dc6b1c125e1a0b}{Ai\+SD\+::\+\_\+set\+Now}} ()
+\begin{DoxyCompactList}\small\item\em Mala funkcja do otrzymania bierzacego czasu. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespace_ai_s_d_a7d4c3e3bde01d3daab6a100f0afc1c18}{Ai\+SD\+::\+\_\+time\+Took}} (auto a, auto b)
+\begin{DoxyCompactList}\small\item\em Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_ae4c1e655506e62fdbe7d40c456bb68ee}{Ai\+SD\+::\+Clear\+Log\+Txt}} ()
+\begin{DoxyCompactList}\small\item\em Oproznia plik Log. \end{DoxyCompactList}\end{DoxyCompactItemize}

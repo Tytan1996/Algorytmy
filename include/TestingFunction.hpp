@@ -12,57 +12,62 @@
 #include <chrono>
 #include <string>
 #include <random>
+#include <variant>
 
 
 namespace AiSD
 {
 
     /**@brief
-    *   This function save the logs to the file
+    *   Ta funkcja zapisuje do pliku o sciezce src zawartosc in
     *
     *@param src
-    *   Path to the file
+    *   Sciezka pliku
     *@param in
-    *   Content of the log
+    *   Zawartosc do dodania do pliku
     */
-    void Log(std::string ,std::string );
+    void Log(std::string src,std::string in);
 
     /**@brief
-    *   This function is performing Dynamic Array functions by "Numero Sign".
-    *   Return is transfered from DynamicArray functions but in size_t (true = 1, false = 0)
-    *   Also saves all the operations to the file (LogFileName), and measures time.
+    *   Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0.
+    *   Zapisje wszystkie operacje do pliku (LogFileName "Log.txt") na wypadek crashu. Mierzy takze czas wykonywania operacji w mikrosekundach.
+    *   Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala)
     *
     *@param arr
-    *   Dynamic Array pointer
+    *   Dynamic Array
     *@param NO
-    *   Numero Sign of function
+    *   Numer funkcji Dynamic Array od 0
     *@param t
-    *   First parameter
+    *   Pierwszy parametr funkcji Dynamic Array
     *@param i
-    *   Second parameter
+    *   Drugi parametr funkcji Dynamic Array
     */
-    size_t BridgeFunction(DynamicArray& arr,int NO,T t,size_t i);
+    auto DoFunction(DynamicArray& arr,int NO,T t,size_t i);
 
     /**@brief
-    *   Returning function of Dynamic Array indexed by NO. Depends of ARGV.
+    *   Zwraca makro funkcji z Dynamic Array.
+    *   A dokladniej std::function<variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1)>
     *@param NO
-    *   Number of function
+    *   Numer funkcji Dynamic Array od 0
     */
-    function<size_t (DynamicArray& a,T t1,size_t i1)> FunctionByNO(int NO);
+    auto FunctionByNO(int NO);
 
 
     /**@brief
-    *   This function simulates distortions, and test potential crashes for random data entry
+    *   Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mierzy czas. Zapisuje dane do pliku log, na wypadek crashu.
     *
     *@param arr
-    *   Dynamic Array pointer
+    *   Dynamic Array
     *@param t
-    *   number of operations
+    *   Ile losowych operacji ma sie wykonac
     */
     void DistortionsSimulation(DynamicArray& arr,int t);
 
     /**@brief
-    *   Repeat the same functions until the array is full, and empty for the most pesimistic scenario. Measures time.
+    *   Wykonuje te same funkcje Dynamic Array do pusta i pelna. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic.
+    *   Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy.
+    *   Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy. Robi to poza mierzeniem czasu.
+    *   Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie.
     *
     *@param arr
     *   Dynamic Array
@@ -70,21 +75,32 @@ namespace AiSD
     void OverflowTable(DynamicArray& arr);
 
     /**@brief
-    *   User interactions function (ENDLESS LOOP!!!)
+    *   NIESKONCZONA PETLA!!!
+    *   Korzystanie z klasy Dynamic Array z poziomu wiersza polecen. (Reczne testowanie)
     *@param arr
     *   Dynamic Array
     */
     void Presentation(DynamicArray& arr);
 
     /**@brief
-    *   Small function capturing time.
+    *   Mala funkcja do otrzymania bierzacego czasu.
     */
     auto _setNow();
 
     /**@brief
-    *   Time between two chronotimes.
+    *   Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach
     */
     std::string _timeTook(auto a,auto b);
+
+    /**@brief
+    *   Oproznia plik Log.
+    */
+    void ClearLogTxt();
+
+    /**@brief
+    *   Pusta struktura. Varianty nie moga przyjmowac typ void. Alternatywnie moglem uzyc wbudowanego "monostate".
+    */
+    struct noneV{};
 }
 
 

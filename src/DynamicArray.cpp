@@ -33,7 +33,7 @@ void DynamicArray::Print(){
     }
 }
 void DynamicArray::Save(){
-    ofstream plik(nazwaPliku, ios::out);
+    std::ofstream plik(nazwaPliku, std::ios::out);
     //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true){
         plik<<"tablica jest pusta"<<std::endl;
@@ -133,11 +133,11 @@ T DynamicArray::wczytajLiczbeCalkowita()
     T liczba = 0;
     while (true)
     {
-        getline(cin, wejscie);
-        stringstream myStream(wejscie);
+        getline(std::cin, wejscie);
+        std::stringstream myStream(wejscie);
         if (myStream >> liczba)
             break;
-        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
+        std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
     }
     return liczba;
 }
@@ -215,7 +215,7 @@ T &DynamicArray::operator [](size_t i){
     return tablica[i];
 }
 void DynamicArray::Read(){
-    fstream plik(nazwaPliku, ios::in);
+    std::fstream plik(nazwaPliku, std::ios::in);
     size_t iloscDanychWczytanych=0;
     std::string liniaZPliku="";
     while(getline(plik, liniaZPliku)){

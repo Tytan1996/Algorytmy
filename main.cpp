@@ -3,11 +3,9 @@
 
 
 
-using namespace std;
-using namespace AiSD;
 
 int main() {
-    DynamicArray dynamicArray(5);
+    AiSD::DynamicArray dynamicArray(5);
     dynamicArray.Read();
     dynamicArray.Print();
     dynamicArray.Clear();
@@ -24,13 +22,13 @@ int main() {
     dynamicArray.Erase(2);
     dynamicArray.Print();
     dynamicArray.Save();
-    cout<<dynamicArray.Search(103)<<std::endl;
+    std::cout<<dynamicArray.Search(103)<<std::endl;
     if(dynamicArray.EraseFirst(103)==true) {
         std::cout<<"usunieto"<<std::endl;
     }
     dynamicArray.Print();
     dynamicArray[0]=1000;
-    std::cout<<dynamicArray[0]<<endl;
+    std::cout<<dynamicArray[0]<<std::endl;
     dynamicArray.Erase(1,2);
     dynamicArray.PowiekszanieTablicy();
     dynamicArray.Print();

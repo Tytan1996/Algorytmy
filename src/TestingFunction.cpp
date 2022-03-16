@@ -111,10 +111,7 @@ auto AiSD::FunctionByNO(int NO,size_t cap)
             nameV="read";
             break;
         case 17:
-            if(cap<18446744073709551615)
-                return f=[](AiSD::DynamicArray& a,T t1,size_t i1){return nothing;};
-            else
-                f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
             nameV="powiekszanie tablicy";
             break;
         case 18:

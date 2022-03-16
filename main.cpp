@@ -10,7 +10,7 @@ int main()
     ClearLogTxt();
 
     DynamicArray dynamicArray(20000);
-
+    dynamicArray.Space();
     std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl;
     std::cout<<"Please wait. Testing is in progress..."<<std::endl;
     for(int i=0;i<20;i++)

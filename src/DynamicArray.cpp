@@ -276,7 +276,24 @@ void DynamicArray::Read() {
     plik.close();
 }
 void DynamicArray::PowiekszanieTablicy() {
-    realloc(tablica,capacity*2);
+    if(capacity>=1310720000/6400){ /*dla capacity>=1310720000 jest blad gdy ta wartosc jest powiekszona o 2.
+            ale wartosc zostala zmiejszczona o 32 by szybciej operacje wykonaly sie.
+            1310720000 wartosc zostala wykryta przez program testujacy dodac do komendarza std::cout.rdbuf(0);
+            i wyswietlac wartosc capacity i zobaczyc kiedy program wywoluje blad.
+            Dla pewnosci wartosc zostala zmiejszczona o 32 by bardziej program dzialaj i nie wywowalj pamiecy.
+            */
+        return;
+    }
+    size_t powiekszonaWartosc=capacity*2;
+    T *tablica2 =new T[powiekszonaWartosc];
+    for(size_t i=0;i<capacity;++i){
+        tablica2[i]=tablica[i];
+    }
+    tablica=tablica2;
+    capacity=powiekszonaWartosc;
+    //capacity=capacity*size_t(2);
+
+
 }
 T& DynamicArray::at(size_t i) {
     return tablica[i];

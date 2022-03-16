@@ -34,7 +34,7 @@ void AiSD::Log(std::string src,std::string in)
 
 
 std::string nameV="";
-auto AiSD::FunctionByNO(int NO)
+auto AiSD::FunctionByNO(int NO,size_t cap)
 //mozna to zrobic lepiej dla std::variant https://en.cppreference.com/w/cpp/utility/variant
 //oraz https://en.cppreference.com/w/cpp/keyword/union
 {
@@ -110,11 +110,14 @@ auto AiSD::FunctionByNO(int NO)
             f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Read();return nothing;};
             nameV="read";
             break;
-        //case 17:
-            //f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
-            //nameV="powiekszanie tablicy";
-            //break;
         case 17:
+            if(cap<18446744073709551615)
+                return f=[](AiSD::DynamicArray& a,T t1,size_t i1){return nothing;};
+            else
+                f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
+            nameV="powiekszanie tablicy";
+            break;
+        case 18:
             f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Insert(t1,i1,i1);return nothing;};
             nameV="Insert (3 arguments)";
             break;
@@ -130,14 +133,15 @@ auto AiSD::FunctionByNO(int NO)
 auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i)
 {
 
-    auto f = FunctionByNO(NO);
+    auto f = FunctionByNO(NO,arr.capacity);
 
     //podstawowe informacjedo logow
     std::stringstream ss;
-    ss<<"Operation "<<nameV<<" for arguments "<<t<<" & "<<i<<std::endl<<"Array content: ";
+    ss<<"Operation "<<nameV<<" ("<<NO<<")"<<" for arguments "<<t<<" & "<<i<<std::endl<<"Array content: ";
     for(size_t i=0;i<arr.size;++i){
         ss<<arr.tablica[i]<<":";
     }
+    ss<<"Capcity/Size "<<arr.capacity<<"/"<<arr.size;
     Log(LogFileName,ss.str());
     ss.str("");//kasowanie dotychczasowej zawartosci
 
@@ -167,6 +171,7 @@ std::random_device rd;
 
 void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
 {
+    AiSD::Log(LogFileName,"-------------------------------------DistortionsSimulation");
     std::mt19937 gen(rd());
 
     std::uniform_int_distribution<> dis1(-100, 1000);
@@ -175,9 +180,9 @@ void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
 
     for(int i=0;i<t;i++)
     {
-        int a=dis1(gen);
-        T b=dis2(gen);
-        size_t c=dis2(gen);
+        int a=dis2(gen);
+        T b=dis1(gen);
+        size_t c=dis1(gen);
         DoFunction(arr,a,b,c);
     }
 }
@@ -185,15 +190,19 @@ void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
 
 void AiSD::OverflowTable(DynamicArray& arr)
 {
+    AiSD::Log(LogFileName,"-------------------------------------OverflowTable");
     T arg1=0;
     size_t arg2=0;
 
-    for(int NOI=5;NOI<NOFunctions-1;NOI++)
+    for(int NOI=5;NOI<10;NOI++)
     {
-        auto f = FunctionByNO(NOI);
+        auto f = FunctionByNO(NOI,arr.capacity);
+
+        AiSD::Log(LogFileName,"Repeat "+nameV);
+        std::cout<<nameV;
 
         //PESYMISTYCZNY SCENARIUSZ CZYLI NAJWIEKSZE LICZBY JAKIE MOGE WYKORZYSTAC
-        if(NOI==5||NOI==7){arg1=-1;arg2=arr.capacity-1;}; //MAKSYMALNA WARTOSC T
+        if(NOI==5||NOI==7){arg1=-1;arg2=arr.size-1;}; //MAKSYMALNA WARTOSC T
         auto startTime=_setNow();
         for(size_t i=0;i<arr.capacity;++i)
             f(arr,arg1,arg2);
@@ -204,7 +213,8 @@ void AiSD::OverflowTable(DynamicArray& arr)
             f(arr,0,0);
 
         std::string time=_timeTook(startTime,endTime);
-        std::cout<<nameV<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<std::endl;
+
+        std::cout<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<std::endl;
     }
 }
 void AiSD::ClearLogTxt()
@@ -217,12 +227,13 @@ void AiSD::ClearLogTxt()
 
 void AiSD::Presentation(DynamicArray& arr)
 {
+    AiSD::Log(LogFileName,"-------------------------------------Presentation");
     while(true)
     {
         std::string wejscie = "";
 
         std::cout<<"Choose operation: "<<std::endl;
-        std::cout<<"0- print"<<std::endl<<"1- save"<<std::endl<<"2- isEmpty"<<std::endl<<"3- isFull"<<std::endl<<"4- Space"<<std::endl<<"5- PushBack"<<std::endl<<"6- pushFront"<<std::endl<<"7- popFront"<<std::endl<<"8- insert"<<std::endl<<"9- erase"<<std::endl<<"10- Erase"<<std::endl<<"11- Erase"<<std::endl<<"12- Search"<<std::endl<<"13- Erase First"<<std::endl<<"14- Erase all"<<std::endl<<"15- Erase"<<std::endl<<"16- Read"<<std::endl<<"17- Powiekszenie tablicy"<<std::endl<<"Your opeartion: ";
+        std::cout<<"0- Print"<<std::endl<<"1- Save"<<std::endl<<"2- Is Empty"<<std::endl<<"3- Is Full"<<std::endl<<"4- Space"<<std::endl<<"5- Push Back (1 argument)"<<std::endl<<"6- Pop Back"<<std::endl<<"7- Push Front (1 argument)"<<std::endl<<"8- Pop Front"<<std::endl<<"9- Insert (2 arguments)"<<std::endl<<"10- Erase (1 argument)"<<std::endl<<"11- Clear"<<std::endl<<"12- Search (1 argument)"<<std::endl<<"13- Erase First (1 argument)"<<std::endl<<"14- Erase All (1 argument)"<<std::endl<<"15- Erase (2 arguments (size_t,size_t+long int))"<<std::endl<<"16- Read"<<std::endl<<"17- Powiekszenie tablicy"<<std::endl<<"18- Koniec programu"<<std::endl<<"Your opeartion: ";
         int userInput1=0;
         while (true)
         {
@@ -235,8 +246,9 @@ void AiSD::Presentation(DynamicArray& arr)
 
         bool g1=false;//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument
         bool g2=false;
-        if(userInput1==5||userInput1==7||userInput1==9)g1=true; //T
-        if(userInput1==9||userInput1==10)g2=true;               //size_t
+        if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14||userInput1==15)g1=true; //T         (t1)
+        if(userInput1==9||userInput1==10||userInput1==15)g2=true;               //size_t    (i1)
+        if(userInput1==18)return;
         T a1=0;
         size_t a2=0;
 
@@ -273,7 +285,7 @@ void AiSD::Presentation(DynamicArray& arr)
         else if(std::holds_alternative<size_t>(v))
             std::cout<<std::get<size_t>(v);
         else std::cout<<"Void";
-
+        std::cout<<std::endl<<std::endl;
     }
 
 

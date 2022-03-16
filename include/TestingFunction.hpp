@@ -49,8 +49,10 @@ namespace AiSD
     *   A dokladniej std::function<variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1)>
     *@param NO
     *   Numer funkcji Dynamic Array od 0
+    *@param cap
+    *   Rozmiar tablicy
     */
-    auto FunctionByNO(int NO);
+    auto FunctionByNO(int NO,size_t cap);
 
 
     /**@brief

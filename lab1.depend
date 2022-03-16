@@ -12,7 +12,7 @@
 
 1647259920 D
 
-1647449512 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
+1647450796 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 	"TestingFunction.hpp"
@@ -28,7 +28,7 @@
 	<sstream>
 	<string>
 
-1647449506 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
+1647450797 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
 1647450726 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h

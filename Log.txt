@@ -8982,7 +8982,7 @@ Array content: 7:13:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 11 & 9
 Array content: 7:13:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation save for arguments 4 & 4
 Array content: 7:13:
 Success. Took 0 microseconds; returned Void
@@ -14523,7 +14523,7 @@ Array content: 2:7:13:5:1:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 11 & 1
 Array content: 2:7:13:5:1:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation save for arguments 2 & 12
 Array content: 2:7:13:5:1:
 Success. Took 0 microseconds; returned Void
@@ -17037,7 +17037,7 @@ Array content:
 Success. Took 0 microseconds; returned Void
 Operation read for arguments 5 & 9
 Array content: 
-Success. Took 0 microseconds; returned Void
+Success. Took 998 microseconds; returned Void
 Operation read for arguments 0 & 9
 Array content: 2:7:13:5:1:
 Success. Took 0 microseconds; returned Void
@@ -17109,7 +17109,7 @@ Array content: 2:7:13:5:1:
 Success. Took 0 microseconds; returned Void
 Operation read for arguments 0 & 7
 Array content: 2:7:13:5:1:
-Success. Took 0 microseconds; returned Void
+Success. Took 996 microseconds; returned Void
 Operation read for arguments 1 & 7
 Array content: 2:7:13:5:1:
 Success. Took 0 microseconds; returned Void
@@ -20049,7 +20049,7 @@ Array content:
 Success. Took 0 microseconds; returned Void
 Operation clear for arguments 13 & 8
 Array content: 
-Success. Took 0 microseconds; returned Void
+Success. Took 997 microseconds; returned Void
 Operation clear for arguments 2 & 0
 Array content: 
 Success. Took 0 microseconds; returned Void
@@ -20775,7 +20775,7 @@ Array content: 4:
 Success. Took 0 microseconds; returned Void
 Operation push back for arguments 14 & 11
 Array content: 4:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation push back for arguments 18 & 9
 Array content: 4:
 Success. Took 0 microseconds; returned Void
@@ -30474,7 +30474,7 @@ Array content:
 Success. Took 0 microseconds; returned Void
 Operation read for arguments 12 & 15
 Array content: 
-Success. Took 991 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation read for arguments 18 & 16
 Array content: 0:
 Success. Took 0 microseconds; returned Void
@@ -31503,7 +31503,7 @@ Array content: 0:
 Success. Took 0 microseconds; returned Void
 Operation read for arguments 0 & 1
 Array content: 0:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation read for arguments 9 & 0
 Array content: 0:
 Success. Took 0 microseconds; returned Void
@@ -31749,7 +31749,7 @@ Array content:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 14 & 10
 Array content: 
-Success. Took 0 microseconds; returned Void
+Success. Took 998 microseconds; returned Void
 Operation save for arguments 17 & 12
 Array content: 
 Success. Took 0 microseconds; returned Void
@@ -32910,7 +32910,7 @@ Array content:
 Success. Took 0 microseconds; returned Void
 Operation read for arguments 16 & 8
 Array content: 
-Success. Took 0 microseconds; returned Void
+Success. Took 997 microseconds; returned Void
 Operation read for arguments 7 & 14
 Array content: 0:
 Success. Took 0 microseconds; returned Void
@@ -33261,7 +33261,7 @@ Array content: 0:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 2 & 15
 Array content: 0:
-Success. Took 0 microseconds; returned Void
+Success. Took 996 microseconds; returned Void
 Operation save for arguments 18 & 8
 Array content: 0:
 Success. Took 0 microseconds; returned Void
@@ -36726,7 +36726,7 @@ Array content: 0:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 8 & 12
 Array content: 0:
-Success. Took 0 microseconds; returned Void
+Success. Took 997 microseconds; returned Void
 Operation save for arguments 6 & 7
 Array content: 0:
 Success. Took 0 microseconds; returned Void
@@ -37671,7 +37671,7 @@ Array content: 14:
 Success. Took 0 microseconds; returned Void
 Operation push front for arguments 6 & 11
 Array content: 14:
-Success. Took 0 microseconds; returned Void
+Success. Took 996 microseconds; returned Void
 Operation push front for arguments 11 & 2
 Array content: 14:
 Success. Took 0 microseconds; returned Void
@@ -43083,7 +43083,7 @@ Array content: 12:
 Success. Took 0 microseconds; returned Void
 Operation push back for arguments 12 & 5
 Array content: 12:
-Success. Took 996 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation push back for arguments 8 & 9
 Array content: 12:
 Success. Took 0 microseconds; returned Void
@@ -43215,7 +43215,7 @@ Array content: 12:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 12 & 3
 Array content: 12:
-Success. Took 0 microseconds; returned Void
+Success. Took 997 microseconds; returned Void
 Operation save for arguments 1 & 0
 Array content: 12:
 Success. Took 0 microseconds; returned Void
@@ -43266,7 +43266,7 @@ Array content: 12:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 5 & 3
 Array content: 12:
-Success. Took 1002 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation save for arguments 14 & 18
 Array content: 12:
 Success. Took 0 microseconds; returned Void
@@ -44835,7 +44835,7 @@ Array content: 18:9:12:
 Success. Took 0 microseconds; returned Void
 Operation push front for arguments 14 & 7
 Array content: 18:9:12:
-Success. Took 0 microseconds; returned Void
+Success. Took 997 microseconds; returned Void
 Operation push front for arguments 6 & 1
 Array content: 18:9:12:
 Success. Took 0 microseconds; returned Void
@@ -45153,7 +45153,7 @@ Array content: 18:9:12:
 Success. Took 0 microseconds; returned Void
 Operation push front for arguments 6 & 7
 Array content: 18:9:12:
-Success. Took 998 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation push front for arguments 13 & 3
 Array content: 18:9:12:
 Success. Took 0 microseconds; returned Void
@@ -45936,7 +45936,7 @@ Array content: 18:9:12:
 Success. Took 0 microseconds; returned Void
 Operation read for arguments 14 & 6
 Array content: 18:9:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation read for arguments 2 & 4
 Array content: 12:
 Success. Took 0 microseconds; returned Void
@@ -50358,7 +50358,7 @@ Array content: 13:6:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 11 & 12
 Array content: 13:6:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation save for arguments 12 & 11
 Array content: 13:6:
 Success. Took 0 microseconds; returned Void
@@ -50694,7 +50694,7 @@ Array content: 13:6:
 Success. Took 0 microseconds; returned Void
 Operation save for arguments 17 & 2
 Array content: 13:6:
-Success. Took 997 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation save for arguments 3 & 7
 Array content: 13:6:
 Success. Took 0 microseconds; returned Void
@@ -55236,7 +55236,7 @@ Array content:
 Success. Took 0 microseconds; returned Void
 Operation search for arguments 14 & 0
 Array content: 
-Success. Took 1021 microseconds; returned Void
+Success. Took 0 microseconds; returned Void
 Operation search for arguments 4 & 2
 Array content: 
 Success. Took 0 microseconds; returned Void
@@ -58638,7 +58638,7 @@ Array content: 8:13:6:
 Success. Took 0 microseconds; returned Void
 Operation push front for arguments 13 & 14
 Array content: 8:13:6:
-Success. Took 0 microseconds; returned Void
+Success. Took 998 microseconds; returned Void
 Operation push front for arguments 9 & 9
 Array content: 8:13:6:
 Success. Took 0 microseconds; returned Void
@@ -59643,7 +59643,7 @@ Array content: 13:6:
 Success. Took 0 microseconds; returned Void
 Operation search for arguments 13 & 12
 Array content: 13:6:
-Success. Took 0 microseconds; returned Void
+Success. Took 996 microseconds; returned Void
 Operation search for arguments 8 & 3
 Array content: 13:6:
 Success. Took 0 microseconds; returned Void

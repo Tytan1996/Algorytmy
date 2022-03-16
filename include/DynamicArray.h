@@ -1,3 +1,7 @@
+//Algorytmy Dynamiczna Tablica
+//Maciej Pestka 170088
+//Damian Szopinski 185394
+
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
 #define T long

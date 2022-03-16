@@ -1,3 +1,7 @@
+//Algorytmy Dynamiczna Tablica
+//Maciej Pestka 170088
+//Damian Szopinski 185394
+
 #include "DynamicArray.h"
 
 using namespace AiSD;

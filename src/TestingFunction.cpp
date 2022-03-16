@@ -1,3 +1,7 @@
+//Algorytmy Dynamiczna Tablica
+//Damian Szopinski 185394
+//Maciej Pestka 170088
+
 #ifndef TESTINGFUNCTION_CPP
 #define TESTINGFUNCTION_CPP
 

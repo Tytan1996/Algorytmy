@@ -37,5 +37,6 @@ int main() {
     dynamicArray.Print();
     dynamicArray.Insert(100,3,3);
     dynamicArray.Print();
+
     return 0;
 }

@@ -1,0 +1,163 @@
+\hypertarget{namespace_ai_s_d}{}\doxysection{Ai\+SD Namespace Reference}
+\label{namespace_ai_s_d}\index{AiSD@{AiSD}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}}
+\item 
+struct \mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}
+\begin{DoxyCompactList}\small\item\em Pusta struktura. Varianty nie moga przyjmowac typ void. Alternatywnie moglem uzyc wbudowanego \char`\"{}monostate\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_ai_s_d_ad56fc3fb0193c3d1f787b62ff807aa0c}{Log}} (std\+::string src, std\+::string in)
+\begin{DoxyCompactList}\small\item\em Ta funkcja zapisuje do pliku o sciezce src zawartosc in. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}{Do\+Function}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr, int NO, \mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}} t, size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0. Zapisje wszystkie operacje do pliku (Log\+File\+Name \char`\"{}\+Log.\+txt\char`\"{}) na wypadek crashu. Mierzy takze czas wykonywania operacji w mikrosekundach. Zwraca variant$<$bool,size\+\_\+t,none\+V (nothing)$>$ (jako to co pierwotna funkcja Dynamic Array nam zwracala) \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespace_ai_s_d_ad5a49da0a96cc14aa6ca17c58873e7c9}{Function\+By\+NO}} (int NO)
+\begin{DoxyCompactList}\small\item\em Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1)\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_a9aca5856e755ad79b9074b0aa235fed6}{Distortions\+Simulation}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr, int t)
+\begin{DoxyCompactList}\small\item\em Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mierzy czas. Zapisuje dane do pliku log, na wypadek crashu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_a0c7751849e8192abadb2b033b8f574e9}{Overflow\+Table}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr)
+\begin{DoxyCompactList}\small\item\em Wykonuje te same funkcje Dynamic Array do pusta i pelna. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy. Robi to poza mierzeniem czasu. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_a5a9767d9b9a08e06c427d86fe8960389}{Presentation}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr)
+\begin{DoxyCompactList}\small\item\em NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen. (Reczne testowanie) \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespace_ai_s_d_a6a622caa3601a39fe1dc6b1c125e1a0b}{\+\_\+set\+Now}} ()
+\begin{DoxyCompactList}\small\item\em Mala funkcja do otrzymania bierzacego czasu. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespace_ai_s_d_a7d4c3e3bde01d3daab6a100f0afc1c18}{\+\_\+time\+Took}} (auto a, auto b)
+\begin{DoxyCompactList}\small\item\em Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ai_s_d_ae4c1e655506e62fdbe7d40c456bb68ee}{Clear\+Log\+Txt}} ()
+\begin{DoxyCompactList}\small\item\em Oproznia plik Log. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_ai_s_d_a6a622caa3601a39fe1dc6b1c125e1a0b}\label{namespace_ai_s_d_a6a622caa3601a39fe1dc6b1c125e1a0b}} 
+\index{AiSD@{AiSD}!\_setNow@{\_setNow}}
+\index{\_setNow@{\_setNow}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{\_setNow()}{\_setNow()}}
+{\footnotesize\ttfamily auto Ai\+SD\+::\+\_\+set\+Now (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mala funkcja do otrzymania bierzacego czasu. 
+
+\mbox{\Hypertarget{namespace_ai_s_d_a7d4c3e3bde01d3daab6a100f0afc1c18}\label{namespace_ai_s_d_a7d4c3e3bde01d3daab6a100f0afc1c18}} 
+\index{AiSD@{AiSD}!\_timeTook@{\_timeTook}}
+\index{\_timeTook@{\_timeTook}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{\_timeTook()}{\_timeTook()}}
+{\footnotesize\ttfamily std\+::string Ai\+SD\+::\+\_\+time\+Took (\begin{DoxyParamCaption}\item[{auto}]{a,  }\item[{auto}]{b }\end{DoxyParamCaption})}
+
+
+
+Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach. 
+
+\mbox{\Hypertarget{namespace_ai_s_d_ae4c1e655506e62fdbe7d40c456bb68ee}\label{namespace_ai_s_d_ae4c1e655506e62fdbe7d40c456bb68ee}} 
+\index{AiSD@{AiSD}!ClearLogTxt@{ClearLogTxt}}
+\index{ClearLogTxt@{ClearLogTxt}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{ClearLogTxt()}{ClearLogTxt()}}
+{\footnotesize\ttfamily void Ai\+SD\+::\+Clear\+Log\+Txt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Oproznia plik Log. 
+
+\mbox{\Hypertarget{namespace_ai_s_d_a9aca5856e755ad79b9074b0aa235fed6}\label{namespace_ai_s_d_a9aca5856e755ad79b9074b0aa235fed6}} 
+\index{AiSD@{AiSD}!DistortionsSimulation@{DistortionsSimulation}}
+\index{DistortionsSimulation@{DistortionsSimulation}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{DistortionsSimulation()}{DistortionsSimulation()}}
+{\footnotesize\ttfamily void Ai\+SD\+::\+Distortions\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{arr,  }\item[{int}]{t }\end{DoxyParamCaption})}
+
+
+
+Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mierzy czas. Zapisuje dane do pliku log, na wypadek crashu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array \\
+\hline
+{\em t} & Ile losowych operacji ma sie wykonac \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}\label{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}} 
+\index{AiSD@{AiSD}!DoFunction@{DoFunction}}
+\index{DoFunction@{DoFunction}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{DoFunction()}{DoFunction()}}
+{\footnotesize\ttfamily auto Ai\+SD\+::\+Do\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{arr,  }\item[{int}]{NO,  }\item[{\mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}}}]{t,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0. Zapisje wszystkie operacje do pliku (Log\+File\+Name \char`\"{}\+Log.\+txt\char`\"{}) na wypadek crashu. Mierzy takze czas wykonywania operacji w mikrosekundach. Zwraca variant$<$bool,size\+\_\+t,none\+V (nothing)$>$ (jako to co pierwotna funkcja Dynamic Array nam zwracala) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array \\
+\hline
+{\em NO} & Numer funkcji Dynamic Array od 0 \\
+\hline
+{\em t} & Pierwszy parametr funkcji Dynamic Array \\
+\hline
+{\em i} & Drugi parametr funkcji Dynamic Array \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_ai_s_d_ad5a49da0a96cc14aa6ca17c58873e7c9}\label{namespace_ai_s_d_ad5a49da0a96cc14aa6ca17c58873e7c9}} 
+\index{AiSD@{AiSD}!FunctionByNO@{FunctionByNO}}
+\index{FunctionByNO@{FunctionByNO}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{FunctionByNO()}{FunctionByNO()}}
+{\footnotesize\ttfamily auto Ai\+SD\+::\+Function\+By\+NO (\begin{DoxyParamCaption}\item[{int}]{NO }\end{DoxyParamCaption})}
+
+
+
+Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1)\texorpdfstring{$>$}{>} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em NO} & Numer funkcji Dynamic Array od 0 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_ai_s_d_ad56fc3fb0193c3d1f787b62ff807aa0c}\label{namespace_ai_s_d_ad56fc3fb0193c3d1f787b62ff807aa0c}} 
+\index{AiSD@{AiSD}!Log@{Log}}
+\index{Log@{Log}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily void Ai\+SD\+::\+Log (\begin{DoxyParamCaption}\item[{std\+::string}]{src,  }\item[{std\+::string}]{in }\end{DoxyParamCaption})}
+
+
+
+Ta funkcja zapisuje do pliku o sciezce src zawartosc in. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Sciezka pliku \\
+\hline
+{\em in} & Zawartosc do dodania do pliku \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_ai_s_d_a0c7751849e8192abadb2b033b8f574e9}\label{namespace_ai_s_d_a0c7751849e8192abadb2b033b8f574e9}} 
+\index{AiSD@{AiSD}!OverflowTable@{OverflowTable}}
+\index{OverflowTable@{OverflowTable}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{OverflowTable()}{OverflowTable()}}
+{\footnotesize\ttfamily void Ai\+SD\+::\+Overflow\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{arr }\end{DoxyParamCaption})}
+
+
+
+Wykonuje te same funkcje Dynamic Array do pusta i pelna. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy. Robi to poza mierzeniem czasu. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_ai_s_d_a5a9767d9b9a08e06c427d86fe8960389}\label{namespace_ai_s_d_a5a9767d9b9a08e06c427d86fe8960389}} 
+\index{AiSD@{AiSD}!Presentation@{Presentation}}
+\index{Presentation@{Presentation}!AiSD@{AiSD}}
+\doxysubsubsection{\texorpdfstring{Presentation()}{Presentation()}}
+{\footnotesize\ttfamily void Ai\+SD\+::\+Presentation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{arr }\end{DoxyParamCaption})}
+
+
+
+NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen. (Reczne testowanie) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array \\
+\hline
+\end{DoxyParams}

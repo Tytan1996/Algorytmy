@@ -1,0 +1,83 @@
+.TH "include/TestingFunction.hpp" 3 "Tue Mar 15 2022" "Tablica Dynamiczna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/TestingFunction.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'DynamicArray\&.h'\fP
+.br
+\fC#include <cstddef>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <functional>\fP
+.br
+\fC#include <chrono>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <random>\fP
+.br
+\fC#include <variant>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBAiSD::noneV\fP"
+.br
+.RI "Pusta struktura\&. Varianty nie moga przyjmowac typ void\&. Alternatywnie moglem uzyc wbudowanego 'monostate'\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBAiSD\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAiSD::Log\fP (std::string src, std::string in)"
+.br
+.RI "Ta funkcja zapisuje do pliku o sciezce src zawartosc in\&. "
+.ti -1c
+.RI "auto \fBAiSD::DoFunction\fP (DynamicArray &arr, int NO, \fBT\fP t, size_t i)"
+.br
+.RI "Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) "
+.ti -1c
+.RI "auto \fBAiSD::FunctionByNO\fP (int NO)"
+.br
+.RI "Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1)> "
+.ti -1c
+.RI "void \fBAiSD::DistortionsSimulation\fP (DynamicArray &arr, int t)"
+.br
+.RI "Symulacja zaklocen funkcji\&. Wykonuje losowe funkcje dla losowych arguumentow\&. Mierzy czas\&. Zapisuje dane do pliku log, na wypadek crashu\&. "
+.ti -1c
+.RI "void \fBAiSD::OverflowTable\fP (DynamicArray &arr)"
+.br
+.RI "Wykonuje te same funkcje Dynamic Array do pusta i pelna\&. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic\&. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy\&. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy\&. Robi to poza mierzeniem czasu\&. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie\&. "
+.ti -1c
+.RI "void \fBAiSD::Presentation\fP (DynamicArray &arr)"
+.br
+.RI "NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen\&. (Reczne testowanie) "
+.ti -1c
+.RI "auto \fBAiSD::_setNow\fP ()"
+.br
+.RI "Mala funkcja do otrzymania bierzacego czasu\&. "
+.ti -1c
+.RI "std::string \fBAiSD::_timeTook\fP (auto a, auto b)"
+.br
+.RI "Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach\&. "
+.ti -1c
+.RI "void \fBAiSD::ClearLogTxt\fP ()"
+.br
+.RI "Oproznia plik Log\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tablica Dynamiczna from the source code\&.

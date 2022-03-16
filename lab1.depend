@@ -10,14 +10,28 @@
 	<iostream>
 	<array>
 
-1647415696 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
+1647259920 D
+
+1647416521 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
+	"TestingFunction.hpp"
 
-1647415534 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
+1647260228 kcje-testujace
+	<iostream>
+	"DynamicArray.h"
+	"TestingFunction.hpp"
+	<cstddef>
+	<iostream>
+	<array>
+	<fstream>
+	<sstream>
+	<string>
+
+1647416477 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1647415525 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
+1647416477 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
@@ -39,4 +53,72 @@
 
 1647351757 source:f:\aisd\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
+
+1647374003 source:c:\users\user01\desktop\projekty\algorytmy\src\dynamicarray.cpp
+	"DynamicArray.h"
+
+1647384107 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
+	<cstddef>
+	<iostream>
+	<array>
+	<fstream>
+	<sstream>
+
+1647383193 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
+	<iostream>
+	"DynamicArray.h"
+	"TestingFunction.hpp"
+
+1647384712 c:\users\user01\desktop\projekty\algorytmy\include\testingfunction.hpp
+	"DynamicArray.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+	<variant>
+
+1647384736 source:c:\users\user01\desktop\projekty\algorytmy\src\testingfunction.cpp
+	"TestingFunction.hpp"
+
+1647416112 d:\-=uczelnia=-\sem4\algorytmy\include\testingfunction.hpp
+	"DynamicArray.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+	<variant>
+
+1647258497 source:d:\-=uczelnia=-\sem4\algorytmy\src\testingfunction.cpp
+	"TestingFunction.hpp"
+
+1647349493 source:c:\users\student\documents\github\algorytmy\main.cpp
+	<iostream>
+	"DynamicArray.h"
+	"TestingFunction.hpp"
+
+1647350281 c:\users\student\documents\github\algorytmy\include\dynamicarray.h
+	<cstddef>
+	<iostream>
+	<array>
+	<fstream>
+	<sstream>
+
+1647351678 c:\users\student\documents\github\algorytmy\include\testingfunction.hpp
+	"DynamicArray.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+
+1647346986 source:c:\users\student\documents\github\algorytmy\src\dynamicarray.cpp
+	"DynamicArray.h"
+
+1647352239 source:c:\users\student\documents\github\algorytmy\src\testingfunction.cpp
+	"TestingFunction.hpp"
 

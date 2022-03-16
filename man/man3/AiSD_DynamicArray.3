@@ -1,0 +1,129 @@
+.TH "AiSD::DynamicArray" 3 "Tue Mar 15 2022" "Tablica Dynamiczna" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AiSD::DynamicArray
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <DynamicArray\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDynamicArray\fP (\fBT\fP rozmiar)"
+.br
+.ti -1c
+.RI "virtual \fB~DynamicArray\fP ()"
+.br
+.ti -1c
+.RI "void \fBPrint\fP ()"
+.br
+.ti -1c
+.RI "void \fBSave\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsEmpty\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsFull\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBSpace\fP ()"
+.br
+.ti -1c
+.RI "void \fBPushBack\fP (\fBT\fP t)"
+.br
+.ti -1c
+.RI "void \fBPopBack\fP ()"
+.br
+.ti -1c
+.RI "void \fBPushFront\fP (\fBT\fP t)"
+.br
+.ti -1c
+.RI "void \fBPopFront\fP ()"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (\fBT\fP t, size_t i)"
+.br
+.ti -1c
+.RI "void \fBErase\fP (size_t i)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "auto \fBDoFunction\fP (\fBDynamicArray\fP &, int, \fBT\fP, size_t)"
+.br
+.RI "Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) "
+.ti -1c
+.RI "void \fBOverflowTable\fP (\fBDynamicArray\fP &)"
+.br
+.RI "Wykonuje te same funkcje Dynamic Array do pusta i pelna\&. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic\&. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy\&. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy\&. Robi to poza mierzeniem czasu\&. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie\&. "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AiSD::DynamicArray::DynamicArray (\fBT\fP rozmiar)"
+
+.SS "virtual AiSD::DynamicArray::~DynamicArray ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void AiSD::DynamicArray::Erase (size_t i)"
+
+.SS "void AiSD::DynamicArray::Insert (\fBT\fP t, size_t i)"
+
+.SS "bool AiSD::DynamicArray::IsEmpty ()"
+
+.SS "bool AiSD::DynamicArray::IsFull ()"
+
+.SS "void AiSD::DynamicArray::PopBack ()"
+
+.SS "void AiSD::DynamicArray::PopFront ()"
+
+.SS "void AiSD::DynamicArray::Print ()"
+
+.SS "void AiSD::DynamicArray::PushBack (\fBT\fP t)"
+
+.SS "void AiSD::DynamicArray::PushFront (\fBT\fP t)"
+
+.SS "void AiSD::DynamicArray::Save ()"
+
+.SS "size_t AiSD::DynamicArray::Space ()"
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "auto DoFunction (\fBDynamicArray\fP &, int, \fBT\fP, size_t)\fC [friend]\fP"
+
+.PP
+Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarr\fP Dynamic Array 
+.br
+\fINO\fP Numer funkcji Dynamic Array od 0 
+.br
+\fIt\fP Pierwszy parametr funkcji Dynamic Array 
+.br
+\fIi\fP Drugi parametr funkcji Dynamic Array 
+.RE
+.PP
+
+.SS "void OverflowTable (\fBDynamicArray\fP &)\fC [friend]\fP"
+
+.PP
+Wykonuje te same funkcje Dynamic Array do pusta i pelna\&. Pesymistyczny scenariusz jest taki, ze przyjmujemy zawsze te najwieksze liczby jakie moge wprowadzic\&. Mierzy czas dla funkcji powtarzanej tyle razy jaka jest wielkosc tablicy\&. Przy okazji testuje takie sytuacje kiedy dodajemy kolejny element do pelnej tablicy oraz usuwamy element z pustej tablicy\&. Robi to poza mierzeniem czasu\&. Zmierzony czas jest w mikrosekundach i wyswietla sie na ekranie\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIarr\fP Dynamic Array 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tablica Dynamiczna from the source code\&.

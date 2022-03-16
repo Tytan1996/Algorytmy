@@ -2,6 +2,7 @@
 
 using namespace AiSD;
 
+
 DynamicArray::DynamicArray(){
     capacity=100;
     size=0;
@@ -20,7 +21,6 @@ DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t) {
     for(size_t i=0; i<N; ++i) {
         tablica[i]=t;
     }
-
 
 }
 DynamicArray::DynamicArray(const DynamicArray &dynamicArray1){
@@ -57,18 +57,23 @@ DynamicArray& DynamicArray::operator=(DynamicArray& other) {
     }
     return *this;
 }
-DynamicArray::~DynamicArray() {
+DynamicArray::~DynamicArray()
+{
     delete [] tablica;
+    capacity=0;
+    size=0;
 }
-void DynamicArray::Print() {
-    if(IsEmpty()==false) {
-        for(size_t i=0; i<size; ++i) {
+void DynamicArray::Print(){
+    if(IsEmpty()==false){
+        for(size_t i=0;i<size;++i){
             std::cout<<"element tablicy ["<<i<<"] = "<<tablica[i]<<std::endl;
+
         }
     } else {
         std::cout<<"tablica jest pusta"<<std::endl;
     }
 }
+
 void DynamicArray::Save() {
     std::ofstream plik(nazwaPliku, std::ios::out);
     //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
@@ -133,10 +138,14 @@ void DynamicArray::PopFront() {
         tablica[size]=NULL;
     }
 }
-void DynamicArray::Insert(T t, size_t i) {
-    if(IsFull()==true)
+
+void DynamicArray::Insert(T t, size_t i){
+    if(IsFull()==true){
         return;
-    if(i==0) {
+    }else if(i<0 || i>size){
+        return;
+    }
+    if(i==0){
         PushFront(t);
     } else if(i==size) {
         PushBack(t);
@@ -148,11 +157,14 @@ void DynamicArray::Insert(T t, size_t i) {
         tablica[i]=t;
     }
 }
-void DynamicArray::Erase(size_t i) {
-    if(IsEmpty()==true)
-        return;
 
-    if(i==0) {
+void DynamicArray::Erase(size_t i){
+    if(IsEmpty()==true){
+        return;
+    }else if(i<0 || i>size){
+        return;
+    }
+    if(i==0){
         PopFront();
     } else if(i==(size-1)) {
         PopBack();

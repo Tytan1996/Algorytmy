@@ -1,42 +1,42 @@
 #include <iostream>
 #include "DynamicArray.h"
+#include "TestingFunction.hpp"
+
+/*! \mainpage My Personal Index Page
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the introduction.
+ *
+ * \section install_sec Installation
+ *
+ * \subsection step1 Step 1: Opening the box
+ *
+ * etc...
+ */
 
 
+using namespace AiSD;
 
+int main()
+{
+    ClearLogTxt();
 
-int main() {
-    AiSD::DynamicArray dynamicArray(5);
-    dynamicArray.Read();
-    dynamicArray.Print();
-    dynamicArray.Clear();
-    dynamicArray.PushBack(1);
-    dynamicArray.PushFront(100);
-    dynamicArray.PushFront(101);
-    dynamicArray.PushFront(102);
-    dynamicArray.PushBack(103);
-    dynamicArray.Print();
-    dynamicArray.PopFront();
-    dynamicArray.Print();
-    dynamicArray.Insert(321,4);
-    dynamicArray.Print();
-    dynamicArray.Erase(2);
-    dynamicArray.Print();
-    dynamicArray.Save();
-    std::cout<<dynamicArray.Search(103)<<std::endl;
-    if(dynamicArray.EraseFirst(103)==true) {
-        std::cout<<"usunieto"<<std::endl;
-    }
-    dynamicArray.Print();
-    dynamicArray[0]=1000;
-    std::cout<<dynamicArray[0]<<std::endl;
-    dynamicArray.Erase(1,2);
-    dynamicArray.PowiekszanieTablicy();
-    dynamicArray.Print();
-    dynamicArray.Save();
-    dynamicArray.at(4)=123;
-    dynamicArray.Print();
-    dynamicArray.Insert(100,3,3);
-    dynamicArray.Print();
+    DynamicArray dynamicArray(20000);
+
+    std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl;
+    std::cout<<"Please wait. Testing is in progress..."<<std::endl;
+    for(int i=0;i<20;i++)
+    {
+        std::streambuf *old = std::cout.rdbuf();
+        std::cout<<char(219);
+        std::cout.rdbuf(0);
+        DistortionsSimulation(dynamicArray,1000);
+        std::cout.rdbuf(old);
+    }std::cout<<std::endl<<std::endl;
+    OverflowTable(dynamicArray);
+    std::cout<<std::endl;
+    Presentation(dynamicArray);
 
     return 0;
 }

@@ -11,6 +11,7 @@
 
 
 
+
 namespace AiSD{
     class DynamicArray
     {
@@ -51,11 +52,15 @@ namespace AiSD{
         protected:
 
         private:
+            friend auto DoFunction(DynamicArray&,int,T,size_t);
+            friend void OverflowTable(DynamicArray&);
+
             T wczytajLiczbeCalkowita();
             size_t capacity;
             size_t size;
             const std::string nazwaPliku="ZawartoscTablicy.txt";
             T *tablica;
+
 
     };
 }

@@ -276,13 +276,7 @@ void DynamicArray::Read() {
     plik.close();
 }
 void DynamicArray::PowiekszanieTablicy() {
-    capacity*=2;
-    T *nowaTablica=new T[capacity];
-    for(size_t i=0; i<size; ++i) {
-        nowaTablica[i]=tablica[i];
-    }
-    tablica=nowaTablica;
-
+    realloc(tablica,capacity*2);
 }
 T& DynamicArray::at(size_t i) {
     return tablica[i];

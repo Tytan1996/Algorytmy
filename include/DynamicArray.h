@@ -8,8 +8,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-
-
+#include <stdlib.h>
+#include <malloc.h>
 
 
 namespace AiSD{

@@ -110,11 +110,11 @@ auto AiSD::FunctionByNO(int NO)
             f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Read();return nothing;};
             nameV="read";
             break;
+        //case 17:
+            //f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
+            //nameV="powiekszanie tablicy";
+            //break;
         case 17:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
-            nameV="powiekszanie tablicy";
-            break;
-        case 18:
             f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Insert(t1,i1,i1);return nothing;};
             nameV="Insert (3 arguments)";
             break;

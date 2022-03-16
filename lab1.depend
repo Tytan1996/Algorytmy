@@ -12,7 +12,7 @@
 
 1647259920 D
 
-1647416521 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
+1647447609 source:d:\-=uczelnia=-\sem4\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 	"TestingFunction.hpp"
@@ -28,10 +28,10 @@
 	<sstream>
 	<string>
 
-1647416477 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
+1647447389 source:d:\-=uczelnia=-\sem4\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1647416477 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
+1647447034 d:\-=uczelnia=-\sem4\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
@@ -93,7 +93,7 @@
 	<random>
 	<variant>
 
-1647258497 source:d:\-=uczelnia=-\sem4\algorytmy\src\testingfunction.cpp
+1647447038 source:d:\-=uczelnia=-\sem4\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
 1647349493 source:c:\users\student\documents\github\algorytmy\main.cpp

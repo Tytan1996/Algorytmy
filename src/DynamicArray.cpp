@@ -213,8 +213,11 @@ bool DynamicArray::EraseFirst(const T& t) {
 }
 size_t DynamicArray::EraseAll(const T& t) {
     size_t iloscUsunietychElementow=0;
-    while(EraseAll(t)) {
-        ++iloscUsunietychElementow;
+    for(size_t i=0;i<size;++i){
+        if(tablica[i]==t){
+            Erase(i);
+            ++iloscUsunietychElementow;
+        }
     }
     return iloscUsunietychElementow;
 }

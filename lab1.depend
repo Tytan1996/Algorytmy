@@ -54,22 +54,23 @@
 1647351757 source:f:\aisd\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1647374003 source:c:\users\user01\desktop\projekty\algorytmy\src\dynamicarray.cpp
+1647423552 source:c:\users\user01\desktop\projekty\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1647384107 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
+1647423552 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
 	<cstddef>
 	<iostream>
 	<array>
 	<fstream>
 	<sstream>
+	<string>
 
-1647383193 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
+1647444142 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
 	<iostream>
 	"DynamicArray.h"
 	"TestingFunction.hpp"
 
-1647384712 c:\users\user01\desktop\projekty\algorytmy\include\testingfunction.hpp
+1647423552 c:\users\user01\desktop\projekty\algorytmy\include\testingfunction.hpp
 	"DynamicArray.h"
 	<cstddef>
 	<sstream>
@@ -79,7 +80,7 @@
 	<random>
 	<variant>
 
-1647384736 source:c:\users\user01\desktop\projekty\algorytmy\src\testingfunction.cpp
+1647444010 source:c:\users\user01\desktop\projekty\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
 1647416112 d:\-=uczelnia=-\sem4\algorytmy\include\testingfunction.hpp

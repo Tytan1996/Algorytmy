@@ -1,9 +1,2 @@
-<<<<<<< HEAD
-1000
-321
-=======
-ilosc wolnego miejsca: 19997
-element tablicy [0] = 2
-element tablicy [1] = 10
-element tablicy [2] = 5
->>>>>>> funkcje-testujace
+7
+13

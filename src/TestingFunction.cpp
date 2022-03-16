@@ -14,7 +14,7 @@ auto AiSD::_setNow()
 {
     return std::chrono::high_resolution_clock::now();
 }
-string AiSD::_timeTook(auto a,auto b)
+std::string AiSD::_timeTook(auto a,auto b)
 {
     std::stringstream ss;
     auto time=std::chrono::duration_cast<std::chrono::microseconds>(b-a);
@@ -38,7 +38,7 @@ auto AiSD::FunctionByNO(int NO)
 //mozna to zrobic lepiej dla std::variant https://en.cppreference.com/w/cpp/utility/variant
 //oraz https://en.cppreference.com/w/cpp/keyword/union
 {
-    std::function<variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1)> f ;
+    std::function<std::variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1)> f ;
     //przypisanie funckji
     switch(NO)
     {
@@ -86,6 +86,38 @@ auto AiSD::FunctionByNO(int NO)
             f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Erase(i1);return nothing;};
             nameV="erase";
             break;
+        case 11:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Clear();return nothing;};
+            nameV="clear";
+            break;
+        case 12:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.Search(t1);};
+            nameV="search";
+            break;
+        case 13:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.EraseFirst(t1);};
+            nameV="erase first";
+            break;
+        case 14:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.EraseAll(t1);};
+            nameV="erase all";
+            break;
+        case 15:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.Erase(i1,i1+size_t(t1));};
+            nameV="erase";
+            break;
+        case 16:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Read();return nothing;};
+            nameV="read";
+            break;
+        case 17:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
+            nameV="powiekszanie tablicy";
+            break;
+        case 18:
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Insert(t1,i1,i1);return nothing;};
+            nameV="Insert (3 arguments)";
+            break;
         default:
             f=[](AiSD::DynamicArray& a,T t1,size_t i1){return nothing;};
     }
@@ -102,7 +134,7 @@ auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i)
 
     //podstawowe informacjedo logow
     std::stringstream ss;
-    ss<<"Operation "<<nameV<<" for arguments "<<t<<" & "<<i<<endl<<"Array content: ";
+    ss<<"Operation "<<nameV<<" for arguments "<<t<<" & "<<i<<std::endl<<"Array content: ";
     for(size_t i=0;i<arr.size;++i){
         ss<<arr.tablica[i]<<":";
     }
@@ -128,7 +160,7 @@ auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i)
     return v;
 }
 
-const int NOFunctions= 11;
+const int NOFunctions= 18;
 //PIERWSZA FUNKCJA TESTUJACA
 
 std::random_device rd;
@@ -138,7 +170,7 @@ void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
     std::mt19937 gen(rd());
 
     std::uniform_int_distribution<> dis1(-100, 1000);
-    std::uniform_int_distribution<> dis2(0, 10);//dla czytelnosci print nie bedzie testowany
+    std::uniform_int_distribution<> dis2(0, NOFunctions);//dla czytelnosci print nie bedzie testowany
 
 
     for(int i=0;i<t;i++)
@@ -172,7 +204,7 @@ void AiSD::OverflowTable(DynamicArray& arr)
             f(arr,0,0);
 
         std::string time=_timeTook(startTime,endTime);
-        std::cout<<nameV<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<endl;
+        std::cout<<nameV<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<std::endl;
     }
 }
 void AiSD::ClearLogTxt()
@@ -181,14 +213,25 @@ void AiSD::ClearLogTxt()
     emptyFile.open(LogFileName, std::ofstream::out | std::ofstream::trunc);
     emptyFile.close();
 }
+
+
 void AiSD::Presentation(DynamicArray& arr)
 {
     while(true)
     {
-        cout<<"Choose operation: "<<endl;
-        cout<<"0- print"<<endl<<"1- save"<<endl<<"2- isEmpty"<<endl<<"3- isFull"<<endl<<"4- Space"<<endl<<"5- PushBack"<<endl<<"6- pushFront"<<endl<<"7- popFront"<<endl<<"8- insert"<<endl<<"9- erase"<<endl<<"Your opeartion: ";
+        std::string wejscie = "";
+
+        std::cout<<"Choose operation: "<<std::endl;
+        std::cout<<"0- print"<<std::endl<<"1- save"<<std::endl<<"2- isEmpty"<<std::endl<<"3- isFull"<<std::endl<<"4- Space"<<std::endl<<"5- PushBack"<<std::endl<<"6- pushFront"<<std::endl<<"7- popFront"<<std::endl<<"8- insert"<<std::endl<<"9- erase"<<std::endl<<"10- Erase"<<std::endl<<"11- Erase"<<std::endl<<"12- Search"<<std::endl<<"13- Erase First"<<std::endl<<"14- Erase all"<<std::endl<<"15- Erase"<<std::endl<<"16- Read"<<std::endl<<"17- Powiekszenie tablicy"<<std::endl<<"Your opeartion: ";
         int userInput1=0;
-        cin>>userInput1;
+        while (true)
+        {
+            getline(std::cin, wejscie);
+            std::stringstream myStream(wejscie);
+            if (myStream >> userInput1)
+                break;
+            std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
+        }
 
         bool g1=false;//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument
         bool g2=false;
@@ -199,15 +242,38 @@ void AiSD::Presentation(DynamicArray& arr)
 
         if(g1)
         {
-            cout<<"T a1=";
-            cin>>a1;
+            std::cout<<"T a1=";
+            while (true)
+            {
+                getline(std::cin, wejscie);
+                std::stringstream myStream(wejscie);
+                if (myStream >> a1)
+                    break;
+                std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
+            }
         }
         if(g2)
         {
-            cout<<"size_t a2=";
-            cin>>a2;
+            std::cout<<"size_t a2=";
+            while (true)
+            {
+                getline(std::cin, wejscie);
+                std::stringstream myStream(wejscie);
+                if (myStream >> a2)
+                    break;
+                std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
+            }
         }
-        DoFunction(arr,userInput1,a1,a2);
+
+        auto v=DoFunction(arr,userInput1,a1,a2);
+
+        std::cout<<"Returned:";
+        if (std::holds_alternative<bool>(v))
+            std::cout<<std::get<bool>(v);
+        else if(std::holds_alternative<size_t>(v))
+            std::cout<<std::get<size_t>(v);
+        else std::cout<<"Void";
+
     }
 
 

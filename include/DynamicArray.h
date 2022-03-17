@@ -18,11 +18,11 @@ namespace AiSD{
 
         public:
             /**@brief
-            *   Ta metoda jest konstruktorem, która ustawia parametry poczatkowe.
+            *   Ta metoda jest konstruktorem, ktora ustawia parametry poczatkowe.
             */
             DynamicArray();
             /**@brief
-            *   Te konstuktory dziasaja jak wedlug instrukcji
+            *   Te konstuktory dzialaja jak wedlug instrukcji
             */
             DynamicArray(size_t rozmiar);
             DynamicArray(size_t rozmiar, size_t N, const T& t);
@@ -38,7 +38,7 @@ namespace AiSD{
             */
             virtual ~DynamicArray();
             /**@brief
-            *   Ta metoda pokazuje zawartoœæ tablicy
+            *   Ta metoda pokazuje zawartsc tablicy
             */
             void Print();
             /**@brief
@@ -89,7 +89,7 @@ namespace AiSD{
             T& operator [](size_t i);
             //Funkcje na wymagania dodatkowe
             /**@brief
-            *   Ta metoda (dodatkowa) dziala zgodnie jak wed³ug instrukcji w czasie O(size)
+            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size)
             */
             void Clear();
             /**@brief
@@ -122,7 +122,7 @@ namespace AiSD{
             T& at(size_t i);
             //funkcje z gwiazdka
             /**@brief
-            *   Ta metoda (doatkowa z *) dodaje na pozycji 'i' tyle elementów t ile jest nadanie w operacji
+            *   Ta metoda (dodatkowa z *) dodaje na pozycji 'i' tyle elementow t ile jest nadanie w operacji
             */
             void Insert(T t, size_t iloscElementow, size_t i);
 

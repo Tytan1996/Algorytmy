@@ -13,7 +13,6 @@ int main()
     {
         AiSD::DynamicArray dynamicArray(20000);
         std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl<<std::endl;
-        //dynamicArray.Space();
         std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;
         AiSD::OverflowTable(dynamicArray);
     }

@@ -69,7 +69,7 @@ $(function() {
   <div class="headertitle"><div class="title">TestingFunction.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_testing_function_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//Algorytmy Dynamiczna Tablica</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//Algorytmy Dynamiczna Tablica</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//Damian Szopinski 185394</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//Maciej Pestka 170088</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
@@ -79,7 +79,7 @@ $(function() {
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef TESTINGFUNCTION_HPP</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define TESTINGFUNCTION_HPP</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_dynamic_array_8h.html">DynamicArray.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;DynamicArray.h&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
@@ -90,27 +90,27 @@ $(function() {
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_ai_s_d.html">AiSD</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span>AiSD</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#ad56fc3fb0193c3d1f787b62ff807aa0c">   33</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_ai_s_d.html#ad56fc3fb0193c3d1f787b62ff807aa0c">Log</a>(std::string src,std::string in);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> Log(std::string src,std::string in);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#aa2f83a397ed259d44cb5a7abe27f1268">   49</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespace_ai_s_d.html#aa2f83a397ed259d44cb5a7abe27f1268">DoFunction</a>(<a class="code hl_class" href="class_ai_s_d_1_1_dynamic_array.html">DynamicArray</a>&amp; arr,<span class="keywordtype">int</span> NO,<a class="code hl_define" href="_dynamic_array_8h.html#a0acb682b8260ab1c60b918599864e2e5">T</a> t,<span class="keywordtype">size_t</span> i);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">auto</span> DoFunction(DynamicArray&amp; arr,<span class="keywordtype">int</span> NO,T t,<span class="keywordtype">size_t</span> i);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#a1f1b5be39ae71895e523d9bc0bf4352a">   59</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespace_ai_s_d.html#a1f1b5be39ae71895e523d9bc0bf4352a">FunctionByNO</a>(<span class="keywordtype">int</span> NO,<span class="keywordtype">size_t</span> cap);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">auto</span> FunctionByNO(<span class="keywordtype">int</span> NO,<span class="keywordtype">size_t</span> cap);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#a9aca5856e755ad79b9074b0aa235fed6">   70</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_ai_s_d.html#a9aca5856e755ad79b9074b0aa235fed6">DistortionsSimulation</a>(<a class="code hl_class" href="class_ai_s_d_1_1_dynamic_array.html">DynamicArray</a>&amp; arr,<span class="keywordtype">int</span> t);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> DistortionsSimulation(DynamicArray&amp; arr,<span class="keywordtype">int</span> t);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#a0c7751849e8192abadb2b033b8f574e9">   81</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_ai_s_d.html#a0c7751849e8192abadb2b033b8f574e9">OverflowTable</a>(<a class="code hl_class" href="class_ai_s_d_1_1_dynamic_array.html">DynamicArray</a>&amp; arr);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> OverflowTable(DynamicArray&amp; arr);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#a5a9767d9b9a08e06c427d86fe8960389">   89</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_ai_s_d.html#a5a9767d9b9a08e06c427d86fe8960389">Presentation</a>(<a class="code hl_class" href="class_ai_s_d_1_1_dynamic_array.html">DynamicArray</a>&amp; arr);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> Presentation(DynamicArray&amp; arr);</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#a6a622caa3601a39fe1dc6b1c125e1a0b">   94</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespace_ai_s_d.html#a6a622caa3601a39fe1dc6b1c125e1a0b">_setNow</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">auto</span> _setNow();</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#a7d4c3e3bde01d3daab6a100f0afc1c18">   99</a></span>    std::string <a class="code hl_function" href="namespace_ai_s_d.html#a7d4c3e3bde01d3daab6a100f0afc1c18">_timeTook</a>(<span class="keyword">auto</span> a,<span class="keyword">auto</span> b);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    std::string _timeTook(<span class="keyword">auto</span> a,<span class="keyword">auto</span> b);</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespace_ai_s_d.html#ae4c1e655506e62fdbe7d40c456bb68ee">  104</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_ai_s_d.html#ae4c1e655506e62fdbe7d40c456bb68ee">ClearLogTxt</a>();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> ClearLogTxt();</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="struct_ai_s_d_1_1none_v.html">  109</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_ai_s_d_1_1none_v.html">noneV</a>{};</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
@@ -118,19 +118,6 @@ $(function() {
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">// TESTINGFUNCTION_HPP</span></div>
-<div class="ttc" id="a_dynamic_array_8h_html"><div class="ttname"><a href="_dynamic_array_8h.html">DynamicArray.h</a></div></div>
-<div class="ttc" id="a_dynamic_array_8h_html_a0acb682b8260ab1c60b918599864e2e5"><div class="ttname"><a href="_dynamic_array_8h.html#a0acb682b8260ab1c60b918599864e2e5">T</a></div><div class="ttdeci">#define T</div><div class="ttdef"><b>Definition:</b> DynamicArray.h:7</div></div>
-<div class="ttc" id="aclass_ai_s_d_1_1_dynamic_array_html"><div class="ttname"><a href="class_ai_s_d_1_1_dynamic_array.html">AiSD::DynamicArray</a></div><div class="ttdef"><b>Definition:</b> DynamicArray.h:17</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html"><div class="ttname"><a href="namespace_ai_s_d.html">AiSD</a></div><div class="ttdef"><b>Definition:</b> DynamicArray.h:15</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_a0c7751849e8192abadb2b033b8f574e9"><div class="ttname"><a href="namespace_ai_s_d.html#a0c7751849e8192abadb2b033b8f574e9">AiSD::OverflowTable</a></div><div class="ttdeci">void OverflowTable(DynamicArray &amp;arr)</div><div class="ttdoc">Wykonuje te same funkcje Dynamic Array do pusta i pelna. Pesymistyczny scenariusz jest taki,...</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_a1f1b5be39ae71895e523d9bc0bf4352a"><div class="ttname"><a href="namespace_ai_s_d.html#a1f1b5be39ae71895e523d9bc0bf4352a">AiSD::FunctionByNO</a></div><div class="ttdeci">auto FunctionByNO(int NO, size_t cap)</div><div class="ttdoc">Zwraca makro funkcji z Dynamic Array. A dokladniej std::function&lt;variant &lt;bool, size_t,...</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_a5a9767d9b9a08e06c427d86fe8960389"><div class="ttname"><a href="namespace_ai_s_d.html#a5a9767d9b9a08e06c427d86fe8960389">AiSD::Presentation</a></div><div class="ttdeci">void Presentation(DynamicArray &amp;arr)</div><div class="ttdoc">NIESKONCZONA PETLA!!! Korzystanie z klasy Dynamic Array z poziomu wiersza polecen....</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_a6a622caa3601a39fe1dc6b1c125e1a0b"><div class="ttname"><a href="namespace_ai_s_d.html#a6a622caa3601a39fe1dc6b1c125e1a0b">AiSD::_setNow</a></div><div class="ttdeci">auto _setNow()</div><div class="ttdoc">Mala funkcja do otrzymania bierzacego czasu.</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_a7d4c3e3bde01d3daab6a100f0afc1c18"><div class="ttname"><a href="namespace_ai_s_d.html#a7d4c3e3bde01d3daab6a100f0afc1c18">AiSD::_timeTook</a></div><div class="ttdeci">std::string _timeTook(auto a, auto b)</div><div class="ttdoc">Zwraca dlugosc czasu pomiedzy dwoma chrono podany w string w mikrosekundach.</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_a9aca5856e755ad79b9074b0aa235fed6"><div class="ttname"><a href="namespace_ai_s_d.html#a9aca5856e755ad79b9074b0aa235fed6">AiSD::DistortionsSimulation</a></div><div class="ttdeci">void DistortionsSimulation(DynamicArray &amp;arr, int t)</div><div class="ttdoc">Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mierzy czas....</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_aa2f83a397ed259d44cb5a7abe27f1268"><div class="ttname"><a href="namespace_ai_s_d.html#aa2f83a397ed259d44cb5a7abe27f1268">AiSD::DoFunction</a></div><div class="ttdeci">auto DoFunction(DynamicArray &amp;arr, int NO, T t, size_t i)</div><div class="ttdoc">Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0. Zapisje wszystkie operacje...</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_ad56fc3fb0193c3d1f787b62ff807aa0c"><div class="ttname"><a href="namespace_ai_s_d.html#ad56fc3fb0193c3d1f787b62ff807aa0c">AiSD::Log</a></div><div class="ttdeci">void Log(std::string src, std::string in)</div><div class="ttdoc">Ta funkcja zapisuje do pliku o sciezce src zawartosc in.</div></div>
-<div class="ttc" id="anamespace_ai_s_d_html_ae4c1e655506e62fdbe7d40c456bb68ee"><div class="ttname"><a href="namespace_ai_s_d.html#ae4c1e655506e62fdbe7d40c456bb68ee">AiSD::ClearLogTxt</a></div><div class="ttdeci">void ClearLogTxt()</div><div class="ttdoc">Oproznia plik Log.</div></div>
 <div class="ttc" id="astruct_ai_s_d_1_1none_v_html"><div class="ttname"><a href="struct_ai_s_d_1_1none_v.html">AiSD::noneV</a></div><div class="ttdoc">Pusta struktura. Varianty nie moga przyjmowac typ void. Alternatywnie moglem uzyc wbudowanego &quot;monost...</div><div class="ttdef"><b>Definition:</b> TestingFunction.hpp:109</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -1,7 +1,7 @@
 /*!\mainpage Strona glowna
 *
 *\section intro_sec Wstep
-*   <br>< b>Algorytmy Dynamiczna Tablica< /b><br>
+*   <br>**Algorytmy Dynamiczna Tablica**<br>
 *   Damian Szopinski 185394<br>
 *   Maciej Pestka 170088<br>
 *<a href="namespace_ai_s_d.html">Kliknij tutaj by przejsc do dokumentacji funkcji testujacych</a><br>

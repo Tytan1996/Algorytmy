@@ -55,15 +55,11 @@
 1647466510 source:c:\users\user01\desktop\projekty\algorytmy\src\dynamicarray.cpp
 	"DynamicArray.h"
 
-1647466506 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
-	<cstddef>
+1647555735 c:\users\user01\desktop\projekty\algorytmy\include\dynamicarray.h
 	<iostream>
-	<array>
 	<fstream>
 	<sstream>
 	<string>
-	<stdlib.h>
-	<malloc.h>
 
 1647456398 source:c:\users\user01\desktop\projekty\algorytmy\main.cpp
 	<iostream>

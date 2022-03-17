@@ -81,8 +81,9 @@ namespace AiSD
     void OverflowTable(DynamicArray& arr);
 
     /**@brief
-    *   NIESKONCZONA PETLA!!!
+    *   NIESKONCZONA PETLA!!! (Interacja z uzytkownikiem).
     *   Korzystanie z klasy Dynamic Array z poziomu wiersza polecen. (Reczne testowanie)
+    *   Oprocz wyswietlanych danych w konsoli zapisuje rowniez tez logi w pliku "Log.txt"
     *@param arr
     *   Dynamic Array
     */

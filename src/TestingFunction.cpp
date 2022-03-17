@@ -203,7 +203,7 @@ void AiSD::OverflowTable(DynamicArray& arr)
         std::cout<<nameV;
 
         //PESYMISTYCZNY SCENARIUSZ CZYLI NAJWIEKSZE LICZBY JAKIE MOGE WYKORZYSTAC
-        if(NOI==5||NOI==7){arg1=-1;arg2=arr.size-1;}; //MAKSYMALNA WARTOSC T
+        if(NOI==5||NOI==7){arg1=21474836472147483647;arg2=arr.size-1;}; //MAKSYMALNA WARTOSC T
         auto startTime=_setNow();
         for(size_t i=0;i<arr.capacity;++i)
             f(arr,arg1,arg2);

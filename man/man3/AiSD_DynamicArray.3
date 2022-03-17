@@ -1,4 +1,4 @@
-.TH "AiSD::DynamicArray" 3 "Tue Mar 15 2022" "Tablica Dynamiczna" \" -*- nroff -*-
+.TH "AiSD::DynamicArray" 3 "Thu Mar 17 2022" "Tablica Dynamiczna" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,44 +12,117 @@ AiSD::DynamicArray
 
 .in +1c
 .ti -1c
-.RI "\fBDynamicArray\fP (\fBT\fP rozmiar)"
+.RI "\fBDynamicArray\fP ()"
+.br
+.RI "Ta metoda jest konstruktorem, która ustawia parametry poczatkowe\&. "
+.ti -1c
+.RI "\fBDynamicArray\fP (size_t rozmiar)"
+.br
+.RI "Te konstuktory dziasaja jak wedlug instrukcji\&. "
+.ti -1c
+.RI "\fBDynamicArray\fP (size_t rozmiar, size_t N, const \fBT\fP &t)"
+.br
+.ti -1c
+.RI "\fBDynamicArray\fP (const \fBDynamicArray\fP &dynamicArray1)"
+.br
+.RI "Te konstuktory dodatkowe z * dzialaja\&. "
+.ti -1c
+.RI "\fBDynamicArray\fP (\fBDynamicArray\fP &&dynamicArray)"
+.br
+.ti -1c
+.RI "\fBDynamicArray\fP & \fBoperator=\fP (const \fBDynamicArray\fP other)"
+.br
+.ti -1c
+.RI "\fBDynamicArray\fP & \fBoperator=\fP (\fBDynamicArray\fP &dynamicArray)"
 .br
 .ti -1c
 .RI "virtual \fB~DynamicArray\fP ()"
 .br
+.RI "Te destruktor usuwa dynamiczna tablice;\&. "
 .ti -1c
 .RI "void \fBPrint\fP ()"
 .br
+.RI "Ta metoda pokazuje zawartoœæ tablicy\&. "
 .ti -1c
 .RI "void \fBSave\fP ()"
 .br
+.RI "Ta metoda zapisuje do pliku\&. "
 .ti -1c
 .RI "bool \fBIsEmpty\fP ()"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) "
 .ti -1c
 .RI "bool \fBIsFull\fP ()"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) "
 .ti -1c
 .RI "size_t \fBSpace\fP ()"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) "
 .ti -1c
 .RI "void \fBPushBack\fP (\fBT\fP t)"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) Jeœli zakres tablicy jest przepelniony to czas jest troche inny\&. "
 .ti -1c
 .RI "void \fBPopBack\fP ()"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) "
 .ti -1c
 .RI "void \fBPushFront\fP (\fBT\fP t)"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) Jesli zakres tablicy jest przepelniony to czas jest troche inny\&. "
 .ti -1c
 .RI "void \fBPopFront\fP ()"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) "
 .ti -1c
 .RI "void \fBInsert\fP (\fBT\fP t, size_t i)"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) "
 .ti -1c
 .RI "void \fBErase\fP (size_t i)"
 .br
+.RI "Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) "
+.ti -1c
+.RI "\fBT\fP & \fBoperator[]\fP (size_t i)"
+.br
+.RI "Ten przeciazony operator dziala tak samo jak dla tablic\&. "
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "Ta metoda (dodatkowa) dziala zgodnie jak wed³ug instrukcji w czasie O(size) "
+.ti -1c
+.RI "size_t \fBSearch\fP (const \fBT\fP &t)"
+.br
+.RI "Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size) "
+.ti -1c
+.RI "bool \fBEraseFirst\fP (const \fBT\fP &t)"
+.br
+.RI "Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size) "
+.ti -1c
+.RI "size_t \fBEraseAll\fP (const \fBT\fP &t)"
+.br
+.RI "Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji NIE w czasie O(size) "
+.ti -1c
+.RI "size_t \fBErase\fP (size_t from, size_t to)"
+.br
+.RI "Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w NIE JESTEM PEWNY czasie O(size) "
+.ti -1c
+.RI "void \fBRead\fP ()"
+.br
+.RI "Ten operator czyta plik z wartoœciami tablic;\&. "
+.ti -1c
+.RI "void \fBPowiekszanieTablicy\fP ()"
+.br
+.RI "Ta metoda (dodatkowa) dziala poprawnie\&. "
+.ti -1c
+.RI "\fBT\fP & \fBat\fP (size_t i)"
+.br
+.RI "Ta metoda (dodatkowa) dziala zgodnie jak w isntrukcji w czasie O(1) "
+.ti -1c
+.RI "void \fBInsert\fP (\fBT\fP t, size_t iloscElementow, size_t i)"
+.br
+.RI "Ta metoda (doatkowa z *) dodaje na pozycji 'i' tyle elementów t ile jest nadanie w operacji\&. "
 .in -1c
 .SS "Friends"
 
@@ -65,34 +138,116 @@ AiSD::DynamicArray
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "AiSD::DynamicArray::DynamicArray (\fBT\fP rozmiar)"
+.SS "AiSD::DynamicArray::DynamicArray ()"
+
+.PP
+Ta metoda jest konstruktorem, która ustawia parametry poczatkowe\&. 
+.SS "AiSD::DynamicArray::DynamicArray (size_t rozmiar)"
+
+.PP
+Te konstuktory dziasaja jak wedlug instrukcji\&. 
+.SS "AiSD::DynamicArray::DynamicArray (size_t rozmiar, size_t N, const \fBT\fP & t)"
+
+.SS "AiSD::DynamicArray::DynamicArray (const \fBDynamicArray\fP & dynamicArray1)"
+
+.PP
+Te konstuktory dodatkowe z * dzialaja\&. 
+.SS "AiSD::DynamicArray::DynamicArray (\fBDynamicArray\fP && dynamicArray)"
 
 .SS "virtual AiSD::DynamicArray::~DynamicArray ()\fC [virtual]\fP"
 
+.PP
+Te destruktor usuwa dynamiczna tablice;\&. 
 .SH "Member Function Documentation"
 .PP 
+.SS "\fBT\fP & AiSD::DynamicArray::at (size_t i)"
+
+.PP
+Ta metoda (dodatkowa) dziala zgodnie jak w isntrukcji w czasie O(1) 
+.SS "void AiSD::DynamicArray::Clear ()"
+
+.PP
+Ta metoda (dodatkowa) dziala zgodnie jak wed³ug instrukcji w czasie O(size) 
+.SS "size_t AiSD::DynamicArray::Erase (size_t from, size_t to)"
+
+.PP
+Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w NIE JESTEM PEWNY czasie O(size) 
 .SS "void AiSD::DynamicArray::Erase (size_t i)"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) 
+.SS "size_t AiSD::DynamicArray::EraseAll (const \fBT\fP & t)"
+
+.PP
+Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji NIE w czasie O(size) 
+.SS "bool AiSD::DynamicArray::EraseFirst (const \fBT\fP & t)"
+
+.PP
+Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size) 
 .SS "void AiSD::DynamicArray::Insert (\fBT\fP t, size_t i)"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) 
+.SS "void AiSD::DynamicArray::Insert (\fBT\fP t, size_t iloscElementow, size_t i)"
+
+.PP
+Ta metoda (doatkowa z *) dodaje na pozycji 'i' tyle elementów t ile jest nadanie w operacji\&. 
 .SS "bool AiSD::DynamicArray::IsEmpty ()"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) 
 .SS "bool AiSD::DynamicArray::IsFull ()"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) 
+.SS "\fBDynamicArray\fP & AiSD::DynamicArray::operator= (const \fBDynamicArray\fP other)"
+
+.SS "\fBDynamicArray\fP & AiSD::DynamicArray::operator= (\fBDynamicArray\fP & dynamicArray)"
+
+.SS "\fBT\fP & AiSD::DynamicArray::operator[] (size_t i)"
+
+.PP
+Ten przeciazony operator dziala tak samo jak dla tablic\&. 
 .SS "void AiSD::DynamicArray::PopBack ()"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) 
 .SS "void AiSD::DynamicArray::PopFront ()"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) 
+.SS "void AiSD::DynamicArray::PowiekszanieTablicy ()"
+
+.PP
+Ta metoda (dodatkowa) dziala poprawnie\&. 
 .SS "void AiSD::DynamicArray::Print ()"
 
+.PP
+Ta metoda pokazuje zawartoœæ tablicy\&. 
 .SS "void AiSD::DynamicArray::PushBack (\fBT\fP t)"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) Jeœli zakres tablicy jest przepelniony to czas jest troche inny\&. 
 .SS "void AiSD::DynamicArray::PushFront (\fBT\fP t)"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size) Jesli zakres tablicy jest przepelniony to czas jest troche inny\&. 
+.SS "void AiSD::DynamicArray::Read ()"
+
+.PP
+Ten operator czyta plik z wartoœciami tablic;\&. 
 .SS "void AiSD::DynamicArray::Save ()"
 
+.PP
+Ta metoda zapisuje do pliku\&. 
+.SS "size_t AiSD::DynamicArray::Search (const \fBT\fP & t)"
+
+.PP
+Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size) 
 .SS "size_t AiSD::DynamicArray::Space ()"
 
+.PP
+Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1) 
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "auto DoFunction (\fBDynamicArray\fP &, int, \fBT\fP, size_t)\fC [friend]\fP"

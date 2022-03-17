@@ -21,33 +21,53 @@
 \contentsline {subsubsection}{\numberline {5.1.1.9}Presentation()}{12}{subsubsection.5.1.1.9}%
 \contentsline {chapter}{\numberline {6}Class Documentation}{13}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Ai\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}SD\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array Class Reference}{13}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Constructor \& Destructor Documentation}{13}{subsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.1}DynamicArray()}{14}{subsubsection.6.1.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.2}$\sim $DynamicArray()}{14}{subsubsection.6.1.1.2}%
-\contentsline {subsection}{\numberline {6.1.2}Member Function Documentation}{14}{subsection.6.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.2.1}Erase()}{14}{subsubsection.6.1.2.1}%
-\contentsline {subsubsection}{\numberline {6.1.2.2}Insert()}{14}{subsubsection.6.1.2.2}%
-\contentsline {subsubsection}{\numberline {6.1.2.3}IsEmpty()}{14}{subsubsection.6.1.2.3}%
-\contentsline {subsubsection}{\numberline {6.1.2.4}IsFull()}{14}{subsubsection.6.1.2.4}%
-\contentsline {subsubsection}{\numberline {6.1.2.5}PopBack()}{14}{subsubsection.6.1.2.5}%
-\contentsline {subsubsection}{\numberline {6.1.2.6}PopFront()}{15}{subsubsection.6.1.2.6}%
-\contentsline {subsubsection}{\numberline {6.1.2.7}Print()}{15}{subsubsection.6.1.2.7}%
-\contentsline {subsubsection}{\numberline {6.1.2.8}PushBack()}{15}{subsubsection.6.1.2.8}%
-\contentsline {subsubsection}{\numberline {6.1.2.9}PushFront()}{15}{subsubsection.6.1.2.9}%
-\contentsline {subsubsection}{\numberline {6.1.2.10}Save()}{15}{subsubsection.6.1.2.10}%
-\contentsline {subsubsection}{\numberline {6.1.2.11}Space()}{15}{subsubsection.6.1.2.11}%
-\contentsline {subsection}{\numberline {6.1.3}Friends And Related Function Documentation}{15}{subsection.6.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.3.1}DoFunction}{15}{subsubsection.6.1.3.1}%
-\contentsline {subsubsection}{\numberline {6.1.3.2}OverflowTable}{16}{subsubsection.6.1.3.2}%
-\contentsline {section}{\numberline {6.2}Ai\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}SD\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::noneV Struct Reference}{16}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{16}{subsection.6.2.1}%
-\contentsline {chapter}{\numberline {7}File Documentation}{17}{chapter.7}%
-\contentsline {section}{\numberline {7.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Doxygen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Page.h File Reference}{17}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Doxygen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Page.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{17}{section.7.2}%
-\contentsline {section}{\numberline {7.3}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.h File Reference}{17}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Macro Definition Documentation}{17}{subsection.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.1.1}T}{18}{subsubsection.7.3.1.1}%
-\contentsline {section}{\numberline {7.4}Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{18}{section.7.4}%
-\contentsline {section}{\numberline {7.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Function.hpp File Reference}{18}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Function.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{19}{section.7.6}%
-\contentsline {chapter}{Index}{21}{section*.11}%
+\contentsline {subsection}{\numberline {6.1.1}Constructor \& Destructor Documentation}{14}{subsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.1}DynamicArray()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{14}{subsubsection.6.1.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.2}DynamicArray()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{15}{subsubsection.6.1.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.1.3}DynamicArray()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{15}{subsubsection.6.1.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.1.4}DynamicArray()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{15}{subsubsection.6.1.1.4}%
+\contentsline {subsubsection}{\numberline {6.1.1.5}DynamicArray()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{15}{subsubsection.6.1.1.5}%
+\contentsline {subsubsection}{\numberline {6.1.1.6}$\sim $DynamicArray()}{15}{subsubsection.6.1.1.6}%
+\contentsline {subsection}{\numberline {6.1.2}Member Function Documentation}{15}{subsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.1}at()}{16}{subsubsection.6.1.2.1}%
+\contentsline {subsubsection}{\numberline {6.1.2.2}Clear()}{16}{subsubsection.6.1.2.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.3}Erase()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{16}{subsubsection.6.1.2.3}%
+\contentsline {subsubsection}{\numberline {6.1.2.4}Erase()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{16}{subsubsection.6.1.2.4}%
+\contentsline {subsubsection}{\numberline {6.1.2.5}EraseAll()}{16}{subsubsection.6.1.2.5}%
+\contentsline {subsubsection}{\numberline {6.1.2.6}EraseFirst()}{16}{subsubsection.6.1.2.6}%
+\contentsline {subsubsection}{\numberline {6.1.2.7}Insert()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{17}{subsubsection.6.1.2.7}%
+\contentsline {subsubsection}{\numberline {6.1.2.8}Insert()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{17}{subsubsection.6.1.2.8}%
+\contentsline {subsubsection}{\numberline {6.1.2.9}IsEmpty()}{17}{subsubsection.6.1.2.9}%
+\contentsline {subsubsection}{\numberline {6.1.2.10}IsFull()}{17}{subsubsection.6.1.2.10}%
+\contentsline {subsubsection}{\numberline {6.1.2.11}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{17}{subsubsection.6.1.2.11}%
+\contentsline {subsubsection}{\numberline {6.1.2.12}operator=()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{17}{subsubsection.6.1.2.12}%
+\contentsline {subsubsection}{\numberline {6.1.2.13}operator[]()}{18}{subsubsection.6.1.2.13}%
+\contentsline {subsubsection}{\numberline {6.1.2.14}PopBack()}{18}{subsubsection.6.1.2.14}%
+\contentsline {subsubsection}{\numberline {6.1.2.15}PopFront()}{18}{subsubsection.6.1.2.15}%
+\contentsline {subsubsection}{\numberline {6.1.2.16}PowiekszanieTablicy()}{18}{subsubsection.6.1.2.16}%
+\contentsline {subsubsection}{\numberline {6.1.2.17}Print()}{18}{subsubsection.6.1.2.17}%
+\contentsline {subsubsection}{\numberline {6.1.2.18}PushBack()}{18}{subsubsection.6.1.2.18}%
+\contentsline {subsubsection}{\numberline {6.1.2.19}PushFront()}{19}{subsubsection.6.1.2.19}%
+\contentsline {subsubsection}{\numberline {6.1.2.20}Read()}{19}{subsubsection.6.1.2.20}%
+\contentsline {subsubsection}{\numberline {6.1.2.21}Save()}{19}{subsubsection.6.1.2.21}%
+\contentsline {subsubsection}{\numberline {6.1.2.22}Search()}{19}{subsubsection.6.1.2.22}%
+\contentsline {subsubsection}{\numberline {6.1.2.23}Space()}{19}{subsubsection.6.1.2.23}%
+\contentsline {subsection}{\numberline {6.1.3}Friends And Related Function Documentation}{19}{subsection.6.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.3.1}DoFunction}{19}{subsubsection.6.1.3.1}%
+\contentsline {subsubsection}{\numberline {6.1.3.2}OverflowTable}{20}{subsubsection.6.1.3.2}%
+\contentsline {section}{\numberline {6.2}Ai\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}SD\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::noneV Struct Reference}{20}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{20}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}Record Struct Reference}{20}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{21}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Member Data Documentation}{21}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}grade}{21}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}name}{21}{subsubsection.6.3.2.2}%
+\contentsline {chapter}{\numberline {7}File Documentation}{23}{chapter.7}%
+\contentsline {section}{\numberline {7.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Doxygen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Page.h File Reference}{23}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Doxygen\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Page.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{23}{section.7.2}%
+\contentsline {section}{\numberline {7.3}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.h File Reference}{23}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Macro Definition Documentation}{24}{subsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.1.1}T}{24}{subsubsection.7.3.1.1}%
+\contentsline {section}{\numberline {7.4}Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{24}{section.7.4}%
+\contentsline {section}{\numberline {7.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Function.hpp File Reference}{25}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Testing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Function.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{26}{section.7.6}%

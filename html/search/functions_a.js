@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7edynamicarray_0',['~DynamicArray',['../class_ai_s_d_1_1_dynamic_array.html#a6766975f93b8bbf94fb4acebd6d0ef2f',1,'AiSD::DynamicArray']]]
+  ['read_0',['Read',['../class_ai_s_d_1_1_dynamic_array.html#ab390ae605e1311f131b9ef825e1b8ac5',1,'AiSD::DynamicArray']]]
 ];

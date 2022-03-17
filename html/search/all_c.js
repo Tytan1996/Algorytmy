@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['t_0',['T',['../_dynamic_array_8h.html#a0acb682b8260ab1c60b918599864e2e5',1,'DynamicArray.h']]],
-  ['testingfunction_2ehpp_1',['TestingFunction.hpp',['../_testing_function_8hpp.html',1,'']]]
+  ['read_0',['Read',['../class_ai_s_d_1_1_dynamic_array.html#ab390ae605e1311f131b9ef825e1b8ac5',1,'AiSD::DynamicArray']]],
+  ['record_1',['Record',['../struct_record.html',1,'']]]
 ];

@@ -4,21 +4,21 @@
 
 #include "DynamicArray.h"
 
-using namespace AiSD;
 
 
-DynamicArray::DynamicArray(){
+
+AiSD::DynamicArray::DynamicArray(){
     capacity=100;
     size=0;
     tablica=new T[capacity]();
 }
-DynamicArray::DynamicArray(size_t rozmiar) {
+AiSD::DynamicArray::DynamicArray(size_t rozmiar) {
     capacity=rozmiar;
     size=0;
     tablica= new T[capacity]();
 
 }
-DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t) {
+AiSD::DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t) {
     capacity=rozmiar;
     size=N;
     tablica= new T[capacity]();
@@ -27,7 +27,7 @@ DynamicArray::DynamicArray(size_t rozmiar, size_t N, const T& t) {
     }
 
 }
-DynamicArray::DynamicArray(const DynamicArray &dynamicArray1){
+AiSD::DynamicArray::DynamicArray(const DynamicArray &dynamicArray1){
     capacity=dynamicArray1.capacity;
     size=dynamicArray1.size;
     tablica=new T[capacity]();
@@ -35,7 +35,7 @@ DynamicArray::DynamicArray(const DynamicArray &dynamicArray1){
         tablica[i]=dynamicArray1.tablica[i];
     }
 }
-DynamicArray::DynamicArray(DynamicArray&& dynamicArray) {
+AiSD::DynamicArray::DynamicArray(DynamicArray&& dynamicArray) {
     capacity=std::move(dynamicArray.capacity);
     size=std::move(dynamicArray.size);
     tablica = new T[capacity]();
@@ -43,7 +43,7 @@ DynamicArray::DynamicArray(DynamicArray&& dynamicArray) {
         tablica[i]=std::move(dynamicArray.tablica[i]);
     }
 }
-DynamicArray & DynamicArray::operator =(DynamicArray other) {
+AiSD::DynamicArray & AiSD::DynamicArray::operator =(DynamicArray other) {
     capacity=other.capacity;
     size=other.size;
     tablica = new T[capacity]();
@@ -52,7 +52,7 @@ DynamicArray & DynamicArray::operator =(DynamicArray other) {
     }
     return *this;
 }
-DynamicArray& DynamicArray::operator=(DynamicArray& other) {
+AiSD::DynamicArray& AiSD::DynamicArray::operator=(DynamicArray& other) {
     capacity=std::move(other.capacity);
     size=std::move(other.size);
     tablica=new T[capacity]();
@@ -61,13 +61,13 @@ DynamicArray& DynamicArray::operator=(DynamicArray& other) {
     }
     return *this;
 }
-DynamicArray::~DynamicArray()
+AiSD::DynamicArray::~DynamicArray()
 {
     delete [] tablica;
     capacity=0;
     size=0;
 }
-void DynamicArray::Print(){
+void AiSD::DynamicArray::Print(){
     if(IsEmpty()==false){
         for(size_t i=0;i<size;++i){
             std::cout<<"element tablicy ["<<i<<"] = "<<tablica[i]<<std::endl;
@@ -78,7 +78,7 @@ void DynamicArray::Print(){
     }
 }
 
-void DynamicArray::Save() {
+void AiSD::DynamicArray::Save() {
     std::ofstream plik(nazwaPliku, std::ios::out);
     //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true) {
@@ -92,36 +92,36 @@ void DynamicArray::Save() {
     plik.close();
 
 }
-bool DynamicArray::IsEmpty() {
+bool AiSD::DynamicArray::IsEmpty() {
 
     if(size==0)
         return true;
     else
         return false;
 }
-bool DynamicArray::IsFull() {
+bool AiSD::DynamicArray::IsFull() {
 
     if(size==capacity)
         return true;
     else
         return false;
 }
-size_t DynamicArray::Space() {
+size_t AiSD::DynamicArray::Space() {
     return capacity-size;
 }
-void DynamicArray::PushBack(T t) {
+void AiSD::DynamicArray::PushBack(T t) {
     if(IsFull()==false) {
         tablica[size]=t;
         ++size;
     }
 }
-void DynamicArray::PopBack() {
+void AiSD::DynamicArray::PopBack() {
     if(IsEmpty()==false) {
         --size;
         tablica[size]=NULL;
     }
 }
-void DynamicArray::PushFront(T t) {
+void AiSD::DynamicArray::PushFront(T t) {
     if(IsFull()==false) {
         size++;
         size_t rozmiarTablicy=size-1;
@@ -133,7 +133,7 @@ void DynamicArray::PushFront(T t) {
         tablica[0]=t;
     }
 }
-void DynamicArray::PopFront() {
+void AiSD::DynamicArray::PopFront() {
     if(IsEmpty()==false) {
         --size;
         for(size_t i=0; i<size; ++i) {
@@ -143,7 +143,7 @@ void DynamicArray::PopFront() {
     }
 }
 
-void DynamicArray::Insert(T t, size_t i){
+void AiSD::DynamicArray::Insert(T t, size_t i){
     if(IsFull()==true){
         return;
     }else if(i<0 || i>size){
@@ -162,7 +162,7 @@ void DynamicArray::Insert(T t, size_t i){
     }
 }
 
-void DynamicArray::Erase(size_t i){
+void AiSD::DynamicArray::Erase(size_t i){
     if(IsEmpty()==true){
         return;
     }else if(i<0 || i>size){
@@ -180,7 +180,7 @@ void DynamicArray::Erase(size_t i){
         --size;
     }
 }
-T DynamicArray::wczytajLiczbeCalkowita() {
+T AiSD::DynamicArray::wczytajLiczbeCalkowita() {
     std::string wejscie = "";
     T liczba = 0;
     while (true) {
@@ -192,13 +192,13 @@ T DynamicArray::wczytajLiczbeCalkowita() {
     }
     return liczba;
 }
-void DynamicArray::Clear() {
+void AiSD::DynamicArray::Clear() {
     for(size_t i=0; i<size; ++i) {
         tablica[i]=NULL;
     }
     size=0;
 }
-size_t DynamicArray::Search(const T& t) {
+size_t AiSD::DynamicArray::Search(const T& t) {
     for(size_t i=0; i<size; ++i) {
         if(tablica[i]==t) {
             return i;
@@ -206,7 +206,7 @@ size_t DynamicArray::Search(const T& t) {
     }
     return size;
 }
-bool DynamicArray::EraseFirst(const T& t) {
+bool AiSD::DynamicArray::EraseFirst(const T& t) {
     for(size_t i=0; i<size; ++i) {
         if(tablica[i]==t) {
             Erase(i);
@@ -215,7 +215,7 @@ bool DynamicArray::EraseFirst(const T& t) {
     }
     return false;
 }
-size_t DynamicArray::EraseAll(const T& t) {
+size_t AiSD::DynamicArray::EraseAll(const T& t) {
     size_t iloscUsunietychElementow=0;
     for(size_t i=0;i<size;++i){
         if(tablica[i]==t){
@@ -225,7 +225,7 @@ size_t DynamicArray::EraseAll(const T& t) {
     }
     return iloscUsunietychElementow;
 }
-size_t DynamicArray::Erase(size_t from, size_t to) {
+size_t AiSD::DynamicArray::Erase(size_t from, size_t to) {
     size_t iloscUsunietychElementow=0;
     if(IsEmpty()==true)
         return 0;
@@ -265,10 +265,10 @@ size_t DynamicArray::Erase(size_t from, size_t to) {
     }
     return iloscUsunietychElementow;
 }
-T &DynamicArray::operator [](size_t i) {
+T &AiSD::DynamicArray::operator [](size_t i) {
     return tablica[i];
 }
-void DynamicArray::Read() {
+void AiSD::DynamicArray::Read() {
     std::fstream plik(nazwaPliku, std::ios::in);
     size_t iloscDanychWczytanych=0;
     std::string liniaZPliku="";
@@ -279,7 +279,7 @@ void DynamicArray::Read() {
     size=iloscDanychWczytanych;
     plik.close();
 }
-void DynamicArray::PowiekszanieTablicy() {
+void AiSD::DynamicArray::PowiekszanieTablicy() {
     if(capacity>=1310720000/6400){ /*dla capacity>=1310720000 jest blad gdy ta wartosc jest powiekszona o 2.
             ale wartosc zostala zmiejszczona o 32 by szybciej operacje wykonaly sie.
             1310720000 wartosc zostala wykryta przez program testujacy dodac do komendarza std::cout.rdbuf(0);
@@ -290,19 +290,18 @@ void DynamicArray::PowiekszanieTablicy() {
     }
     size_t powiekszonaWartosc=capacity*2;
     T *tablica2 =new T[powiekszonaWartosc];
-    for(size_t i=0;i<capacity;++i){
+    for(size_t i=0;i<size;++i){
         tablica2[i]=tablica[i];
     }
     tablica=tablica2;
     capacity=powiekszonaWartosc;
-    //capacity=capacity*size_t(2);
 
 
 }
-T& DynamicArray::at(size_t i) {
+T& AiSD::DynamicArray::at(size_t i) {
     return tablica[i];
 }
-void DynamicArray::Insert(T t, size_t iloscElementow, size_t i) {
+void AiSD::DynamicArray::Insert(T t, size_t iloscElementow, size_t i) {
     if(i>size) {
         std::cout<<"i jest za duzy, i musi byc do "<<size<<"!"<<std::endl;
         return;

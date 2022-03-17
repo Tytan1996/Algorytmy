@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['distortionssimulation_0',['DistortionsSimulation',['../namespace_ai_s_d.html#a9aca5856e755ad79b9074b0aa235fed6',1,'AiSD']]],
-  ['dofunction_1',['DoFunction',['../namespace_ai_s_d.html#aa2f83a397ed259d44cb5a7abe27f1268',1,'AiSD']]],
-  ['dynamicarray_2',['DynamicArray',['../class_ai_s_d_1_1_dynamic_array.html#ae1668f14f6bfe08fea85312074819c55',1,'AiSD::DynamicArray']]]
+  ['clear_0',['Clear',['../class_ai_s_d_1_1_dynamic_array.html#a8e5e177f292fa2c68732714fdd64b0aa',1,'AiSD::DynamicArray']]],
+  ['clearlogtxt_1',['ClearLogTxt',['../namespace_ai_s_d.html#ae4c1e655506e62fdbe7d40c456bb68ee',1,'AiSD']]]
 ];

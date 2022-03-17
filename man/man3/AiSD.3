@@ -1,4 +1,4 @@
-.TH "AiSD" 3 "Tue Mar 15 2022" "Tablica Dynamiczna" \" -*- nroff -*-
+.TH "AiSD" 3 "Thu Mar 17 2022" "Tablica Dynamiczna" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -29,7 +29,7 @@ AiSD
 .br
 .RI "Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) "
 .ti -1c
-.RI "auto \fBFunctionByNO\fP (int NO)"
+.RI "auto \fBFunctionByNO\fP (int NO, size_t cap)"
 .br
 .RI "Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1)> "
 .ti -1c
@@ -101,7 +101,7 @@ Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zap
 .RE
 .PP
 
-.SS "auto AiSD::FunctionByNO (int NO)"
+.SS "auto AiSD::FunctionByNO (int NO, size_t cap)"
 
 .PP
 Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1)> 
@@ -109,6 +109,8 @@ Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool
 \fBParameters\fP
 .RS 4
 \fINO\fP Numer funkcji Dynamic Array od 0 
+.br
+\fIcap\fP Rozmiar tablicy 
 .RE
 .PP
 

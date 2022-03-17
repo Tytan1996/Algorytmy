@@ -1,13 +1,14 @@
 var indexSectionsWithContent =
 {
-  0: "_acdefilnopst~",
-  1: "dn",
+  0: "_acdefgilnoprst~",
+  1: "dnr",
   2: "a",
   3: "dt",
-  4: "_cdefilops~",
-  5: "do",
-  6: "t",
-  7: "s"
+  4: "_acdefiloprs~",
+  5: "gn",
+  6: "do",
+  7: "t",
+  8: "s"
 };
 
 var indexSectionNames =
@@ -17,9 +18,10 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "related",
-  6: "defines",
-  7: "pages"
+  5: "variables",
+  6: "related",
+  7: "defines",
+  8: "pages"
 };
 
 var indexSectionLabels =
@@ -29,8 +31,9 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Friends",
-  6: "Macros",
-  7: "Pages"
+  5: "Variables",
+  6: "Friends",
+  7: "Macros",
+  8: "Pages"
 };
 

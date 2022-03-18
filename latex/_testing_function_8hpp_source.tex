@@ -1,6 +1,6 @@
 \hypertarget{_testing_function_8hpp_source}{}\doxysection{Testing\+Function.\+hpp}
 \label{_testing_function_8hpp_source}\index{include/TestingFunction.hpp@{include/TestingFunction.hpp}}
-\mbox{\hyperlink{_testing_function_8hpp}{Go to the documentation of this file.}}
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 \textcolor{comment}{//Algorytmy Dynamiczna Tablica}}
 \DoxyCodeLine{2 \textcolor{comment}{//Damian Szopinski 185394}}
@@ -12,7 +12,7 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TESTINGFUNCTION\_HPP}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define TESTINGFUNCTION\_HPP}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_dynamic_array_8h}{DynamicArray.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}DynamicArray.h"{}}}
 \DoxyCodeLine{12 }
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cstddef>}}
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#include <sstream>}}
@@ -23,27 +23,27 @@
 \DoxyCodeLine{19 \textcolor{preprocessor}{\#include <variant>}}
 \DoxyCodeLine{20 }
 \DoxyCodeLine{21 }
-\DoxyCodeLine{22 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_ai_s_d}{AiSD}}}
+\DoxyCodeLine{22 \textcolor{keyword}{namespace }AiSD}
 \DoxyCodeLine{23 \{}
 \DoxyCodeLine{24 }
-\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_ai_s_d_ad56fc3fb0193c3d1f787b62ff807aa0c}{Log}}(std::string src,std::string in);}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} Log(std::string src,std::string in);}
 \DoxyCodeLine{34 }
-\DoxyCodeLine{49     \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_ai_s_d_a672cdc8f0deeb3fba3e47fea9c904d2a}{DoFunction}}(\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{DynamicArray}}\& arr,\textcolor{keywordtype}{int} NO,\mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}} t,\textcolor{keywordtype}{size\_t} i,\textcolor{keywordtype}{size\_t} i2);}
+\DoxyCodeLine{49     \textcolor{keyword}{auto} DoFunction(DynamicArray\& arr,\textcolor{keywordtype}{int} NO,T t,\textcolor{keywordtype}{size\_t} i,\textcolor{keywordtype}{size\_t} i2);}
 \DoxyCodeLine{50 }
-\DoxyCodeLine{59     \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_ai_s_d_a1f1b5be39ae71895e523d9bc0bf4352a}{FunctionByNO}}(\textcolor{keywordtype}{int} NO,\textcolor{keywordtype}{size\_t} cap);}
+\DoxyCodeLine{59     \textcolor{keyword}{auto} FunctionByNO(\textcolor{keywordtype}{int} NO,\textcolor{keywordtype}{size\_t} cap);}
 \DoxyCodeLine{60 }
 \DoxyCodeLine{61 }
-\DoxyCodeLine{70     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_ai_s_d_a9aca5856e755ad79b9074b0aa235fed6}{DistortionsSimulation}}(\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{DynamicArray}}\& arr,\textcolor{keywordtype}{int} t);}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} DistortionsSimulation(DynamicArray\& arr,\textcolor{keywordtype}{int} t);}
 \DoxyCodeLine{71 }
-\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_ai_s_d_a0c7751849e8192abadb2b033b8f574e9}{OverflowTable}}(\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{DynamicArray}}\& arr);}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} OverflowTable(DynamicArray\& arr);}
 \DoxyCodeLine{82 }
-\DoxyCodeLine{90     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_ai_s_d_a5a9767d9b9a08e06c427d86fe8960389}{Presentation}}(\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{DynamicArray}}\& arr);}
+\DoxyCodeLine{90     \textcolor{keywordtype}{void} Presentation(DynamicArray\& arr);}
 \DoxyCodeLine{91 }
-\DoxyCodeLine{95     \textcolor{keyword}{auto} \mbox{\hyperlink{namespace_ai_s_d_a6a622caa3601a39fe1dc6b1c125e1a0b}{\_setNow}}();}
+\DoxyCodeLine{95     \textcolor{keyword}{auto} \_setNow();}
 \DoxyCodeLine{96 }
-\DoxyCodeLine{100     std::string \mbox{\hyperlink{namespace_ai_s_d_a7d4c3e3bde01d3daab6a100f0afc1c18}{\_timeTook}}(\textcolor{keyword}{auto} a,\textcolor{keyword}{auto} b);}
+\DoxyCodeLine{100     std::string \_timeTook(\textcolor{keyword}{auto} a,\textcolor{keyword}{auto} b);}
 \DoxyCodeLine{101 }
-\DoxyCodeLine{105     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_ai_s_d_ae4c1e655506e62fdbe7d40c456bb68ee}{ClearLogTxt}}();}
+\DoxyCodeLine{105     \textcolor{keywordtype}{void} ClearLogTxt();}
 \DoxyCodeLine{106 }
 \DoxyCodeLine{110     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\{\};}
 \DoxyCodeLine{111 \}}

@@ -173,7 +173,7 @@ void AiSD::DynamicArray::Erase(size_t i){
     } else if(i==(size-1)) {
         PopBack();
     } else {
-        for(size_t j=i; j<size; ++j) {
+        for(size_t j=i; j<(size-1); ++j) { //size-1 jest by operacja nie wyszla poza zakres tablicy.
             tablica[j]=tablica[j+1];
         }
         tablica[size]=NULL;
@@ -207,6 +207,9 @@ size_t AiSD::DynamicArray::Search(const T& t) {
     return size;
 }
 bool AiSD::DynamicArray::EraseFirst(const T& t) {
+    if(IsEmpty()==true){
+        return false;
+    }
     for(size_t i=0; i<size; ++i) {
         if(tablica[i]==t) {
             Erase(i);
@@ -217,12 +220,31 @@ bool AiSD::DynamicArray::EraseFirst(const T& t) {
 }
 size_t AiSD::DynamicArray::EraseAll(const T& t) {
     size_t iloscUsunietychElementow=0;
-    for(size_t i=0;i<size;++i){
-        if(tablica[i]==t){
-            Erase(i);
+    size_t pozycjaBadanegoElementuWTablicy=0;
+    if(IsEmpty()==true){
+        return 0;
+    }
+    if(size==1){
+        Clear();
+        return 1;
+    }
+    while(pozycjaBadanegoElementuWTablicy<size){
+        if(pozycjaBadanegoElementuWTablicy+iloscUsunietychElementow<size){
+            tablica[pozycjaBadanegoElementuWTablicy]=tablica[pozycjaBadanegoElementuWTablicy+iloscUsunietychElementow];
+        }else{
+            for(size_t i=iloscUsunietychElementow;i<size;++i){
+            tablica[i]=NULL;
+            ++pozycjaBadanegoElementuWTablicy;
+            }
+
+        }
+        if(tablica[pozycjaBadanegoElementuWTablicy]==t){
             ++iloscUsunietychElementow;
+        }else if(tablica[pozycjaBadanegoElementuWTablicy]!=t){
+            ++pozycjaBadanegoElementuWTablicy;
         }
     }
+    size=size-iloscUsunietychElementow;
     return iloscUsunietychElementow;
 }
 size_t AiSD::DynamicArray::Erase(size_t from, size_t to) {
@@ -236,12 +258,16 @@ size_t AiSD::DynamicArray::Erase(size_t from, size_t to) {
         std::cout<<"wpisanio zbyt duzy indeks!"<<std::endl;
         return 0;
     } else if(to<=from) {
+        std::cout<<"priewsza liczba (from): " <<from<<std::endl;
+        std::cout<<"druga liczba (to): " <<to<<std::endl;
         std::cout<<"priewsza liczba jest mniejsza lub rowna od drugiej!"<<std::endl;
+        return 0;
     } else {
         if((to-from)==1) {
             Erase(from);
             return 1;
         } else if(to==size && from==0) {
+            iloscUsunietychElementow=size;
             Clear();
         } else if(from==0) {
             for(size_t i=0; i<from; ++i) {
@@ -257,8 +283,8 @@ size_t AiSD::DynamicArray::Erase(size_t from, size_t to) {
             return iloscUsunietychElementow;
         } else {
             for(size_t i=from; i<to; ++i) {
-                Erase(from);
-                ++iloscUsunietychElementow;
+                tablica[i]=tablica[i+to];
+                iloscUsunietychElementow=to-from;
             }
             return iloscUsunietychElementow;
         }
@@ -273,6 +299,7 @@ void AiSD::DynamicArray::Read() {
     size_t iloscDanychWczytanych=0;
     std::string liniaZPliku="";
     while(getline(plik, liniaZPliku)) {
+            std::cout<<"tak"<<std::endl;
         tablica[iloscDanychWczytanych]=atoi(liniaZPliku.c_str());
         ++iloscDanychWczytanych;
     }

@@ -7,29 +7,29 @@
 			<Cursor1 position="223" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\TestingFunction.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="src\TestingFunction.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2437" topLine="61" />
+			<Cursor1 position="640" topLine="71" />
 		</Cursor>
 	</File>
 	<File name="src\DynamicArray.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1112" topLine="194" />
+			<Cursor1 position="6702" topLine="246" />
 		</Cursor>
 	</File>
-	<File name="include\DynamicArray.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="include\TestingFunction.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4698" topLine="132" />
+			<Cursor1 position="2437" topLine="83" />
 		</Cursor>
 	</File>
-	<File name="src\TestingFunction.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="include\DynamicArray.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5908" topLine="198" />
+			<Cursor1 position="4179" topLine="87" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="385" topLine="12" />
+			<Cursor1 position="1246" topLine="14" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

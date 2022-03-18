@@ -36,94 +36,93 @@ void AiSD::Log(std::string src,std::string in)
 //OTRZYMANIE FUNKCJI PRZEZ JEJ NUMER
 
 
-
 std::string nameV="";
 auto AiSD::FunctionByNO(int NO,size_t cap)
 //mozna to zrobic lepiej dla std::variant https://en.cppreference.com/w/cpp/utility/variant
 //oraz https://en.cppreference.com/w/cpp/keyword/union
 {
-    std::function<std::variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1)> f ;
+    std::function<std::variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1,size_t i2)> f ;
     //przypisanie funckji
     switch(NO)
     {
         case 0:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){ a.Print();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){ a.Print();return nothing;};
             nameV="print";
             break;
         case 1:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Save();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Save();return nothing;};
             nameV="save";
             break;
         case 2:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.IsEmpty();};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.IsEmpty();};
             nameV="is empty";
             break;
         case 3:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.IsFull();};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.IsFull();};
             nameV="is full";
             break;
         case 4:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.Space();};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.Space();};
             nameV="space";
             break;
         case 5:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PushBack(t1);return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PushBack(t1);return nothing;};
             nameV="push back";
             break;
         case 6:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PopBack();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PopBack();return nothing;};
             nameV="pop back";
             break;
         case 7:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PushFront(t1);return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PushFront(t1);return nothing;};
             nameV="push front";
             break;
         case 8:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PopFront();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PopFront();return nothing;};
             nameV="pop front";
             break;
         case 9:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Insert(t1,i1);return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Insert(t1,i1);return nothing;};
             nameV="insert";
             break;
         case 10:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Erase(i1);return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Erase(i1);return nothing;};
             nameV="erase";
             break;
         case 11:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Clear();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Clear();return nothing;};
             nameV="clear";
             break;
         case 12:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.Search(t1);};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.Search(t1);};
             nameV="search";
             break;
         case 13:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.EraseFirst(t1);};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.EraseFirst(t1);};
             nameV="erase first";
             break;
         case 14:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.EraseAll(t1);};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.EraseAll(t1);};
             nameV="erase all";
             break;
         case 15:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return a.Erase(i1,i1+size_t(t1));};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.Erase(i1,i2);};
             nameV="erase";
             break;
         case 16:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Read();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Read();return nothing;};
             nameV="read";
             break;
         case 17:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.PowiekszanieTablicy();return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PowiekszanieTablicy();return nothing;};
             nameV="powiekszanie tablicy";
             break;
         case 18:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){a.Insert(t1,i1,i1);return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Insert(t1,i1,i1);return nothing;};
             nameV="Insert (3 arguments)";
             break;
         default:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1){return nothing;};
+            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return nothing;};
     }
 
     return f;
@@ -131,7 +130,7 @@ auto AiSD::FunctionByNO(int NO,size_t cap)
 
 
 
-auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i)
+auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i,size_t i2)
 {
 
     auto f = FunctionByNO(NO,arr.capacity);
@@ -148,7 +147,7 @@ auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i)
 
     //odliczanie czasu i wykonywanie funkcji
     auto startTime=_setNow();
-    auto v=f(arr,t,i);
+    auto v=f(arr,t,i,i2);
     auto endTime=_setNow();
     std::string time=_timeTook(startTime,endTime);
 
@@ -184,7 +183,8 @@ void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
         int a=dis2(gen);
         T b=dis1(gen);
         size_t c=dis1(gen);
-        DoFunction(arr,a,b,c);
+        size_t d=dis2(gen);
+        DoFunction(arr,a,b,c,d);
     }
 }
 //DRUGA FUNKCJA TESTUJACA
@@ -206,12 +206,12 @@ void AiSD::OverflowTable(DynamicArray& arr)
         if(NOI==5||NOI==7){arg1=21474836472147483647;arg2=arr.size-1;}; //MAKSYMALNA WARTOSC T
         auto startTime=_setNow();
         for(size_t i=0;i<arr.capacity;++i)
-            f(arr,arg1,arg2);
+            f(arr,arg1,arg2,arg2);
         auto endTime=_setNow();
 
         //TESTOWANIE PRZEKROCZENIA TABLICY!!!
         for(int i=0;i<10;i++)
-            f(arr,0,0);
+            f(arr,0,0,0);
 
         std::string time=_timeTook(startTime,endTime);
 
@@ -234,7 +234,7 @@ void AiSD::Presentation(DynamicArray& arr)
         std::string wejscie = "";
 
         std::cout<<"Choose operation: "<<std::endl;
-        std::cout<<"0- Print"<<std::endl<<"1- Save"<<std::endl<<"2- Is Empty"<<std::endl<<"3- Is Full"<<std::endl<<"4- Space"<<std::endl<<"5- Push Back (1 argument)"<<std::endl<<"6- Pop Back"<<std::endl<<"7- Push Front (1 argument)"<<std::endl<<"8- Pop Front"<<std::endl<<"9- Insert (2 arguments)"<<std::endl<<"10- Erase (1 argument)"<<std::endl<<"11- Clear"<<std::endl<<"12- Search (1 argument)"<<std::endl<<"13- Erase First (1 argument)"<<std::endl<<"14- Erase All (1 argument)"<<std::endl<<"15- Erase (2 arguments (size_t,size_t+long int))"<<std::endl<<"16- Read"<<std::endl<<"17- Powiekszenie tablicy"<<std::endl<<"18- Koniec programu"<<std::endl<<"Your opeartion: ";
+        std::cout<<"0- Print"<<std::endl<<"1- Save"<<std::endl<<"2- Is Empty"<<std::endl<<"3- Is Full"<<std::endl<<"4- Space"<<std::endl<<"5- Push Back (1 argument)"<<std::endl<<"6- Pop Back"<<std::endl<<"7- Push Front (1 argument)"<<std::endl<<"8- Pop Front"<<std::endl<<"9- Insert (2 arguments)"<<std::endl<<"10- Erase (1 argument)"<<std::endl<<"11- Clear"<<std::endl<<"12- Search (1 argument)"<<std::endl<<"13- Erase First (1 argument)"<<std::endl<<"14- Erase All (1 argument)"<<std::endl<<"15- Erase (2 arguments)"<<std::endl<<"16- Read"<<std::endl<<"17- Powiekszenie tablicy"<<std::endl<<"18- Koniec programu"<<std::endl<<"Your opeartion: ";
         int userInput1=0;
         while (true)
         {
@@ -247,11 +247,14 @@ void AiSD::Presentation(DynamicArray& arr)
 
         bool g1=false;//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument
         bool g2=false;
-        if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14||userInput1==15)g1=true; //T         (t1)
+        bool g3=false;
+        if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14)g1=true; //T         (t1)
         if(userInput1==9||userInput1==10||userInput1==15)g2=true;               //size_t    (i1)
+        if(userInput1==15)g3=true;
         if(userInput1==18)return;
         T a1=0;
         size_t a2=0;
+        size_t a3=0;
 
         if(g1)
         {
@@ -277,8 +280,19 @@ void AiSD::Presentation(DynamicArray& arr)
                 std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
             }
         }
-
-        auto v=DoFunction(arr,userInput1,a1,a2);
+        if(g3)
+        {
+            std::cout<<"size_t a3=";
+            while (true)
+            {
+                getline(std::cin, wejscie);
+                std::stringstream myStream(wejscie);
+                if (myStream >> a3)
+                    break;
+                std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
+            }
+        }
+        auto v=DoFunction(arr,userInput1,a1,a2,a3);
 
         std::cout<<"Returned:";
         if (std::holds_alternative<bool>(v))

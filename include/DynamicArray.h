@@ -129,7 +129,7 @@ namespace AiSD{
         protected:
 
         private:
-            friend auto DoFunction(DynamicArray&,int,T,size_t);
+            friend auto DoFunction(DynamicArray&,int,T,size_t,size_t);
             friend void OverflowTable(DynamicArray&);
 
             T wczytajLiczbeCalkowita();

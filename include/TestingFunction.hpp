@@ -46,11 +46,11 @@ namespace AiSD
     *@param i
     *   Drugi parametr funkcji Dynamic Array
     */
-    auto DoFunction(DynamicArray& arr,int NO,T t,size_t i);
+    auto DoFunction(DynamicArray& arr,int NO,T t,size_t i,size_t i2);
 
     /**@brief
     *   Zwraca makro funkcji z Dynamic Array.
-    *   A dokladniej std::function<variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1)>
+    *   A dokladniej std::function<variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1,size_t i2)>
     *@param NO
     *   Numer funkcji Dynamic Array od 0
     *@param cap

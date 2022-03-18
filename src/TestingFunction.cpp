@@ -216,6 +216,7 @@ void AiSD::OverflowTable(DynamicArray& arr)
         std::string time=_timeTook(startTime,endTime);
 
         std::cout<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<std::endl;
+        if(NOI==6)std::cout<<"Tablica zostala przepelniona i powiekszono jej rozmiar!"<<std::endl;
     }
 }
 void AiSD::ClearLogTxt()

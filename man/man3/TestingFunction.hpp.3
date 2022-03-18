@@ -1,4 +1,4 @@
-.TH "include/TestingFunction.hpp" 3 "Thu Mar 17 2022" "Tablica Dynamiczna" \" -*- nroff -*-
+.TH "include/TestingFunction.hpp" 3 "Fri Mar 18 2022" "Tablica Dynamiczna" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -46,13 +46,13 @@ include/TestingFunction.hpp
 .br
 .RI "Ta funkcja zapisuje do pliku o sciezce src zawartosc in\&. "
 .ti -1c
-.RI "auto \fBAiSD::DoFunction\fP (DynamicArray &arr, int NO, \fBT\fP t, size_t i)"
+.RI "auto \fBAiSD::DoFunction\fP (DynamicArray &arr, int NO, \fBT\fP t, size_t i, size_t i2)"
 .br
 .RI "Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0\&. Zapisje wszystkie operacje do pliku (LogFileName 'Log\&.txt') na wypadek crashu\&. Mierzy takze czas wykonywania operacji w mikrosekundach\&. Zwraca variant<bool,size_t,noneV (nothing)> (jako to co pierwotna funkcja Dynamic Array nam zwracala) "
 .ti -1c
 .RI "auto \fBAiSD::FunctionByNO\fP (int NO, size_t cap)"
 .br
-.RI "Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1)> "
+.RI "Zwraca makro funkcji z Dynamic Array\&. A dokladniej std::function<variant <bool, size_t,\fBnoneV\fP> (\fBAiSD::DynamicArray\fP& a,T t1,size_t i1,size_t i2)> "
 .ti -1c
 .RI "void \fBAiSD::DistortionsSimulation\fP (DynamicArray &arr, int t)"
 .br

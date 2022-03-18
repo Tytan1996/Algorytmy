@@ -46,74 +46,89 @@ namespace AiSD{
             */
             void Save();
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1).
+            *   Sprawdza czy tablica jest pusta
             */
             bool IsEmpty();
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1).
+            *   Sprawdza czy tablica jest pelna.
             */
             bool IsFull();
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1).
+            *   Pokazuje wartosc miejsca w tablicy
             */
             size_t Space();
             /**@brief
             *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1)
             *   Jesli zakres tablicy jest przepelniony to czas jest troche inny.
+            *   Dodaje element t do tablicy na koncu tablicy.
             */
             void PushBack(T t);
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(1).
+            *   Ta metoda usuwa ostatni element z tablicy.
             */
             void PopBack();
             /**@brief
             *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size)
             *   Jesli zakres tablicy jest przepelniony to czas jest troche inny.
+            *   Dodaje element t na poczartku tablicy.
             */
             void PushFront(T t);
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size).
+            *   Usuwa element tablicy na poczatku.
             */
             void PopFront();
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size).
+            *   Dodaje element t na pozycji i.
             */
             void Insert(T t, size_t i);
             /**@brief
-            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size)
+            *   Ta metoda dziala zgodnie jak wedlug instrukcji w czasie O(size).
+            *   Usuwa element na i-tej pozycji.
             */
             void Erase(size_t i);
             /**@brief
-            *   Ten przeciazony operator dziala tak samo jak dla tablic
+            *   Ten przeciazony operator dziala tak samo jak dla tablic.
             */
             T& operator [](size_t i);
             //Funkcje na wymagania dodatkowe
             /**@brief
-            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size)
+            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size).
+            *   Usuwa cala zawartosc tablicy i ustawa size na 0.
             */
             void Clear();
             /**@brief
-            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size)
+            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size).
+            *   Szuka priewszy element t w tablicy.
             */
             size_t Search(const T& t);
             /**@brief
-            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size)
+            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w czasie O(size).
+            *   Usuwa prierwszy element t w tablicy.
             */
             bool EraseFirst(const T& t);
             /**@brief
-            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji NIE w czasie O(size)
+            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji NIE w czasie O(size).
+            *   Usuwa wszystkie elementy t w tablicy.
             */
             size_t EraseAll(const T& t);
             /**@brief
-            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w NIE JESTEM PEWNY czasie O(size)
+            *   Ta metoda (dodatkowa) dziala zgodnie jak wedlug instrukcji w NIE JESTEM PEWNY czasie O(size).
+            *   Usuwa elementy tablicy od i-tej pozycji(from) do j-tej pozycji (to). Zakres usuwania elementow to [from,to).
             */
             size_t Erase(size_t from, size_t to);
             /**@brief
-            *   Ten operator czyta plik z wartosciami tablic;
+            *   Ten operator czyta plik z wartosciami tablic.
             */
             void Read();
             /**@brief
             *   Ta metoda (dodatkowa) dziala poprawnie.
+            *   Powieksza rozmiar tablicy o 2.
             */
             void PowiekszanieTablicy();
             /**@brief
@@ -122,7 +137,7 @@ namespace AiSD{
             T& at(size_t i);
             //funkcje z gwiazdka
             /**@brief
-            *   Ta metoda (dodatkowa z *) dodaje na pozycji 'i' tyle elementow t ile jest nadanie w operacji
+            *   Ta metoda (dodatkowa z *) dodaje na pozycji 'i' tyle elementow t ile jest nadanie w operacji.
             */
             void Insert(T t, size_t iloscElementow, size_t i);
 

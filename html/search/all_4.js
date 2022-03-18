@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['insert_0',['Insert',['../class_ai_s_d_1_1_dynamic_array.html#a8d35abc470e5d928391c19a8093fe0cf',1,'AiSD::DynamicArray::Insert(T t, size_t i)'],['../class_ai_s_d_1_1_dynamic_array.html#a1a1fc7f15a19e520f117ae78aa091648',1,'AiSD::DynamicArray::Insert(T t, size_t iloscElementow, size_t i)']]],
-  ['isempty_1',['IsEmpty',['../class_ai_s_d_1_1_dynamic_array.html#a7ee02dc9d82e9388d257b5a3cea8b978',1,'AiSD::DynamicArray']]],
-  ['isfull_2',['IsFull',['../class_ai_s_d_1_1_dynamic_array.html#a20259108aafba11ba98a8032299b3c3b',1,'AiSD::DynamicArray']]]
+  ['erase_0',['Erase',['../class_ai_s_d_1_1_dynamic_array.html#ae17ded6f3222efe3d652c39f1cebf52c',1,'AiSD::DynamicArray::Erase(size_t i)'],['../class_ai_s_d_1_1_dynamic_array.html#a0b6a2ada705f893269de22e15734f101',1,'AiSD::DynamicArray::Erase(size_t from, size_t to)']]],
+  ['eraseall_1',['EraseAll',['../class_ai_s_d_1_1_dynamic_array.html#a5b7a99681f44b039281c6ab992e726ed',1,'AiSD::DynamicArray']]],
+  ['erasefirst_2',['EraseFirst',['../class_ai_s_d_1_1_dynamic_array.html#ac1f7703ac0db8947b74ad2a1daecf4dc',1,'AiSD::DynamicArray']]]
 ];

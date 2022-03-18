@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['popback_0',['PopBack',['../class_ai_s_d_1_1_dynamic_array.html#a5205dcbf95c966c237d3ed57268c4df1',1,'AiSD::DynamicArray']]],
-  ['popfront_1',['PopFront',['../class_ai_s_d_1_1_dynamic_array.html#aba66cdd16f7d9c6cd8ea3db89f2653ea',1,'AiSD::DynamicArray']]],
-  ['powiekszanietablicy_2',['PowiekszanieTablicy',['../class_ai_s_d_1_1_dynamic_array.html#add42f398b4b96c0d3e8bd261e1a54050',1,'AiSD::DynamicArray']]],
-  ['print_3',['Print',['../class_ai_s_d_1_1_dynamic_array.html#a94d5099adbff145248df0f0b401c5264',1,'AiSD::DynamicArray']]],
-  ['pushback_4',['PushBack',['../class_ai_s_d_1_1_dynamic_array.html#ad22a0fc11a9cd66aee860832a71329df',1,'AiSD::DynamicArray']]],
-  ['pushfront_5',['PushFront',['../class_ai_s_d_1_1_dynamic_array.html#a603eb0a7a8de51cb91ce03d021dd6a57',1,'AiSD::DynamicArray']]]
+  ['insert_0',['Insert',['../class_ai_s_d_1_1_dynamic_array.html#a8d35abc470e5d928391c19a8093fe0cf',1,'AiSD::DynamicArray::Insert(T t, size_t i)'],['../class_ai_s_d_1_1_dynamic_array.html#a1a1fc7f15a19e520f117ae78aa091648',1,'AiSD::DynamicArray::Insert(T t, size_t iloscElementow, size_t i)']]],
+  ['isempty_1',['IsEmpty',['../class_ai_s_d_1_1_dynamic_array.html#a7ee02dc9d82e9388d257b5a3cea8b978',1,'AiSD::DynamicArray']]],
+  ['isfull_2',['IsFull',['../class_ai_s_d_1_1_dynamic_array.html#a20259108aafba11ba98a8032299b3c3b',1,'AiSD::DynamicArray']]]
 ];

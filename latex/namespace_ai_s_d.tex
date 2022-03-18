@@ -12,10 +12,10 @@ struct \mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}
 \item 
 void \mbox{\hyperlink{namespace_ai_s_d_ad56fc3fb0193c3d1f787b62ff807aa0c}{Log}} (std\+::string src, std\+::string in)
 \begin{DoxyCompactList}\small\item\em Ta funkcja zapisuje do pliku o sciezce src zawartosc in. \end{DoxyCompactList}\item 
-auto \mbox{\hyperlink{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}{Do\+Function}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr, int NO, \mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}} t, size\+\_\+t i)
+auto \mbox{\hyperlink{namespace_ai_s_d_a672cdc8f0deeb3fba3e47fea9c904d2a}{Do\+Function}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr, int NO, \mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}} t, size\+\_\+t i, size\+\_\+t i2)
 \begin{DoxyCompactList}\small\item\em Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0. Zapisje wszystkie operacje do pliku (Log\+File\+Name \char`\"{}\+Log.\+txt\char`\"{}) na wypadek crashu. Mierzy takze czas wykonywania operacji w mikrosekundach. Zwraca variant$<$bool,size\+\_\+t,none\+V (nothing)$>$ (jako to co pierwotna funkcja Dynamic Array nam zwracala) \end{DoxyCompactList}\item 
 auto \mbox{\hyperlink{namespace_ai_s_d_a1f1b5be39ae71895e523d9bc0bf4352a}{Function\+By\+NO}} (int NO, size\+\_\+t cap)
-\begin{DoxyCompactList}\small\item\em Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1)\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1,size\+\_\+t i2)\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_ai_s_d_a9aca5856e755ad79b9074b0aa235fed6}{Distortions\+Simulation}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr, int t)
 \begin{DoxyCompactList}\small\item\em Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mierzy czas. Zapisuje dane do pliku log, na wypadek crashu. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_ai_s_d_a0c7751849e8192abadb2b033b8f574e9}{Overflow\+Table}} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&arr)
@@ -78,11 +78,11 @@ Symulacja zaklocen funkcji. Wykonuje losowe funkcje dla losowych arguumentow. Mi
 {\em t} & Ile losowych operacji ma sie wykonac \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}\label{namespace_ai_s_d_aa2f83a397ed259d44cb5a7abe27f1268}} 
+\mbox{\Hypertarget{namespace_ai_s_d_a672cdc8f0deeb3fba3e47fea9c904d2a}\label{namespace_ai_s_d_a672cdc8f0deeb3fba3e47fea9c904d2a}} 
 \index{AiSD@{AiSD}!DoFunction@{DoFunction}}
 \index{DoFunction@{DoFunction}!AiSD@{AiSD}}
 \doxysubsubsection{\texorpdfstring{DoFunction()}{DoFunction()}}
-{\footnotesize\ttfamily auto Ai\+SD\+::\+Do\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{arr,  }\item[{int}]{NO,  }\item[{\mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}}}]{t,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily auto Ai\+SD\+::\+Do\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Dynamic\+Array}} \&}]{arr,  }\item[{int}]{NO,  }\item[{\mbox{\hyperlink{_dynamic_array_8h_a0acb682b8260ab1c60b918599864e2e5}{T}}}]{t,  }\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{i2 }\end{DoxyParamCaption})}
 
 
 
@@ -107,7 +107,7 @@ Ta funkcja wykonuje funkcje Dynamic Array, gdzie NO to numer funkcji od 0. Zapis
 
 
 
-Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1)\texorpdfstring{$>$}{>} 
+Zwraca makro funkcji z Dynamic Array. A dokladniej std\+::function\texorpdfstring{$<$}{<}variant \texorpdfstring{$<$}{<}bool, size\+\_\+t,\mbox{\hyperlink{struct_ai_s_d_1_1none_v}{noneV}}\texorpdfstring{$>$}{>} (\mbox{\hyperlink{class_ai_s_d_1_1_dynamic_array}{Ai\+SD\+::\+Dynamic\+Array}}\& a,T t1,size\+\_\+t i1,size\+\_\+t i2)\texorpdfstring{$>$}{>} 
 
 
 \begin{DoxyParams}{Parameters}

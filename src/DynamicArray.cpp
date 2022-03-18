@@ -5,8 +5,6 @@
 #include "DynamicArray.h"
 
 
-
-
 AiSD::DynamicArray::DynamicArray(){
     capacity=100;
     size=0;
@@ -80,13 +78,11 @@ void AiSD::DynamicArray::Print(){
 
 void AiSD::DynamicArray::Save() {
     std::ofstream plik(nazwaPliku, std::ios::out);
-    //plik<<"ilosc wolnego miejsca: "<<Space()<<endl;
     if(IsEmpty()==true) {
         plik<<"tablica jest pusta"<<std::endl;
         return;
     }
     for(size_t i=0; i<size; ++i) {
-        // plik<<"element tablicy ["<<i<<"] = "<<tablica[i]<<endl;
         plik<<tablica[i]<<std::endl;
     }
     plik.close();
@@ -110,10 +106,12 @@ size_t AiSD::DynamicArray::Space() {
     return capacity-size;
 }
 void AiSD::DynamicArray::PushBack(T t) {
-    if(IsFull()==false) {
-        tablica[size]=t;
-        ++size;
+    if(IsFull()==true) {
+        PowiekszanieTablicy();
     }
+    tablica[size]=t;
+    ++size;
+
 }
 void AiSD::DynamicArray::PopBack() {
     if(IsEmpty()==false) {
@@ -122,16 +120,18 @@ void AiSD::DynamicArray::PopBack() {
     }
 }
 void AiSD::DynamicArray::PushFront(T t) {
-    if(IsFull()==false) {
-        size++;
-        size_t rozmiarTablicy=size-1;
-        for(size_t i=rozmiarTablicy; i>=0; --i) {
-            tablica[i]=tablica[i-1];
-            if(i==0)
-                break;
-        }
-        tablica[0]=t;
+    if(IsFull()==true) {
+        PowiekszanieTablicy();
     }
+    size++;
+    size_t rozmiarTablicy=size-1;
+    for(size_t i=rozmiarTablicy; i>=0; --i) {
+        tablica[i]=tablica[i-1];
+        if(i==0)
+            break;
+    }
+    tablica[0]=t;
+
 }
 void AiSD::DynamicArray::PopFront() {
     if(IsEmpty()==false) {
@@ -258,36 +258,27 @@ size_t AiSD::DynamicArray::Erase(size_t from, size_t to) {
         std::cout<<"wpisanio zbyt duzy indeks!"<<std::endl;
         return 0;
     } else if(to<=from) {
-        std::cout<<"priewsza liczba (from): " <<from<<std::endl;
-        std::cout<<"druga liczba (to): " <<to<<std::endl;
         std::cout<<"priewsza liczba jest mniejsza lub rowna od drugiej!"<<std::endl;
         return 0;
     } else {
-        if((to-from)==1) {
-            Erase(from);
-            return 1;
-        } else if(to==size && from==0) {
-            iloscUsunietychElementow=size;
+        iloscUsunietychElementow=(to-from);
+        if(from==0 && to==size){
             Clear();
-        } else if(from==0) {
-            for(size_t i=0; i<from; ++i) {
-                PopFront();
-                ++iloscUsunietychElementow;
-            }
             return iloscUsunietychElementow;
-        } else if(to==size) {
-            for(size_t i=from; i>to; --i) {
+        }
+        if(to==size){
+            for(size_t i=from;i<to;++i){
                 PopBack();
-                ++iloscUsunietychElementow;
-            }
-            return iloscUsunietychElementow;
-        } else {
-            for(size_t i=from; i<to; ++i) {
-                tablica[i]=tablica[i+to];
-                iloscUsunietychElementow=to-from;
             }
             return iloscUsunietychElementow;
         }
+        for(size_t i=from;i<size-iloscUsunietychElementow;++i){
+            tablica[i]=tablica[i+iloscUsunietychElementow];
+        }
+        for(size_t i=(size-iloscUsunietychElementow);i<size;++i){
+            tablica[i]=0;
+        }
+        size=size-(iloscUsunietychElementow);
     }
     return iloscUsunietychElementow;
 }
@@ -299,19 +290,27 @@ void AiSD::DynamicArray::Read() {
     size_t iloscDanychWczytanych=0;
     std::string liniaZPliku="";
     while(getline(plik, liniaZPliku)) {
-            std::cout<<"tak"<<std::endl;
         tablica[iloscDanychWczytanych]=atoi(liniaZPliku.c_str());
         ++iloscDanychWczytanych;
     }
     size=iloscDanychWczytanych;
+    while(size>=capacity){
+        if(capacity>=1310720000/6400){
+            std::cout<<"za duzo danych!"<<std::endl;
+            plik.close();
+            return;
+        }
+        PowiekszanieTablicy();
+
+    }
     plik.close();
 }
 void AiSD::DynamicArray::PowiekszanieTablicy() {
-    if(capacity>=1310720000/6400){ /*dla capacity>=1310720000 jest blad gdy ta wartosc jest powiekszona o 2.
+    if(capacity>=1310720000/32){ /*dla capacity>=1310720000 jest blad gdy ta wartosc jest powiekszona o 2.
             ale wartosc zostala zmiejszczona o 32 by szybciej operacje wykonaly sie.
             1310720000 wartosc zostala wykryta przez program testujacy dodac do komendarza std::cout.rdbuf(0);
             i wyswietlac wartosc capacity i zobaczyc kiedy program wywoluje blad.
-            Dla pewnosci wartosc zostala zmiejszczona o 32 by bardziej program dzialaj i nie wywowalj pamiecy.
+            Dla pewnosci wartosc zostala zmiejszczona o 32 by bardziej program dzialaj i nie wywowalsj pamiecy.
             */
         return;
     }
@@ -329,6 +328,11 @@ T& AiSD::DynamicArray::at(size_t i) {
     return tablica[i];
 }
 void AiSD::DynamicArray::Insert(T t, size_t iloscElementow, size_t i) {
+    if(capacity<(size+iloscElementow)){
+        std::cout<<"za malo miejsca w tablicy! "<<std::endl;
+        return;
+
+    }
     if(i>size) {
         std::cout<<"i jest za duzy, i musi byc do "<<size<<"!"<<std::endl;
         return;

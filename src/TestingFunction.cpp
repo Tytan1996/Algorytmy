@@ -137,7 +137,7 @@ auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i,size_t i2)
 
     //podstawowe informacjedo logow
     std::stringstream ss;
-    ss<<"Operation "<<nameV<<" ("<<NO<<")"<<" for arguments "<<t<<" & "<<i<<std::endl<<"Array content: ";
+    ss<<"Operation "<<nameV<<" ("<<NO<<")"<<" for arguments "<<t<<" & "<<i<<" & "<<i2<<std::endl<<"Array content: ";
     for(size_t i=0;i<arr.size;++i){
         ss<<arr.tablica[i]<<":";
     }

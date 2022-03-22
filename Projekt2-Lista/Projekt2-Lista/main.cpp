@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include "MenadzerUzytkownika.cpp"
-#include "DoublyLinkedList.cpp"
+#include "MenadzerUzytkownika.h"
+#include "DoublyLinkedList.h"
 
 int main() {
 
-    AiSD::MenadzerUzytkownika menadzerUzytkownika;
+    MenadzerUzytkownika menadzerUzytkownika;
     int wybor;
     while(true) {
-        wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
+        //wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
         switch(wybor) {
         case 0:
             exit(0);

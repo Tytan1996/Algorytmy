@@ -1,0 +1,489 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <fstream>
+#include <cstdlib>
+#include <conio.h>
+
+using namespace std;
+
+int numer_Id=0;
+
+typedef struct kontakt
+{
+
+    int id;
+    string imie;
+    string nazwisko;
+    string numer_telefonu;
+    string email;
+    string adres;
+    kontakt *nastepny;
+    kontakt *poprzedni;
+
+
+} Kontakt;
+Kontakt *ksiazka=NULL;
+
+typedef struct wyszukiwarka
+{
+
+    wyszukiwarka *nastepny;
+    kontakt *obecny;
+    wyszukiwarka *poprzedni;
+
+} Wyszukiwarka;
+Wyszukiwarka *lista=NULL;
+void wczytac();
+void nowy_kontakt();
+void dodaj(int numer, string imie, string nazwisko,string numer_telefonu,string email,string adres);
+void pokaz_wszystkich();
+void wyszukiwarka();
+void robienie_kolejki1(string nazwa,int opcja);
+void pokaz_wyniki();
+void zwalnanie_pamieci();
+void zwalnanie_pamieciksiazki();
+
+int main()
+{
+
+    fstream plik;
+    plik.open("Ksiazka_adresowa.txt", ios::in);
+
+    if (plik.good()==true)
+    {
+        plik.close();
+        wczytac();
+
+    }
+
+    int opcja;
+    do
+    {
+        cout<<"0 - zakonczenie programu;"<<endl;
+        cout<<"1 - dodanie nowego kontaktu;"<<endl;
+        cout<<"2 - wyszukiwanie kontaktu;"<<endl;
+        cout<<"3 - wyswietlenie wszystkich kontaktow:"<<endl;
+        cout<<"Twoja opcja: ";
+        cin>>opcja;
+        system("cls");
+        switch(opcja)
+        {
+        case 0:
+            cout<<"Program zakonczyl prace"<<endl;
+            if(ksiazka!=NULL)
+            {
+                zwalnanie_pamieciksiazki();
+            }
+            return 0;
+            break;
+        case 1:
+            system("cls");
+            nowy_kontakt();
+
+            break;
+        case 2:
+            system("cls");
+            wyszukiwarka();
+            break;
+        case 3:
+            system("cls");
+            pokaz_wszystkich();
+
+            break;
+        default:
+            cout<<"Podales zla opcje!"<<endl<<endl;
+            break;
+        }
+    }
+    while(opcja!=0);
+    if(ksiazka!=NULL)
+    {
+        zwalnanie_pamieciksiazki();
+    }
+
+    return 0;
+}
+void nowy_kontakt()
+{
+    if(numer_Id>=1000)
+    {
+        cout<<"Masz pelna liste!"<<endl;
+        return;
+    }
+    char znak;
+    Kontakt *nowy=new Kontakt;
+    string imie,nazwisko,numer_telefonu,email,adres;
+    ofstream plik;
+    plik.open("Ksiazka_adresowa.txt", ios::in | ios::app);
+    if(ksiazka!=NULL)
+    {
+        while(ksiazka->id!=1)
+        {
+            ksiazka=ksiazka->poprzedni;
+        }
+    }
+    cout<<"Podaj imie"<<endl;
+    cout<<"Imie: ";
+    cin>>imie;
+    cout<<"Podaj nazwisko"<<endl;
+    cout<<"nazwisko: ";
+    cin>>nazwisko;
+    cout<<"Podaj numer telefonu"<<endl;
+    cout<<"Numer telefonu: ";
+    cin>>numer_telefonu;
+    cout<<"Podaj email"<<endl;
+    cout<<"email: ";
+    cin>>email;
+    cout<<"Podaj adres"<<endl;
+    cout<<"adres: ";
+    cin.ignore();
+    getline(cin,adres);
+    system("cls");
+    cout<<imie<<endl;
+    cout<<nazwisko<<endl;
+    cout<<numer_telefonu<<endl;
+    cout<<email<<endl;
+    cout<<adres<<endl;
+
+    cout<<"Poprawnie sa dane i dodac je do ksiazki adresowej? <t/n>"<<endl;
+
+    znak=getch();
+    if(znak=='n')
+    {
+        system("cls");
+        return;
+    }
+    else if(znak=='t')
+    {
+        system("cls");
+        numer_Id++;
+        dodaj(numer_Id, imie, nazwisko,numer_telefonu, email, adres);
+
+        plik<<numer_Id<<endl;
+        plik<<imie<<endl;
+        plik<<nazwisko<<endl;
+        plik<<numer_telefonu<<endl;
+        plik<<email<<endl;
+        plik<<adres<<endl;
+
+    }
+
+}
+void dodaj(int numer, string imie, string nazwisko,string numer_telefonu, string email,string adres )
+{
+
+    Kontakt *nowy=new Kontakt;
+    nowy->id=numer;
+    nowy->imie=imie;
+    nowy->nazwisko=nazwisko;
+    nowy->numer_telefonu=numer_telefonu;
+    nowy->email=email;
+    nowy->adres=adres;
+    nowy->id=numer_Id;
+    if(ksiazka!=NULL)
+    {
+        nowy->nastepny=ksiazka;
+        nowy->poprzedni=ksiazka->poprzedni;
+        ksiazka->poprzedni->nastepny=nowy;
+        ksiazka->poprzedni=nowy;
+    }
+    else
+    {
+        nowy->poprzedni=nowy;
+        nowy->nastepny=nowy;
+    }
+    ksiazka=nowy;
+    while(ksiazka->id!=1)
+    {
+        ksiazka=ksiazka->poprzedni;
+    }
+
+}
+void pokaz_wszystkich()
+{
+    char znak;
+    int opcja;
+    if(ksiazka==NULL)
+    {
+        system("cls");
+        cout<<"Nie masz zadnych kontakow"<<endl<<endl;
+
+    }
+    else
+    {
+        do
+        {
+            cout<<ksiazka->id<<endl;
+            cout<<ksiazka->imie<<endl;
+            cout<<ksiazka->nazwisko<<endl;
+            cout<<ksiazka->numer_telefonu<<endl;
+            cout<<ksiazka->email<<endl;
+            cout<<ksiazka->adres<<endl;
+
+
+            cout<<"1 - pokaz nastepny kontakt;"<<endl;
+            cout<<"2 - pokaz poprzedni kontakt;"<<endl; //takie zastowowanie postanowilem poniewaz w konsoli bedzie wtedy latwiej wyswietlacz niz kilka lub wiecej
+            cout<<"0 - wroc do poprzednego menu;"<<endl;
+            cout<<"Twoja opcja: ";
+            cin>>opcja;
+            switch(opcja)
+            {
+            case 1:
+                ksiazka=ksiazka->nastepny;
+                break;
+            case 2:
+                ksiazka=ksiazka->poprzedni;
+                break;
+            case 0:
+                system("cls");
+                return;
+                break;
+            default:
+                cout<<"Wybrales zla opcje"<<endl;
+                break;
+
+            }
+            system("cls");
+        }
+        while(opcja!=0);
+        system("cls");
+    }
+}
+void wyszukiwarka()
+{
+    int opcja;
+    char znak;
+    string szukana;
+    if(ksiazka==NULL)
+    {
+        system("cls");
+        cout<<"Nie masz zadnych kontakow"<<endl;
+        return;
+    }
+    else
+    {
+        cout<<"Po czym chcesz szukasz?"<<endl;
+        cout<<"1 - po imieniu;"<<endl;
+        cout<<"2 - po nazwisku;"<<endl;
+        cout<<"Twoja opcja: ";
+        cin>>opcja;
+        switch(opcja)
+        {
+        case 1:
+            cout<<"Imie: ";
+            cin>>szukana;
+            break;
+        case 2:
+            cout<<"Nazwisko: ";
+            cin>>szukana;
+            break;
+        default:
+            cout<<"Wybrales zla ocpje;"<<endl;
+            break;
+        }
+        robienie_kolejki1(szukana,opcja);
+    }
+    pokaz_wyniki();
+    if(lista!=NULL)
+    {
+        zwalnanie_pamieci();
+    }
+    system("cls");
+}
+void robienie_kolejki1(string nazwa,int opcja)
+{
+
+    if(ksiazka!=NULL)
+    {
+        while(ksiazka->id!=1)
+        {
+            ksiazka=ksiazka->poprzedni;
+        }
+    }
+    do
+    {
+        if(opcja==1 && ksiazka->imie==nazwa)
+        {
+            Wyszukiwarka *nowy_rekord = new Wyszukiwarka;
+            nowy_rekord->obecny=ksiazka;
+            if(lista!=NULL)
+            {
+                nowy_rekord->nastepny=lista;
+                nowy_rekord->poprzedni=lista->poprzedni;
+                lista->poprzedni->nastepny=nowy_rekord;
+                lista->poprzedni=nowy_rekord;
+            }
+            else
+            {
+                nowy_rekord->poprzedni=nowy_rekord;
+                nowy_rekord->nastepny=nowy_rekord;
+            }
+            lista=nowy_rekord;
+            lista=lista->nastepny;
+        }
+        else if(opcja==2 && ksiazka->nazwisko==nazwa)
+        {
+            Wyszukiwarka *nowy_rekord = new Wyszukiwarka;
+            nowy_rekord->obecny=ksiazka;
+            if(lista!=NULL)
+            {
+                nowy_rekord->nastepny=lista;
+                nowy_rekord->poprzedni=lista->poprzedni;
+                lista->poprzedni->nastepny=nowy_rekord;
+                lista->poprzedni=nowy_rekord;
+            }
+            else
+            {
+                nowy_rekord->poprzedni=nowy_rekord;
+                nowy_rekord->nastepny=nowy_rekord;
+            }
+            lista=nowy_rekord;
+            lista=lista->nastepny;
+
+        }
+        ksiazka=ksiazka->nastepny;
+
+    }
+    while(ksiazka->id!=1);
+
+
+}
+void pokaz_wyniki()
+{
+    int opcja;
+    if(lista==NULL)
+    {
+        system("cls");
+        cout<<"Nie ma takich kontakow"<<endl<<endl;
+        return;
+
+    }
+    else
+    {
+        do
+        {
+            system("cls");
+            cout<<lista->obecny->id<<endl;
+            cout<<lista->obecny->imie<<endl;
+            cout<<lista->obecny->nazwisko<<endl;
+            cout<<lista->obecny->numer_telefonu<<endl;
+            cout<<lista->obecny->email<<endl;
+            cout<<lista->obecny->adres<<endl;
+
+            cout<<"0 - wroc do poprzednego menu;"<<endl;
+            cout<<"1 - pokaz nastepny kontakt;"<<endl;
+            cout<<"2 - pokaz poprzedni kontakt;"<<endl; //takie zastowowanie postanowilem poniewaz w konsoli bedzie wtedy latwiej wyswietlacz niz kilka lub wiecej
+            cout<<"Twoja opcja: ";
+            cin>>opcja;
+            switch(opcja)
+            {
+            case 1:
+                lista=lista->nastepny;
+                break;
+            case 2:
+                lista=lista->poprzedni;
+                break;
+            case 0:
+                system("cls");
+                return;
+                break;
+            default:
+                cout<<"Wybrales zla opcje"<<endl;
+                break;
+
+            }
+
+        }
+        while(opcja!=0);
+    }
+
+}
+void wczytac()
+{
+    fstream plik;
+    plik.open("Ksiazka_adresowa.txt", ios::in);
+
+    if (plik.good()==false)
+    {
+        return;
+    }
+    string linia;
+    int nr_linii=1;
+    int id;
+    string imie,nazwisko,numer_telefonu,email,adres;
+    plik.seekg(0,ios::beg);
+    while(getline(plik,linia))
+    {
+        switch(nr_linii)
+        {
+        case 1:
+            id=atoi(linia.c_str());
+            break;
+        case 2:
+            imie=linia;
+            break;
+        case 3:
+            nazwisko = linia;
+            break;
+        case 4:
+            numer_telefonu = linia;
+            break;
+        case 5:
+            email = linia;
+            break;
+        case 6:
+            adres = linia;
+            break;
+        }
+        if (nr_linii==6)
+        {
+            nr_linii=0;
+            numer_Id++;
+            dodaj(id,imie,nazwisko,numer_telefonu,email,adres);
+
+        }
+        nr_linii++;
+        if(numer_Id>=1000)
+        {
+            cout<<"Masz pelna liste!"<<endl;
+            plik.close();
+            return;
+        }
+
+
+    }
+    plik.close();
+}
+void zwalnanie_pamieci()
+{
+
+    lista->poprzedni->nastepny=NULL;
+    lista->poprzedni=NULL;
+    while(lista->nastepny!=NULL)
+    {
+        Wyszukiwarka *element = lista;
+        lista=lista->nastepny;
+        delete element;
+
+    }
+    Wyszukiwarka *element = lista;
+    delete element;
+    lista=NULL;
+
+}
+void zwalnanie_pamieciksiazki()
+{
+    ksiazka->poprzedni->nastepny=NULL;
+    ksiazka->poprzedni=NULL;
+    while(ksiazka->nastepny!=NULL)
+    {
+        Kontakt *element = ksiazka;
+        ksiazka=ksiazka->nastepny;
+        delete element;
+
+    }
+    Kontakt *element = ksiazka;
+    delete element;
+    ksiazka=NULL;
+}

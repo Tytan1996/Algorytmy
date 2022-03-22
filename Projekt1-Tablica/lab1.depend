@@ -119,3 +119,30 @@
 1647352239 source:c:\users\student\documents\github\algorytmy\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
+1647952448 source:c:\users\student\documents\github\algorytmy\projekt1-tablica\main.cpp
+	<iostream>
+	"DynamicArray.h"
+	"TestingFunction.hpp"
+
+1647952448 c:\users\student\documents\github\algorytmy\projekt1-tablica\include\dynamicarray.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+
+1647956360 c:\users\student\documents\github\algorytmy\projekt1-tablica\include\testingfunction.hpp
+	"DynamicArray.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+	<variant>
+
+1647952448 source:c:\users\student\documents\github\algorytmy\projekt1-tablica\src\dynamicarray.cpp
+	"DynamicArray.h"
+
+1647955717 source:c:\users\student\documents\github\algorytmy\projekt1-tablica\src\testingfunction.cpp
+	"TestingFunction.hpp"
+

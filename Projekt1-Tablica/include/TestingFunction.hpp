@@ -22,6 +22,8 @@
 namespace AiSD
 {
 
+//wzorzec projektowy fabryka
+
     /**@brief
     *   Ta funkcja zapisuje do pliku o sciezce src zawartosc in
     *
@@ -56,7 +58,7 @@ namespace AiSD
     *@param cap
     *   Rozmiar tablicy
     */
-    auto FunctionByNO(int NO,size_t cap);
+    auto FunctionByNO(int NO);
 
 
     /**@brief

@@ -10,14 +10,21 @@
 const std::string LogFileName="Log.txt";
 AiSD::noneV nothing{};
 
+//using std::chrono::high_resolution_clock = _st;
+
+namespace chron=std::chrono;
 
 //FUNKCJE DOT MIERZENIA CZASU
-
-//#define chronotime std::chrono::_V2::system_clock::time_point
 auto AiSD::_setNow()
 {
+    _stn::now();
     return std::chrono::high_resolution_clock::now();
 }
+
+
+//using AiSD::microsec = std::chrono....
+//void foo(AiSD::microsec a, .)
+
 std::string AiSD::_timeTook(auto a,auto b)
 {
     std::stringstream ss;
@@ -37,9 +44,7 @@ void AiSD::Log(std::string src,std::string in)
 
 
 std::string nameV="";
-auto AiSD::FunctionByNO(int NO,size_t cap)
-//mozna to zrobic lepiej dla std::variant https://en.cppreference.com/w/cpp/utility/variant
-//oraz https://en.cppreference.com/w/cpp/keyword/union
+auto AiSD::FunctionByNO(int NO)
 {
     std::function<std::variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1,size_t i2)> f ;
     //przypisanie funckji
@@ -133,7 +138,7 @@ auto AiSD::FunctionByNO(int NO,size_t cap)
 auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i,size_t i2)
 {
 
-    auto f = FunctionByNO(NO,arr.capacity);
+    auto f = FunctionByNO(NO);
 
     //podstawowe informacjedo logow
     std::stringstream ss;
@@ -197,7 +202,7 @@ void AiSD::OverflowTable(DynamicArray& arr)
 
     for(int NOI=5;NOI<10;NOI++)
     {
-        auto f = FunctionByNO(NOI,arr.capacity);
+        auto f = FunctionByNO(NOI);
 
         AiSD::Log(LogFileName,"Repeat "+nameV);
         std::cout<<nameV;

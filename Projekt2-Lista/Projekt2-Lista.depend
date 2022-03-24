@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1647956983 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\src\doublylinkedlist.cpp
+	"DoublyLinkedList.h"
+
+1647956983 f:\aisd\algorytmy\projekt2-lista\projekt2-lista\include\doublylinkedlist.h
+
+1647956665 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\main.cpp
+	<iostream>
+	"MenadzerUzytkownika.h"
+	"DoublyLinkedList.h"
+
+1647956632 f:\aisd\algorytmy\projekt2-lista\projekt2-lista\include\menadzeruzytkownika.h
+	<iostream>
+	<sstream>
+	"DoublyLinkedList.h"
+
+1647956700 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\src\menadzeruzytkownika.cpp
+	"MenadzerUzytkownika.h"
+
+1648156880 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
+	<iostream>
+	"MenadzerUzytkownika.h"
+
+1648156737 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+	<iostream>
+	<sstream>
+	"DoublyLinkedList.h"
+
+1648156479 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\doublylinkedlist.h
+	<iostream>
+
+1648156546 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+	"DoublyLinkedList.h"
+
+1648156953 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+	"MenadzerUzytkownika.h"
+

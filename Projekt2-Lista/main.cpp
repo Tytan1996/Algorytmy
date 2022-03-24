@@ -1,29 +1,32 @@
 #include <iostream>
 
+
 #include "MenadzerUzytkownika.h"
-#include "DoublyLinkedList.h"
+
 
 int main() {
 
-    MenadzerUzytkownika menadzerUzytkownika;
+    AiSD::MenadzerUzytkownika menadzerUzytkownika;
     int wybor;
+
+
     while(true) {
-        //wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
+       wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
         switch(wybor) {
         case 0:
             exit(0);
             break;
         case 1:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.dodajElementNaPoczatku();
             break;
         case 2:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.dodajElementNaPoczatku();
             break;
         case 3:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.usunElementZPoczatku();
             break;
         case 4:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.usunElementZKoncu();
             break;
         case 5:
             std::cout<<"obecna opcja jest niedostepna"<<std::endl;
@@ -32,28 +35,28 @@ int main() {
             std::cout<<"obecna opcja jest niedostepna"<<std::endl;
             break;
         case 7:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.pokazElementZPoczatku();
             break;
         case 8:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.pokazElementZKoncu();
             break;
         case 9:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.czyListaJestPusta();
             break;
         case 10:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.pokazRozmiar();
             break;
         case 11:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.usunListe();
             break;
         case 12:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.pokazListe();
             break;
         case 13:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.pokazListeOdTylu();
             break;
         case 14:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.pokazCzyWezelJestNaLisce();
             break;
         case 15:
             std::cout<<"obecna opcja jest niedostepna"<<std::endl;

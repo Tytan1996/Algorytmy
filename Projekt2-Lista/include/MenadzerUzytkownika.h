@@ -26,6 +26,12 @@ namespace AiSD{
         void pokazCzyWezelJestNaLisce();
         void pokazListe();
         void pokazListeOdTylu();
+        void wstawElementNaPozycjiI();
+        void usunElementNaPozycjiI();
+        void wstawElementPrzedPozycjiI();
+        void wstawElementPoPozycjiI();
+        void usunElementPrzedPozycjiI();
+        void usunElementPoPozycjiI();
     };
 
 }

@@ -19,7 +19,7 @@ class DLLNode{
     using T=short;
     T data;
     DLLNode *next;
-    DLLNode *perv;
+    DLLNode *prev;
     //T rekord;
 
 public:
@@ -59,6 +59,11 @@ public:
     bool IsInList(const T& t);
     DLLNode* Find(const T &t);
     void Insert(const T& t, size_t i);
+    void Delete(size_t i);
+    void InsertAfter(const T& t, size_t i);
+    void InsertBefore(const T& t, size_t i);
+    void DeleteAfter(size_t i);
+    void DeleteBefore(size_t i);
 };
 
 }

@@ -96,3 +96,28 @@ void AiSD::MenadzerUzytkownika::pokazCzyWezelJestNaLisce(){
         std::cout<<"Nie ma wezla na liscie!"<<std::endl;
     }
 }
+void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI(){
+    short element=wczytajLiczbe();
+    size_t i=wczytajLiczbe();
+    lista.Insert(element, i);
+}
+void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI(){
+    size_t i=wczytajLiczbe();
+    lista.Delete( i);
+}
+void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI(){
+    short element=wczytajLiczbe();
+    size_t i=wczytajLiczbe();
+    lista.InsertBefore(element, i);
+}
+void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI(){
+    short element=wczytajLiczbe();
+    size_t i=wczytajLiczbe();
+    lista.InsertAfter(element, i);
+}
+void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI(){
+    size_t i=wczytajLiczbe();
+}
+void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI(){
+    size_t i=wczytajLiczbe();
+}

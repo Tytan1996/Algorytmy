@@ -29,10 +29,10 @@ int main() {
             menadzerUzytkownika.usunElementZKoncu();
             break;
         case 5:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.wstawElementNaPozycjiI();
             break;
         case 6:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.usunElementNaPozycjiI();
             break;
         case 7:
             menadzerUzytkownika.pokazElementZPoczatku();
@@ -59,16 +59,16 @@ int main() {
             menadzerUzytkownika.pokazCzyWezelJestNaLisce();
             break;
         case 15:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.wstawElementPrzedPozycjiI();
             break;
         case 16:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.wstawElementPoPozycjiI();
             break;
         case 17:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.usunElementPrzedPozycjiI();
             break;
         case 18:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.usunElementNaPozycjiI();
             break;
         case 19:
             std::cout<<"obecna opcja jest niedostepna"<<std::endl;

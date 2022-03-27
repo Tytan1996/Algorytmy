@@ -15,6 +15,16 @@ AiSD::DLL::DLL(){
     head=nullptr;
     tail=nullptr;
 }
+AiSD::DLL::~DLL(){
+    for(size_t i=0;i<iloscElementow;++i){
+        DLLNode *tmp=lista;
+        lista=lista->pobierzWskaznikNaKolejnyElement();
+        delete tmp;
+    }
+    delete lista;
+    delete head;
+    delete tail;
+}
 void AiSD::DLLNode::ustawElement(T nowaWartosc){
     data=nowaWartosc;
 }

@@ -44,6 +44,7 @@ class DLL{
 
 public:
     DLL ();
+    ~DLL ();
     void PushFront(const T& el);
     void PopFront();
     void PushBack(const T& el);

@@ -7,25 +7,14 @@
 
 #include "TestingFunction.hpp"
 
-const std::string LogFileName="Log.txt";
+
+AiSD::Logger TestingFunctionLogger("Log.txt");
 AiSD::noneV nothing{};
 
-//using std::chrono::high_resolution_clock = _st;
 
-namespace chron=std::chrono;
-
-//FUNKCJE DOT MIERZENIA CZASU
-auto AiSD::_setNow()
-{
-    _stn::now();
-    return std::chrono::high_resolution_clock::now();
-}
-
-
-//using AiSD::microsec = std::chrono....
-//void foo(AiSD::microsec a, .)
-
-std::string AiSD::_timeTook(auto a,auto b)
+using clockH=std::chrono::high_resolution_clock;
+//usunalem to z hpp bo nie bylo tam potrzebne
+std::string timeTook(clockH::time_point a,clockH::time_point b)
 {
     std::stringstream ss;
     auto time=std::chrono::duration_cast<std::chrono::microseconds>(b-a);
@@ -33,140 +22,144 @@ std::string AiSD::_timeTook(auto a,auto b)
     return ss.str();
 }
 
-void AiSD::Log(std::string src,std::string in)
+
+void AiSD::ClassTest::test()
 {
-    std::ofstream file(src,std::ios_base::app);
-    file<<in<<'\n';
-    file.close();
+    std::cout<<"ERROR, wrong class!"<<std::endl;
+    return;
 }
-
 //OTRZYMANIE FUNKCJI PRZEZ JEJ NUMER
-
-
-std::string nameV="";
-auto AiSD::FunctionByNO(int NO)
+AiSD::ClassTest::FunctionInfo AiSD::ClassTest::FunctionByNO(short int NO)
 {
-    std::function<std::variant <bool, size_t,noneV> (AiSD::DynamicArray& a,T t1,size_t i1,size_t i2)> f ;
+    ClassTest::FunctionInfo fun;
     //przypisanie funckji
     switch(NO)
     {
         case 0:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){ a.Print();return nothing;};
-            nameV="print";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Print();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Print";
             break;
         case 1:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Save();return nothing;};
-            nameV="save";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Save();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Save";
             break;
         case 2:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.IsEmpty();};
-            nameV="is empty";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.IsEmpty();}catch(const char* msg){throw msg;}};
+            fun.type="Is Empty";
             break;
         case 3:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.IsFull();};
-            nameV="is full";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.IsFull();}catch(const char* msg){throw msg;}};
+            fun.type="Is Full";
             break;
         case 4:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.Space();};
-            nameV="space";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.Space();}catch(const char* msg){throw msg;}};
+            fun.type="Space";
             break;
         case 5:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PushBack(t1);return nothing;};
-            nameV="push back";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.PushBack(t1);return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Push Back (1 argument)";
             break;
         case 6:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PopBack();return nothing;};
-            nameV="pop back";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.PopBack();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Pop Back";
             break;
         case 7:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PushFront(t1);return nothing;};
-            nameV="push front";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.PushFront(t1);return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Push Front(1 argument)";
             break;
         case 8:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PopFront();return nothing;};
-            nameV="pop front";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.PopFront();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Pop Front";
             break;
         case 9:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Insert(t1,i1);return nothing;};
-            nameV="insert";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Insert(t1,i1);return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Insert(2 arguments)";
             break;
         case 10:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Erase(i1);return nothing;};
-            nameV="erase";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Erase(i1);return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Erase(1 argument)";
             break;
         case 11:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Clear();return nothing;};
-            nameV="clear";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Clear();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Clear";
             break;
         case 12:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.Search(t1);};
-            nameV="search";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.Search(t1);}catch(const char* msg){throw msg;}};
+            fun.type="Search(1 argument)";
             break;
         case 13:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.EraseFirst(t1);};
-            nameV="erase first";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.EraseFirst(t1);}catch(const char* msg){throw msg;}};
+            fun.type="Erase First(1 argument)";
             break;
         case 14:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.EraseAll(t1);};
-            nameV="erase all";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.EraseAll(t1);}catch(const char* msg){throw msg;}};
+            fun.type="Erase All(1 argument)";
             break;
         case 15:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return a.Erase(i1,i2);};
-            nameV="erase";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{return a.Erase(i1,i2);}catch(const char* msg){throw msg;}};
+            fun.type="Erase(2 arguments)";
             break;
         case 16:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Read();return nothing;};
-            nameV="read";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Read();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Read";
             break;
         case 17:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.PowiekszanieTablicy();return nothing;};
-            nameV="powiekszanie tablicy";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.PowiekszanieTablicy();return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Powiekszenie Tablicy";
             break;
         case 18:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){a.Insert(t1,i1,i1);return nothing;};
-            nameV="Insert (3 arguments)";
+            fun.func=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){try{a.Insert(t1,i1,i1);return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="Insert(3 arguments)";
             break;
         default:
-            f=[](AiSD::DynamicArray& a,T t1,size_t i1,size_t i2){return nothing;};
+            throw "Invalid number of NO Function";
     }
 
-    return f;
+    return fun;
 }
 
-
-
-auto AiSD::DoFunction(DynamicArray& arr,int NO,T t,size_t i,size_t i2)
+AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DynamicArray& arr,short int NO,T t,size_t i,size_t i2)
 {
+    try{
+        FunctionInfo f = FunctionByNO(NO);
+        //podstawowe informacjedo logow
+        std::stringstream ss;
+        ss<<"Operation "<<f.type<<" ("<<NO<<")"<<" for arguments "<<t<<" & "<<i<<" & "<<i2<<std::endl<<"Array content: ";
+        for(size_t i=0;i<arr.size;++i){
+            ss<<arr.tablica[i]<<":";
+        }
+        ss<<"Capcity/Size "<<arr.capacity<<"/"<<arr.size;
+        TestingFunctionLogger.Log(ss.str());
+        ss.str("");//kasowanie dotychczasowej zawartosci
 
-    auto f = FunctionByNO(NO);
+        //odliczanie czasu i wykonywanie funkcji
+        arg_t v;
+        auto startTime=clockH::now();
+        try
+        {
+            v=f.func(arr,t,i,i2);
+        }catch(const char* msg)
+        {
+            std::cout<<msg<<std::endl;
+        }
+        auto endTime=clockH::now();
+        std::string time=timeTook(startTime,endTime);
 
-    //podstawowe informacjedo logow
-    std::stringstream ss;
-    ss<<"Operation "<<nameV<<" ("<<NO<<")"<<" for arguments "<<t<<" & "<<i<<" & "<<i2<<std::endl<<"Array content: ";
-    for(size_t i=0;i<arr.size;++i){
-        ss<<arr.tablica[i]<<":";
+        //informacja o sukcesie
+        ss<<"Success. Took "<<time<<" microseconds; returned ";
+
+        if (std::holds_alternative<bool>(v))
+            ss<<std::get<bool>(v);
+        else if(std::holds_alternative<size_t>(v))
+            ss<<std::get<size_t>(v);
+        else ss<<"Void";
+
+        TestingFunctionLogger.Log(ss.str());
+        return v;
+    }catch (const char* msg)
+    {
+        throw msg;
     }
-    ss<<"Capcity/Size "<<arr.capacity<<"/"<<arr.size;
-    Log(LogFileName,ss.str());
-    ss.str("");//kasowanie dotychczasowej zawartosci
-
-    //odliczanie czasu i wykonywanie funkcji
-    auto startTime=_setNow();
-    auto v=f(arr,t,i,i2);
-    auto endTime=_setNow();
-    std::string time=_timeTook(startTime,endTime);
-
-    //informacja o sukcesie
-    ss<<"Success. Took "<<time<<" microseconds; returned ";
-
-    if (std::holds_alternative<bool>(v))
-        ss<<std::get<bool>(v);
-    else if(std::holds_alternative<size_t>(v))
-        ss<<std::get<size_t>(v);
-    else ss<<"Void";
-
-    Log(LogFileName,ss.str());
-    return v;
 }
 
 const int NOFunctions= 18;
@@ -174,9 +167,10 @@ const int NOFunctions= 18;
 
 std::random_device rd;
 
-void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
+void AiSD::DistortionsSimulation::test()
 {
-    AiSD::Log(LogFileName,"-------------------------------------DistortionsSimulation");
+    DynamicArray* arr=pointer.get();
+    TestingFunctionLogger.Log("-------------------------------------DistortionsSimulation");
     std::mt19937 gen(rd());
 
     std::uniform_int_distribution<> dis1(-100, 1000);
@@ -189,14 +183,36 @@ void AiSD::DistortionsSimulation(DynamicArray& arr,int t)
         T b=dis1(gen);
         size_t c=dis1(gen);
         size_t d=dis2(gen);
-        DoFunction(arr,a,b,c,d);
+
+        try
+        {
+            DoFunction(*arr,a,b,c,d);
+        }catch(const char* msg)
+        {
+            std::cout<<msg<<std::endl;
+        }
     }
 }
-//DRUGA FUNKCJA TESTUJACA
-
-void AiSD::OverflowTable(DynamicArray& arr)
+void AiSD::DistortionsSimulation::doMultipleTimes(unsigned int times)
 {
-    AiSD::Log(LogFileName,"-------------------------------------OverflowTable");
+    std::cout<<std::endl<<"Random operations"<<std::endl<<"Please wait. Testing is in progress..."<<std::endl;
+    for(unsigned int i=0;i<times;i++)
+    {
+        //TYMCZASOWE WYCISZANIE KONSOLI
+        std::streambuf *old = std::cout.rdbuf();
+        std::cout<<char(219);
+        std::cout.rdbuf(0);
+        test();
+        std::cout.rdbuf(old);
+        //Blad krytyczny scrashuje program
+    }std::cout<<std::endl<<"No problems found"<<std::endl;
+    std::cout<<std::endl;
+}
+//DRUGA FUNKCJA TESTUJACA
+void AiSD::OverflowTable::test()
+{
+    DynamicArray* arr=pointer.get();
+    TestingFunctionLogger.Log("-------------------------------------OverflowTable");
     T arg1=0;
     size_t arg2=0;
 
@@ -204,112 +220,118 @@ void AiSD::OverflowTable(DynamicArray& arr)
     {
         auto f = FunctionByNO(NOI);
 
-        AiSD::Log(LogFileName,"Repeat "+nameV);
-        std::cout<<nameV;
+        TestingFunctionLogger.Log("Repeat "+f.type);
+        std::cout<<f.type;
 
         //PESYMISTYCZNY SCENARIUSZ CZYLI NAJWIEKSZE LICZBY JAKIE MOGE WYKORZYSTAC
-        if(NOI==5||NOI==7){arg1=21474836472147483647;arg2=arr.size-1;}; //MAKSYMALNA WARTOSC T
-        auto startTime=_setNow();
-        for(size_t i=0;i<arr.capacity;++i)
-            f(arr,arg1,arg2,arg2);
-        auto endTime=_setNow();
+        if(NOI==5||NOI==7){arg1=std::numeric_limits<T>::max();arg2=arr->size-1;}; //MAKSYMALNA WARTOSC T
+        auto startTime=clockH::now();
+        for(size_t i=0;i<arr->capacity;++i)
+            f.func(*arr,arg1,arg2,arg2);
+        auto endTime=clockH::now();
 
         //TESTOWANIE PRZEKROCZENIA TABLICY!!!
         for(int i=0;i<10;i++)
-            f(arr,0,0,0);
+        {
+            try
+            {
+                f.func(*arr,0,0,0);
+            }catch(const char* msg)
+            {
+                std::cout<<"Unexpected error. "<<msg<<". Problem was ignored"<<std::endl;
+            }
 
-        std::string time=_timeTook(startTime,endTime);
+        }
 
-        std::cout<<" "<<arr.capacity<<" times took "<<time<<" microseconds"<<std::endl;
+        std::string time=timeTook(startTime,endTime);
+
+        std::cout<<" "<<arr->capacity<<" times took "<<time<<" microseconds"<<std::endl;
         if(NOI==6)std::cout<<"Tablica zostala przepelniona i powiekszono jej rozmiar!"<<std::endl;
     }
 }
-void AiSD::ClearLogTxt()
+
+template<typename G> G AiSD::Presentation::getNum()
 {
-    std::ofstream emptyFile;
-    emptyFile.open(LogFileName, std::ofstream::out | std::ofstream::trunc);
-    emptyFile.close();
+    std::string wejscie = "";
+    G num;
+    while (true)
+    {
+        getline(std::cin, wejscie);
+        std::stringstream myStream(wejscie);
+        if (myStream >> num)
+            break;
+        std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
+    }
+    return num;
 }
 
-
-void AiSD::Presentation(DynamicArray& arr)
+void AiSD::Presentation::test()
 {
-    AiSD::Log(LogFileName,"-------------------------------------Presentation");
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    DynamicArray* arr=pointer.get();
+    TestingFunctionLogger.Log("-------------------------------------Presentation");
     while(true)
     {
-        std::string wejscie = "";
-
+        SetConsoleTextAttribute(hConsole, 10);
         std::cout<<"Choose operation: "<<std::endl;
-        std::cout<<"0- Print"<<std::endl<<"1- Save"<<std::endl<<"2- Is Empty"<<std::endl<<"3- Is Full"<<std::endl<<"4- Space"<<std::endl<<"5- Push Back (1 argument)"<<std::endl<<"6- Pop Back"<<std::endl<<"7- Push Front (1 argument)"<<std::endl<<"8- Pop Front"<<std::endl<<"9- Insert (2 arguments)"<<std::endl<<"10- Erase (1 argument)"<<std::endl<<"11- Clear"<<std::endl<<"12- Search (1 argument)"<<std::endl<<"13- Erase First (1 argument)"<<std::endl<<"14- Erase All (1 argument)"<<std::endl<<"15- Erase (2 arguments)"<<std::endl<<"16- Read"<<std::endl<<"17- Powiekszenie tablicy"<<std::endl<<"18- Koniec programu"<<std::endl<<"Your opeartion: ";
-        int userInput1=0;
-        while (true)
-        {
-            getline(std::cin, wejscie);
-            std::stringstream myStream(wejscie);
-            if (myStream >> userInput1)
-                break;
-            std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
-        }
+        SetConsoleTextAttribute(hConsole, 9);
+        for(int i=0;i<NOFunctions;i++)//Wypisanie funkcji
+            std::cout<<i<<"- "<<FunctionByNO(i).type<<std::endl;
+        std::cout<<NOFunctions<<"- Exit"<<std::endl;
+        SetConsoleTextAttribute(hConsole, 10);
+        std::cout<<"Your opeartion: ";
+        int userInput1=getNum<int>();
 
-        bool g1=false;//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument
-        bool g2=false;
-        bool g3=false;
-        if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14)g1=true; //T         (t1)
-        if(userInput1==9||userInput1==10||userInput1==15)g2=true;               //size_t    (i1)
-        if(userInput1==15)g3=true;
-        if(userInput1==18)return;
+        bool g[3]={false,false,false};//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument, g3 nalezy wczytac trzeci argument
+        if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14)g[0]=true;       //T         (t1)
+        if(userInput1==9||userInput1==10||userInput1==15)g[1]=true;                                                     //size_t    (i1)
+        if(userInput1==15)g[2]=true;                                                                                    //size_t    (i2)
+        if(userInput1==18)return;                                                                                       //EXIT
+
         T a1=0;
         size_t a2=0;
         size_t a3=0;
 
-        if(g1)
+        if(g[0])
         {
             std::cout<<"T a1=";
-            while (true)
-            {
-                getline(std::cin, wejscie);
-                std::stringstream myStream(wejscie);
-                if (myStream >> a1)
-                    break;
-                std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
-            }
+            a1=getNum<T>();
         }
-        if(g2)
+        if(g[1])
         {
             std::cout<<"size_t a2=";
-            while (true)
-            {
-                getline(std::cin, wejscie);
-                std::stringstream myStream(wejscie);
-                if (myStream >> a2)
-                    break;
-                std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
-            }
+            a2=getNum<size_t>();
         }
-        if(g3)
+        if(g[2])
         {
             std::cout<<"size_t a3=";
-            while (true)
-            {
-                getline(std::cin, wejscie);
-                std::stringstream myStream(wejscie);
-                if (myStream >> a3)
-                    break;
-                std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
-            }
+            a3=getNum<size_t>();
         }
-        auto v=DoFunction(arr,userInput1,a1,a2,a3);
+        SetConsoleTextAttribute(hConsole, 12);
 
-        std::cout<<"Returned:";
-        if (std::holds_alternative<bool>(v))
-            std::cout<<std::get<bool>(v);
-        else if(std::holds_alternative<size_t>(v))
-            std::cout<<std::get<size_t>(v);
-        else std::cout<<"Void";
-        std::cout<<std::endl<<std::endl;
+        try{
+            arg_t v;
+            try
+            {
+                v=DoFunction(*arr,userInput1,a1,a2,a3);
+            }catch(const char* msg)
+            {
+                std::cout<<msg<<std::endl;
+                v=nothing;
+            }
+            std::cout<<"Returned:";
+            if (std::holds_alternative<bool>(v))
+                std::cout<<std::get<bool>(v);
+            else if(std::holds_alternative<size_t>(v))
+                std::cout<<std::get<size_t>(v);
+            else std::cout<<"Void";
+            std::cout<<std::endl;
+        }catch(const char* msg)
+        {
+            TestingFunctionLogger.Log("Unexpected error");
+            std::cout<<"Unexpected error"<<std::endl;
+        }
     }
-
-
 }
 
 #endif // TESTINGFUNCTION_CPP

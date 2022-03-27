@@ -4,7 +4,7 @@
 
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
-#define T long
+using T= long;
 
 #include <iostream>
 #include <fstream>
@@ -144,15 +144,14 @@ namespace AiSD{
         protected:
 
         private:
-            friend auto DoFunction(DynamicArray&,int,T,size_t,size_t);
-            friend void OverflowTable(DynamicArray&);
+            friend class ClassTest;
+            friend class OverflowTable;
 
             T wczytajLiczbeCalkowita();
             size_t capacity;
             size_t size;
             const std::string nazwaPliku="ZawartoscTablicy.txt";
             T *tablica;
-
 
     };
 }

@@ -65,6 +65,8 @@ public:
     void InsertBefore(const T& t, size_t i);
     void DeleteAfter(size_t i);
     void DeleteBefore(size_t i);
+    DLLNode* operator [](size_t i);
+
 };
 
 }

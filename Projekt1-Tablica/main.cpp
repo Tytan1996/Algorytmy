@@ -3,7 +3,7 @@
 //Damian Szopinski 185394
 
 #include <iostream>
-#include "DynamicArray.h"
+//#include "DynamicArray.h"
 #include "TestingFunction.hpp"
 
 int main()

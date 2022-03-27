@@ -345,3 +345,15 @@ void AiSD::DLL::DeleteBefore(size_t i){
     iloscElementow--;
     std::cout<<"Dodano element "<<t<<" na "<<i<<"-tej Pozycji"<<std::endl;
 }
+AiSD::DLLNode *AiSD::DLL::operator [](size_t i){
+    if(IsEmpty()==true){
+        std::cout<<"Lista jest pusta!"<<std::endl;
+    }
+    DLLNode *wskaznik=new DLLNode;
+    for(size_t j=0;j<=i;++j){
+        lista=lista->pobierzWskaznikNaKolejnyElement();
+    }
+    wskaznik=lista;
+    lista=head;
+    return wskaznik;
+}

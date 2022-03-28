@@ -72,8 +72,9 @@ void AiSD::DLL::Print(){
         return;
     }
     while(lista!=NULL){
-        std::cout<<lista->pokazElement().name<<" ";
-        std::cout<<lista->pokazElement().grade<<std::endl;
+        std::cout<<"{name=\"";
+        std::cout<<lista->pokazElement().name<<"\", grade=";
+        std::cout<<lista->pokazElement().grade<<"}"<<std::endl;
         lista=lista->pobierzWskaznikNaKolejnyElement();
     }
     lista=head;

@@ -117,24 +117,37 @@ AiSD::ClassTest::FunctionInfo AiSD::ClassTest::FunctionByNO(short int NO)
 
 AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,size_t i)
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
     try{
         FunctionInfo f = FunctionByNO(NO);
         //podstawowe informacjedo logow
         std::stringstream ss;
-        ss<<"Operation "<<f.type<<" ("<<NO<<")"<<" for arguments "<<t.name<<":"<<t.grade<<" & "<<i<<std::endl<<"Array content: ";
-
-        while(arr.lista!=NULL)
-        {
-            ss<<arr.lista->pokazElement().name<<" ";
-            ss<<arr.lista->pokazElement().grade<<";";
-            arr.lista=arr.lista->pobierzWskaznikNaKolejnyElement();
-        }arr.lista=arr.head;
-
-
-
-
-
+        ss<<"Operation "<<f.type<<" ("<<NO<<")"<<" for arguments T={name=\""<<t.name<<"\",grade="<<t.grade<<"} and size_t="<<i<<std::endl<<"Array content: ";
+        SetConsoleTextAttribute(hConsole, 5);
+        std::cout<<std::endl<<"Operation ";
+        SetConsoleTextAttribute(hConsole, 4);
+        std::cout<<f.type;
+        SetConsoleTextAttribute(hConsole, 5);
+        std::cout<<" ("<<NO<<") for arguments ";
+        SetConsoleTextAttribute(hConsole, 4);
+        std::cout<<"T={name=\""<<t.name<<"\",grade="<<t.grade<<"} ; size_t="<<i<<std::endl;
+        SetConsoleTextAttribute(hConsole, 5);
+        std::cout<<"arr.Print():"<<std::endl;
+        SetConsoleTextAttribute(hConsole, 3);
+        arr.Print();
+        //while(arr.lista!=NULL)
+        //{
+            //std::cout<<"name=\""<<arr.lista->pokazElement().name<<", grade="<<arr.lista->pokazElement().grade<<std::endl;
+        //    ss<<arr.lista->pokazElement().name<<" ";
+        //    ss<<arr.lista->pokazElement().grade<<";";
+        //    arr.lista=arr.lista->pobierzWskaznikNaKolejnyElement();
+        //}arr.lista=arr.head;
+        SetConsoleTextAttribute(hConsole, 5);
+        std::cout<<"SIZE OF ARRAY: "<<arr.Size()<<std::endl<<"arr."<<f.type<<"()"<<std::endl;
         ss<<"Size "<<arr.Size();
+        SetConsoleTextAttribute(hConsole, 7);
+
         TestingFunctionLogger.Log(ss.str());
         ss.str("");//kasowanie dotychczasowej zawartosci
 
@@ -152,14 +165,27 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
         std::string time=timeTook(startTime,endTime);
 
         //informacja o sukcesie
+        SetConsoleTextAttribute(hConsole, 10);
+        std::cout<<"Success"<<std::endl<<"Operation took "<<time<<" microsecounds"<<std::endl;
         ss<<"Success. Took "<<time<<" microseconds; returned ";
 
         if (std::holds_alternative<bool>(v))
+        {
+            std::cout<<"RETURN: "<<std::get<bool>(v)<<std::endl;
             ss<<std::get<bool>(v);
+        }
         else if(std::holds_alternative<size_t>(v))
+        {
+            std::cout<<"RETURN: "<<std::get<size_t>(v)<<std::endl;
             ss<<std::get<size_t>(v);
-        else ss<<"Void";
+        }
+        else
+        {
+            std::cout<<"RETURN: Void"<<std::endl;
+            ss<<"Void";
+        }
 
+        SetConsoleTextAttribute(hConsole, 7);
         TestingFunctionLogger.Log(ss.str());
         return v;
     }catch (const char* msg)
@@ -189,6 +215,7 @@ std::string randomString()
 
 void AiSD::DistortionsSimulation::test()
 {
+
     DLL* arr=pointer.get();
     TestingFunctionLogger.Log("-------------------------------------DistortionsSimulation");
     std::mt19937 gen(rd());

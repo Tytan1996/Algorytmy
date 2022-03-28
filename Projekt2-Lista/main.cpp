@@ -4,8 +4,10 @@
 #include "MenadzerUzytkownika.h"
 #include "TestingFunction.hpp"
 
+#include <cstdlib>
 int main()
 {
+
 
     std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl<<std::endl;
     std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;

@@ -141,10 +141,9 @@ void AiSD::DLL::PopBack(){
     }
     lista=tail->pobierzWskaznikNaPoprzednyElement();
     lista->ustawWskaznikiNaKolejnyElement(nullptr);
+    tail=lista;
     lista=head;
-    std::cout<<"Za drugim razem po delete tmp, program sie crashuje z raportem (0xC0000374)"<<std::endl;
     delete tmp;
-    std::cout<<"Za drugim razem program sie scrashuje i nie pojawi sie ten komunikat!"<<std::endl;
     iloscElementow--;
     std::cout<<"Element zostal usuniety z konca"<<std::endl;
 }
@@ -177,12 +176,14 @@ size_t AiSD::DLL::Size(){
     return iloscElementow;
 }
 void AiSD::DLL::Clear(){
+    std::cout<<"Starting Clear"<<std::endl;
     while(lista!=NULL){
         AiSD::DLLNode *tmp=head;
         lista=lista->pobierzWskaznikNaKolejnyElement();
         delete tmp;
     }
     tail=head=lista=NULL;
+    std::cout<<"Ending Clear"<<std::endl;
 }
 bool AiSD::DLL::IsInList(const T& t){
     if(IsEmpty()==true){

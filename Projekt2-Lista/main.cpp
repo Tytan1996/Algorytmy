@@ -9,14 +9,14 @@ int main()
 
     std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl<<std::endl;
     std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;
-    {
-        AiSD::OverflowTable testing(5);
-        testing.test();
-    }
     //{
-    //    AiSD::DistortionsSimulation testing(1000);
-    //    testing.doMultipleTimes(20);
+    //    AiSD::OverflowTable testing(50);
+    //    testing.test();
     //}
+    {
+        AiSD::DistortionsSimulation testing(1000);
+        testing.doMultipleTimes(20);
+    }
     //{
         //AiSD::Presentation testing();
         //testing.test();

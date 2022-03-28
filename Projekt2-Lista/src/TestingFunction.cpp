@@ -173,6 +173,20 @@ const int NOFunctions= 17;
 
 std::random_device rd;
 
+//losowo wygenerowany string
+std::string randomString()
+{
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis1(0, 16);
+    std::uniform_int_distribution<> dis2(48, 146);
+    short int lenght=dis1(gen);
+    std::string act="";
+    for(short int i=0;i<lenght;i++)
+        act+=char(dis2(gen));
+    return act;
+}
+
+
 void AiSD::DistortionsSimulation::test()
 {
     DLL* arr=pointer.get();
@@ -186,7 +200,7 @@ void AiSD::DistortionsSimulation::test()
     for(int i=0;i<t;i++)
     {
         int a=dis2(gen);
-        T b={"",dis1(gen)};
+        T b={randomString(),dis1(gen)};
         size_t c=dis1(gen);
 
         try
@@ -206,7 +220,7 @@ void AiSD::DistortionsSimulation::doMultipleTimes(unsigned int times)
         //TYMCZASOWE WYCISZANIE KONSOLI
         std::streambuf *old = std::cout.rdbuf();
         std::cout<<char(219);
-        std::cout<<times<<"/"<<i<<std::endl;
+        std::cout<<"-------------"<<times<<"/"<<i<<std::endl;
         test();
         std::cout.rdbuf(0);
 
@@ -237,7 +251,7 @@ void AiSD::OverflowTable::test()
 
         for(size_t i=0;i<repeat;i++)
         {
-            std::cout<<i<<"/"<<repeat<<std::endl;
+            //std::cout<<i<<"/"<<repeat<<std::endl;
             try
             {
                 f.func(*arr,arg1,arg2);

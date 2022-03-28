@@ -181,6 +181,7 @@ void AiSD::DLL::Clear(){
         AiSD::DLLNode *tmp=head;
         lista=lista->pobierzWskaznikNaKolejnyElement();
         delete tmp;
+        head=lista;
     }
     tail=head=lista=NULL;
     std::cout<<"Ending Clear"<<std::endl;
@@ -197,7 +198,7 @@ bool AiSD::DLL::IsInList(const T& t){
     while(lista->pokazElement().name!=t.name){
         if(lista->pobierzWskaznikNaKolejnyElement()!=nullptr){
             lista=lista->pobierzWskaznikNaKolejnyElement();
-            if(lista->pokazElement().name==t.name){
+            if(lista->pokazElement().name==t.name &&lista->pokazElement().grade==t.grade){
                 std::cout<<"Zneleziono element!"<<std::endl;
                 lista=head;
                 return true;
@@ -215,7 +216,7 @@ AiSD::DLLNode* AiSD::DLL::Find(const T &t){
     DLLNode *wskaznik;
 
     while(lista->pobierzWskaznikNaKolejnyElement()!=nullptr){
-        if(lista->pokazElement().name==t.name){
+        if(lista->pokazElement().name==t.name &&lista->pokazElement().grade==t.grade){
             return lista;
         }
         lista=lista->pobierzWskaznikNaKolejnyElement();

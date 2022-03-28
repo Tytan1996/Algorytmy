@@ -3,11 +3,9 @@ AiSD::DLLNode::DLLNode(){
     next=nullptr;
     prev=nullptr;
 }
-AiSD::DLLNode::DLLNode(const DLLNode* n,const DLLNode* p, const short& t){
-    //next=new DLLNode;
-    //prev=new DLLNode;
-   // next=n;
-   // prev=p;
+AiSD::DLLNode::DLLNode(DLLNode* n,DLLNode* p, const short& t){
+    next=n;
+    prev=p;
     data=t;
 }
 AiSD::DLL::DLL(){

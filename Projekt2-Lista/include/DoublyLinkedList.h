@@ -4,7 +4,7 @@
 
 
 #include <iostream>
-//#include <cstddef>
+
 
 
 namespace AiSD{
@@ -24,7 +24,7 @@ class DLLNode{
 
 public:
     DLLNode();
-    DLLNode(const DLLNode* n,const DLLNode* p, const T& t);
+    DLLNode(DLLNode* n, DLLNode* p, const T& t);
     void ustawElement(T nowaWartosc);
     T pokazElement();
     void ustawWskaznikiNaKolejnyElement(DLLNode *kolejnyElement);

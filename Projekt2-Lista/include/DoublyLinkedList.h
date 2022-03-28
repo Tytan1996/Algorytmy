@@ -68,6 +68,8 @@ public:
     void DeleteBefore(size_t i);
     DLLNode* operator [](size_t i);
 
+    friend class ClassTest;
+    friend class OverflowTable;
 };
 
 }

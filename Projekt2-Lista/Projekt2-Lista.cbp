@@ -35,10 +35,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/DoublyLinkedList.h" />
+		<Unit filename="include/Logger.hpp" />
 		<Unit filename="include/MenadzerUzytkownika.h" />
+		<Unit filename="include/TestingFunction.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/DoublyLinkedList.cpp" />
+		<Unit filename="src/Logger.cpp" />
 		<Unit filename="src/MenadzerUzytkownika.cpp" />
+		<Unit filename="src/TestingFunction.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -142,7 +142,9 @@ void AiSD::DLL::PopBack(){
     lista=tail->pobierzWskaznikNaPoprzednyElement();
     lista->ustawWskaznikiNaKolejnyElement(nullptr);
     lista=head;
+    std::cout<<"Za drugim razem po delete tmp, program sie crashuje z raportem (0xC0000374)"<<std::endl;
     delete tmp;
+    std::cout<<"Za drugim razem program sie scrashuje i nie pojawi sie ten komunikat!"<<std::endl;
     iloscElementow--;
     std::cout<<"Element zostal usuniety z konca"<<std::endl;
 }

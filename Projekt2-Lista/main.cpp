@@ -9,12 +9,12 @@ int main()
 
     std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl<<std::endl;
     std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;
-    //{
-    //    AiSD::OverflowTable testing(50);
-    //    testing.test();
-    //}
+    /*{
+        AiSD::OverflowTable testing(50);
+        testing.test();
+    }*/
     {
-        AiSD::DistortionsSimulation testing(1000);
+        AiSD::DistortionsSimulation testing(100);
         testing.doMultipleTimes(20);
     }
     //{
@@ -40,7 +40,7 @@ int main()
             menadzerUzytkownika.dodajElementNaPoczatku();
             break;
         case 2:
-            menadzerUzytkownika.dodajElementNaPoczatku();
+            menadzerUzytkownika.dodajElementNaKoncu();
             break;
         case 3:
             menadzerUzytkownika.usunElementZPoczatku();

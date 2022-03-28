@@ -16,13 +16,15 @@ AiSD::DLL::DLL(){
 }
 AiSD::DLL::~DLL(){
     for(size_t i=0;i<iloscElementow;++i){
-        DLLNode *tmp=lista;
+        DLLNode *tmp=head;
         lista=lista->pobierzWskaznikNaKolejnyElement();
         delete tmp;
+        head=lista;
     }
     delete lista;
     delete head;
     delete tail;
+    iloscElementow=0;
 }
 void AiSD::DLLNode::ustawElement(T nowaWartosc){
     data=nowaWartosc;
@@ -184,6 +186,7 @@ void AiSD::DLL::Clear(){
         head=lista;
     }
     tail=head=lista=NULL;
+    iloscElementow=0;
     std::cout<<"Ending Clear"<<std::endl;
 }
 bool AiSD::DLL::IsInList(const T& t){

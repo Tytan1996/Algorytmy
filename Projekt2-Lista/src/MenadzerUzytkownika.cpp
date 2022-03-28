@@ -31,9 +31,9 @@ int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg(){
 }
 
 
-int AiSD::MenadzerUzytkownika::wczytajLiczbe(){
+unsigned AiSD::MenadzerUzytkownika::wczytajLiczbe(){
     std::string wejscie = "";
-    int liczba = 0;
+    unsigned liczba = 0;
     while (true)
     {
         getline(std::cin, wejscie);
@@ -46,15 +46,31 @@ int AiSD::MenadzerUzytkownika::wczytajLiczbe(){
         system("cls");
     return liczba;
 }
+std::string AiSD::MenadzerUzytkownika::wczytajString(){
+    std::string wejscie = "";
+    getline(std::cin, wejscie);
+    return wejscie;
+}
+
 void AiSD::MenadzerUzytkownika::dodajElementNaPoczatku(){
+    Record nowyRecod;
     std::cout<<"Dodaj liczbe: "<<std::endl;
-    short element=wczytajLiczbe();
-    lista.PushFront(element);
+    unsigned element=wczytajLiczbe();
+    std::cout<<"Dodaj nazwe: "<<std::endl;
+    std::string nazwa=wczytajString();
+    nowyRecod.grade=element;
+    nowyRecod.name=nazwa;
+    lista.PushFront(nowyRecod);
 }
 void AiSD::MenadzerUzytkownika::dodajElementNaKoncu(){
+    Record nowyRecod;
     std::cout<<"Dodaj liczbe: "<<std::endl;
-    short element=wczytajLiczbe();
-    lista.PushFront(element);
+    unsigned element=wczytajLiczbe();
+    std::cout<<"Dodaj nazwe: "<<std::endl;
+    std::string nazwa=wczytajString();
+    nowyRecod.grade=element;
+    nowyRecod.name=nazwa;
+    lista.PushBack(nowyRecod);
 }
 void AiSD::MenadzerUzytkownika::usunElementZPoczatku(){
     lista.PopFront();
@@ -63,10 +79,10 @@ void AiSD::MenadzerUzytkownika::usunElementZKoncu(){
     lista.PopBack();
 }
 void AiSD::MenadzerUzytkownika::pokazElementZPoczatku(){
-    std::cout<<"Poczatek na poczatku listy: "<<lista.Front()<<std::endl;
+    std::cout<<"Poczatek na poczatku listy: "<<lista.Front().name<<","<<lista.Front().grade<<std::endl;
 }
 void AiSD::MenadzerUzytkownika::pokazElementZKoncu(){
-    std::cout<<"Poczatek na koncu listy: "<<lista.Back();
+    std::cout<<"Poczatek na koncu listy: "<<lista.Back().name;
 }
 void AiSD::MenadzerUzytkownika::pokazListe(){
     lista.Print();
@@ -89,31 +105,55 @@ void AiSD::MenadzerUzytkownika::usunListe(){
 }
 void AiSD::MenadzerUzytkownika::pokazCzyWezelJestNaLisce(){
     std::cout<<"Podaj wartosc szukanie wezla: ";
-    short wartosc=wczytajLiczbe();
-    if(lista.IsInList(wartosc)==true){
+    Record nowyRecod;
+    std::cout<<"Dodaj liczbe: "<<std::endl;
+    unsigned element=wczytajLiczbe();
+    std::cout<<"Dodaj nazwe: "<<std::endl;
+    std::string nazwa=wczytajString();
+    nowyRecod.grade=element;
+    nowyRecod.name=nazwa;
+    if(lista.IsInList(nowyRecod)==true){
         std::cout<<"Jest wezel na liscie!"<<std::endl;
     }else{
         std::cout<<"Nie ma wezla na liscie!"<<std::endl;
     }
 }
 void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI(){
-    short element=wczytajLiczbe();
+    Record nowyRecod;
+    std::cout<<"Dodaj liczbe: "<<std::endl;
+    unsigned element=wczytajLiczbe();
+    std::cout<<"Dodaj nazwe: "<<std::endl;
+    std::string nazwa=wczytajString();
+    nowyRecod.grade=element;
+    nowyRecod.name=nazwa;
     size_t i=wczytajLiczbe();
-    lista.Insert(element, i);
+    lista.Insert(nowyRecod, i);
 }
 void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI(){
     size_t i=wczytajLiczbe();
     lista.Delete( i);
 }
 void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI(){
-    short element=wczytajLiczbe();
+    Record nowyRecod;
+    std::cout<<"Dodaj liczbe: "<<std::endl;
+    unsigned element=wczytajLiczbe();
+    std::cout<<"Dodaj nazwe: "<<std::endl;
+    std::string nazwa=wczytajString();
+    nowyRecod.grade=element;
+    nowyRecod.name=nazwa;
     size_t i=wczytajLiczbe();
-    lista.InsertBefore(element, i);
+    lista.InsertBefore(nowyRecod, i);
 }
 void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI(){
-    short element=wczytajLiczbe();
+    Record nowyRecod;
+    std::cout<<"Dodaj liczbe: "<<std::endl;
+    unsigned element=wczytajLiczbe();
+    std::cout<<"Dodaj nazwe: "<<std::endl;
+    std::string nazwa=wczytajString();
+    nowyRecod.grade=element;
+    nowyRecod.name=nazwa;
     size_t i=wczytajLiczbe();
-    lista.InsertAfter(element, i);
+    lista.InsertAfter(nowyRecod, i);
 }
 void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI(){
     size_t i=wczytajLiczbe();

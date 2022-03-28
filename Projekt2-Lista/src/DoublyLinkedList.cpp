@@ -70,7 +70,7 @@ void AiSD::DLL::Print(){
         return;
     }
     while(lista!=NULL){
-        std::cout<<lista->pokazElement().name<<std::endl;
+        std::cout<<lista->pokazElement().name<<" ";
         std::cout<<lista->pokazElement().grade<<std::endl;
         lista=lista->pobierzWskaznikNaKolejnyElement();
     }
@@ -84,7 +84,7 @@ void AiSD::DLL::Print1(){
     }
     lista=tail;
     while(lista!=NULL){
-        std::cout<<lista->pokazElement().name<<std::endl;
+        std::cout<<lista->pokazElement().name<<" ";
         std::cout<<lista->pokazElement().grade<<std::endl;
         lista=lista->pobierzWskaznikNaPoprzednyElement();
     }

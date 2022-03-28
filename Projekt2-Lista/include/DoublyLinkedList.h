@@ -15,8 +15,8 @@ struct Record{
 
 class DLLNode{
 
-    //using  T=Record;
-    using T=short;
+    using  T=Record;
+    //using T=short;
     T data;
     DLLNode *next;
     DLLNode *prev;
@@ -34,8 +34,9 @@ public:
 };
 class DLL{
 
+    using  T=Record;
     size_t iloscElementow=0;
-    using T=short;
+    //using T=short;
     T t;
     DLLNode *head;
     DLLNode *tail;

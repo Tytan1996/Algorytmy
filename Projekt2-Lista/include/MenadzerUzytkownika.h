@@ -9,7 +9,8 @@
 
 namespace AiSD{
     class MenadzerUzytkownika{
-        int wczytajLiczbe();
+        unsigned wczytajLiczbe();
+        std::string wczytajString();
         AiSD::DLL lista;
 
     public:

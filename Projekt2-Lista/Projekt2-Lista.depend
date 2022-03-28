@@ -21,17 +21,17 @@
 	<iostream>
 	"MenadzerUzytkownika.h"
 
-1648223391 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+1648462814 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
 	<iostream>
 	<sstream>
 	"DoublyLinkedList.h"
 
-1648460866 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\doublylinkedlist.h
+1648463061 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\doublylinkedlist.h
 	<iostream>
 
-1648409788 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648463519 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
-1648223391 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+1648463914 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 

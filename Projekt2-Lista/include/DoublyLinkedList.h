@@ -4,7 +4,7 @@
 
 
 #include <iostream>
-//#include <cstddef>
+
 
 
 namespace AiSD{
@@ -24,7 +24,7 @@ class DLLNode{
 
 public:
     DLLNode();
-    DLLNode(const DLLNode* n,const DLLNode* p, const T& t);
+    DLLNode(DLLNode* n, DLLNode* p, const T& t);
     void ustawElement(T nowaWartosc);
     T pokazElement();
     void ustawWskaznikiNaKolejnyElement(DLLNode *kolejnyElement);
@@ -44,6 +44,7 @@ class DLL{
 
 public:
     DLL ();
+    ~DLL ();
     void PushFront(const T& el);
     void PopFront();
     void PushBack(const T& el);
@@ -64,6 +65,8 @@ public:
     void InsertBefore(const T& t, size_t i);
     void DeleteAfter(size_t i);
     void DeleteBefore(size_t i);
+    DLLNode* operator [](size_t i);
+
 };
 
 }

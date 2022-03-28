@@ -3,17 +3,25 @@ AiSD::DLLNode::DLLNode(){
     next=nullptr;
     prev=nullptr;
 }
-AiSD::DLLNode::DLLNode(const DLLNode* n,const DLLNode* p, const short& t){
-    //next=new DLLNode;
-    //prev=new DLLNode;
-   // next=n;
-   // prev=p;
+AiSD::DLLNode::DLLNode(DLLNode* n,DLLNode* p, const short& t){
+    next=n;
+    prev=p;
     data=t;
 }
 AiSD::DLL::DLL(){
     lista=nullptr;
     head=nullptr;
     tail=nullptr;
+}
+AiSD::DLL::~DLL(){
+    for(size_t i=0;i<iloscElementow;++i){
+        DLLNode *tmp=lista;
+        lista=lista->pobierzWskaznikNaKolejnyElement();
+        delete tmp;
+    }
+    delete lista;
+    delete head;
+    delete tail;
 }
 void AiSD::DLLNode::ustawElement(T nowaWartosc){
     data=nowaWartosc;
@@ -334,4 +342,16 @@ void AiSD::DLL::DeleteBefore(size_t i){
     lista=head;
     iloscElementow--;
     std::cout<<"Dodano element "<<t<<" na "<<i<<"-tej Pozycji"<<std::endl;
+}
+AiSD::DLLNode *AiSD::DLL::operator [](size_t i){
+    if(IsEmpty()==true){
+        std::cout<<"Lista jest pusta!"<<std::endl;
+    }
+    DLLNode *wskaznik=new DLLNode;
+    for(size_t j=0;j<=i;++j){
+        lista=lista->pobierzWskaznikNaKolejnyElement();
+    }
+    wskaznik=lista;
+    lista=head;
+    return wskaznik;
 }

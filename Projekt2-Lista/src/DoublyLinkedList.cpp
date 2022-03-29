@@ -88,12 +88,12 @@ void AiSD::DLL::Print1(){
         std::cout<<"Lista jest pusta"<<std::endl;
         return;
     }
-    std::cout<<"Jestem przed lista=tail"<<std::endl;
-    std::cout<<"Jestem po lista=tail"<<std::endl;
-    while(lista!=nullptr){
-        std::cout<<"Jestem pokazuje element:"<<std::endl;
-        std::cout<<lista->pokazElement().name<<" ";
-        std::cout<<lista->pokazElement().grade<<std::endl;
+
+    lista=tail;
+    while(lista!=NULL){
+            std::cout<<"{name=\"";
+        std::cout<<lista->pokazElement().name<<"\", grade=";
+        std::cout<<lista->pokazElement().grade<<"}"<<std::endl;
         lista=lista->pobierzWskaznikNaPoprzednyElement();
         std::cout<<"Koniec jednego elementu"<<std::endl;
     }

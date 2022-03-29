@@ -7,6 +7,7 @@
 
 
 
+
 namespace AiSD{
 struct Record{
     std::string name;
@@ -67,6 +68,8 @@ public:
     void DeleteAfter(size_t i);
     void DeleteBefore(size_t i);
     DLLNode* operator [](size_t i);
+    void SaveCSV(std::string src);
+    void LoadCSV(std::string src);
 
     friend class ClassTest;
     friend class OverflowTable;

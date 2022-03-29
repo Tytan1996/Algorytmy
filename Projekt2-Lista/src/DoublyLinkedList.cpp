@@ -384,3 +384,58 @@ AiSD::DLLNode *AiSD::DLL::operator [](size_t i){
     lista=head;
     return wskaznik;
 }
+
+#include <fstream>
+#include <string>
+#include <cstdlib>
+
+void AiSD::DLL::SaveCSV(std::string src)
+{
+    std::ofstream file;
+    file.open(src+".csv",std::ifstream::trunc);
+
+    lista=head;
+    while(lista!=nullptr)
+    {
+        std::cout<<"\""<<lista->pokazElement().name<<"\";"<<lista->pokazElement().grade<<std::endl;
+        file<<"\""<<lista->pokazElement().name<<"\";"<<lista->pokazElement().grade<<std::endl;
+        lista=lista->pobierzWskaznikNaKolejnyElement();
+    }
+    lista=head;
+    file.close();
+}
+void AiSD::DLL::LoadCSV(std::string src)
+{
+    Clear();
+    std::ifstream file;
+    file.open(src+".csv");
+    std::string line;
+    if (file.is_open())
+    {
+        while ( getline (file,line) )
+        {
+            if(line!="")
+            {
+                for(int i=1;i<line.size();i++)//bo pierwszy jest zawsze "
+                {
+                    if(line[i]=='"')
+                    {
+                        if(line.size()>=i+1)
+                        {
+                            if(line[i+1]==';')
+                            {
+                                std::cout<<"T={name=\""<<line.substr(1,i-1)<<"\",";
+                                std::cout<<"grade="<<line.substr(i+2,line.size()-i-2)<<"}"<<std::endl;
+                                T act={line.substr(1,i-1),stoul(line.substr(i+2,line.size()-i-2))};
+                                PushBack(act);
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+        file.close();
+    }
+}

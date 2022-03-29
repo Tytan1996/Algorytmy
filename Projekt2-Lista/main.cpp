@@ -12,19 +12,19 @@ int main()
 {
 
 
-    std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl<<std::endl;
+    std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl;
     std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;
     {
-        //AiSD::OverflowTable testing(50);
-        //testing.test(debugMode);
+        AiSD::OverflowTable testing(50);
+        testing.test(debugMode);
     }
     {
         AiSD::DistortionsSimulation testing(100);
         testing.doMultipleTimes(20,debugMode);
     }
     {
-        //AiSD::Presentation testing;
-        //testing.test(debugMode);
+        AiSD::Presentation testing;
+        testing.test(debugMode);
     }
 
 

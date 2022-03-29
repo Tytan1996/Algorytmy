@@ -36,7 +36,7 @@
 1648464312 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-1648493811 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
+1648573849 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
@@ -47,10 +47,10 @@
 	<sstream>
 	"DoublyLinkedList.h"
 
-1648469392 c:\users\user\documents\github\algorytmy\projekt2-lista\include\doublylinkedlist.h
+1648573426 c:\users\user\documents\github\algorytmy\projekt2-lista\include\doublylinkedlist.h
 	<iostream>
 
-1648469864 c:\users\user\documents\github\algorytmy\projekt2-lista\include\testingfunction.hpp
+1648571336 c:\users\user\documents\github\algorytmy\projekt2-lista\include\testingfunction.hpp
 	"DoublyLinkedList.h"
 	<cstddef>
 	<sstream>
@@ -68,14 +68,17 @@
 	<string>
 	<fstream>
 
-1648331478 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\logger.cpp
+1648576416 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\logger.cpp
 	"Logger.hpp"
 
-1648494692 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\testingfunction.cpp
+1648575934 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
-1648494545 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648576790 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
+	<fstream>
+	<string>
+	<cstdlib>
 
 1648469357 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"

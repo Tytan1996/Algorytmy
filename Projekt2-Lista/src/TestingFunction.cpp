@@ -144,6 +144,18 @@ AiSD::ClassTest::FunctionInfo AiSD::ClassTest::FunctionByNO(short int NO)
             fun.size_t_needed=true;
             fun.T_needed=false;
             break;
+        case 18:
+            fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.SaveCSV("tabela");return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="SaveCSV";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
+            break;
+        case 19:
+            fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.LoadCSV("tabela");return nothing;}catch(const char* msg){throw msg;}};
+            fun.type="LoadCSV";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
+            break;
         default:
             throw "Invalid number of NO Function";
     }
@@ -238,7 +250,7 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
     }
 }
 
-const int NOFunctions= 17;
+const int NOFunctions= 20;
 //PIERWSZA FUNKCJA TESTUJACA
 
 std::random_device rd;
@@ -322,7 +334,6 @@ void AiSD::OverflowTable::test(bool debugMode)
 
     for(int NOI=0;NOI<4;NOI++)
     {
-        //std::cout<<"----------NOI FUNCTION:"<<NOI<<std::endl;
         auto f = FunctionByNO(NOI);
 
         TestingFunctionLogger.Log("Repeat "+f.type+" "+std::to_string(repeat)+" times");
@@ -337,10 +348,6 @@ void AiSD::OverflowTable::test(bool debugMode)
         {
             try
             {
-                //std::cout<<f.type<<std::endl;
-                //arg1.name=std::to_string(i);
-                //std::cout<<"size:"<<arr->Size()<<std::endl;
-                //arr->Print1();
                 f.func(*arr,arg1,arg2);
             }catch(const char* msg)
             {
@@ -390,34 +397,35 @@ void AiSD::Presentation::test(bool debugMode)
         SetConsoleTextAttribute(hConsole, 10);
         std::cout<<"Your opeartion: ";
         int userInput1=getNum<int>();
-
-        //bool g[3]={false,false,false};//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument, g3 nalezy wczytac trzeci argument
-        //if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14)g[0]=true;       //T         (t1)
-        //if(userInput1==9||userInput1==10||userInput1==15)g[1]=true;                                                     //size_t    (i1)
-        //if(userInput1==15)g[2]=true;                                                                                    //size_t    (i2)
-        if(userInput1==NOFunctions)return;                                                                                       //EXIT
+        if(userInput1==NOFunctions)return;      //EXIT
 
         T a1={"",0};
         size_t a2=0;
-        //size_t a3=0;
 
-        //if(g[0])
-        //if()
+
+
+        FunctionInfo info;//zbieranie informacji o funkcji
+        try
         {
-            std::cout<<"T a1=";
+            info = FunctionByNO(userInput1);
+        }catch(const char* msg)
+        {
+            std::cout<<msg<<std::endl;
+            return;
+        }
+
+        if(info.T_needed)
+        {
+            std::cout<<"T.name=";
+            getline(std::cin, a1.name);
+            std::cout<<"T.grade=";
             a1.grade=getNum<unsigned>();
         }
-        //if()
-        //if(g[1])
+        if(info.size_t_needed)
         {
             std::cout<<"size_t a2=";
             a2=getNum<size_t>();
         }
-        //if(g[2])
-        //{
-        //    std::cout<<"size_t a3=";
-        //    a3=getNum<size_t>();
-        //}
         SetConsoleTextAttribute(hConsole, 12);
 
         try{
@@ -428,6 +436,7 @@ void AiSD::Presentation::test(bool debugMode)
             }catch(const char* msg)
             {
                 std::cout<<msg<<std::endl;
+                TestingFunctionLogger.Log(msg);
                 v=nothing;
             }
             std::cout<<"Returned:";

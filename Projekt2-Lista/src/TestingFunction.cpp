@@ -38,75 +38,111 @@ AiSD::ClassTest::FunctionInfo AiSD::ClassTest::FunctionByNO(short int NO)
         case 0:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.PushFront(t1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="PushFront(1 argument)";
+            fun.size_t_needed=false;
+            fun.T_needed=true;
             break;
         case 1:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.PopFront();return nothing;}catch(const char* msg){throw msg;}};
             fun.type="PopFront";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 2:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.PushBack(t1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="PushBack(1 argument)";
+            fun.size_t_needed=false;
+            fun.T_needed=true;
             break;
         case 3:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.PopBack();return nothing;}catch(const char* msg){throw msg;}};
             fun.type="PopBack";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 4:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{return a.Front();}catch(const char* msg){throw msg;}};
             fun.type="Front";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 5:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{return a.Back();}catch(const char* msg){throw msg;}};
             fun.type="Back";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 6:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{return a.IsEmpty();}catch(const char* msg){throw msg;}};
             fun.type="IsEmpty";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 7:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{return a.Size();}catch(const char* msg){throw msg;}};
             fun.type="Size";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 8:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.Clear();return nothing;}catch(const char* msg){throw msg;}};
             fun.type="Clear";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 9:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.Print();return nothing;}catch(const char* msg){throw msg;}};
             fun.type="Print";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 10:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.Print1();return nothing;}catch(const char* msg){throw msg;}};
             fun.type="Print1";
+            fun.size_t_needed=false;
+            fun.T_needed=false;
             break;
         case 11:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{return a.IsInList(t1);}catch(const char* msg){throw msg;}};
             fun.type="IsInList(1 argument)";
+            fun.size_t_needed=false;
+            fun.T_needed=true;
             break;
         //DLLNode pominalem bo nie ma jak przekazac w konsoli DLLNode
         case 12:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.Insert(t1,i1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="Insert(2 arguments)";
+            fun.size_t_needed=true;
+            fun.T_needed=true;
             break;
         case 13:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.Delete(i1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="Delete(1 argument)";
+            fun.size_t_needed=true;
+            fun.T_needed=false;
             break;
         case 14:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.InsertAfter(t1,i1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="InsertAfter(2 arguments)";
+            fun.size_t_needed=true;
+            fun.T_needed=true;
             break;
         case 15:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.InsertBefore(t1,i1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="InsertBefore(2 arguments)";
+            fun.size_t_needed=true;
+            fun.T_needed=true;
             break;
         case 16:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.DeleteAfter(i1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="DeleteAfter(1 argument)";
+            fun.size_t_needed=true;
+            fun.T_needed=false;
             break;
         case 17:
             fun.func=[](AiSD::DLL& a,T t1,size_t i1){try{a.DeleteBefore(i1);return nothing;}catch(const char* msg){throw msg;}};
             fun.type="DeleteBefore(1 argument)";
+            fun.size_t_needed=true;
+            fun.T_needed=false;
             break;
         default:
             throw "Invalid number of NO Function";
@@ -274,12 +310,12 @@ void AiSD::DistortionsSimulation::doMultipleTimes(unsigned int times,bool debugM
 //DRUGA FUNKCJA TESTUJACA
 void AiSD::OverflowTable::test(bool debugMode)
 {
+    std::streambuf *old = std::cout.rdbuf();
     DLL* arr=pointer.get();
     TestingFunctionLogger.Log("-------------------------------------OverflowTable");
 
     T arg1={"",0};
-    for(unsigned int i=0;i<255;i++)
-        arg1.name+=char(255);
+
 
 
     size_t arg2=0;
@@ -291,6 +327,7 @@ void AiSD::OverflowTable::test(bool debugMode)
 
         TestingFunctionLogger.Log("Repeat "+f.type+" "+std::to_string(repeat)+" times");
         std::cout<<f.type;
+        std::cout.rdbuf(0);
 
         //PESYMISTYCZNY SCENARIUSZ CZYLI NAJWIEKSZE LICZBY JAKIE MOGE WYKORZYSTAC
         if(NOI==5||NOI==7){arg1.grade=std::numeric_limits<unsigned>::max();arg2=arr->Size()-1;}; //MAKSYMALNA WARTOSC T
@@ -307,16 +344,18 @@ void AiSD::OverflowTable::test(bool debugMode)
                 f.func(*arr,arg1,arg2);
             }catch(const char* msg)
             {
-                //TestingFunctionLogger.Log("Unexpected error. "+msg+". Problem was ignored");
-                //std::cout<<"Unexpected error. "<<msg<<". Problem was ignored"<<std::endl;
+                std::cout.rdbuf(old);
+                TestingFunctionLogger.Log("Unexpected error. "+std::string(msg)+". Problem was ignored");
+                std::cout<<"Unexpected error. "<<msg<<". Problem was ignored"<<std::endl;
             }
         }
+        std::cout.rdbuf(old);
         auto endTime=clockH::now();
         std::string time=timeTook(startTime,endTime);
 
         std::cout<<" "<<repeat<<" times took "<<time<<" microseconds"<<std::endl;
 
-        //TestingFunctionLogger.Log(std::to_string(repeat)+" times took "+std::to_string(time)+" microseconds");
+        TestingFunctionLogger.Log(std::to_string(repeat)+" times took "+time+" microseconds");
     }
 }
 
@@ -352,31 +391,33 @@ void AiSD::Presentation::test(bool debugMode)
         std::cout<<"Your opeartion: ";
         int userInput1=getNum<int>();
 
-        bool g[3]={false,false,false};//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument, g3 nalezy wczytac trzeci argument
-        if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14)g[0]=true;       //T         (t1)
-        if(userInput1==9||userInput1==10||userInput1==15)g[1]=true;                                                     //size_t    (i1)
-        if(userInput1==15)g[2]=true;                                                                                    //size_t    (i2)
-        if(userInput1==18)return;                                                                                       //EXIT
+        //bool g[3]={false,false,false};//g1 nalezy wczytac jeden argument, g2 nalezy wczytac drugi argument, g3 nalezy wczytac trzeci argument
+        //if(userInput1==5||userInput1==7||userInput1==9||userInput1==12||userInput1==13||userInput1==14)g[0]=true;       //T         (t1)
+        //if(userInput1==9||userInput1==10||userInput1==15)g[1]=true;                                                     //size_t    (i1)
+        //if(userInput1==15)g[2]=true;                                                                                    //size_t    (i2)
+        if(userInput1==NOFunctions)return;                                                                                       //EXIT
 
         T a1={"",0};
         size_t a2=0;
-        size_t a3=0;
+        //size_t a3=0;
 
-        if(g[0])
+        //if(g[0])
+        //if()
         {
             std::cout<<"T a1=";
             a1.grade=getNum<unsigned>();
         }
-        if(g[1])
+        //if()
+        //if(g[1])
         {
             std::cout<<"size_t a2=";
             a2=getNum<size_t>();
         }
-        if(g[2])
-        {
-            std::cout<<"size_t a3=";
-            a3=getNum<size_t>();
-        }
+        //if(g[2])
+        //{
+        //    std::cout<<"size_t a3=";
+        //    a3=getNum<size_t>();
+        //}
         SetConsoleTextAttribute(hConsole, 12);
 
         try{

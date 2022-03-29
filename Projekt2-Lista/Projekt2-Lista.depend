@@ -104,7 +104,8 @@
 	<memory>
 	"Logger.hpp"
 
-<<<<<<< HEAD
+1648556925 D
+
 1648554995 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
@@ -127,30 +128,14 @@
 	"DoublyLinkedList.h"
 
 1648553117 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\main.cpp
-=======
+
 1648556353 source:c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\main.cpp
->>>>>>> 93c9c7541778abadc87bff5d2d46fdb0f710be13
+
+1648556196 9c7541778abadc87bff5d2d46fdb0f710be13
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
 	<cstdlib>
-
-<<<<<<< HEAD
-1648552537 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\testingfunction.cpp
-	"TestingFunction.hpp"
-
-1648552537 c:\users\student\desktop\algo\algorytmy\projekt2-lista\include\testingfunction.hpp
-=======
-1648552187 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\menadzeruzytkownika.h
-	<iostream>
-	<sstream>
-	"DoublyLinkedList.h"
-
-1648552187 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\doublylinkedlist.h
-	<iostream>
-
-1648556925 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\testingfunction.hpp
->>>>>>> 93c9c7541778abadc87bff5d2d46fdb0f710be13
 	"DoublyLinkedList.h"
 	<cstddef>
 	<sstream>
@@ -164,8 +149,21 @@
 	<memory>
 	"Logger.hpp"
 
-<<<<<<< HEAD
-=======
+1648552537 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\testingfunction.cpp
+	"TestingFunction.hpp"
+
+1648552537 c:\users\student\desktop\algo\algorytmy\projekt2-lista\include\testingfunction.hpp
+
+1648552187 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\menadzeruzytkownika.h
+	<iostream>
+	<sstream>
+	"DoublyLinkedList.h"
+
+1648552187 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\doublylinkedlist.h
+	<iostream>
+
+1648556925 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\testingfunction.hpp
+
 1648552187 c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\include\logger.hpp
 	<string>
 	<fstream>
@@ -182,4 +180,47 @@
 1648556196 source:c:\users\student\desktop\algorytmy-main\algorytmy-main\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
->>>>>>> 93c9c7541778abadc87bff5d2d46fdb0f710be13
+1648558095 source:c:\users\student\documents\github\algorytmy\projekt2-lista\main.cpp
+	<iostream>
+	"MenadzerUzytkownika.h"
+	"TestingFunction.hpp"
+	<cstdlib>
+
+1648552187 c:\users\student\documents\github\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+	<iostream>
+	<sstream>
+	"DoublyLinkedList.h"
+
+1648552187 c:\users\student\documents\github\algorytmy\projekt2-lista\include\doublylinkedlist.h
+	<iostream>
+
+1648558310 c:\users\student\documents\github\algorytmy\projekt2-lista\include\testingfunction.hpp
+	"DoublyLinkedList.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+	<variant>
+	<limits>
+	<windows.h>
+	<memory>
+	"Logger.hpp"
+
+1648552187 c:\users\student\documents\github\algorytmy\projekt2-lista\include\logger.hpp
+	<string>
+	<fstream>
+
+1648552187 source:c:\users\student\documents\github\algorytmy\projekt2-lista\src\logger.cpp
+	"Logger.hpp"
+
+1648552187 source:c:\users\student\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+	"MenadzerUzytkownika.h"
+
+1648557723 source:c:\users\student\documents\github\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+	"DoublyLinkedList.h"
+
+1648557972 source:c:\users\student\documents\github\algorytmy\projekt2-lista\src\testingfunction.cpp
+	"TestingFunction.hpp"
+

@@ -46,6 +46,8 @@ namespace AiSD
         {
             std::string type;
             return_t func;
+            bool size_t_needed;
+            bool T_needed;
         };
         FunctionInfo FunctionByNO(short int NO);
 

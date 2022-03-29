@@ -45,7 +45,8 @@ AiSD::DLLNode *AiSD::DLLNode::pobierzWskaznikNaPoprzednyElement(){
     return prev;
 }
 void AiSD::DLL::PushFront(const T& el){
-    if(head==NULL && tail==NULL && lista==NULL){
+    lista=head;
+    if(head==nullptr && tail==nullptr && lista==nullptr){
         utworzenieListy(el);
         iloscElementow++;
         std::cout<<"Lista zostala utworzona z 1 elementem"<<std::endl;
@@ -67,42 +68,50 @@ void AiSD::DLL::utworzenieListy(T el){
     head=tail=nowyElement;
 }
 void AiSD::DLL::Print(){
-    if(lista==NULL){
+    lista=head;
+    if(lista==nullptr){
         std::cout<<"Lista jest pusta"<<std::endl;
         return;
     }
-    while(lista!=NULL){
+    while(lista!=nullptr){
         std::cout<<"{name=\"";
         std::cout<<lista->pokazElement().name<<"\", grade=";
         std::cout<<lista->pokazElement().grade<<"}"<<std::endl;
         lista=lista->pobierzWskaznikNaKolejnyElement();
     }
     lista=head;
-
 }
 void AiSD::DLL::Print1(){
-    if(lista==NULL){
+
+    lista=tail;
+    if(lista==nullptr){
         std::cout<<"Lista jest pusta"<<std::endl;
         return;
     }
-    lista=tail;
-    while(lista!=NULL){
+    std::cout<<"Jestem przed lista=tail"<<std::endl;
+    std::cout<<"Jestem po lista=tail"<<std::endl;
+    while(lista!=nullptr){
+        std::cout<<"Jestem pokazuje element:"<<std::endl;
         std::cout<<lista->pokazElement().name<<" ";
         std::cout<<lista->pokazElement().grade<<std::endl;
         lista=lista->pobierzWskaznikNaPoprzednyElement();
+        std::cout<<"Koniec jednego elementu"<<std::endl;
     }
-    lista=head;
+    std::cout<<"Jestem przed lista=head"<<std::endl;
+    lista=nullptr;
+    std::cout<<"Jestem po lista=head"<<std::endl;
 
 }
 void AiSD::DLL::PopFront(){
-    if(head==NULL && tail==NULL && lista==NULL){
+    lista=head;
+    if(head==nullptr && tail==nullptr && lista==nullptr){
         std::cout<<"Lista jest pusta!"<<std::endl;
         return;
     }
     AiSD::DLLNode *tmp =head;
-    if(head->pobierzWskaznikNaKolejnyElement()==NULL){
+    if(head->pobierzWskaznikNaKolejnyElement()==nullptr){
         delete tmp;
-        head=tail=lista=NULL;
+        head=tail=lista=nullptr;
         std::cout<<"Usuniales ostatni element z listy."<<std::endl;
         iloscElementow--;
         return;
@@ -115,7 +124,7 @@ void AiSD::DLL::PopFront(){
     std::cout<<"Element zostal usuniety do listy"<<std::endl;
 }
 void AiSD::DLL::PushBack(const T& el){
-    if(head==NULL && tail==NULL && lista==NULL){
+    if(head==nullptr && tail==nullptr && lista==nullptr){
         utworzenieListy(el);
         iloscElementow++;
         std::cout<<"Lista zostala utworzona z 1 elementem"<<std::endl;
@@ -123,30 +132,32 @@ void AiSD::DLL::PushBack(const T& el){
     }
     AiSD::DLLNode *nowyElement =new DLLNode;
     nowyElement->ustawElement(el);
-    nowyElement->ustawWskaznikiNaPoprzedniElement(head);
+    nowyElement->ustawWskaznikiNaPoprzedniElement(tail);
     tail->ustawWskaznikiNaKolejnyElement(nowyElement);
     tail=nowyElement;
     iloscElementow++;
     std::cout<<"Element zostal dodany do listy"<<std::endl;
 }
 void AiSD::DLL::PopBack(){
-    if(head==NULL && tail==NULL && lista==NULL){
+    lista=head;
+    if(head==nullptr && tail==nullptr && lista==nullptr){
         std::cout<<"Lista jest pusta!"<<std::endl;
         return;
     }
     AiSD::DLLNode *tmp =tail;
-    if(tail->pobierzWskaznikNaPoprzednyElement()==NULL){
+    if(tail->pobierzWskaznikNaPoprzednyElement()==nullptr){
         delete tmp;
-        head=tail=lista=NULL;
+        head=tail=lista=nullptr;
         iloscElementow--;
         std::cout<<"Usuniales ostatni element z listy."<<std::endl;
+
         return;
     }
     lista=tail->pobierzWskaznikNaPoprzednyElement();
     lista->ustawWskaznikiNaKolejnyElement(nullptr);
+    delete tmp;
     tail=lista;
     lista=head;
-    delete tmp;
     iloscElementow--;
     std::cout<<"Element zostal usuniety z konca"<<std::endl;
 }
@@ -161,6 +172,7 @@ AiSD::Record AiSD::DLL::Front(){
     return wartoscPriewszegoElemntu;
 }
 AiSD::Record AiSD::DLL::Back(){
+    lista=head;
     T wartoscOstatniegoElementu;
     if(IsEmpty()==true){
         std::cout<<"Lista jest pusta"<<std::endl;
@@ -179,6 +191,7 @@ size_t AiSD::DLL::Size(){
     return iloscElementow;
 }
 void AiSD::DLL::Clear(){
+    lista=head;
     std::cout<<"Starting Clear"<<std::endl;
     while(lista!=NULL){
         AiSD::DLLNode *tmp=head;
@@ -191,11 +204,12 @@ void AiSD::DLL::Clear(){
     std::cout<<"Ending Clear"<<std::endl;
 }
 bool AiSD::DLL::IsInList(const T& t){
+    lista=head;
     if(IsEmpty()==true){
         std::cout<<"Lista jest pusta!"<<std::endl;
         return false;
     }
-    if(lista->pokazElement().name==t.name){
+    if(lista->pokazElement().name==t.name &&lista->pokazElement().grade==t.grade){
         std::cout<<"Udalo sie znalezc element"<<std::endl;
         return true;
     }
@@ -236,6 +250,7 @@ void AiSD::DLL::Insert(const T& t, size_t i){
     for(size_t j=0;j<i;++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie dodac elementu"<<std::endl;
+            lista=head;
             return;
         }
         lista=lista->pobierzWskaznikNaKolejnyElement();
@@ -251,6 +266,7 @@ void AiSD::DLL::Insert(const T& t, size_t i){
     std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::Delete(size_t i){
+    lista=head;
     if(IsEmpty()==true){
         std::cout<<"Nie udalo sie usunac elementu!"<<std::endl;
         return;
@@ -271,6 +287,7 @@ void AiSD::DLL::Delete(size_t i){
     std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::InsertAfter(const T& t, size_t i){
+    lista=head;
     if(IsEmpty()==true){
         std::cout<<"Nie udalo sie dodac elementu!"<<std::endl;
         return;
@@ -293,6 +310,7 @@ void AiSD::DLL::InsertAfter(const T& t, size_t i){
     std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::InsertBefore(const T& t, size_t i){
+    lista=head;
     if(IsEmpty()==true){
         std::cout<<"Nie udalo sie dodac elementu!"<<std::endl;
         return;

@@ -87,8 +87,9 @@ void AiSD::DLL::Print1(){
     }
     lista=tail;
     while(lista!=NULL){
-        std::cout<<lista->pokazElement().name<<" ";
-        std::cout<<lista->pokazElement().grade<<std::endl;
+            std::cout<<"{name=\"";
+        std::cout<<lista->pokazElement().name<<"\", grade=";
+        std::cout<<lista->pokazElement().grade<<"}"<<std::endl;
         lista=lista->pobierzWskaznikNaPoprzednyElement();
     }
     lista=head;
@@ -123,7 +124,7 @@ void AiSD::DLL::PushBack(const T& el){
     }
     AiSD::DLLNode *nowyElement =new DLLNode;
     nowyElement->ustawElement(el);
-    nowyElement->ustawWskaznikiNaPoprzedniElement(head);
+    nowyElement->ustawWskaznikiNaPoprzedniElement(tail);
     tail->ustawWskaznikiNaKolejnyElement(nowyElement);
     tail=nowyElement;
     iloscElementow++;
@@ -144,9 +145,10 @@ void AiSD::DLL::PopBack(){
     }
     lista=tail->pobierzWskaznikNaPoprzednyElement();
     lista->ustawWskaznikiNaKolejnyElement(nullptr);
+    delete tmp;
     tail=lista;
     lista=head;
-    delete tmp;
+
     iloscElementow--;
     std::cout<<"Element zostal usuniety z konca"<<std::endl;
 }
@@ -236,6 +238,7 @@ void AiSD::DLL::Insert(const T& t, size_t i){
     for(size_t j=0;j<i;++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie dodac elementu"<<std::endl;
+            lista=head;
             return;
         }
         lista=lista->pobierzWskaznikNaKolejnyElement();

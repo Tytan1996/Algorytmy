@@ -104,3 +104,47 @@
 	<memory>
 	"Logger.hpp"
 
+1648554995 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+	"DoublyLinkedList.h"
+
+1648552537 c:\users\student\desktop\algo\algorytmy\projekt2-lista\include\doublylinkedlist.h
+	<iostream>
+
+1648552537 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\logger.cpp
+	"Logger.hpp"
+
+1648552537 c:\users\student\desktop\algo\algorytmy\projekt2-lista\include\logger.hpp
+	<string>
+	<fstream>
+
+1648552537 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+	"MenadzerUzytkownika.h"
+
+1648552537 c:\users\student\desktop\algo\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+	<iostream>
+	<sstream>
+	"DoublyLinkedList.h"
+
+1648553117 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\main.cpp
+	<iostream>
+	"MenadzerUzytkownika.h"
+	"TestingFunction.hpp"
+	<cstdlib>
+
+1648552537 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\testingfunction.cpp
+	"TestingFunction.hpp"
+
+1648552537 c:\users\student\desktop\algo\algorytmy\projekt2-lista\include\testingfunction.hpp
+	"DoublyLinkedList.h"
+	<cstddef>
+	<sstream>
+	<functional>
+	<chrono>
+	<string>
+	<random>
+	<variant>
+	<limits>
+	<windows.h>
+	<memory>
+	"Logger.hpp"
+

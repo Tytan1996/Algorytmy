@@ -315,19 +315,20 @@ void AiSD::DLL::Delete(size_t i){
     std::cout<<"Usunieto element na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::InsertAfter(const T& t, size_t i){
-    lista=head;
+
     if(IsEmpty()==true){
         std::cout<<"Nie udalo sie dodac elementu!"<<std::endl;
         return;
     }
+    lista=head;
     if(i>iloscElementow){
         std::cout<<"Dodanio za duzy indeks!"<<std::endl;
         return;
-    }else if(iloscElementow==i){
+    }else if(i==2){
         PushBack(t);
         return;
     }
-    for(size_t j=0;j<i;++j){
+    for(size_t j=0;j<(i-2);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie dodac elementu"<<std::endl;
             return;
@@ -342,7 +343,7 @@ void AiSD::DLL::InsertAfter(const T& t, size_t i){
     lista->ustawWskaznikiNaPoprzedniElement(nowyElement);
     lista=head;
     iloscElementow++;
-    std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
+    std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;/**/
 }
 void AiSD::DLL::InsertBefore(const T& t, size_t i){
     lista=head;
@@ -393,7 +394,7 @@ void AiSD::DLL::DeleteAfter(size_t i){
         PopBack();
         return;
     }
-    for(size_t j=0;j<i;++j){
+    for(size_t j=0;j<(i-2);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie usunac elementu"<<std::endl;
             return;
@@ -406,7 +407,7 @@ void AiSD::DLL::DeleteAfter(size_t i){
     delete tmp;
     lista=head;
     iloscElementow--;
-    std::cout<<"Usunieto element na "<<i<<"-tej Pozycji"<<std::endl;
+    std::cout<<"Usunieto element na "<<i<<"-tej Pozycji"<<std::endl;/**/
 }
 void AiSD::DLL::DeleteBefore(size_t i){
     if(IsEmpty()==true){

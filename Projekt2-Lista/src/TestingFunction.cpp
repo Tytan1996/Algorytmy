@@ -274,7 +274,11 @@ void AiSD::DistortionsSimulation::test(bool debugMode)
 
     DLL* arr=pointer.get();
     TestingFunctionLogger.Log("-------------------------------------DistortionsSimulation");
-    std::mt19937 gen(rd());
+    int ird=rd();
+    std::stringstream ss;
+    ss<<"Seed of DistortionsSimulation: "<<ird<<std::endl;
+    TestingFunctionLogger.Log(ss.str());
+    std::mt19937 gen(ird);
     //std::mt19937 gen(6);
 
     std::uniform_int_distribution<> dis1(-100, 1000);

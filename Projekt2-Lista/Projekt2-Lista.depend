@@ -17,13 +17,13 @@
 1647956700 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-1648661281 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
+1648670072 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
 	<cstdlib>
 
-1648630694 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+1648666757 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
 	<iostream>
 	<sstream>
 	"DoublyLinkedList.h"
@@ -34,10 +34,10 @@
 	<string>
 	<cstdlib>
 
-1648661157 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648670713 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
-1648653720 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+1648667082 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
 1648573849 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
@@ -87,17 +87,17 @@
 1648469357 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-1648487048 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
+1648666608 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
 	"Logger.hpp"
 
-1648487048 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
+1648666757 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
 	<string>
 	<fstream>
 
-1648656956 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
+1648670550 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
-1648572025 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
+1648662873 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
 	"DoublyLinkedList.h"
 	<cstddef>
 	<sstream>

@@ -186,7 +186,14 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
             SetConsoleTextAttribute(hConsole, 5);
             std::cout<<"arr.Print():"<<std::endl;
             SetConsoleTextAttribute(hConsole, 3);
-            arr.Print();
+            try
+            {
+                arr.Print();
+            }catch(const char* msg)
+            {
+                std::cout<<msg<<std::endl;
+            }
+
             //while(arr.lista!=NULL)
             //{
                 //std::cout<<"name=\""<<arr.lista->pokazElement().name<<", grade="<<arr.lista->pokazElement().grade<<std::endl;
@@ -401,7 +408,11 @@ void AiSD::Presentation::test(bool debugMode)
         SetConsoleTextAttribute(hConsole, 10);
         std::cout<<"Your opeartion: ";
         int userInput1=getNum<int>();
-        if(userInput1==NOFunctions)return;      //EXIT
+        if(userInput1==NOFunctions)      //EXIT
+        {
+            SetConsoleTextAttribute(hConsole, 7);
+            return;
+        }
 
         T a1={"",0};
         size_t a2=0;

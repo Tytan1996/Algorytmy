@@ -15,10 +15,10 @@ int main()
     std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl;
     std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;
 
-        AiSD::OverflowTable testing(50);
+        AiSD::OverflowTable testing(500000);
         testing.test(debugMode);
 
-        AiSD::DistortionsSimulation testing1(50000);
+        AiSD::DistortionsSimulation testing1(1000);
         testing1.doMultipleTimes(20,debugMode);
 
         AiSD::Presentation testing2;

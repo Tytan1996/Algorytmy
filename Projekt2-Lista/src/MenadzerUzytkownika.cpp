@@ -126,10 +126,12 @@ void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI(){
     std::string nazwa=wczytajString();
     nowyRecod.grade=element;
     nowyRecod.name=nazwa;
+    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
     size_t i=wczytajLiczbe();
     lista.Insert(nowyRecod, i);
 }
 void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI(){
+    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
     size_t i=wczytajLiczbe();
     lista.Delete( i);
 }
@@ -141,6 +143,7 @@ void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI(){
     std::string nazwa=wczytajString();
     nowyRecod.grade=element;
     nowyRecod.name=nazwa;
+    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
     size_t i=wczytajLiczbe();
     lista.InsertBefore(nowyRecod, i);
 }
@@ -152,14 +155,19 @@ void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI(){
     std::string nazwa=wczytajString();
     nowyRecod.grade=element;
     nowyRecod.name=nazwa;
+    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
     size_t i=wczytajLiczbe();
     lista.InsertAfter(nowyRecod, i);
 }
 void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI(){
+    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
     size_t i=wczytajLiczbe();
+    lista.DeleteBefore(i);
 }
 void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI(){
+    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
     size_t i=wczytajLiczbe();
+    lista.DeleteAfter(i);
 }
 void AiSD::MenadzerUzytkownika::zapisListeDoPliku(){
     std::cout<<"Nazwa pliku: "<<std::endl;

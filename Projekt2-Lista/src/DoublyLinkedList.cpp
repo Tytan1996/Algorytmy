@@ -121,6 +121,7 @@ void AiSD::DLL::PopFront(){
     std::cout<<"Element zostal usuniety do listy"<<std::endl;
 }
 void AiSD::DLL::PushBack(const T& el){
+    lista=head;
     if(head==nullptr && tail==nullptr && lista==nullptr){
         utworzenieListy(el);
         iloscElementow++;
@@ -263,7 +264,7 @@ void AiSD::DLL::Insert(const T& t, size_t i){
         PushFront(t);
         return;
     }
-    for(size_t j=0;j<i;++j){
+    for(size_t j=0;j<(i-1);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie dodac elementu"<<std::endl;
             lista=head;
@@ -282,7 +283,7 @@ void AiSD::DLL::Insert(const T& t, size_t i){
     std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::Delete(size_t i){
-    /*if(IsEmpty()==true){
+    if(IsEmpty()==true){
         std::cout<<"Nie udalo sie usunac elementu!"<<std::endl;
         return;
     }
@@ -292,13 +293,13 @@ void AiSD::DLL::Delete(size_t i){
     }else if(i==1){
         PopFront();
         return;
-    }else if(iloscElementow<i){
+    }else if(iloscElementow<i ||i==0){
         std::cout<<"Nie mozna usunac."<<std::endl;
         return;
     }
     lista=head;
 
-    for(size_t j=0;j<i;++j){
+    for(size_t j=0;j<(i-1);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie usunac elementu"<<std::endl;
             return;
@@ -311,7 +312,7 @@ void AiSD::DLL::Delete(size_t i){
     delete tmp;
     lista=head;
     iloscElementow--;
-    std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;*/
+    std::cout<<"Usunieto element na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::InsertAfter(const T& t, size_t i){
     lista=head;
@@ -319,7 +320,14 @@ void AiSD::DLL::InsertAfter(const T& t, size_t i){
         std::cout<<"Nie udalo sie dodac elementu!"<<std::endl;
         return;
     }
-    for(size_t j=0;j<=i;++j){
+    if(i>iloscElementow){
+        std::cout<<"Dodanio za duzy indeks!"<<std::endl;
+        return;
+    }else if(iloscElementow==i){
+        PushBack(t);
+        return;
+    }
+    for(size_t j=0;j<i;++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie dodac elementu"<<std::endl;
             return;
@@ -342,13 +350,26 @@ void AiSD::DLL::InsertBefore(const T& t, size_t i){
         std::cout<<"Nie udalo sie dodac elementu!"<<std::endl;
         return;
     }
-    for(size_t j=0;j<(i-1);++j){
+    if(i==2){
+        PushFront(t);
+        return;
+    }else if(iloscElementow<i){
+        std::cout<<"Za duzy wartosc i dales (poza zakres listy)."<<std::endl;
+        std::cout<<"Zakres tablicy od 1 do "<<iloscElementow<<std::endl;
+        return;
+    }else if(i<2){
+        std::cout<<"Nie mozna usunac elementu przed 1 z powotu ze przed tym elementem nie ma elementu."<<std::endl;
+        std::cout<<"Zakres tablicy od 1 do "<<iloscElementow<<std::endl;
+        return;
+    }
+    for(size_t j=0;j<(i-2);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie dodac elementu"<<std::endl;
             return;
         }
         lista=lista->pobierzWskaznikNaKolejnyElement();
     }
+    std::cout<<lista->pokazElement().name<<std::endl;
     DLLNode *nowyElement= new DLLNode;
     nowyElement->ustawElement(t);
     nowyElement->ustawWskaznikiNaKolejnyElement(lista);
@@ -372,7 +393,7 @@ void AiSD::DLL::DeleteAfter(size_t i){
         PopBack();
         return;
     }
-    for(size_t j=0;j<=i;++j){
+    for(size_t j=0;j<i;++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie usunac elementu"<<std::endl;
             return;
@@ -385,7 +406,7 @@ void AiSD::DLL::DeleteAfter(size_t i){
     delete tmp;
     lista=head;
     iloscElementow--;
-    std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
+    std::cout<<"Usunieto element na "<<i<<"-tej Pozycji"<<std::endl;
 }
 void AiSD::DLL::DeleteBefore(size_t i){
     if(IsEmpty()==true){
@@ -404,7 +425,7 @@ void AiSD::DLL::DeleteBefore(size_t i){
         std::cout<<"Zakres tablicy od 1 do "<<iloscElementow<<std::endl;
         return;
     }
-    for(size_t j=0;j<(i-1);++j){
+    for(size_t j=0;j<(i-2);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             std::cout<<"Nie udalo sie usunac elementu"<<std::endl;
             return;
@@ -417,7 +438,7 @@ void AiSD::DLL::DeleteBefore(size_t i){
     delete tmp;
     lista=head;
     iloscElementow--;
-    std::cout<<"Dodano element "<<t.name<<","<<t.grade<<" na "<<i<<"-tej Pozycji"<<std::endl;
+    std::cout<<"Usunieto element na "<<i<<"-tej Pozycji"<<std::endl;
 }
 AiSD::DLLNode *AiSD::DLL::operator [](size_t i){
     if(IsEmpty()==true){

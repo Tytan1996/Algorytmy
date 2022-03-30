@@ -23,8 +23,8 @@ int main()
         testing.doMultipleTimes(20,debugMode);
     }
     {
-        AiSD::Presentation testing;
-        testing.test(debugMode);
+        //AiSD::Presentation testing;
+        //testing.test(debugMode);
     }
 
 

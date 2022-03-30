@@ -40,7 +40,7 @@
 1648667082 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-1648673252 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
+1648674243 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
@@ -78,10 +78,10 @@
 1648576416 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\logger.cpp
 	"Logger.hpp"
 
-1648672493 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\testingfunction.cpp
+1648674319 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
-1648673078 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648673354 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
 1648667460 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp

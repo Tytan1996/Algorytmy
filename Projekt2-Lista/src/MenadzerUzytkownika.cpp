@@ -1,6 +1,6 @@
 #include "MenadzerUzytkownika.h"
 
-
+AiSD::Logger2 plikZZapisem("log.txt");
 
 int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg(){
     int opcja;
@@ -178,4 +178,20 @@ void AiSD::MenadzerUzytkownika::odczytListeZPliku(){
     std::cout<<"Nazwa pliku z ktorego chcesz wczytac plik: "<<std::endl;
     std::string nazwaPliku=wczytajString();
     lista.LoadCSV(nazwaPliku);
+}
+clock_t AiSD::MenadzerUzytkownika::pobierzCzas(){
+    return clock();
+}
+double AiSD::MenadzerUzytkownika::policzCzas(clock_t koniec,clock_t start){
+    double czas;
+    czas=double(koniec-start)/CLOCKS_PER_SEC;
+    return czas;
+}
+void  AiSD::MenadzerUzytkownika::zapisDoPlikuLog(std::string nazwaMetody, double czas){
+    std::string linia ="";
+    linia+=nazwaMetody;
+    linia+=" wykonala sie w: ";
+    linia+=std::to_string(czas);
+    std::cout<<linia<<std::endl;
+    plikZZapisem.zapis(linia);
 }

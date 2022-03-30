@@ -96,10 +96,10 @@ int main()
             menadzerUzytkownika.usunElementNaPozycjiI();
             break;
         case 19:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.zapisListeDoPliku();
             break;
         case 20:
-            std::cout<<"obecna opcja jest niedostepna"<<std::endl;
+            menadzerUzytkownika.odczytListeZPliku();
             break;
         default:
             std::cout<<"Nie ma takiej opcji!"<<std::endl<<std::endl;

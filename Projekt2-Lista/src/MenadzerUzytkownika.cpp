@@ -161,3 +161,13 @@ void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI(){
 void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI(){
     size_t i=wczytajLiczbe();
 }
+void AiSD::MenadzerUzytkownika::zapisListeDoPliku(){
+    std::cout<<"Nazwa pliku: "<<std::endl;
+    std::string nazwaPliku=wczytajString();
+    lista.SaveCSV(nazwaPliku);
+}
+void AiSD::MenadzerUzytkownika::odczytListeZPliku(){
+    std::cout<<"Nazwa pliku z ktorego chcesz wczytac plik: "<<std::endl;
+    std::string nazwaPliku=wczytajString();
+    lista.LoadCSV(nazwaPliku);
+}

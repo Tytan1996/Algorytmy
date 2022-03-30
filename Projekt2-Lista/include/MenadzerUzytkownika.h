@@ -33,6 +33,8 @@ namespace AiSD{
         void wstawElementPoPozycjiI();
         void usunElementPrzedPozycjiI();
         void usunElementPoPozycjiI();
+        void zapisListeDoPliku();
+        void odczytListeZPliku();
     };
 
 }

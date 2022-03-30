@@ -90,16 +90,13 @@ void AiSD::DLL::Print1(){
     }
 
     lista=tail;
-    while(lista!=NULL){
-            std::cout<<"{name=\"";
+    while(lista!=nullptr){
+        std::cout<<"{name=\"";
         std::cout<<lista->pokazElement().name<<"\", grade=";
         std::cout<<lista->pokazElement().grade<<"}"<<std::endl;
         lista=lista->pobierzWskaznikNaPoprzednyElement();
-        std::cout<<"Koniec jednego elementu"<<std::endl;
     }
-    std::cout<<"Jestem przed lista=head"<<std::endl;
-    lista=nullptr;
-    std::cout<<"Jestem po lista=head"<<std::endl;
+    lista=head;
 
 }
 void AiSD::DLL::PopFront(){
@@ -188,7 +185,19 @@ bool AiSD::DLL::IsEmpty(){
     return false;
 }
 size_t AiSD::DLL::Size(){
-    return iloscElementow;
+    size_t ilosceElementowWLisce;
+    if(iloscElementow==0){
+        std::cout<<"Lista jest pusta"<<std::endl;
+        ilosceElementowWLisce=0;
+        return ilosceElementowWLisce;
+    }
+    if(IsEmpty()==true){
+        std::cout<<"Lista jest pusta"<<std::endl;
+        ilosceElementowWLisce=0;
+        return ilosceElementowWLisce;
+    }
+    ilosceElementowWLisce=iloscElementow;
+    return ilosceElementowWLisce;
 }
 void AiSD::DLL::Clear(){
     lista=head;
@@ -424,10 +433,10 @@ AiSD::DLLNode *AiSD::DLL::operator [](size_t i){
 }
 
 
-void AiSD::DLL::SaveCSV(std::string src)
+void AiSD::DLL::SaveCSV(std::string nazwaPliku)
 {
     std::ofstream file;
-    file.open(src+".csv",std::ifstream::trunc);
+    file.open(nazwaPliku+".csv",std::ifstream::trunc);
 
     lista=head;
     while(lista!=nullptr)
@@ -439,11 +448,11 @@ void AiSD::DLL::SaveCSV(std::string src)
     lista=head;
     file.close();
 }
-void AiSD::DLL::LoadCSV(std::string src)
+void AiSD::DLL::LoadCSV(std::string nazwaPliku)
 {
     Clear();
     std::ifstream file;
-    file.open(src+".csv");
+    file.open(nazwaPliku+".csv");
     std::string line;
     if (file.is_open())
     {

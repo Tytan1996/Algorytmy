@@ -17,20 +17,24 @@
 1647956700 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-1648491697 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
+1648628111 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
+	<cstdlib>
 
 1648464312 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
 	<iostream>
 	<sstream>
 	"DoublyLinkedList.h"
 
-1648487048 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\doublylinkedlist.h
+1648586339 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\doublylinkedlist.h
 	<iostream>
+	<fstream>
+	<string>
+	<cstdlib>
 
-1648491767 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648628497 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
 1648464312 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
@@ -90,10 +94,10 @@
 	<string>
 	<fstream>
 
-1648487048 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
+1648586245 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
-1648487048 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
+1648572025 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
 	"DoublyLinkedList.h"
 	<cstddef>
 	<sstream>

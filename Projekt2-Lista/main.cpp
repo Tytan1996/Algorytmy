@@ -6,7 +6,7 @@
 
 #include <cstdlib>
 
-const bool debugMode=true;
+const bool debugMode=false;
 
 int main()
 {

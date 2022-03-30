@@ -206,6 +206,7 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
             }catch(const char* msg)
             {
                 std::cout<<msg<<std::endl;
+                TestingFunctionLogger.Log(msg);
             }
 
             //while(arr.lista!=NULL)
@@ -233,6 +234,7 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
         }catch(const char* msg)
         {
             std::cout<<msg<<std::endl;
+            TestingFunctionLogger.Log(msg);
         }
         auto endTime=clockH::now();
         std::string time=timeTook(startTime,endTime);
@@ -317,6 +319,7 @@ void AiSD::DistortionsSimulation::test(bool debugMode)
             DoFunction(*arr,a,b,c,debugMode);
         }catch(const char* msg)
         {
+            TestingFunctionLogger.Log(msg);
             std::cout<<msg<<std::endl;
         }
     }
@@ -440,6 +443,8 @@ void AiSD::Presentation::test(bool debugMode)
         }catch(const char* msg)
         {
             std::cout<<msg<<std::endl;
+            TestingFunctionLogger.Log("Critical problem");
+            TestingFunctionLogger.Log(msg);
             return;
         }
 

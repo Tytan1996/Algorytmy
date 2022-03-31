@@ -1,6 +1,6 @@
 #include "MenadzerUzytkownika.h"
 
-AiSD::Logger2 plikZZapisem("log.txt");
+AiSD::Logger2 plikZZapisem("Log1.txt");
 
 int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg() {
     int opcja;
@@ -25,7 +25,7 @@ int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg() {
     std::cout<<"18 - usun element po elemencie"<<std::endl;
     std::cout<<"19 - zapis liste do pliku"<<std::endl;
     std::cout<<"20 - wczytaj liste z pliku"<<std::endl;
-    opcja=wczytajLiczbe();
+    opcja=wczytajLiczbeCalkowita();
     return opcja;
 
 }
@@ -42,7 +42,6 @@ unsigned AiSD::MenadzerUzytkownika::wczytajLiczbe() {
             break;
         std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
     }
-    system("cls");
     return liczba;
 }
 std::string AiSD::MenadzerUzytkownika::wczytajString() {
@@ -64,9 +63,11 @@ void AiSD::MenadzerUzytkownika::dodajElementNaPoczatku() {
         lista.PushFront(nowyRecod);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
-        plikZZapisem.zapis("1");
+        std::string nowyString=utworzString("PushFront", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::dodajElementNaKoncu() {
@@ -82,8 +83,11 @@ void AiSD::MenadzerUzytkownika::dodajElementNaKoncu() {
         lista.PushBack(nowyRecod);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("PushBack", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::usunElementZPoczatku() {
@@ -92,8 +96,11 @@ void AiSD::MenadzerUzytkownika::usunElementZPoczatku() {
         lista.PopFront();
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("PopFront", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::usunElementZKoncu() {
@@ -102,8 +109,11 @@ void AiSD::MenadzerUzytkownika::usunElementZKoncu() {
         lista.PopBack();
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("PopBack", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::pokazElementZPoczatku() {
@@ -112,8 +122,11 @@ void AiSD::MenadzerUzytkownika::pokazElementZPoczatku() {
         std::cout<<"Poczatek na poczatku listy: "<<lista.Front().name<<","<<lista.Front().grade<<std::endl;
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Front", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::pokazElementZKoncu() {
@@ -122,8 +135,11 @@ void AiSD::MenadzerUzytkownika::pokazElementZKoncu() {
         std::cout<<"Poczatek na koncu listy: "<<lista.Back().name;
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Back", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::pokazListe() {
@@ -132,8 +148,11 @@ void AiSD::MenadzerUzytkownika::pokazListe() {
         lista.Print();
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Print (pokaz liste z przodu)", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::pokazListeOdTylu() {
@@ -142,8 +161,11 @@ void AiSD::MenadzerUzytkownika::pokazListeOdTylu() {
         lista.Print1();
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Print1 (pokaz elementy z tylu)", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::czyListaJestPusta() {
@@ -156,8 +178,11 @@ void AiSD::MenadzerUzytkownika::czyListaJestPusta() {
         }
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("IsEmpty", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::pokazRozmiar() {
@@ -166,8 +191,11 @@ void AiSD::MenadzerUzytkownika::pokazRozmiar() {
         std::cout<<"Rozmiar tablicy: "<<lista.Size()<<std::endl;
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Size", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::usunListe() {
@@ -176,8 +204,11 @@ void AiSD::MenadzerUzytkownika::usunListe() {
         lista.Clear();
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Clear", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::pokazCzyWezelJestNaLisce() {
@@ -198,8 +229,11 @@ void AiSD::MenadzerUzytkownika::pokazCzyWezelJestNaLisce() {
         }
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("IsInList", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI() {
@@ -217,8 +251,11 @@ void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI() {
         lista.Insert(nowyRecod, i);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Insert", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI() {
@@ -229,8 +266,11 @@ void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI() {
         lista.Delete(i);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("Delete", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI() {
@@ -248,8 +288,11 @@ void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI() {
         lista.InsertBefore(nowyRecod, i);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("InsertBefore", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI() {
@@ -267,8 +310,11 @@ void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI() {
         lista.InsertAfter(nowyRecod, i);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("InsertAfter", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI() {
@@ -279,8 +325,11 @@ void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI() {
         lista.DeleteBefore(i);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("DeleteBefore", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI() {
@@ -291,8 +340,11 @@ void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI() {
         lista.DeleteAfter(i);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("DeleteAfter", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::zapisListeDoPliku() {
@@ -303,8 +355,11 @@ void AiSD::MenadzerUzytkownika::zapisListeDoPliku() {
         lista.SaveCSV(nazwaPliku);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("SaveCSV", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 void AiSD::MenadzerUzytkownika::odczytListeZPliku() {
@@ -315,8 +370,11 @@ void AiSD::MenadzerUzytkownika::odczytListeZPliku() {
         lista.LoadCSV(nazwaPliku);
         koniec=pobierzCzas();
         czas=policzCzas(koniec,start);
+        std::string nowyString=utworzString("LoadCSV", czas);
+        plikZZapisem.zapis(nowyString);
     } catch(const char* komunitakBledu) {
         std::cout<<komunitakBledu<<std::endl;
+        plikZZapisem.zapis(komunitakBledu);
     }
 }
 
@@ -329,11 +387,26 @@ double AiSD::MenadzerUzytkownika::policzCzas(clock_t koniec,clock_t start){
     czas=double(koniec-start)/CLOCKS_PER_SEC;
     return czas;
 }
-void  AiSD::MenadzerUzytkownika::zapisDoPlikuLog(std::string nazwaMetody, double czas){
-    std::string linia ="";
-    linia+=nazwaMetody;
-    linia+=" wykonala sie w: ";
-    linia+=std::to_string(czas);
-    std::cout<<linia<<std::endl;
-    plikZZapisem.zapis(linia);
+
+std::string AiSD::MenadzerUzytkownika::utworzString(std::string nazwaFunkcji, double czas){
+    std::string komunikat="";
+    komunikat+=nazwaFunkcji;
+    komunikat+=" wykonala sie w czasie: ";
+    komunikat+=std::to_string(czas);
+    std::cout<<komunikat<<std::endl;
+    return komunikat;
+}
+int AiSD::MenadzerUzytkownika::wczytajLiczbeCalkowita(){
+    std::string wejscie = "";
+    unsigned liczba = 0;
+    while (true) {
+        getline(std::cin, wejscie);
+
+        std::stringstream myStream(wejscie);
+        if (myStream >> liczba)
+            break;
+        std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
+    }
+    system("cls");
+    return liczba;
 }

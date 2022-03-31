@@ -2,7 +2,6 @@
 #define LOGGER_CPP
 
 #include "Logger.hpp"
-
 AiSD::Logger::Logger(std::string LogFileName)
 {
     try{
@@ -26,7 +25,8 @@ void AiSD::Logger::Log(std::string txt)
 AiSD::Logger2::Logger2(std::string nowaNazwaPliku){
     try{
         nazwaPliku=nowaNazwaPliku;
-        plik.open(nazwaPliku,std::ios::in | std::ios::out);
+        plik.open(nazwaPliku, std::ifstream::trunc);
+        plik<<"----STATYSTYKI WYKONYWANA MENU----"<<'\n';
     }catch(std::ifstream::failure e){
         std::exit(EXIT_FAILURE);
     }

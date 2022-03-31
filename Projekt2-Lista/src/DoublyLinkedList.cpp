@@ -216,19 +216,14 @@ bool AiSD::DLL::IsInList(const T& t){
         std::cout<<"Udalo sie znalezc element"<<std::endl;
         return true;
     }
-    while(lista->pokazElement().name!=t.name){
-        if(lista->pobierzWskaznikNaKolejnyElement()!=nullptr){
-            lista=lista->pobierzWskaznikNaKolejnyElement();
-            if(lista->pokazElement().name==t.name &&lista->pokazElement().grade==t.grade){
-                std::cout<<"Zneleziono element!"<<std::endl;
-                lista=head;
-                return true;
-            }
-        }else{
-            std::cout<<"Przeszukana cala liste i nie znalezniono elementu"<<std::endl;
-            lista=head;
-            return false;
-        }
+    if(Find(t)!=nullptr){
+        std::cout<<"Zneleziono element!"<<std::endl;
+        lista=head;
+        return true;
+    }else{
+        std::cout<<"Przeszukana cala liste i nie znalezniono elementu"<<std::endl;
+        lista=head;
+        return false;
     }
     std::cout<<"Nie udalo sie znalezc elementu"<<std::endl;
     return false;

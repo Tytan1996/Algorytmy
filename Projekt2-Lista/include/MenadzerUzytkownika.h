@@ -14,7 +14,7 @@ namespace AiSD{
         unsigned wczytajLiczbe();
         std::string wczytajString();
         AiSD::DLL lista;
-
+        std::string utworzString(std::string nazwaFunkcji,double czas);
         clock_t start,koniec;
         double czas;
 
@@ -43,6 +43,8 @@ namespace AiSD{
         clock_t pobierzCzas();
         double policzCzas(clock_t koniec,clock_t start);
         void zapisDoPlikuLog(std::string nazwaMetody, double czas);
+        int wczytajLiczbeCalkowita();
+
     };
 
 }

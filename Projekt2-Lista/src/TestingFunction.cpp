@@ -171,7 +171,16 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
         FunctionInfo f = FunctionByNO(NO);
         //podstawowe informacjedo logow
         std::stringstream ss;
-        ss<<"Operation "<<f.type<<" ("<<NO<<")"<<" for arguments T={name=\""<<t.name<<"\",grade="<<t.grade<<"} and size_t="<<i<<std::endl<<"Array content: ";
+
+        ss<<"Operation "<<f.type<<" ("<<NO<<")";
+        if(f.T_needed||f.size_t_needed)
+            ss<<" for arguments: ";
+        if(f.T_needed)
+            ss<<"T={name=\""<<t.name<<"\",grade="<<t.grade<<"}\t";
+        if(f.size_t_needed)
+            ss<<"size_t="<<i;
+        ss<<std::endl<<"Array content: ";
+
 
         if(debugMode)
         {
@@ -180,11 +189,16 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
             SetConsoleTextAttribute(hConsole, 4);
             std::cout<<f.type;
             SetConsoleTextAttribute(hConsole, 5);
-            std::cout<<" ("<<NO<<") for arguments ";
+            std::cout<<" ("<<NO<<") ";
+            if(f.T_needed||f.size_t_needed)
+                std::cout<<"for arguments: ";
             SetConsoleTextAttribute(hConsole, 4);
-            std::cout<<"T={name=\""<<t.name<<"\",grade="<<t.grade<<"} ; size_t="<<i<<std::endl;
+            if(f.T_needed)
+                std::cout<<"T={name=\""<<t.name<<"\",grade="<<t.grade<<"}\t";
+            if(f.size_t_needed)
+                std::cout<<"size_t="<<i;
             SetConsoleTextAttribute(hConsole, 5);
-            std::cout<<"arr.Print():"<<std::endl;
+            std::cout<<std::endl<<"arr.Print():"<<std::endl;
             SetConsoleTextAttribute(hConsole, 3);
             try
             {
@@ -192,6 +206,7 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
             }catch(const char* msg)
             {
                 std::cout<<msg<<std::endl;
+                TestingFunctionLogger.Log(msg);
             }
 
             //while(arr.lista!=NULL)
@@ -219,6 +234,7 @@ AiSD::ClassTest::arg_t AiSD::ClassTest::DoFunction(DLL& arr,short int NO,T t,siz
         }catch(const char* msg)
         {
             std::cout<<msg<<std::endl;
+            TestingFunctionLogger.Log(msg);
         }
         auto endTime=clockH::now();
         std::string time=timeTook(startTime,endTime);
@@ -303,6 +319,7 @@ void AiSD::DistortionsSimulation::test(bool debugMode)
             DoFunction(*arr,a,b,c,debugMode);
         }catch(const char* msg)
         {
+            TestingFunctionLogger.Log(msg);
             std::cout<<msg<<std::endl;
         }
     }
@@ -426,6 +443,8 @@ void AiSD::Presentation::test(bool debugMode)
         }catch(const char* msg)
         {
             std::cout<<msg<<std::endl;
+            TestingFunctionLogger.Log("Critical problem");
+            TestingFunctionLogger.Log(msg);
             return;
         }
 

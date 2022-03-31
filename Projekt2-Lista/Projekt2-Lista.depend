@@ -17,22 +17,31 @@
 1647956700 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-<<<<<<< HEAD
-1648734093 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
-=======
-1648673354 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
->>>>>>> feature/hmm
+1648556925 D
+
+1648736255 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
 	<cstdlib>
 	<time.h>
 
-<<<<<<< HEAD
-1648734442 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
-=======
-1648673037 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
->>>>>>> feature/hmm
+1648672296 ture/hmm
+	<iostream>
+	"MenadzerUzytkownika.h"
+	"TestingFunction.hpp"
+	<cstdlib>
+	<time.h>
+	<iostream>
+	<sstream>
+	<string>
+	<time.h>
+	"DoublyLinkedList.h"
+	"Logger.hpp"
+	"MenadzerUzytkownika.h"
+	"TestingFunction.hpp"
+
+1648736106 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
 	<iostream>
 	<sstream>
 	<string>
@@ -46,18 +55,10 @@
 	<string>
 	<cstdlib>
 
-<<<<<<< HEAD
-1648733763 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
-	"DoublyLinkedList.h"
-
-1648733763 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
-=======
-1648670892 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648735918 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
 1648673495 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
->>>>>>> feature/hmm
-	"MenadzerUzytkownika.h"
 
 1648674243 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
 	<iostream>
@@ -106,25 +107,14 @@
 1648667460 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-<<<<<<< HEAD
-1648673638 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
+1648736106 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
 	"Logger.hpp"
 
-1648673638 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
+1648736106 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
 	<string>
 	<fstream>
 
-1648673646 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
-=======
-1648673191 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
-	"Logger.hpp"
-
-1648673191 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
-	<string>
-	<fstream>
-
-1648672296 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
->>>>>>> feature/hmm
+1648735941 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
 1648662873 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
@@ -140,8 +130,6 @@
 	<windows.h>
 	<memory>
 	"Logger.hpp"
-
-1648556925 D
 
 1648554995 source:c:\users\student\desktop\algo\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"

@@ -240,7 +240,6 @@ void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI() {
         std::cout<<komunitakBledu<<std::endl;
     }
 }
-<<<<<<< HEAD
 void AiSD::MenadzerUzytkownika::zapisListeDoPliku() {
     try {
         std::cout<<"Nazwa pliku: "<<std::endl;
@@ -260,7 +259,7 @@ void AiSD::MenadzerUzytkownika::odczytListeZPliku() {
     }
 }
 
-=======
+
 clock_t AiSD::MenadzerUzytkownika::pobierzCzas(){
     return clock();
 }
@@ -277,4 +276,3 @@ void  AiSD::MenadzerUzytkownika::zapisDoPlikuLog(std::string nazwaMetody, double
     std::cout<<linia<<std::endl;
     plikZZapisem.zapis(linia);
 }
->>>>>>> feature/hmm

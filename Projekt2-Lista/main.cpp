@@ -20,21 +20,13 @@ int main()
         AiSD::OverflowTable testing(500000);
         testing.test(debugMode);
 
-<<<<<<< HEAD
         AiSD::DistortionsSimulation testing1(1000);
-=======
-        AiSD::DistortionsSimulation testing1(100);
->>>>>>> feature/hmm
         testing1.doMultipleTimes(20,debugMode);
 
         AiSD::Presentation testing2;
         testing2.test(debugMode);
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> feature/hmm
     AiSD::MenadzerUzytkownika menadzerUzytkownika;
     int wybor;
     while(true) {

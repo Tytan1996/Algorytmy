@@ -27,7 +27,7 @@ class DLLNode{
 
 public:
     DLLNode();
-    DLLNode(DLLNode* n, DLLNode* p, const T& t);
+    DLLNode(const DLLNode* n,const DLLNode* p, const T& t);
     void ustawElement(T nowaWartosc);
     T pokazElement();
     void ustawWskaznikiNaKolejnyElement(DLLNode *kolejnyElement);
@@ -60,6 +60,7 @@ public:
     void Clear();
     void Print();
     void Print1();
+    void SaveCSV(std::string nazwaPliku);
     //metody dodatkowe
     bool IsInList(const T& t);
     DLLNode* Find(const T &t);
@@ -70,7 +71,7 @@ public:
     void DeleteAfter(size_t i);
     void DeleteBefore(size_t i);
     DLLNode* operator [](size_t i);
-    void SaveCSV(std::string nazwaPliku);
+
     void LoadCSV(std::string nazwaPliku);
 
     friend class ClassTest;

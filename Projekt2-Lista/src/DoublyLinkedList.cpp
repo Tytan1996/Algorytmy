@@ -4,9 +4,9 @@ AiSD::DLLNode::DLLNode(){
     next=nullptr;
     prev=nullptr;
 }
-AiSD::DLLNode::DLLNode(DLLNode* n,DLLNode* p, const Record& t){
-    next=n;
-    prev=p;
+AiSD::DLLNode::DLLNode(const DLLNode* n,const DLLNode* p, const Record& t){
+    *next=*n;
+    *prev=*p;
     data=t;
 }
 AiSD::DLL::DLL(){
@@ -156,10 +156,11 @@ void AiSD::DLL::PopBack(){
 }
 
 AiSD::Record AiSD::DLL::Front(){
+    lista=head;
     T wartoscPriewszegoElemntu;
     if(IsEmpty()==true){
         //std::cout<<"Lista jest pusta"<<std::endl;
-        return wartoscPriewszegoElemntu;
+        throw "Lista jest pusta (ERROR 26)";
     }
     wartoscPriewszegoElemntu=head->pokazElement();
     return wartoscPriewszegoElemntu;
@@ -169,7 +170,7 @@ AiSD::Record AiSD::DLL::Back(){
     T wartoscOstatniegoElementu;
     if(IsEmpty()==true){
         //std::cout<<"Lista jest pusta"<<std::endl;
-        return wartoscOstatniegoElementu;
+        throw "Lista jest pusta (ERROR 27)";
     }
     wartoscOstatniegoElementu=tail->pokazElement();
     return wartoscOstatniegoElementu;
@@ -230,7 +231,9 @@ bool AiSD::DLL::IsInList(const T& t){
 }
 AiSD::DLLNode* AiSD::DLL::Find(const T &t){
     DLLNode *wskaznik;
-
+    if(IsEmpty()==true){
+        throw "Nie udalo sie usunac elementu!(ERROR 28)";
+    }
     while(lista->pobierzWskaznikNaKolejnyElement()!=nullptr){
         if(lista->pokazElement().name==t.name &&lista->pokazElement().grade==t.grade){
             return lista;
@@ -308,7 +311,7 @@ void AiSD::DLL::InsertAfter(const T& t, size_t i){
         PushBack(t);
         return;
     }
-    for(size_t j=0;j<(i-2);++j){
+    for(size_t j=0;j<(i);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             throw "Nie udalo sie dodac elementu(ERROR 14)";
         }
@@ -372,7 +375,7 @@ void AiSD::DLL::DeleteAfter(size_t i){
         PopBack();
         return;
     }
-    for(size_t j=0;j<(i-2);++j){
+    for(size_t j=0;j<(i);++j){
         if(lista->pobierzWskaznikNaKolejnyElement()==nullptr){
             throw "Nie udalo sie usunac elementu(ERROR 20)";
         }

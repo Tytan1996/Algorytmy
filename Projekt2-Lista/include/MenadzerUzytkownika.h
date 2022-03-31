@@ -15,6 +15,9 @@ namespace AiSD{
         std::string wczytajString();
         AiSD::DLL lista;
 
+        clock_t start,koniec;
+        double czas;
+
     public:
         int wczytajOpcjeZMenuGlowneg();
         void dodajElementNaPoczatku();

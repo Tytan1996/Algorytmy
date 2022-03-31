@@ -26,17 +26,17 @@ void AiSD::Logger::Log(std::string txt)
 AiSD::Logger2::Logger2(std::string nowaNazwaPliku){
     try{
         nazwaPliku=nowaNazwaPliku;
-        file.open(nazwaPliku,std::fstream::in);
+        plik.open(nazwaPliku,std::ios::in | std::ios::out);
     }catch(std::ifstream::failure e){
         std::exit(EXIT_FAILURE);
     }
 }
 void AiSD::Logger2::zapis(std::string txt){
-    file<<txt<<'\n';
+    plik<<txt<<'\n';
 }
 AiSD::Logger2::~Logger2()
 {
-    file.close();
+    plik.close();
 }
 
 #endif // LOGGER_CPP

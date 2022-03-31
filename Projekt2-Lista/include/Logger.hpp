@@ -19,7 +19,7 @@ namespace AiSD
     };
     class Logger2{
         std::string nazwaPliku;
-        std::fstream file;
+        std::fstream plik;
         public:
         Logger2(std::string nowaNazwaPliku);
         void zapis(std::string txt);

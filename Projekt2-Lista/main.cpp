@@ -31,10 +31,8 @@ int main()
 
     AiSD::MenadzerUzytkownika menadzerUzytkownika;
     int wybor;
-
-
     while(true) {
-       wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
+        wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
         switch(wybor) {
         case 0:
             exit(0);
@@ -103,6 +101,8 @@ int main()
             std::cout<<"Nie ma takiej opcji!"<<std::endl<<std::endl;
             break;
         }
+
+
     }
     return 0;
 }

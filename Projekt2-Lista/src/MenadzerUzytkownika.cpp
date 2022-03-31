@@ -2,7 +2,7 @@
 
 
 
-int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg(){
+int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg() {
     int opcja;
     std::cout<<"0 - zakon program"<<std::endl;
     std::cout<<"1 - dodaj element na poczatku listy"<<std::endl;
@@ -31,11 +31,10 @@ int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg(){
 }
 
 
-unsigned AiSD::MenadzerUzytkownika::wczytajLiczbe(){
+unsigned AiSD::MenadzerUzytkownika::wczytajLiczbe() {
     std::string wejscie = "";
     unsigned liczba = 0;
-    while (true)
-    {
+    while (true) {
         getline(std::cin, wejscie);
 
         std::stringstream myStream(wejscie);
@@ -43,139 +42,220 @@ unsigned AiSD::MenadzerUzytkownika::wczytajLiczbe(){
             break;
         std::cout << "To nie jest liczba. Wpisz ponownie. " << std::endl;
     }
-        system("cls");
+    system("cls");
     return liczba;
 }
-std::string AiSD::MenadzerUzytkownika::wczytajString(){
+std::string AiSD::MenadzerUzytkownika::wczytajString() {
     std::string wejscie = "";
     getline(std::cin, wejscie);
     return wejscie;
 }
 
-void AiSD::MenadzerUzytkownika::dodajElementNaPoczatku(){
-    Record nowyRecod;
-    std::cout<<"Dodaj liczbe: "<<std::endl;
-    unsigned element=wczytajLiczbe();
-    std::cout<<"Dodaj nazwe: "<<std::endl;
-    std::string nazwa=wczytajString();
-    nowyRecod.grade=element;
-    nowyRecod.name=nazwa;
-    lista.PushFront(nowyRecod);
-}
-void AiSD::MenadzerUzytkownika::dodajElementNaKoncu(){
-    Record nowyRecod;
-    std::cout<<"Dodaj liczbe: "<<std::endl;
-    unsigned element=wczytajLiczbe();
-    std::cout<<"Dodaj nazwe: "<<std::endl;
-    std::string nazwa=wczytajString();
-    nowyRecod.grade=element;
-    nowyRecod.name=nazwa;
-    lista.PushBack(nowyRecod);
-}
-void AiSD::MenadzerUzytkownika::usunElementZPoczatku(){
-    lista.PopFront();
-}
-void AiSD::MenadzerUzytkownika::usunElementZKoncu(){
-    lista.PopBack();
-}
-void AiSD::MenadzerUzytkownika::pokazElementZPoczatku(){
-    std::cout<<"Poczatek na poczatku listy: "<<lista.Front().name<<","<<lista.Front().grade<<std::endl;
-}
-void AiSD::MenadzerUzytkownika::pokazElementZKoncu(){
-    std::cout<<"Poczatek na koncu listy: "<<lista.Back().name;
-}
-void AiSD::MenadzerUzytkownika::pokazListe(){
-    lista.Print();
-}
-void AiSD::MenadzerUzytkownika::pokazListeOdTylu(){
-    lista.Print1();
-}
-void AiSD::MenadzerUzytkownika::czyListaJestPusta(){
-    if(lista.IsEmpty()==true){
-        std::cout<<"Lista jest pusta"<<std::endl;
-    }else{
-        std::cout<<"Lista NIE jest pusta"<<std::endl;
+void AiSD::MenadzerUzytkownika::dodajElementNaPoczatku() {
+    try {
+        Record nowyRecod;
+        std::cout<<"Dodaj liczbe: "<<std::endl;
+        unsigned element=wczytajLiczbe();
+        std::cout<<"Dodaj nazwe: "<<std::endl;
+        std::string nazwa=wczytajString();
+        nowyRecod.grade=element;
+        nowyRecod.name=nazwa;
+        lista.PushFront(nowyRecod);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
     }
 }
-void AiSD::MenadzerUzytkownika::pokazRozmiar(){
-    std::cout<<"Rozmiar tablicy: "<<lista.Size()<<std::endl;
-}
-void AiSD::MenadzerUzytkownika::usunListe(){
-    lista.Clear();
-}
-void AiSD::MenadzerUzytkownika::pokazCzyWezelJestNaLisce(){
-    std::cout<<"Podaj wartosc szukanie wezla: ";
-    Record nowyRecod;
-    std::cout<<"Dodaj liczbe: "<<std::endl;
-    unsigned element=wczytajLiczbe();
-    std::cout<<"Dodaj nazwe: "<<std::endl;
-    std::string nazwa=wczytajString();
-    nowyRecod.grade=element;
-    nowyRecod.name=nazwa;
-    if(lista.IsInList(nowyRecod)==true){
-        std::cout<<"Jest wezel na liscie!"<<std::endl;
-    }else{
-        std::cout<<"Nie ma wezla na liscie!"<<std::endl;
+void AiSD::MenadzerUzytkownika::dodajElementNaKoncu() {
+    try {
+        Record nowyRecod;
+        std::cout<<"Dodaj liczbe: "<<std::endl;
+        unsigned element=wczytajLiczbe();
+        std::cout<<"Dodaj nazwe: "<<std::endl;
+        std::string nazwa=wczytajString();
+        nowyRecod.grade=element;
+        nowyRecod.name=nazwa;
+        lista.PushBack(nowyRecod);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
     }
 }
-void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI(){
-    Record nowyRecod;
-    std::cout<<"Dodaj liczbe: "<<std::endl;
-    unsigned element=wczytajLiczbe();
-    std::cout<<"Dodaj nazwe: "<<std::endl;
-    std::string nazwa=wczytajString();
-    nowyRecod.grade=element;
-    nowyRecod.name=nazwa;
-    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
-    size_t i=wczytajLiczbe();
-    lista.Insert(nowyRecod, i);
+void AiSD::MenadzerUzytkownika::usunElementZPoczatku() {
+    try {
+        lista.PopFront();
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI(){
-    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
-    size_t i=wczytajLiczbe();
-    lista.Delete( i);
+void AiSD::MenadzerUzytkownika::usunElementZKoncu() {
+    try {
+        lista.PopBack();
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI(){
-    Record nowyRecod;
-    std::cout<<"Dodaj liczbe: "<<std::endl;
-    unsigned element=wczytajLiczbe();
-    std::cout<<"Dodaj nazwe: "<<std::endl;
-    std::string nazwa=wczytajString();
-    nowyRecod.grade=element;
-    nowyRecod.name=nazwa;
-    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
-    size_t i=wczytajLiczbe();
-    lista.InsertBefore(nowyRecod, i);
+void AiSD::MenadzerUzytkownika::pokazElementZPoczatku() {
+    try {
+        std::cout<<"Poczatek na poczatku listy: "<<lista.Front().name<<","<<lista.Front().grade<<std::endl;
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI(){
-    Record nowyRecod;
-    std::cout<<"Dodaj liczbe: "<<std::endl;
-    unsigned element=wczytajLiczbe();
-    std::cout<<"Dodaj nazwe: "<<std::endl;
-    std::string nazwa=wczytajString();
-    nowyRecod.grade=element;
-    nowyRecod.name=nazwa;
-    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
-    size_t i=wczytajLiczbe();
-    lista.InsertAfter(nowyRecod, i);
+void AiSD::MenadzerUzytkownika::pokazElementZKoncu() {
+    try {
+        std::cout<<"Poczatek na koncu listy: "<<lista.Back().name;
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI(){
-    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
-    size_t i=wczytajLiczbe();
-    lista.DeleteBefore(i);
+void AiSD::MenadzerUzytkownika::pokazListe() {
+    try {
+        lista.Print();
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI(){
-    std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
-    size_t i=wczytajLiczbe();
-    lista.DeleteAfter(i);
+void AiSD::MenadzerUzytkownika::pokazListeOdTylu() {
+    try {
+        lista.Print1();
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::zapisListeDoPliku(){
-    std::cout<<"Nazwa pliku: "<<std::endl;
-    std::string nazwaPliku=wczytajString();
-    lista.SaveCSV(nazwaPliku);
+void AiSD::MenadzerUzytkownika::czyListaJestPusta() {
+    try {
+        if(lista.IsEmpty()==true) {
+            std::cout<<"Lista jest pusta"<<std::endl;
+        } else {
+            std::cout<<"Lista NIE jest pusta"<<std::endl;
+        }
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
-void AiSD::MenadzerUzytkownika::odczytListeZPliku(){
-    std::cout<<"Nazwa pliku z ktorego chcesz wczytac plik: "<<std::endl;
-    std::string nazwaPliku=wczytajString();
-    lista.LoadCSV(nazwaPliku);
+void AiSD::MenadzerUzytkownika::pokazRozmiar() {
+    try {
+        std::cout<<"Rozmiar tablicy: "<<lista.Size()<<std::endl;
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
 }
+void AiSD::MenadzerUzytkownika::usunListe() {
+    try {
+        lista.Clear();
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::pokazCzyWezelJestNaLisce() {
+    try {
+        std::cout<<"Podaj wartosc szukanie wezla: ";
+        Record nowyRecod;
+        std::cout<<"Dodaj liczbe: "<<std::endl;
+        unsigned element=wczytajLiczbe();
+        std::cout<<"Dodaj nazwe: "<<std::endl;
+        std::string nazwa=wczytajString();
+        nowyRecod.grade=element;
+        nowyRecod.name=nazwa;
+        if(lista.IsInList(nowyRecod)==true) {
+            std::cout<<"Jest wezel na liscie!"<<std::endl;
+        } else {
+            std::cout<<"Nie ma wezla na liscie!"<<std::endl;
+        }
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::wstawElementNaPozycjiI() {
+    try {
+        Record nowyRecod;
+        std::cout<<"Dodaj liczbe: "<<std::endl;
+        unsigned element=wczytajLiczbe();
+        std::cout<<"Dodaj nazwe: "<<std::endl;
+        std::string nazwa=wczytajString();
+        nowyRecod.grade=element;
+        nowyRecod.name=nazwa;
+        std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
+        size_t i=wczytajLiczbe();
+        lista.Insert(nowyRecod, i);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::usunElementNaPozycjiI() {
+    try {
+        std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
+        size_t i=wczytajLiczbe();
+        lista.Delete( i);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::wstawElementPrzedPozycjiI() {
+    try {
+        Record nowyRecod;
+        std::cout<<"Dodaj liczbe: "<<std::endl;
+        unsigned element=wczytajLiczbe();
+        std::cout<<"Dodaj nazwe: "<<std::endl;
+        std::string nazwa=wczytajString();
+        nowyRecod.grade=element;
+        nowyRecod.name=nazwa;
+        std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
+        size_t i=wczytajLiczbe();
+        lista.InsertBefore(nowyRecod, i);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::wstawElementPoPozycjiI() {
+    try {
+        Record nowyRecod;
+        std::cout<<"Dodaj liczbe: "<<std::endl;
+        unsigned element=wczytajLiczbe();
+        std::cout<<"Dodaj nazwe: "<<std::endl;
+        std::string nazwa=wczytajString();
+        nowyRecod.grade=element;
+        nowyRecod.name=nazwa;
+        std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
+        size_t i=wczytajLiczbe();
+        lista.InsertAfter(nowyRecod, i);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::usunElementPrzedPozycjiI() {
+    try {
+        std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
+        size_t i=wczytajLiczbe();
+        lista.DeleteBefore(i);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI() {
+    try {
+        std::cout<<"Dodaj pozycje wstawienie elementu (1 do "<<lista.Size()<<")"<<std::endl;
+        size_t i=wczytajLiczbe();
+        lista.DeleteAfter(i);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::zapisListeDoPliku() {
+    try {
+        std::cout<<"Nazwa pliku: "<<std::endl;
+        std::string nazwaPliku=wczytajString();
+        lista.SaveCSV(nazwaPliku);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+void AiSD::MenadzerUzytkownika::odczytListeZPliku() {
+    try {
+        std::cout<<"Nazwa pliku z ktorego chcesz wczytac plik: "<<std::endl;
+        std::string nazwaPliku=wczytajString();
+        lista.LoadCSV(nazwaPliku);
+    } catch(const char* komunitakBledu) {
+        std::cout<<komunitakBledu<<std::endl;
+    }
+}
+

@@ -394,6 +394,7 @@ void AiSD::DLL::DeleteAfter(size_t i){
 void AiSD::DLL::DeleteBefore(size_t i){
     if(IsEmpty()==true){
         throw "Nie udalo sie usunac elementu!(ERROR 21)";
+        return;
     }
     if(i==2){
         PopFront();

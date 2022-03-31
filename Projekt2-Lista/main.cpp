@@ -26,9 +26,6 @@ int main()
 
 
 
-
-
-
     AiSD::MenadzerUzytkownika menadzerUzytkownika;
     int wybor;
     while(true) {
@@ -101,8 +98,6 @@ int main()
             std::cout<<"Nie ma takiej opcji!"<<std::endl<<std::endl;
             break;
         }
-
-
     }
     return 0;
 }

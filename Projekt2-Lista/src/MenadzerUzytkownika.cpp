@@ -1,6 +1,6 @@
 #include "MenadzerUzytkownika.h"
 
-
+AiSD::Logger2 plikZZapisem("log.txt");
 
 int AiSD::MenadzerUzytkownika::wczytajOpcjeZMenuGlowneg() {
     int opcja;
@@ -240,6 +240,7 @@ void AiSD::MenadzerUzytkownika::usunElementPoPozycjiI() {
         std::cout<<komunitakBledu<<std::endl;
     }
 }
+<<<<<<< HEAD
 void AiSD::MenadzerUzytkownika::zapisListeDoPliku() {
     try {
         std::cout<<"Nazwa pliku: "<<std::endl;
@@ -259,3 +260,21 @@ void AiSD::MenadzerUzytkownika::odczytListeZPliku() {
     }
 }
 
+=======
+clock_t AiSD::MenadzerUzytkownika::pobierzCzas(){
+    return clock();
+}
+double AiSD::MenadzerUzytkownika::policzCzas(clock_t koniec,clock_t start){
+    double czas;
+    czas=double(koniec-start)/CLOCKS_PER_SEC;
+    return czas;
+}
+void  AiSD::MenadzerUzytkownika::zapisDoPlikuLog(std::string nazwaMetody, double czas){
+    std::string linia ="";
+    linia+=nazwaMetody;
+    linia+=" wykonala sie w: ";
+    linia+=std::to_string(czas);
+    std::cout<<linia<<std::endl;
+    plikZZapisem.zapis(linia);
+}
+>>>>>>> feature/hmm

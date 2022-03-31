@@ -4,8 +4,10 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <time.h>
 #include "DoublyLinkedList.h"
-
+#include "Logger.hpp"
 
 namespace AiSD{
     class MenadzerUzytkownika{
@@ -35,6 +37,9 @@ namespace AiSD{
         void usunElementPoPozycjiI();
         void zapisListeDoPliku();
         void odczytListeZPliku();
+        clock_t pobierzCzas();
+        double policzCzas(clock_t koniec,clock_t start);
+        void zapisDoPlikuLog(std::string nazwaMetody, double czas);
     };
 
 }

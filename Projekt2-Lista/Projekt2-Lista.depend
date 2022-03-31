@@ -17,16 +17,28 @@
 1647956700 source:f:\aisd\algorytmy\projekt2-lista\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
+<<<<<<< HEAD
 1648734093 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
+=======
+1648673354 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
+>>>>>>> feature/hmm
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
 	<cstdlib>
+	<time.h>
 
+<<<<<<< HEAD
 1648734442 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+=======
+1648673037 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+>>>>>>> feature/hmm
 	<iostream>
 	<sstream>
+	<string>
+	<time.h>
 	"DoublyLinkedList.h"
+	"Logger.hpp"
 
 1648630694 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\doublylinkedlist.h
 	<iostream>
@@ -34,10 +46,17 @@
 	<string>
 	<cstdlib>
 
+<<<<<<< HEAD
 1648733763 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
 1648733763 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+=======
+1648670892 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+	"DoublyLinkedList.h"
+
+1648673495 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+>>>>>>> feature/hmm
 	"MenadzerUzytkownika.h"
 
 1648674243 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
@@ -87,6 +106,7 @@
 1648667460 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
+<<<<<<< HEAD
 1648673638 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
 	"Logger.hpp"
 
@@ -95,6 +115,16 @@
 	<fstream>
 
 1648673646 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
+=======
+1648673191 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
+	"Logger.hpp"
+
+1648673191 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
+	<string>
+	<fstream>
+
+1648672296 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
+>>>>>>> feature/hmm
 	"TestingFunction.hpp"
 
 1648662873 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp

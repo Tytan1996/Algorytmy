@@ -3,6 +3,7 @@
 
 #include <string>
 #include <fstream>
+#include <iostream>
 namespace AiSD
 {
     class Logger
@@ -19,7 +20,7 @@ namespace AiSD
     };
     class Logger2{
         std::string nazwaPliku;
-        std::fstream file;
+        std::ofstream plik;
         public:
         Logger2(std::string nowaNazwaPliku);
         void zapis(std::string txt);

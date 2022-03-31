@@ -9,176 +9,100 @@
 
 const bool debugMode=false;
 
-int main()
-{
+int main() {
 
-    clock_t start,koniec;
-    double czas;
+    AiSD::MenadzerUzytkownika menadzerUzytkownika;
     std::cout<<"Szczegolowe informacje od. wykonywania funkcji znajduje sie w pliku Log.txt"<<std::endl;
     std::cout<<"Sprawdzanie czasu operacji na tablicy (najwieksze mozliwe argumenty funkcji)"<<std::endl;
 
-        AiSD::OverflowTable testing(500000);
-        testing.test(debugMode);
+    AiSD::OverflowTable testing(500000);
+    testing.test(debugMode);
 
-        AiSD::DistortionsSimulation testing1(1000);
-        testing1.doMultipleTimes(20,debugMode);
-
+    AiSD::DistortionsSimulation testing1(1000);
+    testing1.doMultipleTimes(20,debugMode);
+    std::cout<<"1 - menu1"<<std::endl;
+    std::cout<<"2 - menu2"<<std::endl;
+    std::cout<<"opcja: ";
+    int wyborWybranaMenu=menadzerUzytkownika.wczytajLiczbeCalkowita();
+    if(wyborWybranaMenu==1){
         AiSD::Presentation testing2;
         testing2.test(debugMode);
-
-
-    AiSD::MenadzerUzytkownika menadzerUzytkownika;
-    int wybor;
-    while(true) {
-        wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
-        switch(wybor) {
-        case 0:
-            exit(0);
-            break;
-        case 1:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.dodajElementNaPoczatku();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 2:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.dodajElementNaKoncu();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 3:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.usunElementZPoczatku();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 4:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.usunElementZKoncu();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 5:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.wstawElementNaPozycjiI();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 6:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.usunElementNaPozycjiI();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 7:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.pokazElementZPoczatku();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 8:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.pokazElementZKoncu();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 9:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.czyListaJestPusta();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 10:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.pokazRozmiar();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 11:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.usunListe();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 12:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.pokazListe();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 13:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.pokazListeOdTylu();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 14:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.pokazCzyWezelJestNaLisce();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 15:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.wstawElementPrzedPozycjiI();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 16:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.wstawElementPoPozycjiI();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 17:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.usunElementPrzedPozycjiI();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 18:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.usunElementNaPozycjiI();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 19:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.zapisListeDoPliku();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        case 20:
-            start=menadzerUzytkownika.pobierzCzas();
-            menadzerUzytkownika.odczytListeZPliku();
-            koniec=menadzerUzytkownika.pobierzCzas();
-            czas=menadzerUzytkownika.policzCzas(koniec,start);
-            menadzerUzytkownika.zapisDoPlikuLog("1", czas);
-            break;
-        default:
-            std::cout<<"Nie ma takiej opcji!"<<std::endl<<std::endl;
-            break;
+    }else if(wyborWybranaMenu==2){
+        int wybor;
+        while(true) {
+            wybor=menadzerUzytkownika.wczytajOpcjeZMenuGlowneg();
+            switch(wybor) {
+            case 0:
+                exit(0);
+                break;
+            case 1:
+                menadzerUzytkownika.dodajElementNaPoczatku();
+                break;
+            case 2:
+                menadzerUzytkownika.dodajElementNaKoncu();
+                break;
+            case 3:
+                menadzerUzytkownika.usunElementZPoczatku();
+                break;
+            case 4:
+                menadzerUzytkownika.usunElementZKoncu();
+                break;
+            case 5:
+                menadzerUzytkownika.wstawElementNaPozycjiI();
+                break;
+            case 6:
+                menadzerUzytkownika.usunElementNaPozycjiI();
+                break;
+            case 7:
+                menadzerUzytkownika.pokazElementZPoczatku();
+                break;
+            case 8:
+                menadzerUzytkownika.pokazElementZKoncu();
+                break;
+            case 9:
+                menadzerUzytkownika.czyListaJestPusta();
+                break;
+            case 10:
+                menadzerUzytkownika.pokazRozmiar();
+                break;
+            case 11:
+                menadzerUzytkownika.usunListe();
+                break;
+            case 12:
+                menadzerUzytkownika.pokazListe();
+                break;
+            case 13:
+                menadzerUzytkownika.pokazListeOdTylu();
+                break;
+            case 14:
+                menadzerUzytkownika.pokazCzyWezelJestNaLisce();
+                break;
+            case 15:
+                menadzerUzytkownika.wstawElementPrzedPozycjiI();
+                break;
+            case 16:
+                menadzerUzytkownika.wstawElementPoPozycjiI();
+                break;
+            case 17:
+                menadzerUzytkownika.usunElementPrzedPozycjiI();
+                break;
+            case 18:
+                menadzerUzytkownika.usunElementNaPozycjiI();
+                break;
+            case 19:
+                menadzerUzytkownika.zapisListeDoPliku();
+                break;
+            case 20:
+                menadzerUzytkownika.odczytListeZPliku();
+                break;
+            default:
+                std::cout<<"Nie ma takiej opcji!"<<std::endl<<std::endl;
+                break;
+            }
         }
+    }else{
+        std::cout<<"wybrano zla opcje"<<std::endl;
     }
+
     return 0;
 }

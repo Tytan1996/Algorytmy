@@ -19,7 +19,7 @@
 
 1648556925 D
 
-1648736255 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
+1648744494 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\main.cpp
 	<iostream>
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
@@ -41,7 +41,7 @@
 	"MenadzerUzytkownika.h"
 	"TestingFunction.hpp"
 
-1648736106 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
+1648744022 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\menadzeruzytkownika.h
 	<iostream>
 	<sstream>
 	<string>
@@ -55,10 +55,11 @@
 	<string>
 	<cstdlib>
 
-1648735918 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
+1648737761 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\doublylinkedlist.cpp
 	"DoublyLinkedList.h"
 
-1648673495 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+1648744566 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
+	"MenadzerUzytkownika.h"
 
 1648674243 source:c:\users\user\documents\github\algorytmy\projekt2-lista\main.cpp
 	<iostream>
@@ -107,17 +108,18 @@
 1648667460 source:c:\users\user\documents\github\algorytmy\projekt2-lista\src\menadzeruzytkownika.cpp
 	"MenadzerUzytkownika.h"
 
-1648736106 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
+1648743871 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\logger.cpp
 	"Logger.hpp"
 
-1648736106 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
+1648743502 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\logger.hpp
 	<string>
 	<fstream>
+	<iostream>
 
-1648735941 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
+1648743380 source:d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\src\testingfunction.cpp
 	"TestingFunction.hpp"
 
-1648662873 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
+1648743380 d:\-=uczelnia=-\sem4\algorytmy\projekt2-lista\include\testingfunction.hpp
 	"DoublyLinkedList.h"
 	<cstddef>
 	<sstream>

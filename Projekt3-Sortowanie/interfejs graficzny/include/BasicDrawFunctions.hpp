@@ -11,6 +11,7 @@
 #include <stdlib.h>//reinterpret_cast
 #include <vector>
 
+#include "SortThread.hpp"
 #include <boost/thread.hpp>
 
 //STRUKTURA X, Y
@@ -27,6 +28,9 @@ void keyPressed(unsigned char key, int x, int y);
 void display() ;
 
 vector2 convertSize(float x,float y);//CIEZKO SIE OPERUJE NA 1.0F-0.0F
+
+
+void drawTable(std::vector<Record> Tab);
 
 //TEKST
 void drawString(const char* txt, float x,float y,float r,float g,float b);

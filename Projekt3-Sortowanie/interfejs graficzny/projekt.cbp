@@ -42,6 +42,8 @@
 			<Add library="glu32" />
 			<Add library="winmm" />
 			<Add library="gdi32" />
+			<Add library="libboost_thread-mgw6-mt-d-x32-1_78.a" />
+			<Add library="libboost_thread-mgw6-mt-x32-1_78.a" />
 			<Add directory="C:/Users/User/Desktop/opengl/MinGW GLUT/lib" />
 		</Linker>
 		<Unit filename="include/BasicDrawFunctions.hpp" />

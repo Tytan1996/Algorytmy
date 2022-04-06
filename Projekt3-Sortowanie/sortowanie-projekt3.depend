@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1649071390 source:d:\projekty\sortowanie-projekt3\main.cpp
+	<iostream>
+	<algorithm>
+	<chrono>
+	<windows.h>
+
+1649072215 source:d:\projekty\sortowanie-projekt3\src\sort.cpp
+	"Sort.h"
+
+1649072215 d:\projekty\sortowanie-projekt3\include\sort.h
+	<chrono>
+
+1649071390 source:f:\sortowanie-projekt3\main.cpp
+	<iostream>
+	<algorithm>
+	<chrono>
+	<windows.h>
+
+1649071390 source:e:\algorytmy\projekt3-sortowanie\main.cpp
+	<iostream>
+	<algorithm>
+	<chrono>
+	<windows.h>
+
+1649159005 source:e:\algorytmy\projekt3-sortowanie\src\sort.cpp
+	"Sort.h"
+
+1649248111 e:\algorytmy\projekt3-sortowanie\include\sort.h
+	<chrono>
+

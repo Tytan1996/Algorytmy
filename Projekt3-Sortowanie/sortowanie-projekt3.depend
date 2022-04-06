@@ -29,3 +29,9 @@
 1649248111 e:\algorytmy\projekt3-sortowanie\include\sort.h
 	<chrono>
 
+1649256047 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\main.cpp
+	<iostream>
+	<algorithm>
+	<chrono>
+	<windows.h>
+

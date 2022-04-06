@@ -2,51 +2,56 @@
 
 
 
-void Sort::ShellSort(int *tab, int n){
+clock_t Sort::ShellSort(std::vector <Record> records){
+    int iloscElementow=records.size();
     start = clock();
-    for (int i=1; i<n; i++)
+    for (int i=1; i<iloscElementow; i++)
     {
-        for (int j=n-1; j>=1; j--)
+        for (int j=iloscElementow-1; j>=1; j--)
         {
-            if (tab[j]<tab[j-1])
+            if (records[j].key<records[j-1].key)
             {
-                int bufor;
-                bufor=tab[j-1];
-                tab[j-1]=tab[j];
-                tab[j]=bufor;
+                Record bufor;
+                bufor=records[j-1];
+                records[j-1]=records[j];
+                records[j]=bufor;
             }
         }
     }
     stop=clock();
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
+    return czas;
 }
-void Sort::QuickSort(int *tablica, int lewy, int prawy){
+clock_t Sort::QuickSort(std::vector <Record> records, int lewy, int prawy){
 
     start = clock();
-    int v=tablica[(lewy+prawy)/2];
-    int i,j,x;
+
+    int v=records[(lewy+prawy)/2].key;
+    Record record;
+    int i,j;
     i=lewy;
     j=prawy;
     do
     {
-        while (tablica[i]<v) i++;
-        while (tablica[j]>v) j--;
+        while (records[i].key<v) i++;
+        while (records[j].key>v) j--;
         if (i<=j)
         {
-            x=tablica[i];
-            tablica[i]=tablica[j];
-            tablica[j]=x;
+            record=records[i];
+            records[i]=records[j];
+            records[j]=record;
             i++;
             j--;
         }
     }
     while (i<=j);
-    if (j>lewy) QuickSort(tablica,lewy, j);
-    if (i<prawy) QuickSort(tablica, i, prawy);
+    if (j>lewy) QuickSort(records,lewy, j);
+    if (i<prawy) QuickSort(records, i, prawy);
     stop=clock();
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
+    return czas;
 }
-void Sort::MergeSort(int tablica[], int start, int koniec)
+clock_t Sort::MergeSort(std::vector <Record> records, int start, int koniec)
 {
 
     start = clock();
@@ -55,29 +60,30 @@ void Sort::MergeSort(int tablica[], int start, int koniec)
     if (start != koniec)
     {
         srodek = (start + koniec)/2;
-        MergeSort(tablica, start, srodek);
-        MergeSort(tablica, srodek+1, koniec);
-        scalanie(tablica, start, srodek, koniec);
+        MergeSort(records, start, srodek);
+        MergeSort(records, srodek+1, koniec);
+        scalanie(records, start, srodek, koniec);
     }
     stop=clock();
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
+    return czas;
 }
-void Sort::scalanie(int tablica[], int start, int srodek, int koniec)
+void Sort::scalanie(std::vector <Record> records, int start, int srodek, int koniec)
 {
-
+    /*
     int *tab_pom = new int[(koniec-start+1)]; // utworzenie tablicy pomocniczej
     int i = start, j = srodek+1, k = 0; // zmienne pomocnicze
 
     while (i <= srodek && j <= koniec)
     {
-        if (tablica[j] < tablica[i])
+        if (records[j].key < records[i].key)
         {
-            tab_pom[k] = tablica[j];
+            tab_pom[k] = records[j].key;
             j++;
         }
         else
         {
-            tab_pom[k] = tablica[i];
+            tab_pom[k] = records[i].key;
             i++;
         }
         k++;
@@ -87,7 +93,7 @@ void Sort::scalanie(int tablica[], int start, int srodek, int koniec)
     {
         while (i <= srodek)
         {
-            tab_pom[k] = tablica[i];
+            tab_pom[k] = records[i];
             i++;
             k++;
         }
@@ -103,26 +109,28 @@ void Sort::scalanie(int tablica[], int start, int srodek, int koniec)
     }
 
     for (i = 0; i <= koniec-start; i++)
-        tablica[start+i] = tab_pom[i];
+        records[start+i] = tab_pom[i];
 
-    delete [] tab_pom;
+    delete [] tab_pom;*/
 }
-void Sort::InsertionSort(int *tab, int n)
+clock_t Sort::InsertionSort(std::vector <Record> records)
 {
     start = clock();
+    int n=records.size();
     int i, key, j;
     for (i = 1; i < n; i++)
     {
-        key = tab[i];
+        key = records[i].key;
         j = i - 1;
 
-        while (j >= 0 && tab[j] > key)
+        while (j >= 0 && records[j].key > key)
         {
-            tab[j + 1] = tab[j];
+            records[j + 1] = records[j];
             j = j - 1;
         }
-        tab[j + 1] = key;
+        records[j + 1].key = key;
     }
     stop=clock();
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
+    return czas;
 }

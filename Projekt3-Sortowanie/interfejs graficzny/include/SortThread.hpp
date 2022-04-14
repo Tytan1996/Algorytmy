@@ -3,28 +3,25 @@
 
 #include <stdio.h>//printf
 
-#include<vector>
+#include <vector>
+#include "GenerateTable.hpp"
+#include "Sort.h"
 
-enum SortingMethod{Shell,Quick,Merge,Insertion};
-enum TableTypes{Random,Sorted,ReversSorted};
+enum SortingMethod{Shell,Quick,Merge,Insertion,notSelectedMethod};
+
 
 struct settingsPreset
 {
-    SortingMethod method;
-    TableTypes tabType;
-    int size;
+    SortingMethod method=notSelectedMethod;
+    TableTypes tabType=notSelectedType;
+    long int size=-1;
 };
 void setSetting(SortingMethod);
 void setSetting(TableTypes);
-void setSetting(int);
+void setSetting(long int);
 
 void Start();
-
-struct Record
-{
-    int key;
-    char ID[5];
-};
+bool getProcessing();
 
 
 

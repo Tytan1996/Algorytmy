@@ -9,16 +9,19 @@ bool menuActive=true;
 blockCollection newCollection;
 void onStart()
 {
-    newCollection.addNew({convertSize(10.0f,100.0f),convertSize(200.0f,50.0f),"Losowa",false,0,0,[](){setSetting(TableTypes::Random);}});
-    newCollection.addNew({convertSize(10.0f,200.0f),convertSize(200.0f,50.0f),"Posortowana",false,0,1,[](){setSetting(TableTypes::Sorted);}});
-    newCollection.addNew({convertSize(10.0f,300.0f),convertSize(200.0f,50.0f),"Odwrotnie Posort.",false,0,2,[](){setSetting(TableTypes::ReversSorted);}});
+    newCollection.addNew({convertSize(0.0f,100.0f),convertSize(200.0f,50.0f),"Losowa",false,0,0,[](){setSetting(TableTypes::Random);}});
+    newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Posortowana",false,0,1,[](){setSetting(TableTypes::Sorted);}});
+    newCollection.addNew({convertSize(0.0f,300.0f),convertSize(200.0f,50.0f),"Odwrotnie Posort.",false,0,2,[](){setSetting(TableTypes::ReversSorted);}});
 
     newCollection.addNew({convertSize(300.0f,100.0f),convertSize(200.0f,50.0f),"ShellSort",false,1,3,[](){setSetting(SortingMethod::Shell);}});
     newCollection.addNew({convertSize(300.0f,200.0f),convertSize(200.0f,50.0f),"QuickSort",false,1,4,[](){setSetting(SortingMethod::Quick);}});
     newCollection.addNew({convertSize(300.0f,300.0f),convertSize(200.0f,50.0f),"MergeSort",false,1,5,[](){setSetting(SortingMethod::Merge);}});
     newCollection.addNew({convertSize(300.0f,400.0f),convertSize(200.0f,50.0f),"InsertSort",false,1,6,[](){setSetting(SortingMethod::Insertion);}});
 
-    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,2,7,[](){Start();menuActive=false;}});
+    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"200",false,2,3,[](){setSetting(200);}});
+
+
+    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,7,[](){Start();}});//newCollection.boxes.clear();menuActive=false;
 }
 
 void drawString(const char* txt, float x,float y,float r,float g,float b)
@@ -39,35 +42,92 @@ void keyPressed(unsigned char key, int x, int y)
     //printf("%d\n",key);
 }
 
+/*
+std::vector<Record> generateLimitedTable(const std::vector<Record> &Tab,int limited)
+{
+    if(limited>=Tab.size())
+        return Tab;
 
+    int limit=Tab.size()/limited;
+    std::vector<Record> limitedTable;
+    int sum=0;
+    int num=0;
+    for(int i=0;i<Tab.size();i++)
+    {
+        if(i%limit==0&&num!=0)
+        {
+            Record newRecord({' ',sum/num});
+            limitedTable.push_back(newRecord);
+            sum=0;
+            num=0;
+        }else
+        {
+            sum+=Tab[i].key;
+            num+=1;
+        }
+    }
+
+    return limitedTable;
+}*/
 
 void display()
 {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    if(menuActive&&getProcessing())//jezeli zaczniesz sortowac to schowaj menu
+        menuActive=false;
+
     if(menuActive)
     {
         drawString("Wybierz typ tablicy:",-0.98f,0.92f,0.0f,0.0f,0.0f);
         drawString("Wybierz sortowanie:",-0.4f,0.92f,0.0f,0.0f,0.0f);
-        newCollection.drawAll();
+        drawString("Wielkosc:",0.4f,0.92f,0.0f,0.0f,0.0f);
+
     }else
     {
-        std::cout<<"tak";
-        drawTable(getTab(),true);
+        newCollection.boxes.clear();
+        //drawTable(generateLimitedTable(getTab(),200),false);
+        drawTable(getTab(),false);
+        if(getProcessing())
+        {
+            glutPostRedisplay();
+        }else
+        {
+            drawString("Sortowanie ukonczone",-0.98f,0.92f,0.0f,0.0f,0.0f);
+        }
+
+        /*for(int i=0;i<getTab().size();i++)
+        {
+            std::cout<<i<<" : "<<getTab()[i].key<<std::endl;
+        }*/
+
     }
 
-
+    newCollection.drawAll();
     glFlush();//rysuj
     //if(!menuActive)blockCollection.boxes.clear();
 }
 
 
+float autoScale(const std::vector<Record> &Tab)
+{
+    int max=1;
+    for(int i=0;i<Tab.size();i++)
+    {
+        if(max<Tab[i].key)
+            max=Tab[i].key;
+    }
+    return 800.0f/float(max)/1.43;
+}
+
 
 
 void drawTable(const std::vector<Record> &Tab,bool onlyLines)
 {
-    float scale=10.0f;
+
+    float scale=autoScale(Tab);
+    //std::cout<<"scale: "<<scale<<std::endl;
     vector2 b={-1.0f,-1.0f};
 
     for(int i=0;i<Tab.size();i++)

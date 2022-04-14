@@ -8951,3 +8951,54 @@
 1649767516 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 
+1649965994 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<GL/freeglut.h>
+	<boost/thread.hpp>
+	"BasicDrawFunctions.hpp"
+	"SortThread.hpp"
+
+1649956739 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<GL/freeglut.h>
+	<stdlib.h>
+	<vector>
+	"SortThread.hpp"
+	<boost/thread.hpp>
+	<functional>
+
+1649967244 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
+	<stdio.h>
+	<vector>
+	"GenerateTable.hpp"
+	"Sort.h"
+
+1649967264 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\generatetable.hpp
+	<vector>
+	"Sort.h"
+	<random>
+	<stdio.h>
+	<string.h>
+
+1649966880 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sort.h
+	<chrono>
+	<vector>
+	<boost/thread.hpp>
+
+1649968040 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
+	"Sort.h"
+
+1649967602 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+	"BasicDrawFunctions.hpp"
+	<iostream>
+
+1649967915 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+	"SortThread.hpp"
+	<iostream>
+
+1649964701 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\generatetable.cpp
+	"GenerateTable.hpp"
+	<iostream>
+

@@ -35,8 +35,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Sort.h" />
+		<Unit filename="include/SortFunction.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Sort.cpp" />
+		<Unit filename="src/SortFunction.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

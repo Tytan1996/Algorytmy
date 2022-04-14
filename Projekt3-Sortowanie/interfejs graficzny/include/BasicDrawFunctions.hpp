@@ -13,7 +13,6 @@
 
 #include "SortThread.hpp"
 #include <boost/thread.hpp>
-#include <functional>
 
 //STRUKTURA X, Y
 struct vector2
@@ -31,7 +30,7 @@ void display() ;
 vector2 convertSize(float x,float y);//CIEZKO SIE OPERUJE NA 1.0F-0.0F
 
 
-void drawTable(const std::vector<Record> &Tab,bool onlyLines);
+void drawTable(std::vector<Record> Tab);
 
 //TEKST
 void drawString(const char* txt, float x,float y,float r,float g,float b);
@@ -45,7 +44,6 @@ struct textBlock
     bool hover=false;
     int selectionId;
     int Id;
-    std::function<void()> doOnClick;
 };
 class blockCollection
 {

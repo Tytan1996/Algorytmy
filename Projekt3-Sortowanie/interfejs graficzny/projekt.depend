@@ -8930,7 +8930,7 @@
 	"BasicDrawFunctions.hpp"
 	"SortThread.hpp"
 
-1649766455 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
+1649162703 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -8938,16 +8938,15 @@
 	<vector>
 	"SortThread.hpp"
 	<boost/thread.hpp>
-	<functional>
 
-1649767477 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
+1649161398 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
 	<stdio.h>
 	<vector>
 
-1649766817 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1649162868 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1649767516 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1649161414 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 

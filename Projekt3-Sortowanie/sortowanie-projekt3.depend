@@ -35,3 +35,36 @@
 	<chrono>
 	<windows.h>
 
+1649273997 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sort.cpp
+	"Sort.h"
+
+1649274800 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sort.h
+	<chrono>
+	<vector>
+
+1649767701 source:f:\aisd\projekt3-sortowanie\main.cpp
+	<iostream>
+	<algorithm>
+	<chrono>
+	<windows.h>
+	"Sort.h"
+	<vector>
+	<SortFunction.h>
+
+1649767480 source:f:\aisd\projekt3-sortowanie\src\sort.cpp
+	"Sort.h"
+	<time.h>
+
+1649767480 f:\aisd\projekt3-sortowanie\include\sort.h
+	<chrono>
+	<vector>
+	<iostream>
+
+1649767629 source:f:\aisd\projekt3-sortowanie\src\sortfunction.cpp
+	"SortFunction.h"
+	"Sort.h"
+	<iostream>
+
+1649767696 f:\aisd\projekt3-sortowanie\include\sortfunction.h
+	<chrono>
+

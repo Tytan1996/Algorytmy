@@ -45,7 +45,21 @@ void generateTable(std::vector<Record> &tab,TableTypes type,long int size)
         {
             std::mt19937 gen(rd());
             std::uniform_int_distribution<> dis1(0, std::numeric_limits<int>::max());
-            Record newRecord={dis1(gen),*getUniqueId(i).c_str()};
+
+
+            /*size_t act=i;
+            char id[5];
+            for(int i=1;i<=5;i++)
+            {
+                id[5-i]=letters[act%letters_size];
+                act/=letters_size;
+            }*/
+
+
+            Record newRecord={dis1(gen),""};
+            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
+
+            std::cout<<"id: "<<newRecord.ID<<std::endl;
             tab.push_back(newRecord);
         }
         break;

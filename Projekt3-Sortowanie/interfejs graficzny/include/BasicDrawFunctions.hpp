@@ -14,6 +14,7 @@
 #include "SortThread.hpp"
 #include <boost/thread.hpp>
 #include <functional>
+#include <string>
 
 //STRUKTURA X, Y
 struct vector2
@@ -34,7 +35,7 @@ vector2 convertSize(float x,float y);//CIEZKO SIE OPERUJE NA 1.0F-0.0F
 void drawTable(const std::vector<Record> &Tab,bool onlyLines);
 
 //TEKST
-void drawString(const char* txt, float x,float y,float r,float g,float b);
+void drawString(const char* txt, vector2 pos,float r,float g,float b,vector2 offset={0.0f,0.0f});
 
 //PRZYCISK
 struct textBlock

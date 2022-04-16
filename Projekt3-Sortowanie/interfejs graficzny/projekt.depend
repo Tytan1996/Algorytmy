@@ -8951,7 +8951,7 @@
 1649767516 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 
-1649965994 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
+1650103864 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -8959,7 +8959,7 @@
 	"BasicDrawFunctions.hpp"
 	"SortThread.hpp"
 
-1649956739 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
+1650105954 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -8968,6 +8968,7 @@
 	"SortThread.hpp"
 	<boost/thread.hpp>
 	<functional>
+	<string>
 
 1649967244 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
 	<stdio.h>
@@ -8987,18 +8988,18 @@
 	<vector>
 	<boost/thread.hpp>
 
-1649968040 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
+1649968156 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
 
-1649967602 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1650108097 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1649967915 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650108397 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 
-1649964701 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\generatetable.cpp
+1650108277 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\generatetable.cpp
 	"GenerateTable.hpp"
 	<iostream>
 

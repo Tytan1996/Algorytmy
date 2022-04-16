@@ -21,7 +21,6 @@ int main(int argc, char** argv)
     glutInitWindowSize(800, 600);
     glutCreateWindow("Prezentacja");
     glutDisplayFunc(display);
-    glutKeyboardFunc(keyPressed);
     glutMouseFunc(getMouse);
     onStart();
     glutMainLoop();

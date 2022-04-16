@@ -47,9 +47,13 @@
 			<Add directory="C:/Users/User/Desktop/opengl/MinGW GLUT/lib" />
 		</Linker>
 		<Unit filename="include/BasicDrawFunctions.hpp" />
+		<Unit filename="include/GenerateTable.hpp" />
+		<Unit filename="include/Sort.h" />
 		<Unit filename="include/SortThread.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/BasicDrawFunctions.cpp" />
+		<Unit filename="src/GenerateTable.cpp" />
+		<Unit filename="src/Sort.cpp" />
 		<Unit filename="src/SortThread.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

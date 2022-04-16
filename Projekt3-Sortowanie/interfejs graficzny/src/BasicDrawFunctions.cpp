@@ -9,6 +9,7 @@ bool menuActive=true;
 blockCollection newCollection;
 void onStart()
 {
+    newCollection.boxes.clear();
     newCollection.addNew({convertSize(0.0f,100.0f),convertSize(200.0f,50.0f),"Losowa",false,0,0,[](){setSetting(TableTypes::Random);}});
     newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Posortowana",false,0,1,[](){setSetting(TableTypes::Sorted);}});
     newCollection.addNew({convertSize(0.0f,300.0f),convertSize(200.0f,50.0f),"Odwrotnie Posort.",false,0,2,[](){setSetting(TableTypes::ReversSorted);}});
@@ -18,29 +19,32 @@ void onStart()
     newCollection.addNew({convertSize(300.0f,300.0f),convertSize(200.0f,50.0f),"MergeSort",false,1,5,[](){setSetting(SortingMethod::Merge);}});
     newCollection.addNew({convertSize(300.0f,400.0f),convertSize(200.0f,50.0f),"InsertSort",false,1,6,[](){setSetting(SortingMethod::Insertion);}});
 
-    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"200",false,2,3,[](){setSetting(200);}});
+    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"200",false,2,7,[](){setSetting(200);}});
 
 
-    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,7,[](){Start();}});//newCollection.boxes.clear();menuActive=false;
+    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,8,[](){Start();}});//newCollection.boxes.clear();menuActive=false;
+    newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,3,9,[](){}});
+    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,10,[](){}});
 }
 
-void drawString(const char* txt, float x,float y,float r,float g,float b)
+void drawString(const char* txt, vector2 pos,float r,float g,float b,vector2 offset)
 {
     const unsigned char* t = reinterpret_cast<const unsigned char *>( txt );
     glColor4f(r, g, b, 1.0f);
-    glRasterPos2f(x, y);
+
+    glRasterPos2f(pos.x+offset.x, pos.y+offset.y);
     glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, t);
 }
+vector2 MouseBackup;
 void getMouse (int button, int state,int x, int y)
 {
+    MouseBackup={(x/float(glutGet(GLUT_WINDOW_WIDTH)))*800.0f,(y/float(glutGet(GLUT_WINDOW_HEIGHT)))*600.0f};
+
     newCollection.checkIfClick({x,y});
     //std::cout<<"x:"<<x<<" y:"<<y<<std::endl;
 }
 
-void keyPressed(unsigned char key, int x, int y)
-{
-    //printf("%d\n",key);
-}
+
 
 /*
 std::vector<Record> generateLimitedTable(const std::vector<Record> &Tab,int limited)
@@ -70,6 +74,22 @@ std::vector<Record> generateLimitedTable(const std::vector<Record> &Tab,int limi
     return limitedTable;
 }*/
 
+void Circle(float r,float pos_x,float pos_y)
+{
+    glBegin(GL_POLYGON);
+    glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+    float x = 1.0f;
+    float y = 1.0f;
+    for (int i = 0; i <= 360; i++)
+    {
+        vector2 vec2=convertSize(r * sin(i)+pos_x, r * cos(i)+pos_y);
+        glVertex2f((vec2.x-1.0f),(vec2.y-1.0f)*-1.0f);
+    }
+    glEnd();
+}
+
+float scaleX,scaleY;
+
 void display()
 {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -80,9 +100,9 @@ void display()
 
     if(menuActive)
     {
-        drawString("Wybierz typ tablicy:",-0.98f,0.92f,0.0f,0.0f,0.0f);
-        drawString("Wybierz sortowanie:",-0.4f,0.92f,0.0f,0.0f,0.0f);
-        drawString("Wielkosc:",0.4f,0.92f,0.0f,0.0f,0.0f);
+        drawString("Wybierz typ tablicy:",convertSize(0.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
+        drawString("Wybierz sortowanie:",convertSize(300.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
+        drawString("Wielkosc:",convertSize(600.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
 
     }else
     {
@@ -94,7 +114,14 @@ void display()
             glutPostRedisplay();
         }else
         {
-            drawString("Sortowanie ukonczone",-0.98f,0.92f,0.0f,0.0f,0.0f);
+            int tabX=int((MouseBackup.x)/scaleX);
+            int tabY=int((600.0f-MouseBackup.y)/scaleY);
+            std::string txt=std::to_string(tabX)+"x"+std::to_string(tabY)+" id:"+getTab()[tabX].ID;
+            //for(int i=0;i<getTab().size();i++)
+            //    std::cout<<getTab()[i].ID<<std::endl;
+            drawString(txt.c_str(),convertSize(0.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
+            newCollection.addNew({convertSize(0.0f,60.0f),convertSize(200.0f,50.0f),"Back to menu",false,0,1,[](){menuActive=true;onStart();}});
+            newCollection.addNew({convertSize(0.0f,120.0f),convertSize(200.0f,50.0f),"Save Preset",false,0,2,[](){menuActive=true;onStart();}});
         }
 
         /*for(int i=0;i<getTab().size();i++)
@@ -104,7 +131,12 @@ void display()
 
     }
 
+
+
     newCollection.drawAll();
+
+    Circle(5,MouseBackup.x,MouseBackup.y);
+
     glFlush();//rysuj
     //if(!menuActive)blockCollection.boxes.clear();
 }
@@ -118,7 +150,7 @@ float autoScale(const std::vector<Record> &Tab)
         if(max<Tab[i].key)
             max=Tab[i].key;
     }
-    return 800.0f/float(max)/1.43;
+    return 800.0f/float(max)/1.34;
 }
 
 
@@ -127,7 +159,9 @@ void drawTable(const std::vector<Record> &Tab,bool onlyLines)
 {
 
     float scale=autoScale(Tab);
-    //std::cout<<"scale: "<<scale<<std::endl;
+    scaleY=scale;//TO JEST INFORMACJA DLA TEXT'U SKALI
+    scaleX=800.0f/Tab.size();
+
     vector2 b={-1.0f,-1.0f};
 
     for(int i=0;i<Tab.size();i++)
@@ -135,7 +169,7 @@ void drawTable(const std::vector<Record> &Tab,bool onlyLines)
         //std::cout<<Tab[i].key<<std::endl;
         if(!onlyLines)
         {
-            newCollection.addNew({convertSize((800.0f/Tab.size())*i,600.0f-(Tab[i].key*scale)),convertSize(800.0f/Tab.size(),(Tab[i].key*scale)),"",false,0,0,[](){}});
+            newCollection.addNew({convertSize((800.0f/Tab.size())*i,600.0f-(Tab[i].key*scale)),convertSize(800.0f/Tab.size(),(Tab[i].key*scale)),"",false,-1,0,[](){}});
         }
         else
         {
@@ -178,9 +212,14 @@ void blockCollection::drawAll()
         glVertex2f(box.poz.x-1.0f+(box.size.x),(box.poz.y-1.0f+(box.size.y))*-1.0f);
         glVertex2f(box.poz.x-1.0f,(box.poz.y-1.0f+(box.size.y))*-1.0f);
         glEnd();
-        drawString(box.text,box.poz.x-0.98f,(box.poz.y-1.0f+(box.size.y/2.0f))*-1.0f,0.0f,0.0f,0.0f);
+        vector2 vec2={box.poz.x-0.98f,(box.poz.y-1.0f+(box.size.y/2.0f))*-1.0f};
+        drawString(box.text,vec2,0.0f,0.0f,0.0f);
     }
 }
+
+
+
+
 void blockCollection::addNew(textBlock nowy)
 {
     boxes.push_back(nowy);
@@ -191,9 +230,13 @@ void blockCollection::checkIfClick(vector2 mouse)
     int hoverSelectionId=-1;
     float mx=(mouse.x/(glutGet(GLUT_WINDOW_WIDTH)/2.0f))-1.0f;
     float my=(mouse.y/(glutGet(GLUT_WINDOW_HEIGHT)/2.0f))-1.0f;
+
+
+
+
     for(textBlock &box:boxes)//PO KLIKNIECIU ZAZNACZ JEDNO
     {
-        if(box.poz.x-1.0f<mx&&box.poz.y-1.0f<my&&box.poz.x-1.0f+(box.size.x)>mx&&box.poz.y-1.0f+(box.size.y)>my&&hoverID==-1)
+        if(box.poz.x-1.0f<mx&&box.poz.y-1.0f<my&&box.poz.x-1.0f+(box.size.x)>mx&&box.poz.y-1.0f+(box.size.y)>my&&hoverID==-1&&box.selectionId!=-1)
         {
             hoverID=box.Id;
             hoverSelectionId=box.selectionId;

@@ -23,7 +23,7 @@ void setSetting(long int);
 void Start();
 bool getProcessing();
 
-
+std::vector<std::vector<Record>> Benchmark();
 
 
 std::vector<Record> getTab();

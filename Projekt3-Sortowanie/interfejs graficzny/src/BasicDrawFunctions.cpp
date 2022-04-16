@@ -6,6 +6,8 @@
 
 bool menuActive=true;
 
+std::vector<std::vector<Record>> backupBenchmark;
+
 blockCollection newCollection;
 void onStart()
 {
@@ -23,9 +25,12 @@ void onStart()
 
 
     newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,8,[](){Start();}});//newCollection.boxes.clear();menuActive=false;
-    newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,3,9,[](){}});
-    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,10,[](){}});
+    newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,3,9,[](){openFile();}});
+    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,10,[](){backupBenchmark=Benchmark();}});
 }
+
+
+
 
 void drawString(const char* txt, vector2 pos,float r,float g,float b,vector2 offset)
 {
@@ -114,14 +119,18 @@ void display()
             glutPostRedisplay();
         }else
         {
+
             int tabX=int((MouseBackup.x)/scaleX);
             int tabY=int((600.0f-MouseBackup.y)/scaleY);
-            std::string txt=std::to_string(tabX)+"x"+std::to_string(tabY)+" id:"+getTab()[tabX].ID;
-            //for(int i=0;i<getTab().size();i++)
-            //    std::cout<<getTab()[i].ID<<std::endl;
-            drawString(txt.c_str(),convertSize(0.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
-            newCollection.addNew({convertSize(0.0f,60.0f),convertSize(200.0f,50.0f),"Back to menu",false,0,1,[](){menuActive=true;onStart();}});
-            newCollection.addNew({convertSize(0.0f,120.0f),convertSize(200.0f,50.0f),"Save Preset",false,0,2,[](){menuActive=true;onStart();}});
+            if(tabX>=0&&tabX<getTab().size())
+            {
+                std::string txt="Cursor: "+std::to_string(tabX)+"x"+std::to_string(tabY);
+                txt+="\nTab["+std::to_string(tabX)+"]={key="+std::to_string(getTab()[tabX].key)+",id=\""+getTab()[tabX].ID+"\"}";
+                drawString(txt.c_str(),convertSize(0.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
+            }
+
+            newCollection.addNew({convertSize(0.0f,70.0f),convertSize(200.0f,50.0f),"Back to menu",false,0,1,[](){menuActive=true;onStart();}});
+            newCollection.addNew({convertSize(0.0f,140.0f),convertSize(200.0f,50.0f),"Save Preset",false,0,2,[](){saveFile();}});
         }
 
         /*for(int i=0;i<getTab().size();i++)

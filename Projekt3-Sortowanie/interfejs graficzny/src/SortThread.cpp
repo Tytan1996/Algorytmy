@@ -68,14 +68,10 @@ void watek()
         }
     }
 
-/*
-    for(int i=0;i<10;i++)
-    {
-        Tab.push_back({i,'a'});
-    }
-    while(true)
-    {
+}
 
-        //printf("test\n");
-    }*/
+
+std::vector<std::vector<Record>> Benchmark()
+{
+
 }

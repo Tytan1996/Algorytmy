@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "SortThread.hpp"
+#include "PresetLoader.hpp"
 #include <boost/thread.hpp>
 #include <functional>
 #include <string>

@@ -48,13 +48,24 @@
 		</Linker>
 		<Unit filename="include/BasicDrawFunctions.hpp" />
 		<Unit filename="include/GenerateTable.hpp" />
+		<Unit filename="include/PresetLoader.hpp" />
 		<Unit filename="include/Sort.h" />
 		<Unit filename="include/SortThread.hpp" />
+		<Unit filename="include/simpleini/ConvertUTF.h" />
+		<Unit filename="include/simpleini/SimpleIni.h" />
+		<Unit filename="include/tinyfiledialog/tinyfiledialogs.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/BasicDrawFunctions.cpp" />
 		<Unit filename="src/GenerateTable.cpp" />
+		<Unit filename="src/PresetLoader.cpp" />
 		<Unit filename="src/Sort.cpp" />
 		<Unit filename="src/SortThread.cpp" />
+		<Unit filename="src/simpleini/ConvertUTF.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/tinyfiledialog/tinyfiledialogs.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

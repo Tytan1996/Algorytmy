@@ -1,10 +1,10 @@
 #include "Sort.h"
 
+using clockH=std::chrono::high_resolution_clock;
 
-
-clock_t Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
+int Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
     int iloscElementow=records.size();
-    start = clock();
+    auto start = clockH::now();
     for (int i=1; i<iloscElementow; i++)
     {
         for (int j=iloscElementow-1; j>=1; j--)
@@ -20,13 +20,13 @@ clock_t Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
         }
 
     }
-    stop=clock();
-    czas=(double)(stop-start) / CLOCKS_PER_SEC;
-    return czas;
+    auto stop = clockH::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count();
 }
-clock_t Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep){
+#include <iostream>
+int Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep){
 
-    start = clock();
+    auto CzasStart = clockH::now();
 
     int v=records[(lewy+prawy)/2].key;
     Record record;
@@ -50,14 +50,15 @@ clock_t Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool 
     while (i<=j);
     if (j>lewy) QuickSort(records,lewy, j,ThreadSleep);
     if (i<prawy) QuickSort(records, i, prawy,ThreadSleep);
-    stop=clock();
-    czas=(double)(stop-start) / CLOCKS_PER_SEC;
-    return czas;
-}
-clock_t Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
-{
 
-    start = clock();
+    auto CzasStop = clockH::now();
+    //if(lewy==0)
+    //std::cout<<"z "<<std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count()<<std::endl;
+    return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
+}
+int Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
+{
+    auto CzasStart = clockH::now();
     int srodek;
 
     if (start != koniec)
@@ -68,9 +69,8 @@ clock_t Sort::MergeSort(std::vector <Record> &records, int start, int koniec,boo
         scalanie(records, start, srodek, koniec);
     }
     if(ThreadSleep)boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
-    stop=clock();
-    czas=(double)(stop-start) / CLOCKS_PER_SEC;
-    return czas;
+    auto CzasStop = clockH::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
 }
 void Sort::scalanie(std::vector <Record> &records, int start, int srodek, int koniec)
 {
@@ -117,9 +117,9 @@ void Sort::scalanie(std::vector <Record> &records, int start, int srodek, int ko
 
     delete [] tab_pom;*/
 }
-clock_t Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
+int Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
 {
-    start = clock();
+    auto start = clockH::now();
     int n=records.size();
     int i, key, j;
     for (i = 1; i < n; i++)
@@ -136,7 +136,6 @@ clock_t Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
         records[j + 1].key = key;
     }
 
-    stop=clock();
-    czas=(double)(stop-start) / CLOCKS_PER_SEC;
-    return czas;
+    auto stop = clockH::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count();
 }

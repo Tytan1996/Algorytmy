@@ -3,8 +3,9 @@
 #include <iostream>
 
 
-
+bool benchState=false;
 bool menuActive=true;
+float scale = 1.0f; //NOTE THIS IS A SCALE FOR DRAWTABLE FUNCTIONS ONLY !!!
 
 std::vector<std::vector<Record>> backupBenchmark;
 
@@ -26,16 +27,54 @@ void onStart()
 
     newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,8,[](){Start();}});//newCollection.boxes.clear();menuActive=false;
     newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,3,9,[](){openFile();}});
-    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,10,[](){backupBenchmark=Benchmark();}});
+    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,10,[](){startBenchmark();benchState=true;menuActive=false;}});
 }
 
 
 
+void drawBenchmarkResult()
+{
+    //std::cout<<"kkk";
+    drawString("Red-Quick\nYellow-Merge\nGreen-Insert\nBlue-Shell",convertSize(650.0f,-480.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+    int max=1;
+    vector3 color={0.0f,0.0f,0.0f};
+    newCollection.boxes.clear();
+    for(std::vector<Record> a : getResultBenchmark())
+        for(Record b : a)
+            if(max<b.key)
+                max=b.key;
+    scale=800.0f/float(max)/1.34;
+    for(std::vector<Record> a : getResultBenchmark())
+    {
+        for(Record b : a)
+        {
+            switch(b.ID[0])//IN ID I SAVED A COLOR
+            {
+            case 0:
+                color={1.0f,0.0f,0.0f};
+                break;
+            case 1:
+                color={1.0f,1.0f,0.0f};
+                break;
+            case 2:
+                color={0.0f,1.0f,0.0f};
+                break;
+            case 3:
+                color={0.0f,0.0f,1.0f};
+                break;
+            }
+        }
 
-void drawString(const char* txt, vector2 pos,float r,float g,float b,vector2 offset)
+        drawTable(a,true,false,100,color);
+        //std::cout<<"scale"<<max;
+    }
+
+}
+
+void drawString(const char* txt, vector2 pos,vector3 color,vector2 offset)
 {
     const unsigned char* t = reinterpret_cast<const unsigned char *>( txt );
-    glColor4f(r, g, b, 1.0f);
+    glColor4f(color.x, color.y, color.z, 1.0f);
 
     glRasterPos2f(pos.x+offset.x, pos.y+offset.y);
     glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, t);
@@ -103,17 +142,21 @@ void display()
     if(menuActive&&getProcessing())//jezeli zaczniesz sortowac to schowaj menu
         menuActive=false;
 
+
     if(menuActive)
     {
-        drawString("Wybierz typ tablicy:",convertSize(0.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
-        drawString("Wybierz sortowanie:",convertSize(300.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
-        drawString("Wielkosc:",convertSize(600.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
+        drawString("Wybierz typ tablicy:",convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+        drawString("Wybierz sortowanie:",convertSize(300.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+        drawString("Wielkosc:",convertSize(600.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
 
     }else
     {
         newCollection.boxes.clear();
         //drawTable(generateLimitedTable(getTab(),200),false);
-        drawTable(getTab(),false);
+        if(benchState==false)
+            drawTable(getTab(),false);
+        else
+            drawBenchmarkResult();
         if(getProcessing())
         {
             glutPostRedisplay();
@@ -124,13 +167,16 @@ void display()
             int tabY=int((600.0f-MouseBackup.y)/scaleY);
             if(tabX>=0&&tabX<getTab().size())
             {
-                std::string txt="Cursor: "+std::to_string(tabX)+"x"+std::to_string(tabY);
-                txt+="\nTab["+std::to_string(tabX)+"]={key="+std::to_string(getTab()[tabX].key)+",id=\""+getTab()[tabX].ID+"\"}";
-                drawString(txt.c_str(),convertSize(0.0f,0.0f),0.0f,0.0f,0.0f,{-1.0f,0.9f});
+                std::string txt="";
+                if(benchState==false)
+                    txt+="Cursor: "+std::to_string(tabX)+"x"+std::to_string(tabY)+"\nTab["+std::to_string(tabX)+"]={key="+std::to_string(getTab()[tabX].key)+",id=\""+getTab()[tabX].ID+"\"}";
+                else
+                    txt+=std::to_string(tabX*100)+"elements "+std::to_string(tabY)+"microsecounds";
+                drawString(txt.c_str(),convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
             }
 
-            newCollection.addNew({convertSize(0.0f,70.0f),convertSize(200.0f,50.0f),"Back to menu",false,0,1,[](){menuActive=true;onStart();}});
-            newCollection.addNew({convertSize(0.0f,140.0f),convertSize(200.0f,50.0f),"Save Preset",false,0,2,[](){saveFile();}});
+            newCollection.addNew({convertSize(0.0f,70.0f),convertSize(200.0f,50.0f),"Back to menu",false,0,1,[](){menuActive=true;onStart();benchState=false;}});
+            if(!benchState)newCollection.addNew({convertSize(0.0f,140.0f),convertSize(200.0f,50.0f),"Save Preset",false,0,2,[](){saveFile();}});
         }
 
         /*for(int i=0;i<getTab().size();i++)
@@ -143,9 +189,7 @@ void display()
 
 
     newCollection.drawAll();
-
     Circle(5,MouseBackup.x,MouseBackup.y);
-
     glFlush();//rysuj
     //if(!menuActive)blockCollection.boxes.clear();
 }
@@ -163,13 +207,15 @@ float autoScale(const std::vector<Record> &Tab)
 }
 
 
-
-void drawTable(const std::vector<Record> &Tab,bool onlyLines)
+void drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe,int columns,vector3 color)
 {
-
-    float scale=autoScale(Tab);
+    if(Tab.size()==0)return;
+    if(columns==-1)
+        columns=Tab.size();
+    if(autoScaleMe)
+        scale=autoScale(Tab);
     scaleY=scale;//TO JEST INFORMACJA DLA TEXT'U SKALI
-    scaleX=800.0f/Tab.size();
+    scaleX=800.0f/columns;
 
     vector2 b={-1.0f,-1.0f};
 
@@ -178,12 +224,12 @@ void drawTable(const std::vector<Record> &Tab,bool onlyLines)
         //std::cout<<Tab[i].key<<std::endl;
         if(!onlyLines)
         {
-            newCollection.addNew({convertSize((800.0f/Tab.size())*i,600.0f-(Tab[i].key*scale)),convertSize(800.0f/Tab.size(),(Tab[i].key*scale)),"",false,-1,0,[](){}});
+            newCollection.addNew({convertSize((800.0f/columns)*i,600.0f-(Tab[i].key*scale)),convertSize(800.0f/columns,(Tab[i].key*scale)),"",false,-1,0,[](){}});
         }
         else
         {
-            vector2 a=convertSize((800.0f/Tab.size())*(1.0f/2.0f+i),(Tab[i].key*scale));
-            glColor3f(0.0f, 0.0f, 0.0f);
+            vector2 a=convertSize((800.0f/columns)*(1.0f/2.0f+i),(Tab[i].key*scale));
+            glColor3f(color.x, color.y, color.z);
             glBegin(GL_LINES);
             glVertex2f(a.x-1.0f,a.y-1.0f);
             glVertex2f(b.x-1.0f,b.y-1.0f);
@@ -222,7 +268,7 @@ void blockCollection::drawAll()
         glVertex2f(box.poz.x-1.0f,(box.poz.y-1.0f+(box.size.y))*-1.0f);
         glEnd();
         vector2 vec2={box.poz.x-0.98f,(box.poz.y-1.0f+(box.size.y/2.0f))*-1.0f};
-        drawString(box.text,vec2,0.0f,0.0f,0.0f);
+        drawString(box.text,vec2,{0.0f,0.0f,0.0f});
     }
 }
 

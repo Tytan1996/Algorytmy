@@ -4,6 +4,7 @@
 #include <stdio.h>//printf
 
 #include <vector>
+#include <GL/freeglut.h>
 #include "GenerateTable.hpp"
 #include "Sort.h"
 
@@ -23,8 +24,10 @@ void setSetting(long int);
 void Start();
 bool getProcessing();
 
-std::vector<std::vector<Record>> Benchmark();
 
+void startBenchmark();
+void Benchmark();
+std::vector<std::vector<Record>> getResultBenchmark();
 
 std::vector<Record> getTab();
 

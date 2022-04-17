@@ -18,13 +18,19 @@
 #include <string>
 
 //STRUKTURA X, Y
-struct vector2
+struct vector2  //SOME SIMPLE STRUCTURES. VECTOR 2 IS USED FOR HOLDING POSITION ON THE SCREEN
 {
     float x,y;
+};
+struct vector3//AND THE VECTOR3 AM USING FOR HOLIDNG COLORS
+{
+    float x,y,z;
 };
 
 //WYKONAJ NA STARCIE
 void onStart();
+
+
 
 void getMouse (int button, int state,int x, int y);
 void keyPressed(unsigned char key, int x, int y);
@@ -33,10 +39,10 @@ void display() ;
 vector2 convertSize(float x,float y);//CIEZKO SIE OPERUJE NA 1.0F-0.0F
 
 
-void drawTable(const std::vector<Record> &Tab,bool onlyLines);
+void drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe=true,int columns=-1,vector3 Color={0.0f,0.0f,0.0f});
 
 //TEKST
-void drawString(const char* txt, vector2 pos,float r,float g,float b,vector2 offset={0.0f,0.0f});
+void drawString(const char* txt, vector2 pos,vector3 color,vector2 offset={0.0f,0.0f});
 
 //PRZYCISK
 struct textBlock

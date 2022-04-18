@@ -35,7 +35,7 @@ std::vector<std::vector<Record>> getResultBenchmark();
 std::vector<Record> getTab();
 
 void watek();
-PresetStruct GeneratePresetStruct(std::string description);
+PresetStruct GeneratePresetStruct(std::string description,bool unsorted);
 void ApplyPresetStruct(PresetStruct presetStruct);
 std::string getDescription();
 

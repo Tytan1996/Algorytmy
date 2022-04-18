@@ -15,6 +15,7 @@ void setSetting(long int a)
 {
     preset.size=a;
 }
+int BackupTime=0;
 
 bool normalStart=false;
 bool startBenchmarkThr=false;
@@ -49,20 +50,25 @@ void watek()
 
             generateTable(Tab,preset.tabType,preset.size);
             TabBeforeSorting=Tab;
-            switch(preset.method)
+            for(int i=0;i<2;i++)//2 RAZY -> 0 WIZUALIZACJA, 1 FAKTYCZNE SORTOWANIE (DLA UZYSKANIA CZASU)
             {
-            case Shell:
-                classSort.ShellSort(Tab,true);
-                break;
-            case Quick:
-                classSort.QuickSort(Tab,0,Tab.size(),true);
-                break;
-            case Merge:
-                classSort.MergeSort(Tab,0,0,true);
-                break;
-            case Insertion:
-                classSort.InsertionSort(Tab,true);
-                break;
+                bool ThreadSleep=true;
+                if(i==1)ThreadSleep=false;
+                switch(preset.method)
+                {
+                case Shell:
+                    BackupTime=classSort.ShellSort(Tab,ThreadSleep);
+                    break;
+                case Quick:
+                    BackupTime=classSort.QuickSort(Tab,0,Tab.size(),ThreadSleep);
+                    break;
+                case Merge:
+                    BackupTime=classSort.MergeSort(Tab,0,0,ThreadSleep);
+                    break;
+                case Insertion:
+                    BackupTime=classSort.InsertionSort(Tab,ThreadSleep);
+                    break;
+                }
             }
             normalStart=false;
             processing=false;
@@ -129,11 +135,11 @@ void Benchmark()
     std::cout<<"Finished"<<std::endl;
 }
 
-PresetStruct GeneratePresetStruct(std::string description)
+PresetStruct GeneratePresetStruct(std::string description,bool unsorted)
 {
     PresetStruct newPresetStruct;
-    newPresetStruct.description=description;
 
+    newPresetStruct.description=description;
     if(preset.method==Shell)
         newPresetStruct.method="Shell";
     else if(preset.method==Quick)
@@ -142,10 +148,15 @@ PresetStruct GeneratePresetStruct(std::string description)
         newPresetStruct.method="Merge";
     else newPresetStruct.method="Insertion";
 
-    if(TabBeforeSorting.size()==0)
+    if(!unsorted)
+    {
+        newPresetStruct.description+=". Took "+std::to_string(BackupTime)+" microsecounds";
         newPresetStruct.Tab=Tab;
+    }
     else
+    {
         newPresetStruct.Tab=TabBeforeSorting;
+    }
     return newPresetStruct;
 }
 

@@ -8971,7 +8971,7 @@
 	<functional>
 	<string>
 
-1650316855 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
+1650320622 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
 	<stdio.h>
 	<vector>
 	<GL/freeglut.h>
@@ -8995,11 +8995,11 @@
 	"Sort.h"
 	<iostream>
 
-1650317461 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1650321102 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1650317305 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650321236 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 

@@ -5,7 +5,7 @@
 #include "Sort.h"
 #include <vector>
 #include <SortFunction.h>
-
+#include <Sort.h>
 
 using namespace std;
 
@@ -34,7 +34,7 @@ int main(){
 
 
 
-    vector<Sort::Record> records ;
+    vector<Record> records ;
 
     //records.resize(50);
 
@@ -43,10 +43,10 @@ int main(){
 
 
     //td::generate(records.begin(),records.end(), [](){return 1;} );
-    cout<<AiSD::ShellSort()<<endl;
+
 
     for(int i=0;i<50;++i){
-        Sort::Record nowy;
+        Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
         nowy.ID[0]=char(i);
@@ -56,16 +56,16 @@ int main(){
         nowy.ID[4]=char(i);
         records.push_back(nowy);
     }
-
+    cout<<AiSD::ShellSort(records)<<endl;
     Sort test;
     std::cout<<"Przed: "<<std::endl;
-    for (std::vector<Sort::Record> :: iterator itr = records.begin(); itr != records.end(); itr++)
+    for (std::vector<Record> :: iterator itr = records.begin(); itr != records.end(); itr++)
     {
         std::cout<<itr->key<<" ";
     }
     std::cout<<'\n'<<"Po: "<<std::endl<<"Czas :";
     std::cout<<test.ShellSort(records)<<std::endl;
-    for (std::vector<Sort::Record> :: iterator itr = records.begin(); itr != records.end(); itr++)
+    for (std::vector<Record> :: iterator itr = records.begin(); itr != records.end(); itr++)
     {
         std::cout<<itr->key<<" ";
     }

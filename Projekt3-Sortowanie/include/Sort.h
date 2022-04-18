@@ -3,18 +3,13 @@
 #include <chrono>
 #include <vector>
 #include <iostream>
-
+#include <struktura.h>
 
 
 
 class Sort
 {
     public:
-
-    struct Record{
-        int key;
-        char ID[5];
-    };
 
         clock_t ShellSort(std::vector<Record>& records);
         clock_t QuickSort(std::vector<Record>& records, int lewy, int prawy);
@@ -29,7 +24,6 @@ class Sort
     protected:
 
     private:
-        std::vector <Record> records;
         void scalanie(std::vector<Record>& records, int start, int srodek, int koniec);
         clock_t start,stop;
         double czas;

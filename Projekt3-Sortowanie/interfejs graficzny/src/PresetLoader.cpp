@@ -31,3 +31,51 @@ std::string saveFile()
 
     return lTheSaveFileName;
 }
+
+
+void savePreset(std::string src,PresetStruct presetStruct)
+{
+    mINI::INIFile file(src);
+    mINI::INIStructure ini;
+    file.read(ini);
+    ini.clear();//jezeli cos tu juz jest to to usun
+
+    ini["settings"]["method"] = presetStruct.method;
+    ini["settings"]["description"] = presetStruct.description;
+
+    for(int i=0;i<presetStruct.Tab.size();i++)
+    {
+        ini[std::to_string(i)]["key"] = std::to_string(presetStruct.Tab[i].key);
+        ini[std::to_string(i)]["ID"] = presetStruct.Tab[i].ID;
+    }
+    file.write(ini);
+}
+PresetStruct openPreset(std::string src)
+{
+    PresetStruct newStruct;
+
+    mINI::INIFile file(src);
+    mINI::INIStructure ini;
+    file.read(ini);
+
+    newStruct.method=ini["settings"]["method"];
+    newStruct.description=ini["settings"]["description"];
+
+    for(int i=0;true;i++)
+    {
+        if(ini.has(std::to_string(i)))
+        {
+            Record newRecord;
+
+            newRecord.key=std::stoi(ini[std::to_string(i)]["key"]);
+            std::string idCopy=ini[std::to_string(i)]["ID"];
+
+            strncpy(newRecord.ID,idCopy.c_str(),5);
+            newStruct.Tab.push_back(newRecord);
+        }else
+        {
+            return newStruct;
+        }
+
+    }
+}

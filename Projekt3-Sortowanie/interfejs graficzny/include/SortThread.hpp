@@ -8,6 +8,9 @@
 #include "GenerateTable.hpp"
 #include "Sort.h"
 
+#include "PresetLoader.hpp"
+
+
 enum SortingMethod{Shell,Quick,Merge,Insertion,notSelectedMethod};
 
 
@@ -32,5 +35,9 @@ std::vector<std::vector<Record>> getResultBenchmark();
 std::vector<Record> getTab();
 
 void watek();
+PresetStruct GeneratePresetStruct(std::string description);
+void ApplyPresetStruct(PresetStruct presetStruct);
+std::string getDescription();
+
 
 #endif // SORTTHREAD_HPP

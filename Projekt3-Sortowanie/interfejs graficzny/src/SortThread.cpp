@@ -31,12 +31,11 @@ bool getProcessing()
 }
 
 std::vector<Record> Tab;
-
 std::vector<Record> getTab()
 {
     return Tab;
 }
-
+std::vector<Record> TabBeforeSorting;
 
 
 void watek()
@@ -49,6 +48,7 @@ void watek()
             Sort classSort;
 
             generateTable(Tab,preset.tabType,preset.size);
+            TabBeforeSorting=Tab;
             switch(preset.method)
             {
             case Shell:
@@ -72,7 +72,6 @@ void watek()
             startBenchmarkThr=false;
         }
     }
-
 }
 
 
@@ -111,7 +110,7 @@ void Benchmark()
                 time=(int)(classSort.QuickSort(Tab,0,Tab.size(),false));
                 break;
             case 1:
-                //time=(int)(classSort.MergeSort(Tab,0,Tab.size(),false));
+                time=(int)(classSort.MergeSort(Tab,0,Tab.size(),false));
                 break;
             case 2:
                 time=(int)(classSort.InsertionSort(Tab,false));
@@ -120,20 +119,53 @@ void Benchmark()
                 time=(int)(classSort.ShellSort(Tab,false));
                 break;
             }
-            //if(i==1&&j==0)
-            //    for(Record a :Tab)
-            //        std::cout<<a.key<<std::endl;
-
-
-            //std::cout<<"tra"<<std::endl;
             //std::cout<<"time: "<<time<<std::endl;
             Record newRecord={time,(char)i};
 
             resultBenchmark[i].push_back(newRecord);
-            //std::cout<<"located";
         }
-        //resultBenchmark.push_back(SortResult);
     }
     processing=false;
     std::cout<<"Finished"<<std::endl;
+}
+
+PresetStruct GeneratePresetStruct(std::string description)
+{
+    PresetStruct newPresetStruct;
+    newPresetStruct.description=description;
+
+    if(preset.method==Shell)
+        newPresetStruct.method="Shell";
+    else if(preset.method==Quick)
+        newPresetStruct.method="Quick";
+    else if(preset.method==Merge)
+        newPresetStruct.method="Merge";
+    else newPresetStruct.method="Insertion";
+
+    if(TabBeforeSorting.size()==0)
+        newPresetStruct.Tab=Tab;
+    else
+        newPresetStruct.Tab=TabBeforeSorting;
+    return newPresetStruct;
+}
+
+
+std::string description="";
+std::string getDescription()
+{
+    return description;
+}
+
+void ApplyPresetStruct(PresetStruct presetStruct)
+{
+    description=presetStruct.description;
+    if(presetStruct.method=="Shell")
+        preset.method=Shell;
+    else if(presetStruct.method=="Quick")
+        preset.method=Quick;
+    else if(presetStruct.method=="Merge")
+        preset.method=Merge;
+    else preset.method=Insertion;
+    Tab=presetStruct.Tab;
+    TabBeforeSorting=presetStruct.Tab;
 }

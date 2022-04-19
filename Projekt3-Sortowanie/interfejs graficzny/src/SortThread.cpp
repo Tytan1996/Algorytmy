@@ -51,8 +51,6 @@ void AiSD::thread1()
     {
         if(normalStart)
         {
-
-
             Sort classSort;
             if(preset.tabType!=notSelectedType)
                 generateTable(Tab,preset.tabType,preset.size);
@@ -69,10 +67,11 @@ void AiSD::thread1()
 
                 for(int i=0;i<2;i++)//2 RAZY -> 0 WIZUALIZACJA, 1 FAKTYCZNE SORTOWANIE (DLA UZYSKANIA CZASU)
                 {
+                    Tab=TabBeforeSorting;//sortuj tylko nieposortowana tablce
                     if(skipSleepState==true)i=1;
                     bool ThreadSleep=true;
                     if(i==1)ThreadSleep=false;
-                    switch(preset.method)
+                    switch(preset.method)//ZAPISZE SIE TYLKO TEN BACKUP OSTATNI
                     {
                     case Shell:
                         BackupTime=classSort.ShellSort(Tab,ThreadSleep);

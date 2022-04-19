@@ -8995,11 +8995,11 @@
 1650365753 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
 
-1650371473 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1650372302 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1650368925 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650372798 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 

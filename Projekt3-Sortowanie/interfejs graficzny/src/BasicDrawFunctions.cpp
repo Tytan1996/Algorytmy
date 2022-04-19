@@ -149,7 +149,7 @@ void AiSD::display()
         if(openMenuActive==true)
         {
             if(alreadySorted==false)
-                newCollection.addNew({convertSize(600.0f,0.0f),convertSize(200.0f,50.0f),"Sort",false,9,16,[](){alreadySorted=true;Start(true);}});
+                newCollection.addNew({convertSize(600.0f,0.0f),convertSize(200.0f,50.0f),"Sort",false,9,16,[](){alreadySorted=true;Start(true);backupProcessing=-1;}});
             else
                 newCollection.addNew({convertSize(0.0f,140.0f),convertSize(200.0f,50.0f),"Save",false,10,17,[](){savePreset(saveFile(),GeneratePresetStruct("Sorted table",false));}});
         }

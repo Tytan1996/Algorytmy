@@ -18,9 +18,9 @@ void AiSD::onStart()
     openMenuActive=false;
     benchState=false;
     newCollection.boxes.clear();
-    newCollection.addNew({convertSize(0.0f,100.0f),convertSize(200.0f,50.0f),"Losowa",false,0,0,[](){setSetting(TableTypes::Random);}});
-    newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Posortowana",false,0,1,[](){setSetting(TableTypes::Sorted);}});
-    newCollection.addNew({convertSize(0.0f,300.0f),convertSize(200.0f,50.0f),"Odwrotnie Posort.",false,0,2,[](){setSetting(TableTypes::ReversSorted);}});
+    newCollection.addNew({convertSize(0.0f,100.0f),convertSize(200.0f,50.0f),"Random",false,0,0,[](){setSetting(TableTypes::Random);}});
+    newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Sorted",false,0,1,[](){setSetting(TableTypes::Sorted);}});
+    newCollection.addNew({convertSize(0.0f,300.0f),convertSize(200.0f,50.0f),"Inversely Sorted",false,0,2,[](){setSetting(TableTypes::ReversSorted);}});
 
     newCollection.addNew({convertSize(300.0f,100.0f),convertSize(200.0f,50.0f),"ShellSort",false,1,3,[](){setSetting(SortingMethod::Shell);}});
     newCollection.addNew({convertSize(300.0f,200.0f),convertSize(200.0f,50.0f),"QuickSort",false,1,4,[](){setSetting(SortingMethod::Quick);}});
@@ -118,9 +118,9 @@ void AiSD::display()
 
     if(menuActive)
     {
-        drawString("Wybierz typ tablicy:",convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
-        drawString("Wybierz sortowanie:",convertSize(300.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
-        drawString("Wielkosc:",convertSize(600.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+        drawString("Select type of table:",convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+        drawString("Select method of sorting:",convertSize(300.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+        drawString("Select size of table:",convertSize(600.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
 
     }else
     {

@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 
     glutInit(&argc, argv);
     glutInitWindowSize(800, 600);
-    glutCreateWindow("Prezentacja");
+    glutCreateWindow("Presentation");
     glutDisplayFunc(AiSD::display);
     glutMouseFunc(AiSD::getMouse);
     AiSD::onStart();

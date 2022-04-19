@@ -12,7 +12,7 @@ std::string AiSD::openFile()
 
 	if (! lTheOpenFileName)
 	{
-		tinyfd_messageBox("Error","Open file name is NULL","ok","error",0);
+		tinyfd_messageBox("Error","Can not open the file","ok","error",0);
 		exit(1);
 	}
     return lTheOpenFileName;
@@ -24,7 +24,7 @@ std::string AiSD::saveFile()
     lTheSaveFileName = tinyfd_saveFileDialog("Save your preset","preset ini",2,lFilterPatterns,NULL);
 	if (!lTheSaveFileName)
 	{
-        tinyfd_messageBox("Error","Save file name is NULL","ok","error",1);
+        tinyfd_messageBox("Error","Can not open the file","ok","error",1);
         exit(1);
 	}
 	std::cout<<lTheSaveFileName<<std::endl;

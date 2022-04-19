@@ -8951,7 +8951,7 @@
 1649767516 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 
-1650365915 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
+1650367398 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -8995,11 +8995,11 @@
 1650365753 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
 
-1650366511 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1650367398 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1650366486 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650366598 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 

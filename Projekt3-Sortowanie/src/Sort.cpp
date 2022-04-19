@@ -1,6 +1,13 @@
 #include "Sort.h"
 #include <time.h>
 
+
+Sort::Sort(){
+    mapaDoDiag ["iloscPorownan"]=0;
+    mapaDoDiag ["iloscPrzypisania"]=0;
+    mapaDoDiag ["wywolania Rekurencyjne"]=0;
+
+}
 clock_t Sort::ShellSort(std::vector<Record>& records){
     int iloscElementow=records.size();
     start = clock();
@@ -50,7 +57,7 @@ clock_t Sort::QuickSort(std::vector<Record>& records, int lewy, int prawy){
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
     return czas;
 }
-clock_t Sort::MergeSort(std::vector<Record>& records, int start, int koniec)
+clock_t Sort::MergeSort(std::vector<Record>& records, int poczatek, int koniec)
 {
 
     start = clock();
@@ -58,10 +65,10 @@ clock_t Sort::MergeSort(std::vector<Record>& records, int start, int koniec)
 
     if (start != koniec)
     {
-        srodek = records[(start + koniec)/2].key;
-        MergeSort(records, start, srodek);
+        srodek = records[(poczatek + koniec)/2].key;
+        MergeSort(records, poczatek, srodek);
         MergeSort(records, srodek+1, koniec);
-        scalanie(records, start, srodek, koniec);
+        scalanie(records, poczatek, srodek, koniec);
     }
     stop=clock();
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
@@ -69,20 +76,19 @@ clock_t Sort::MergeSort(std::vector<Record>& records, int start, int koniec)
 }
 void Sort::scalanie(std::vector<Record>& records, int start, int srodek, int koniec)
 {
-    /*
-    int *tab_pom = new int[(koniec-start+1)]; // utworzenie tablicy pomocniczej
+    std::vector<Record> newRecords;
     int i = start, j = srodek+1, k = 0; // zmienne pomocnicze
 
     while (i <= srodek && j <= koniec)
     {
         if (records[j].key < records[i].key)
         {
-            tab_pom[k] = records[j].key;
+            newRecords.push_back(records[j]);
             j++;
         }
         else
         {
-            tab_pom[k] = records[i].key;
+            newRecords.push_back(records[i]);
             i++;
         }
         k++;
@@ -92,7 +98,7 @@ void Sort::scalanie(std::vector<Record>& records, int start, int srodek, int kon
     {
         while (i <= srodek)
         {
-            tab_pom[k] = records[i];
+            newRecords.push_back(records[i]);
             i++;
             k++;
         }
@@ -101,33 +107,34 @@ void Sort::scalanie(std::vector<Record>& records, int start, int srodek, int kon
     {
         while (j <= koniec)
         {
-            tab_pom[k] = tablica[j];
+            newRecords.push_back(records[j]);
             j++;
             k++;
         }
     }
 
     for (i = 0; i <= koniec-start; i++)
-        records[start+i] = tab_pom[i];
+        records[start+i] = newRecords[i];
+        newRecords.clear();
 
-    delete [] tab_pom;*/
 }
 clock_t Sort::InsertionSort(std::vector<Record>& records)
 {
     start = clock();
+    Record newRecord;
     int n=records.size();
-    int i, key, j;
+    int i, j;
     for (i = 1; i < n; i++)
     {
-        key = records[i].key;
+        newRecord = records[i];
         j = i - 1;
 
-        while (j >= 0 && records[j].key > key)
+        while (j >= 0 && records[j].key > newRecord.key)
         {
             records[j + 1] = records[j];
             j = j - 1;
         }
-        records[j + 1].key = key;
+        records[j + 1] = newRecord;
     }
     stop=clock();
     czas=(double)(stop-start) / CLOCKS_PER_SEC;
@@ -135,25 +142,24 @@ clock_t Sort::InsertionSort(std::vector<Record>& records)
 }
 void Sort::Diag_ShellSort(std::vector<Record>& records){
     int iloscElementow=records.size();
-    int iloscPorownan=0, iloscPrzypisania=0;
     for (int i=1; i<iloscElementow; i++)
     {
         for (int j=iloscElementow-1; j>=1; j--)
         {
-            if (records[j].key<records[j-1].key; ++iloscPorownan)
+            if (records[j].key<records[j-1].key; ++mapaDoDiag["iloscPorownan"])
             {
                 Record bufor;
                 bufor=records[j-1];
-                ++iloscPrzypisania;
+                ++mapaDoDiag ["iloscPrzypisania"];
                 records[j-1]=records[j];
-                ++iloscPrzypisania;
+                ++mapaDoDiag ["iloscPrzypisania"];
                 records[j]=bufor;
-                ++iloscPrzypisania;
+                ++mapaDoDiag ["iloscPrzypisania"];
             }
         }
     }
-    std::cout<<"Ilosc porownia: "<<iloscPorownan<<std::endl;
-    std::cout<<"Ilosc przipisan: "<<iloscPrzypisania<<std::endl;
+    std::cout<<"Ilosc porownia: "<<mapaDoDiag["iloscPorownan"]<<std::endl;
+    std::cout<<"Ilosc przipisan: "<<mapaDoDiag ["iloscPrzypisania"]<<std::endl;
 }
 void Sort::Diag_QuickSort(std::vector<Record>& records){
     /*
@@ -181,8 +187,38 @@ void Sort::Diag_QuickSort(std::vector<Record>& records){
     if (i<prawy) QuickSort(records, i, prawy);*/
 }
 void Sort::Diag_MergeSort(std::vector<Record>& records){
+    int srodek;
+
+    if (start != koniec)
+    {
+        srodek = records[(poczatek + koniec)/2].key;
+        MergeSort(records, poczatek, srodek);
+        MergeSort(records, srodek+1, koniec);
+        scalanie(records, poczatek, srodek, koniec);
+    }
 }
 void Sort::Diag_InsertionSort(std::vector<Record>& records){
+
+    Record newRecord;
+    int n=records.size();
+    int i, j;
+    for (i = 1; i < n; i++)
+    {
+        newRecord = records[i];
+        ++mapaDoDiag["iloscPrzypisania"];
+        j = i - 1;
+
+        while (j >= 0 && records[j].key > newRecord.key; )
+        {
+            ++mapaDoDiag["iloscPorownan"]
+            records[j + 1] = records[j];
+            ++mapaDoDiag["iloscPrzypisania"];
+            j = j - 1;
+        }
+        records[j + 1] = newRecord;
+        ++mapaDoDiag["iloscPrzypisania"];
+    }
+
 }
 
 void Sort::pokaz(std::vector<Record> records )

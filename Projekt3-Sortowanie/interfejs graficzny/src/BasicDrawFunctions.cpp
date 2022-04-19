@@ -17,6 +17,7 @@ void AiSD::onStart()
     alreadySorted=false;
     openMenuActive=false;
     benchState=false;
+    menuActive=true;
     newCollection.boxes.clear();
     newCollection.addNew({convertSize(0.0f,100.0f),convertSize(200.0f,50.0f),"Random",false,0,0,[](){setSetting(TableTypes::Random);}});
     newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Sorted",false,0,1,[](){setSetting(TableTypes::Sorted);}});

@@ -8995,11 +8995,11 @@
 1650365753 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
 
-1650367398 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1650367854 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1650366598 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650367894 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 
@@ -9059,7 +9059,7 @@
 	"simpleini/ini.h"
 	"Sort.h"
 
-1650366387 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\presetloader.cpp
+1650367450 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\presetloader.cpp
 	"PresetLoader.hpp"
 	<iostream>
 

@@ -28,8 +28,6 @@ bool skipSleepState=false;
 void AiSD::Start(bool skipSleep)
 {
     skipSleepState=skipSleep;
-    //std::cout<<preset.method<<std::endl;
-
     normalStart=true;
 }
 

@@ -41,14 +41,16 @@ void generateTable(std::vector<Record> &tab,TableTypes type,long int size)
     case ReversSorted:
         for(long int i=size;i>=0;i--)
         {
-            Record newRecord={i,*getUniqueId(i).c_str()};
+            Record newRecord={i,""};
+            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
             tab.push_back(newRecord);
         }
         break;
     case Sorted:
         for(long int i=0;i<size;i++)
         {
-            Record newRecord={i,*getUniqueId(i).c_str()};
+            Record newRecord={i,""};
+            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
             tab.push_back(newRecord);
         }
         break;

@@ -9,6 +9,7 @@
 #include "Sort.h"
 
 #include "PresetLoader.hpp"
+#include "tinyfiledialog/tinyfiledialogs.h"
 
 
 enum SortingMethod{Shell,Quick,Merge,Insertion,notSelectedMethod};
@@ -24,9 +25,9 @@ void setSetting(SortingMethod);
 void setSetting(TableTypes);
 void setSetting(long int);
 
-void Start();
+void Start(bool skipSleep);
 bool getProcessing();
-
+int getTime();
 
 void startBenchmark();
 void Benchmark();

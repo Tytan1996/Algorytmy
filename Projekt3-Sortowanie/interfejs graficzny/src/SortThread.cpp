@@ -52,6 +52,7 @@ void AiSD::thread1()
         if(normalStart)
         {
 
+
             Sort classSort;
             if(preset.tabType!=notSelectedType)
                 generateTable(Tab,preset.tabType,preset.size);
@@ -64,6 +65,8 @@ void AiSD::thread1()
             else
             {
                 processing=true;
+                //std::cout<<Tab.size()<<std::endl;
+
                 for(int i=0;i<2;i++)//2 RAZY -> 0 WIZUALIZACJA, 1 FAKTYCZNE SORTOWANIE (DLA UZYSKANIA CZASU)
                 {
                     if(skipSleepState==true)i=1;
@@ -85,10 +88,10 @@ void AiSD::thread1()
                         break;
                     }
                 }
-
+                processing=false;
             }
-        normalStart=false;
-        processing=false;
+            normalStart=false;
+
         }else if(startBenchmarkThr)
         {
             Benchmark();

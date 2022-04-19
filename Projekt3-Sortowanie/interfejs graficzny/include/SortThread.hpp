@@ -11,6 +11,8 @@
 #include "PresetLoader.hpp"
 #include "tinyfiledialog/tinyfiledialogs.h"
 
+namespace AiSD
+{
 
 enum SortingMethod{Shell,Quick,Merge,Insertion,notSelectedMethod};
 
@@ -31,14 +33,15 @@ int getTime();
 
 void startBenchmark();
 void Benchmark();
-std::vector<std::vector<Record>> getResultBenchmark();
+std::vector<std::vector<AiSD::Record>> getResultBenchmark();
 
 std::vector<Record> getTab();
 
-void watek();
+void thread1();
 PresetStruct GeneratePresetStruct(std::string description,bool unsorted);
 void ApplyPresetStruct(PresetStruct presetStruct);
 std::string getDescription();
 
+}
 
 #endif // SORTTHREAD_HPP

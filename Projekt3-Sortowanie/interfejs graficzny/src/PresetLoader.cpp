@@ -5,7 +5,7 @@
 char const * lTheOpenFileName;
 char const * lFilterPatterns[2] = { "*.ini", "*.inipp" };
 
-std::string openFile()
+std::string AiSD::openFile()
 {
     FILE * lIn;
 	lTheOpenFileName = tinyfd_openFileDialog("Load preset file","",2,lFilterPatterns,NULL,0);
@@ -18,7 +18,7 @@ std::string openFile()
     return lTheOpenFileName;
 }
 
-std::string saveFile()
+std::string AiSD::saveFile()
 {
     char const * lTheSaveFileName;
     lTheSaveFileName = tinyfd_saveFileDialog("Save your preset","preset ini",2,lFilterPatterns,NULL);
@@ -33,7 +33,7 @@ std::string saveFile()
 }
 
 
-void savePreset(std::string src,PresetStruct presetStruct)
+void AiSD::savePreset(std::string src,PresetStruct presetStruct)
 {
     mINI::INIFile file(src);
     mINI::INIStructure ini;
@@ -50,7 +50,7 @@ void savePreset(std::string src,PresetStruct presetStruct)
     }
     file.write(ini);
 }
-PresetStruct openPreset(std::string src)
+AiSD::PresetStruct AiSD::openPreset(std::string src)
 {
     PresetStruct newStruct;
 

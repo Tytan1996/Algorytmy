@@ -9,10 +9,10 @@ bool openMenuActive=false;
 bool alreadySorted=false;
 float scale = 1.0f; //NOTE THIS IS A SCALE FOR DRAWTABLE FUNCTIONS ONLY !!!
 
-std::vector<std::vector<Record>> backupBenchmark;
+std::vector<std::vector<AiSD::Record>> backupBenchmark;
 
-blockCollection newCollection;
-void onStart()
+AiSD::blockCollection newCollection;
+void AiSD::onStart()
 {
     alreadySorted=false;
     openMenuActive=false;
@@ -32,24 +32,24 @@ void onStart()
     newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(10);}});
 
     newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,10,[](){Start(false);}});//newCollection.boxes.clear();menuActive=false;
-    newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,3,11,[](){ApplyPresetStruct(openPreset(openFile()));menuActive=false;openMenuActive=true;}});
-    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,12,[](){startBenchmark();benchState=true;menuActive=false;}});
+    newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,3,11,[](){AiSD::ApplyPresetStruct(AiSD::openPreset(AiSD::openFile()));menuActive=false;openMenuActive=true;}});
+    newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,3,12,[](){AiSD::startBenchmark();benchState=true;menuActive=false;}});
 }
 
 
 
-void drawBenchmarkResult()
+void AiSD::drawBenchmarkResult()
 {
     drawString("Red-Quick\nYellow-Merge\nGreen-Insert\nBlue-Shell",convertSize(650.0f,-480.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
     int max=1;
     vector3 color={0.0f,0.0f,0.0f};
     newCollection.boxes.clear();
-    for(std::vector<Record> a : getResultBenchmark())
+    for(std::vector<Record> a : AiSD::getResultBenchmark())
         for(Record b : a)
             if(max<b.key)
                 max=b.key;
     scale=800.0f/float(max)/1.34;
-    for(std::vector<Record> a : getResultBenchmark())
+    for(std::vector<Record> a : AiSD::getResultBenchmark())
     {
         for(Record b : a)
         {
@@ -75,7 +75,7 @@ void drawBenchmarkResult()
 
 }
 
-void drawString(const char* txt, vector2 pos,vector3 color,vector2 offset)
+void AiSD::drawString(const char* txt, vector2 pos,vector3 color,vector2 offset)
 {
     const unsigned char* t = reinterpret_cast<const unsigned char *>( txt );
     glColor4f(color.x, color.y, color.z, 1.0f);
@@ -83,15 +83,15 @@ void drawString(const char* txt, vector2 pos,vector3 color,vector2 offset)
     glRasterPos2f(pos.x+offset.x, pos.y+offset.y);
     glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, t);
 }
-vector2 MouseBackup;
-void getMouse (int button, int state,int x, int y)
+AiSD::vector2 MouseBackup;
+void AiSD::getMouse (int button, int state,int x, int y)
 {
     MouseBackup={(x/float(glutGet(GLUT_WINDOW_WIDTH)))*800.0f,(y/float(glutGet(GLUT_WINDOW_HEIGHT)))*600.0f};
 
     newCollection.checkIfClick({x,y});
 }
 
-void Circle(float r,float pos_x,float pos_y)
+void AiSD::Circle(float r,float pos_x,float pos_y)
 {
     glBegin(GL_POLYGON);
     glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
@@ -107,7 +107,7 @@ void Circle(float r,float pos_x,float pos_y)
 
 int sortingTime=0;
 float scaleX,scaleY;
-void display()
+void AiSD::display()
 {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -127,7 +127,7 @@ void display()
         newCollection.boxes.clear();
 
         if(benchState==false)
-            drawTable(getTab(),false);
+            drawTable(AiSD::getTab(),false);
         else
             drawBenchmarkResult();
         if(!getProcessing())
@@ -180,7 +180,7 @@ void display()
 }
 
 
-float autoScale(const std::vector<Record> &Tab)
+float AiSD::autoScale(const std::vector<Record> &Tab)
 {
     int max=1;
     for(int i=0;i<Tab.size();i++)
@@ -192,7 +192,7 @@ float autoScale(const std::vector<Record> &Tab)
 }
 
 
-void drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe,int columns,vector3 color)
+void AiSD::drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe,int columns,vector3 color)
 {
     if(Tab.size()==0)return;
     if(columns==-1)
@@ -224,13 +224,13 @@ void drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe,in
 }
 
 
-vector2 convertSize(float x,float y)
+AiSD::vector2 AiSD::convertSize(float x,float y)
 {
     return {((2.0f/800.0f)*x),((2.0f/600.0f)*y)};
 }
 
 
-void blockCollection::drawAll()
+void AiSD::blockCollection::drawAll()
 {
 
     for(textBlock box:boxes)
@@ -253,11 +253,11 @@ void blockCollection::drawAll()
     }
 }
 
-void blockCollection::addNew(textBlock nowy)
+void AiSD::blockCollection::addNew(textBlock nowy)
 {
     boxes.push_back(nowy);
 }
-void blockCollection::checkIfClick(vector2 mouse)
+void AiSD::blockCollection::checkIfClick(vector2 mouse)
 {
     int hoverID=-1;
     int hoverSelectionId=-1;

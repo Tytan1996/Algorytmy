@@ -15,14 +15,14 @@
 
 int main(int argc, char** argv)
 {
-    boost::thread t1(watek);
+    boost::thread t1(AiSD::thread1);
 
     glutInit(&argc, argv);
     glutInitWindowSize(800, 600);
     glutCreateWindow("Prezentacja");
-    glutDisplayFunc(display);
-    glutMouseFunc(getMouse);
-    onStart();
+    glutDisplayFunc(AiSD::display);
+    glutMouseFunc(AiSD::getMouse);
+    AiSD::onStart();
     glutMainLoop();
 
     return 0;

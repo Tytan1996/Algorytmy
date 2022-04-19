@@ -2,21 +2,21 @@
 #include<iostream>
 
 //ZMIANA USTAWIEN
-settingsPreset preset={notSelectedMethod,notSelectedType,-1};
-void setSetting(SortingMethod a)
+AiSD::settingsPreset preset={AiSD::notSelectedMethod,AiSD::notSelectedType,-1};
+void AiSD::setSetting(SortingMethod a)
 {
     preset.method=a;
 }
-void setSetting(TableTypes a)
+void AiSD::setSetting(TableTypes a)
 {
     preset.tabType=a;
 }
-void setSetting(long int a)
+void AiSD::setSetting(long int a)
 {
     preset.size=a;
 }
 int BackupTime=0;
-int getTime()
+int AiSD::getTime()
 {
     return BackupTime;
 }
@@ -25,7 +25,7 @@ int getTime()
 bool normalStart=false;
 bool startBenchmarkThr=false;
 bool skipSleepState=false;
-void Start(bool skipSleep)
+void AiSD::Start(bool skipSleep)
 {
     skipSleepState=skipSleep;
     //std::cout<<preset.method<<std::endl;
@@ -34,20 +34,20 @@ void Start(bool skipSleep)
 }
 
 bool processing=false;
-bool getProcessing()
+bool AiSD::getProcessing()
 {
     return processing;
 }
 
-std::vector<Record> Tab;
-std::vector<Record> getTab()
+std::vector<AiSD::Record> Tab;
+std::vector<AiSD::Record> AiSD::getTab()
 {
     return Tab;
 }
-std::vector<Record> TabBeforeSorting;
+std::vector<AiSD::Record> TabBeforeSorting;
 
 
-void watek()
+void AiSD::thread1()
 {
     while(true)
     {
@@ -100,31 +100,31 @@ void watek()
 }
 
 
-void startBenchmark()
+void AiSD::startBenchmark()
 {
     startBenchmarkThr=true;
 }
-std::vector<std::vector<Record>> resultBenchmark;
-std::vector<std::vector<Record>> getResultBenchmark()
+std::vector<std::vector<AiSD::Record>> resultBenchmark;
+std::vector<std::vector<AiSD::Record>> AiSD::getResultBenchmark()
 {
     return resultBenchmark;
 }
 const float stepBenchmark=100.0f;
-void Benchmark()
+void AiSD::Benchmark()
 {
-    if(preset.tabType==notSelectedType)
+    if(preset.tabType==AiSD::notSelectedType)
     {
         tinyfd_messageBox("Error","Type of table was not selected, try again","ok","error",0);
         return;
     }
     resultBenchmark.clear();
     std::cout<<"Starting Benchmark"<<std::endl;
-    Sort classSort;
+    AiSD::Sort classSort;
     processing=true;
 
     for(int i=0;i<4;i++)
     {
-        std::vector<Record> SortResult;
+        std::vector<AiSD::Record> SortResult;
         resultBenchmark.push_back(SortResult);
         for(int j=0;j<100;j++)
         {
@@ -148,7 +148,7 @@ void Benchmark()
                 break;
             }
             //std::cout<<"time: "<<time<<std::endl;
-            Record newRecord={time,(char)i};
+            AiSD::Record newRecord={time,(char)i};
 
             resultBenchmark[i].push_back(newRecord);
         }
@@ -157,7 +157,7 @@ void Benchmark()
     std::cout<<"Finished"<<std::endl;
 }
 
-PresetStruct GeneratePresetStruct(std::string description,bool unsorted)
+AiSD::PresetStruct AiSD::GeneratePresetStruct(std::string description,bool unsorted)
 {
     PresetStruct newPresetStruct;
 
@@ -184,12 +184,12 @@ PresetStruct GeneratePresetStruct(std::string description,bool unsorted)
 
 
 std::string description="";
-std::string getDescription()
+std::string AiSD::getDescription()
 {
     return description;
 }
 
-void ApplyPresetStruct(PresetStruct presetStruct)
+void AiSD::ApplyPresetStruct(AiSD::PresetStruct presetStruct)
 {
     description=presetStruct.description;
     if(presetStruct.method=="Shell")

@@ -9,7 +9,7 @@ const int letters_size=63;
 
 
 
-std::string getUniqueId(const size_t &num)
+std::string AiSD::getUniqueId(const size_t &num)
 {
     size_t act=num;
     char id[5]="    ";
@@ -22,7 +22,7 @@ std::string getUniqueId(const size_t &num)
 }
 
 std::random_device rd;
-void generateTable(std::vector<Record> &tab,TableTypes type,long int size)
+void AiSD::generateTable(std::vector<Record> &tab,TableTypes type,long int size)
 {
     tab.clear();
     switch(type)

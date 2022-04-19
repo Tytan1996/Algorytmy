@@ -6,9 +6,13 @@
 #include <stdio.h>
 #include <string.h>
 
+namespace AiSD
+{
 enum TableTypes{Random,Sorted,ReversSorted,notSelectedType};
 std::string getUniqueId(const size_t &num);
 void generateTable(std::vector<Record> &tab,TableTypes type,long int size);
+}
+
 
 
 #endif // GENERATETABLE_HPP

@@ -16,6 +16,8 @@
 #include "simpleini/ini.h"
 #include "Sort.h"
 
+namespace AiSD
+{
 std::string openFile();
 std::string saveFile();
 
@@ -27,5 +29,8 @@ struct PresetStruct
 };
 void savePreset(std::string src,PresetStruct presetStruct);
 PresetStruct openPreset(std::string src);
+}
+
+
 
 #endif // PRESETLOADER_HPP

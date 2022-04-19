@@ -7,6 +7,7 @@ bool benchState=false;
 bool menuActive=true;
 bool openMenuActive=false;
 bool alreadySorted=false;
+bool DefaultStart=false;
 int backupProcessing=-1;//TO JEST DLATEGO BY W OSTATNIM MOMENCIE WYLAPAC ZMIANE OBRAZU
 float scale = 1.0f; //NOTE THIS IS A SCALE FOR DRAWTABLE FUNCTIONS ONLY !!!
 
@@ -19,6 +20,8 @@ void AiSD::onStart()
     openMenuActive=false;
     benchState=false;
     menuActive=true;
+    DefaultStart=false;
+
     newCollection.boxes.clear();
     newCollection.addNew({convertSize(0.0f,100.0f),convertSize(200.0f,50.0f),"Random",false,0,0,[](){setSetting(TableTypes::Random);}});
     newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Sorted",false,0,1,[](){setSetting(TableTypes::Sorted);}});
@@ -33,7 +36,7 @@ void AiSD::onStart()
     newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"50",false,2,8,[](){setSetting(50);}});
     newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(10);}});
 
-    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,10,[](){Start(false);menuActive=false;backupProcessing=-1;}});//newCollection.boxes.clear();menuActive=false;
+    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,10,[](){Start(false);menuActive=false;backupProcessing=-1;DefaultStart=true;}});//newCollection.boxes.clear();menuActive=false;
     newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,4,11,[](){AiSD::ApplyPresetStruct(AiSD::openPreset(AiSD::openFile()));menuActive=false;openMenuActive=true;backupProcessing=-1;}});
     newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,5,12,[](){AiSD::startBenchmark();benchState=true;menuActive=false;backupProcessing=-1;}});
 }
@@ -168,9 +171,8 @@ void AiSD::display()
                 else
                     txt+=std::to_string(tabX*100)+"elements "+std::to_string(tabY)+"microsecounds";
                 drawString(txt.c_str(),convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
-                if(!benchState)alreadySorted=true;
             }
-            if(alreadySorted)
+            if(alreadySorted||DefaultStart)
             {
                 std::string txt="Sorting took "+std::to_string(getTime())+" microsecounds";
                 drawString(txt.c_str(),convertSize(0.0f,-560.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});

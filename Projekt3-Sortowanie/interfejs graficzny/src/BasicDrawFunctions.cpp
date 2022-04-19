@@ -3,14 +3,6 @@
 #include <iostream>
 
 
-blockCollection newCollection;
-void onStart()
-{
-    newCollection.addNew({convertSize(10.0f,100.0f),convertSize(200.0f,50.0f),"Losowa",false,0,0});
-    newCollection.addNew({convertSize(10.0f,200.0f),convertSize(200.0f,50.0f),"Posortowana",false,0,1});
-    newCollection.addNew({convertSize(10.0f,300.0f),convertSize(200.0f,50.0f),"Odwrotnie Posort.",false,0,2});
-
-
 bool benchState=false;
 bool menuActive=true;
 bool openMenuActive=false;
@@ -35,14 +27,10 @@ void AiSD::onStart()
     newCollection.addNew({convertSize(0.0f,200.0f),convertSize(200.0f,50.0f),"Sorted",false,0,1,[](){setSetting(TableTypes::Sorted);}});
     newCollection.addNew({convertSize(0.0f,300.0f),convertSize(200.0f,50.0f),"Inversely Sorted",false,0,2,[](){setSetting(TableTypes::ReversSorted);}});
 
-
-    newCollection.addNew({convertSize(300.0f,100.0f),convertSize(200.0f,50.0f),"ShellSort",false,1,3});
-    newCollection.addNew({convertSize(300.0f,200.0f),convertSize(200.0f,50.0f),"QuickSort",false,1,4});
-    newCollection.addNew({convertSize(300.0f,300.0f),convertSize(200.0f,50.0f),"MergeSort",false,1,5});
-    newCollection.addNew({convertSize(300.0f,400.0f),convertSize(200.0f,50.0f),"InsertSort",false,1,6});
-
-
-    newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,2,7});
+    newCollection.addNew({convertSize(300.0f,100.0f),convertSize(200.0f,50.0f),"ShellSort",false,1,3,[](){setSetting(SortingMethod::Shell);}});
+    newCollection.addNew({convertSize(300.0f,200.0f),convertSize(200.0f,50.0f),"QuickSort",false,1,4,[](){setSetting(SortingMethod::Quick);}});
+    newCollection.addNew({convertSize(300.0f,300.0f),convertSize(200.0f,50.0f),"MergeSort",false,1,5,[](){setSetting(SortingMethod::Merge);}});
+    newCollection.addNew({convertSize(300.0f,400.0f),convertSize(200.0f,50.0f),"InsertSort",false,1,6,[](){setSetting(SortingMethod::Insertion);}});
 
     newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"200",false,2,7,[](){setSetting(200);}});
     newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"50",false,2,8,[](){setSetting(50);}});
@@ -121,9 +109,6 @@ void AiSD::Circle(float r,float pos_x,float pos_y)
     }
     glEnd();
 }
-bool menuActive=true;
-
-void display()
 
 int sortingTime=0;
 float scaleX,scaleY;
@@ -145,9 +130,6 @@ void AiSD::display()
 
     }else
     {
-
-
-drawTable(getTab());
         newCollection.boxes.clear();
 
 
@@ -205,17 +187,6 @@ drawTable(getTab());
     glFlush();//rysuj
 }
 
-
-void drawTable(std::vector<Record> Tab)
-{
-    for(int i=0;i<Tab.size();i++)
-    {
-        std::cout<<Tab[i].key<<std::endl;
-        newCollection.addNew({convertSize((800.0f/Tab.size())*i,600.0f-Tab[i].key),convertSize(800.0f/Tab.size(),Tab[i].key),"",false,0,0});
-    }
-}
-
-vector2 convertSize(float x,float y)
 
 float AiSD::autoScale(const std::vector<Record> &Tab)
 {
@@ -307,6 +278,7 @@ void AiSD::blockCollection::checkIfClick(vector2 mouse)
         {
             hoverID=box.Id;
             hoverSelectionId=box.selectionId;
+            box.doOnClick();
             box.hover=true;
         }
     }

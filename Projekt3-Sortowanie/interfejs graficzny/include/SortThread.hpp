@@ -8,7 +8,6 @@
 #include "GenerateTable.hpp"
 #include "Sort.h"
 
-
 #include "PresetLoader.hpp"
 #include "tinyfiledialog/tinyfiledialogs.h"
 
@@ -16,7 +15,6 @@ namespace AiSD
 {
 
 enum SortingMethod{Shell,Quick,Merge,Insertion,notSelectedMethod};
-
 
 
 struct settingsPreset

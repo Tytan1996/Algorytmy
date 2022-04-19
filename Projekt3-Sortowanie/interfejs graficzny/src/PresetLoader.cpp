@@ -12,7 +12,6 @@ std::string AiSD::openFile()
 
 	if (! lTheOpenFileName)
 	{
-
 		tinyfd_messageBox("Error","Can not open the file","ok","error",0);
 		exit(1);
 	}
@@ -25,7 +24,6 @@ std::string AiSD::saveFile()
     lTheSaveFileName = tinyfd_saveFileDialog("Save your preset","preset ini",2,lFilterPatterns,NULL);
 	if (!lTheSaveFileName)
 	{
-
         tinyfd_messageBox("Error","Can not open the file","ok","error",1);
         exit(1);
 	}
@@ -33,7 +31,6 @@ std::string AiSD::saveFile()
 
     return lTheSaveFileName;
 }
-
 
 
 void AiSD::savePreset(std::string src,PresetStruct presetStruct)

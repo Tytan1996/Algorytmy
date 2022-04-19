@@ -8,16 +8,6 @@ const int letters_size=63;
 
 
 
-size_t pow(const size_t &num,int pow)
-{
-    size_t n=1;
-    for(int i=0;i<pow;i++)
-        n*=num;
-        //std::cout<<"n "<<n<<std::endl;
-    return n;
-}
-
-
 
 std::string AiSD::getUniqueId(const size_t &num)
 {
@@ -32,7 +22,6 @@ std::string AiSD::getUniqueId(const size_t &num)
 }
 
 std::random_device rd;
-
 void AiSD::generateTable(std::vector<Record> &tab,TableTypes type,long int size)
 {
     tab.clear();
@@ -44,38 +33,22 @@ void AiSD::generateTable(std::vector<Record> &tab,TableTypes type,long int size)
         {
             std::mt19937 gen(rd());
             std::uniform_int_distribution<> dis1(0, std::numeric_limits<int>::max());
-
-
-
-
             Record newRecord={dis1(gen),""};
             strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
-
-            //std::cout<<"id: "<<newRecord.ID<<std::endl;
-
-            Record newRecord={dis1(gen),""};
-            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
-
             tab.push_back(newRecord);
         }
         break;
     case ReversSorted:
         for(long int i=size;i>=0;i--)
         {
-
-            //std::cout<<*getUniqueId(i).c_str()<<std::endl;
-            Record newRecord={i,*getUniqueId(i).c_str()};
-
             Record newRecord={i,""};
             strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
-
             tab.push_back(newRecord);
         }
         break;
     case Sorted:
         for(long int i=0;i<size;i++)
         {
-
             Record newRecord={i,""};
             strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
             tab.push_back(newRecord);
@@ -83,3 +56,5 @@ void AiSD::generateTable(std::vector<Record> &tab,TableTypes type,long int size)
         break;
     }
 }
+
+

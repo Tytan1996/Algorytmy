@@ -8930,7 +8930,7 @@
 	"BasicDrawFunctions.hpp"
 	"SortThread.hpp"
 
-1649162703 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
+1649766455 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\basicdrawfunctions.hpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -8938,16 +8938,17 @@
 	<vector>
 	"SortThread.hpp"
 	<boost/thread.hpp>
+	<functional>
 
-1649161398 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
+1649767477 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
 	<stdio.h>
 	<vector>
 
-1649162868 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
+1649766817 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\basicdrawfunctions.cpp
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1649161414 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1649767516 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 
 1650367398 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
@@ -9100,25 +9101,4 @@
 	<fstream>
 	<sys/stat.h>
 	<cctype>
-
-1650376206 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\interfejs graficzny\src\tinyfiledialog\tinyfiledialogs.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
-	<sys/stat.h>
-	<windows.h>
-	<commdlg.h>
-	<shlobj.h>
-	<conio.h>
-	<direct.h>
-	<limits.h>
-	<unistd.h>
-	<dirent.h>
-	<termios.h>
-	<sys/utsname.h>
-	<signal.h>
-	"tinyfiledialog\tinyfiledialogs.h"
-
-1650376205 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\interfejs graficzny\include\tinyfiledialog\tinyfiledialogs.h
 

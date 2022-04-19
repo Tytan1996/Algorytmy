@@ -3,9 +3,8 @@
 #include <chrono>
 #include <vector>
 #include <boost/thread.hpp>
-
-namespace AiSD{
-
+namespace AiSD
+{
 
 struct Record{
     int key;

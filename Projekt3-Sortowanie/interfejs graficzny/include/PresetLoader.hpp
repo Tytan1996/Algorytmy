@@ -7,17 +7,6 @@
 #include <stdlib.h>
 #include <wchar.h>
 
-
-#include <stdio.h>
-#include <string>
-
-#include <cstdio>
-
-#include "tinyfiledialog\tinyfiledialogs.h"
-
-std::string openFile();
-std::string saveFile();
-
 #include <string>
 
 #include <cstdio>
@@ -44,5 +33,4 @@ PresetStruct openPreset(std::string src);
 
 
 
->>>>>>> origin/Interfejs-Projekt3
 #endif // PRESETLOADER_HPP

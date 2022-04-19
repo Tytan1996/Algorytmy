@@ -14,15 +14,12 @@
 #include "SortThread.hpp"
 #include "PresetLoader.hpp"
 #include <boost/thread.hpp>
-<<<<<<< HEAD
-=======
 #include <functional>
 #include <string>
 
 
 namespace AiSD
 {
->>>>>>> origin/Interfejs-Projekt3
 
 //STRUKTURA X, Y
 struct vector2  //SOME SIMPLE STRUCTURES. VECTOR 2 IS USED FOR HOLDING POSITION ON THE SCREEN
@@ -48,11 +45,7 @@ void display() ;
 vector2 convertSize(float x,float y);//CIEZKO SIE OPERUJE NA 1.0F-0.0F
 
 
-<<<<<<< HEAD
-void drawTable(std::vector<Record> Tab);
-=======
 void drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe=true,int columns=-1,vector3 Color={0.0f,0.0f,0.0f});
->>>>>>> origin/Interfejs-Projekt3
 
 //TEKST
 void drawString(const char* txt, vector2 pos,vector3 color,vector2 offset={0.0f,0.0f});
@@ -66,6 +59,7 @@ struct textBlock
     bool hover=false;
     int selectionId;
     int Id;
+    std::function<void()> doOnClick;
 };
 class blockCollection
 {

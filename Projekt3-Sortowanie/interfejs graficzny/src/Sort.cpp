@@ -1,14 +1,10 @@
 #include "Sort.h"
-#include <iostream>
 
 using clockH=std::chrono::high_resolution_clock;
-
-
 
 int AiSD::Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
     int iloscElementow=records.size();
     auto start = clockH::now();
-
     for (int i=1; i<iloscElementow; i++)
     {
         for (int j=iloscElementow-1; j>=1; j--)
@@ -24,14 +20,10 @@ int AiSD::Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
         }
 
     }
-
-    clock_t stop = clockH::now();
+    auto stop = clockH::now();
     return std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count();
 }
-
-
 int AiSD::Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep){
-
 
     auto CzasStart = clockH::now();
 
@@ -63,7 +55,6 @@ int AiSD::Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,boo
     //std::cout<<"z "<<std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count()<<std::endl;
     return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
 }
-
 int AiSD::Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
 {
     auto CzasStart = clockH::now();
@@ -80,7 +71,6 @@ int AiSD::Sort::MergeSort(std::vector <Record> &records, int start, int koniec,b
     auto CzasStop = clockH::now();
     return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
 }
-
 void AiSD::Sort::scalanie(std::vector <Record> &records, int start, int srodek, int koniec)
 {
     /*
@@ -126,9 +116,7 @@ void AiSD::Sort::scalanie(std::vector <Record> &records, int start, int srodek, 
 
     delete [] tab_pom;*/
 }
-
 int AiSD::Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
-
 {
     auto start = clockH::now();
     int n=records.size();

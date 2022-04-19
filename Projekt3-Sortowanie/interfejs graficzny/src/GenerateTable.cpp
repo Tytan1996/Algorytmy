@@ -7,6 +7,7 @@ const char letters[]={' ','a','b','c','d','e','f','g','h','i','j','k','l','m','n
 const int letters_size=63;
 
 
+
 size_t pow(const size_t &num,int pow)
 {
     size_t n=1;
@@ -16,25 +17,23 @@ size_t pow(const size_t &num,int pow)
     return n;
 }
 
-std::string getUniqueId(const size_t &num)
+
+
+std::string AiSD::getUniqueId(const size_t &num)
 {
     size_t act=num;
-    //std::cout<<"start";
     char id[5]="    ";
-
     for(int i=1;i<=5;i++)
     {
-        //std::cout<<"for "<<act%letters_size<<" got "<<letters[act%letters_size]<<std::endl;
         id[5-i]=letters[act%letters_size];
         act/=letters_size;
     }
-    //std::cout<<"nor: "<<id<<std::endl;
-    //std::cout<<"koniec"<<std::endl;
     return id;
 }
 
 std::random_device rd;
-void generateTable(std::vector<Record> &tab,TableTypes type,long int size)
+
+void AiSD::generateTable(std::vector<Record> &tab,TableTypes type,long int size)
 {
     tab.clear();
     switch(type)
@@ -48,25 +47,37 @@ void generateTable(std::vector<Record> &tab,TableTypes type,long int size)
 
 
 
+
             Record newRecord={dis1(gen),""};
             strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
 
             //std::cout<<"id: "<<newRecord.ID<<std::endl;
+
+            Record newRecord={dis1(gen),""};
+            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
+
             tab.push_back(newRecord);
         }
         break;
     case ReversSorted:
         for(long int i=size;i>=0;i--)
         {
+
             //std::cout<<*getUniqueId(i).c_str()<<std::endl;
             Record newRecord={i,*getUniqueId(i).c_str()};
+
+            Record newRecord={i,""};
+            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
+
             tab.push_back(newRecord);
         }
         break;
     case Sorted:
         for(long int i=0;i<size;i++)
         {
-            Record newRecord={i,*getUniqueId(i).c_str()};
+
+            Record newRecord={i,""};
+            strncpy(newRecord.ID,getUniqueId(i).c_str(),5);
             tab.push_back(newRecord);
         }
         break;

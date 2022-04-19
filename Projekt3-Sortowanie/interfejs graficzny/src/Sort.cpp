@@ -1,10 +1,14 @@
 #include "Sort.h"
+#include <iostream>
 
 using clockH=std::chrono::high_resolution_clock;
 
-int Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
+
+
+int AiSD::Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
     int iloscElementow=records.size();
-    clock_t start = clockH::now();
+    auto start = clockH::now();
+
     for (int i=1; i<iloscElementow; i++)
     {
         for (int j=iloscElementow-1; j>=1; j--)
@@ -20,11 +24,14 @@ int Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
         }
 
     }
+
     clock_t stop = clockH::now();
     return std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count();
 }
-#include <iostream>
-int Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep){
+
+
+int AiSD::Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep){
+
 
     auto CzasStart = clockH::now();
 
@@ -56,7 +63,8 @@ int Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool Thre
     //std::cout<<"z "<<std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count()<<std::endl;
     return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
 }
-int Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
+
+int AiSD::Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
 {
     auto CzasStart = clockH::now();
     int srodek;
@@ -72,7 +80,8 @@ int Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool Th
     auto CzasStop = clockH::now();
     return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
 }
-void Sort::scalanie(std::vector <Record> &records, int start, int srodek, int koniec)
+
+void AiSD::Sort::scalanie(std::vector <Record> &records, int start, int srodek, int koniec)
 {
     /*
     int *tab_pom = new int[(koniec-start+1)]; // utworzenie tablicy pomocniczej
@@ -117,7 +126,9 @@ void Sort::scalanie(std::vector <Record> &records, int start, int srodek, int ko
 
     delete [] tab_pom;*/
 }
-int Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
+
+int AiSD::Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
+
 {
     auto start = clockH::now();
     int n=records.size();

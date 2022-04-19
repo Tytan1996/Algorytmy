@@ -4,6 +4,9 @@
 #include <vector>
 #include <boost/thread.hpp>
 
+namespace AiSD{
+
+
 struct Record{
     int key;
     char ID[5];
@@ -31,4 +34,5 @@ class Sort
 
 };
 
+}
 #endif // SORT_H

@@ -89,7 +89,7 @@
 
 1650386762 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\struktura.h
 
-1650454118 source:c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\main.cpp
+1650457778 source:c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\main.cpp
 	<iostream>
 	<algorithm>
 	<chrono>
@@ -99,7 +99,7 @@
 	<SortFunction.h>
 	<Sort.h>
 
-1650454026 c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\include\sort.h
+1650457573 c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\include\sort.h
 	<vector>
 	<iostream>
 	<struktura.h>
@@ -112,11 +112,11 @@
 	<vector>
 	<struktura.h>
 
-1650455422 source:c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\src\sort.cpp
+1650457573 source:c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\src\sort.cpp
 	"Sort.h"
 	<time.h>
 
-1650454026 source:c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
+1650457596 source:c:\users\student\desktop\maciej-lab\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
 	"SortFunction.h"
 	"Sort.h"
 	<iostream>

@@ -43,8 +43,8 @@ int main() {
 
     //td::generate(records.begin(),records.end(), [](){return 1;} );
 
-
-    for(int i=0; i<50; ++i) {
+    int rozmiar=400000000;
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
@@ -56,18 +56,17 @@ int main() {
         records.push_back(nowy);
     }
     cout<<"przed: "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+    //for(int i=0; i<rozmiar; ++i) {
+      // cout<<records[i].key<<' ';
 
-    }
-    AiSD::ShellSort(records);
+    //}
+    cout<<AiSD::ShellSort(records)<<endl;
     cout<<endl<<"Po (ShellSort): "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
-
-    }
+    //for(int i=0; i<rozmiar; ++i) {
+      // cout<<records[i].key<<' ';
+    //}
     records.clear();
-    for(int i=0; i<50; ++i) {
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
@@ -79,18 +78,18 @@ int main() {
         records.push_back(nowy);
     }
     cout<<endl<<"przed: "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+    //for(int i=0; i<rozmiar; ++i) {
+      // cout<<records[i].key<<' ';
 
-    }
-    AiSD::QuickSort(records);
+    //}
+    cout<<AiSD::QuickSort(records)<<endl;;
     cout<<endl<<"Po (QuickSort): "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+    //for(int i=0; i<50; ++i) {
+      // cout<<records[i].key<<' ';
 
-    }
+    //}
     records.clear();
-    for(int i=0; i<50; ++i) {
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
@@ -102,18 +101,18 @@ int main() {
         records.push_back(nowy);
     }
     cout<<endl<<"przed: "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+   // for(int i=0; i<50; ++i) {
+      // cout<<records[i].key<<' ';
 
-    }
-    AiSD::InsertionSort(records);
+    //}
+    cout<<AiSD::InsertionSort(records)<<endl;;
     cout<<endl<<"Po (InsertionSort): "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+    //for(int i=0; i<50; ++i) {
+    //   cout<<records[i].key<<' ';
 
-    }
+    //}
     records.clear();
-    for(int i=0; i<50; ++i) {
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
@@ -125,15 +124,15 @@ int main() {
         records.push_back(nowy);
     }
     cout<<endl<<"przed: "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+    //for(int i=0; i<50; ++i) {
+     //  cout<<records[i].key<<' ';
 
-    }
-    AiSD::MergeSort(records);
+    //}
+    cout<<AiSD::MergeSort(records)<<endl;;
     cout<<endl<<"Po (MergeSort): "<<endl;
-    for(int i=0; i<50; ++i) {
-       cout<<records[i].key<<' ';
+    //for(int i=0; i<50; ++i) {
+      // cout<<records[i].key<<' ';
 
-    }
+    //}
     return 0;
 }

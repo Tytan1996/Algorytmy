@@ -16,7 +16,7 @@ public:
     void InsertionSort(std::vector<Record>& records);
     void Diag_ShellSort(std::vector<Record>& records);
     void Diag_QuickSort(std::vector<Record>& records);
-    void Diag_MergeSort(std::vector<Record>& records);
+    void Diag_MergeSort(std::vector<Record>& records,size_t start,size_t endVector);
     void Diag_InsertionSort(std::vector<Record>& records);
     void pokaz(std::vector<Record> records );
     void pokazWynikDiag();

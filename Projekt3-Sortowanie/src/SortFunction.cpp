@@ -45,10 +45,11 @@ void Diag_QuickSort(std::vector<Record>& records){
     Sort sortujaca;
     sortujaca.Diag_QuickSort(records);
     sortujaca.pokazWynikDiag();
+
     }
 void Diag_MergeSort(std::vector<Record>& records){
     Sort sortujaca;
-    sortujaca.Diag_MergeSort(records);
+    sortujaca.Diag_MergeSort(records,0,records.size());
     sortujaca.pokazWynikDiag();
     }
 void Diag_InsertionSort(std::vector<Record>& records){

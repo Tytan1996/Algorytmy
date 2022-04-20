@@ -29,7 +29,7 @@
 1649248111 e:\algorytmy\projekt3-sortowanie\include\sort.h
 	<chrono>
 
-1650285397 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\main.cpp
+1650402245 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\main.cpp
 	<iostream>
 	<algorithm>
 	<chrono>
@@ -39,12 +39,11 @@
 	<SortFunction.h>
 	<Sort.h>
 
-1650285397 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sort.cpp
+1650432933 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sort.cpp
 	"Sort.h"
 	<time.h>
 
-1650363824 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sort.h
-	<chrono>
+1650432933 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sort.h
 	<vector>
 	<iostream>
 	<struktura.h>
@@ -76,16 +75,17 @@
 1649767696 f:\aisd\projekt3-sortowanie\include\sortfunction.h
 	<chrono>
 
-1650285397 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sortfunction.h
+1650433116 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sortfunction.h
 	<chrono>
 	<vector>
 	<struktura.h>
 
-1650285397 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
+1650432245 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
 	"SortFunction.h"
 	"Sort.h"
 	<iostream>
 	<Sort.h>
+	<chrono>
 
-1650285397 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\struktura.h
+1650386762 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\struktura.h
 

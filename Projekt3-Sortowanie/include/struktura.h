@@ -2,7 +2,7 @@
 #define STRUKTURA_H
 
 
-struct Record{
+struct Record {
     int key;
     char ID[5];
 };

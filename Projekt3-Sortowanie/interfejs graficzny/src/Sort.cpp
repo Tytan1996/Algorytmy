@@ -57,7 +57,7 @@ int AiSD::Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,boo
 }
 int AiSD::Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
 {
-    auto CzasStart = clockH::now();
+    clock CzasStart = clockH::now();
     int srodek;
 
     if (start != koniec)

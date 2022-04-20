@@ -33,3 +33,6 @@
 
 *.txt
 *.csv
+
+#Plik word itp.
+*.odt

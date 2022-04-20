@@ -46,7 +46,7 @@
 			<Add library="libboost_thread-mgw6-mt-x32-1_78.a" />
 			<Add directory="C:/Users/User/Desktop/opengl/MinGW GLUT/lib" />
 		</Linker>
-		<Unit filename="include/BasicDrawFunctions.hpp" />
+		<Unit filename="include/DrawFunctions.hpp" />
 		<Unit filename="include/GenerateTable.hpp" />
 		<Unit filename="include/PresetLoader.hpp" />
 		<Unit filename="include/Sort.h" />
@@ -54,7 +54,7 @@
 		<Unit filename="include/simpleini/ini.h" />
 		<Unit filename="include/tinyfiledialog/tinyfiledialogs.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/BasicDrawFunctions.cpp" />
+		<Unit filename="src/DrawFunctions.cpp" />
 		<Unit filename="src/GenerateTable.cpp" />
 		<Unit filename="src/PresetLoader.cpp" />
 		<Unit filename="src/Sort.cpp" />

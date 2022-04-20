@@ -44,17 +44,29 @@ std::vector<AiSD::Record> AiSD::getTab()
 }
 std::vector<AiSD::Record> TabBeforeSorting;
 
+using clockH=std::chrono::high_resolution_clock;
+
+
+bool strictDraw=false;
+bool AiSD::restrictDraw()
+{
+    return strictDraw;
+}
 
 void AiSD::thread1()
 {
+
     while(true)
     {
+
         if(normalStart)
         {
+            strictDraw=true;
             Sort classSort;
             if(preset.tabType!=notSelectedType)
                 generateTable(Tab,preset.tabType,preset.size);
             TabBeforeSorting=Tab;
+            strictDraw=false;
 
             if(preset.method==notSelectedMethod)
                 tinyfd_messageBox("Error","Method is not selected","ok","error",0);
@@ -62,30 +74,35 @@ void AiSD::thread1()
                 tinyfd_messageBox("Error","Type of table/size is not selected, or is empty","ok","error",0);
             else
             {
+
                 processing=true;
                 //std::cout<<Tab.size()<<std::endl;
 
                 for(int i=0;i<2;i++)//2 RAZY -> 0 WIZUALIZACJA, 1 FAKTYCZNE SORTOWANIE (DLA UZYSKANIA CZASU)
                 {
                     Tab=TabBeforeSorting;//sortuj tylko nieposortowana tablce
-                    if(skipSleepState==true)i=1;
+                    if(skipSleepState==true||Tab.size()>200)i=1;
                     bool ThreadSleep=true;
                     if(i==1)ThreadSleep=false;
+
+                    auto TimeStart = clockH::now();
                     switch(preset.method)//ZAPISZE SIE TYLKO TEN BACKUP OSTATNI
                     {
                     case Shell:
-                        BackupTime=classSort.ShellSort(Tab,ThreadSleep);
+                        classSort.ShellSort(Tab,ThreadSleep);
                         break;
                     case Quick:
-                        BackupTime=classSort.QuickSort(Tab,0,Tab.size(),ThreadSleep);
+                        classSort.QuickSort(Tab,0,Tab.size(),ThreadSleep);
                         break;
                     case Merge:
-                        BackupTime=classSort.MergeSort(Tab,0,0,ThreadSleep);
+                        classSort.MergeSort(Tab,0,0,ThreadSleep);
                         break;
                     case Insertion:
-                        BackupTime=classSort.InsertionSort(Tab,ThreadSleep);
+                        classSort.InsertionSort(Tab,ThreadSleep);
                         break;
                     }
+                    auto TimeStop = clockH::now();
+                    BackupTime=(int)(std::chrono::duration_cast<std::chrono::microseconds>(TimeStop-TimeStart).count());
                 }
                 processing=false;
             }
@@ -132,21 +149,24 @@ void AiSD::Benchmark()
             generateTable(Tab,preset.tabType,(j+1)*stepBenchmark);
 
             int time=0;
+            auto TimeStart = clockH::now();
             switch(i)
             {
             case 0:
-                time=(int)(classSort.QuickSort(Tab,0,Tab.size(),false));
+                classSort.QuickSort(Tab,0,Tab.size(),false);
                 break;
             case 1:
-                time=(int)(classSort.MergeSort(Tab,0,Tab.size(),false));
+                classSort.MergeSort(Tab,0,Tab.size(),false);
                 break;
             case 2:
-                time=(int)(classSort.InsertionSort(Tab,false));
+                classSort.InsertionSort(Tab,false);
                 break;
             case 3:
-                time=(int)(classSort.ShellSort(Tab,false));
+                classSort.ShellSort(Tab,false);
                 break;
             }
+            auto TimeStop = clockH::now();
+            time=(int)(std::chrono::duration_cast<std::chrono::microseconds>(TimeStop-TimeStart).count());
             //std::cout<<"time: "<<time<<std::endl;
             AiSD::Record newRecord={time,(char)i};
 

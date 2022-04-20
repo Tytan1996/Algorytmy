@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <GL/freeglut.h>
+#include <chrono>
 #include "GenerateTable.hpp"
 #include "Sort.h"
 
@@ -26,7 +27,7 @@ struct settingsPreset
 void setSetting(SortingMethod);
 void setSetting(TableTypes);
 void setSetting(long int);
-
+bool restrictDraw();
 void Start(bool skipSleep);
 bool getProcessing();
 int getTime();

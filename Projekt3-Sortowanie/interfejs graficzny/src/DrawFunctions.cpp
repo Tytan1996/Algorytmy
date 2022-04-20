@@ -1,4 +1,4 @@
-#include "BasicDrawFunctions.hpp"
+#include "DrawFunctions.hpp"
 
 #include <iostream>
 
@@ -32,7 +32,7 @@ void AiSD::onStart()
     newCollection.addNew({convertSize(300.0f,300.0f),convertSize(200.0f,50.0f),"MergeSort",false,1,5,[](){setSetting(SortingMethod::Merge);}});
     newCollection.addNew({convertSize(300.0f,400.0f),convertSize(200.0f,50.0f),"InsertSort",false,1,6,[](){setSetting(SortingMethod::Insertion);}});
 
-    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"200",false,2,7,[](){setSetting(200);}});
+    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"2 000 000",false,2,7,[](){setSetting(2000000);}});
     newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"50",false,2,8,[](){setSetting(50);}});
     newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(10);}});
 
@@ -134,9 +134,14 @@ void AiSD::display()
 
 
         if(benchState==false)
-            drawTable(AiSD::getTab(),false);
+        {
+            if(AiSD::restrictDraw()==false)
+                drawTable(AiSD::getTab(),false);
+        }
         else
+        {
             drawBenchmarkResult();
+        }
         if(!getProcessing())
         {
             newCollection.addNew({convertSize(0.0f,70.0f),convertSize(200.0f,50.0f),"Back to menu",false,6,13,[](){menuActive=true;onStart();benchState=false;}});
@@ -203,7 +208,7 @@ float AiSD::autoScale(const std::vector<Record> &Tab)
 void AiSD::drawTable(const std::vector<Record> &Tab,bool onlyLines,bool autoScaleMe,int columns,vector3 color)
 {
     if(Tab.size()==0)return;
-    if(columns==-1)
+    if(columns==-1||columns==0)
         columns=Tab.size();
     if(autoScaleMe)
         scale=autoScale(Tab);

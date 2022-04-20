@@ -8,7 +8,7 @@
 
 #include <boost/thread.hpp>
 
-#include "BasicDrawFunctions.hpp"
+#include "DrawFunctions.hpp"
 #include "SortThread.hpp"
 
 

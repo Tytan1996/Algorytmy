@@ -61,7 +61,7 @@ int main() {
 
     }
     AiSD::ShellSort(records);
-    cout<<endl<<"Po: "<<endl;
+    cout<<endl<<"Po (ShellSort): "<<endl;
     for(int i=0; i<50; ++i) {
        cout<<records[i].key<<' ';
 
@@ -84,7 +84,7 @@ int main() {
 
     }
     AiSD::QuickSort(records);
-    cout<<endl<<"Po: "<<endl;
+    cout<<endl<<"Po (QuickSort): "<<endl;
     for(int i=0; i<50; ++i) {
        cout<<records[i].key<<' ';
 
@@ -107,7 +107,7 @@ int main() {
 
     }
     AiSD::InsertionSort(records);
-    cout<<endl<<"Po: "<<endl;
+    cout<<endl<<"Po (InsertionSort): "<<endl;
     for(int i=0; i<50; ++i) {
        cout<<records[i].key<<' ';
 
@@ -130,7 +130,7 @@ int main() {
 
     }
     AiSD::MergeSort(records);
-    cout<<endl<<"Po: "<<endl;
+    cout<<endl<<"Po (MergeSort): "<<endl;
     for(int i=0; i<50; ++i) {
        cout<<records[i].key<<' ';
 

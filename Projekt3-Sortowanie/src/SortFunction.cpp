@@ -37,22 +37,22 @@ int AiSD::InsertionSort(std::vector<Record>& records) {
 }
 void Diag_ShellSort(std::vector<Record>& records){
     Sort sortujaca;
-    sortujaca.Diag_ShellSort();
+    sortujaca.Diag_ShellSort(records);
     sortujaca.pokazWynikDiag();
 
 }
 void Diag_QuickSort(std::vector<Record>& records){
     Sort sortujaca;
-    sortujaca.Diag_QuickSort();
+    sortujaca.Diag_QuickSort(records);
     sortujaca.pokazWynikDiag();
     }
-void Diag_MergeShort(std::vector<Record>& records){
+void Diag_MergeSort(std::vector<Record>& records){
     Sort sortujaca;
-    sortujaca.Diag_MergeShort();
+    sortujaca.Diag_MergeSort(records);
     sortujaca.pokazWynikDiag();
     }
 void Diag_InsertionSort(std::vector<Record>& records){
     Sort sortujaca;
-    sortujaca.InsertionSort();
+    sortujaca.InsertionSort(records);
     sortujaca.pokazWynikDiag();
     }

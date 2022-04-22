@@ -35,25 +35,42 @@ int AiSD::InsertionSort(std::vector<Record>& records) {
     auto endTimeSort = std::chrono::high_resolution_clock::now();
     return std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
 }
-void Diag_ShellSort(std::vector<Record>& records){
+std::map <std::string,size_t> AiSD::Diag_ShellSort(std::vector<Record>& records){
+    std::map <std::string, size_t> mapToShellSort;
+    mapToShellSort ["ilosc wywolania funkcji Diag_ShellSort"]=0;
+    mapToShellSort["ilosc porownian"]=0;
+    mapToShellSort["ilosc przypisania"]=0;
     Sort sortujaca;
-    sortujaca.Diag_ShellSort(records);
-    sortujaca.pokazWynikDiag();
-
+    sortujaca.Diag_ShellSort(records,mapToShellSort);
+    return mapToShellSort;
 }
-void Diag_QuickSort(std::vector<Record>& records){
+std::map <std::string,size_t> AiSD::Diag_QuickSort(std::vector<Record>& records){
+    std::map<std::string, size_t> mapToQuickSort;
+    mapToQuickSort["ilosc wywolania funkcji Diag_QuickSort"]=0;
+    mapToQuickSort["ilosc porownian"]=0;
+    mapToQuickSort["ilosc przypisania"]=0;
     Sort sortujaca;
-    sortujaca.Diag_QuickSort(records);
-    sortujaca.pokazWynikDiag();
-
+    sortujaca.Diag_QuickSort(records,0,records.size(), mapToQuickSort);
+    return mapToQuickSort;
     }
-void Diag_MergeSort(std::vector<Record>& records){
+std::map <std::string,size_t> AiSD::Diag_MergeSort(std::vector<Record>& records){
+    std::map<std::string, size_t> mapToMergeSort;
+    mapToMergeSort["ilosc wywolania funkcji Diag_MergeSort"]=0;
+    mapToMergeSort["ilosc wywolania funkcji Diag_Merge"]=0;
+    mapToMergeSort["ilosc porownian"]=0;
+    mapToMergeSort["ilosc przypisania"]=0;
+    mapToMergeSort["ilosc utworzenie nowego wektora"]=0;
+    mapToMergeSort["ilosc wstawienia wartosci do wektora"]=0;
     Sort sortujaca;
-    sortujaca.Diag_MergeSort(records,0,records.size());
-    sortujaca.pokazWynikDiag();
+    sortujaca.Diag_MergeSort(records,0,records.size(),mapToMergeSort);
+    return mapToMergeSort;
     }
-void Diag_InsertionSort(std::vector<Record>& records){
+std::map <std::string,size_t> AiSD::Diag_InsertionSort(std::vector<Record>& records){
+    std::map<std::string, size_t> mapToInsertionSort;
+    mapToInsertionSort["ilosc wywolania funkcji Diag_InsertionSort"]=0;
+    mapToInsertionSort["ilosc porownian"]=0;
+    mapToInsertionSort["ilosc przypisania"]=0;
     Sort sortujaca;
-    sortujaca.InsertionSort(records);
-    sortujaca.pokazWynikDiag();
+    sortujaca.Diag_InsertionSort(records,mapToInsertionSort);
+    return mapToInsertionSort;
     }

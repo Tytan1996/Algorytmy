@@ -43,7 +43,7 @@ int main() {
 
     //td::generate(records.begin(),records.end(), [](){return 1;} );
 
-    int rozmiar=100;
+    int rozmiar=10000000;
     for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
@@ -58,7 +58,7 @@ int main() {
     cout<<"czas ShellSort: "<<AiSD::ShellSort(records)<<endl;
 
     records.clear();
-        for(int i=0; i<rozmiar; ++i) {
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
@@ -71,7 +71,7 @@ int main() {
     }
     cout<<"czas QuickSort: "<<AiSD::QuickSort(records)<<std::endl;
     records.clear();
-        for(int i=0; i<rozmiar; ++i) {
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;
@@ -84,7 +84,7 @@ int main() {
     }
     cout<<"czas MergeSort: "<<AiSD::MergeSort(records)<<std::endl;
     records.clear();
-        for(int i=0; i<rozmiar; ++i) {
+    for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
         nowy.key= rand() % (4*(i+1))+i;

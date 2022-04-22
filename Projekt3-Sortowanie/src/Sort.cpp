@@ -3,50 +3,48 @@
 #include <map>
 #include <iostream>
 
-void Sort::ShellSort(std::vector<Record>& records) {
+void AiSD::Sort::ShellSort(std::vector<Record>& records) {
     size_t vectorSize=records.size();
     int halfSizeVector=vectorSize/2;
-    for(int i =halfSizeVector; i>0; i/=2){
-        for(int j=i; j<vectorSize; ++j){
+    for(int i =halfSizeVector; i>0; i/=2) {
+        for(int j=i; j<vectorSize; ++j) {
             Record newRecords;
             newRecords=records[j];
             int k;
-            for(k=j;k>=i &&records[k-i].key>newRecords.key;k-=i){
+            for(k=j; k>=i &&records[k-i].key>newRecords.key; k-=i) {
                 records[k]=records[k-i];
             }
             records[k]=newRecords;
         }
     }
 }
-void Sort::QuickSort(std::vector<Record>& records, size_t start, size_t end) {
+void AiSD::Sort::QuickSort(std::vector<Record>& records, size_t start, size_t end) {
 
-    if(start>=end){
+    if(start>=end) {
         return;
     }
-    size_t i,j;
-    i=start-1;
-    j=end+1;
-    int valueToCompare=records[(i+j)/2].key;
+    int v=records[(start+end)/2].key;
     Record record;
-
-    while(1){
-        while (records[i].key<valueToCompare) i++;
-        while (records[j].key>valueToCompare) j--;
+    int i,j;
+    i=start;
+    j=end;
+    while (i<=j) {
+        while (records[i].key<v) i++;
+        while (records[j].key>v) j--;
         if (i<=j) {
             record=records[i];
             records[i]=records[j];
             records[j]=record;
             i++;
             j--;
-        }
-        else{
+        } else {
             break;
         }
     }
     if (j>start) QuickSort(records,start, j);
     if (i<end) QuickSort(records, i, end);
 }
-void Sort::MergeSort(std::vector<Record>& records, size_t start, size_t end) {
+void AiSD::Sort::MergeSort(std::vector<Record>& records, size_t start, size_t end) {
 
     size_t middle;
 
@@ -57,7 +55,7 @@ void Sort::MergeSort(std::vector<Record>& records, size_t start, size_t end) {
         Merge(records, start, middle, end);
     }
 }
-void Sort::Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end) {
+void AiSD::Sort::Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end) {
     std::vector<Record> newRecords;
     size_t i = start, j = middle+1, k = 0; // zmienne pomocnicze
 
@@ -92,7 +90,7 @@ void Sort::Merge(std::vector<Record>& records, size_t start, size_t middle, size
     newRecords.clear();
 
 }
-void Sort::InsertionSort(std::vector<Record>& records) {
+void AiSD::Sort::InsertionSort(std::vector<Record>& records) {
     Record newRecord;
     size_t sizeVector=records.size();
     size_t i, j;
@@ -107,44 +105,55 @@ void Sort::InsertionSort(std::vector<Record>& records) {
         records[j + 1] = newRecord;
     }
 }
-void Sort::Diag_ShellSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag) {
+void AiSD::Sort::Diag_ShellSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag) {
     ++mapToDiag ["ilosc wywolania funkcji Diag_ShellSort"];
     size_t vectorSize=records.size();
     int halfSizeVector=vectorSize/2;
-    for(int i =halfSizeVector; i>0; i/=2){
-        for(size_t j=i; j<vectorSize; ++j){
+    for(int i =halfSizeVector; i>0; i/=2) {
+        for(size_t j=i; j<vectorSize; ++j) {
             Record newRecords;
-            newRecords=records[j]; ++mapToDiag ["ilosc przypisania"];
+            newRecords=records[j];
+            ++mapToDiag ["ilosc przypisania"];
             size_t k;
-            for(k=j;k>=i &&records[k-i].key>newRecords.key;k-=i, ++mapToDiag["ilosc porownian"]){
-                records[k]=records[k-i]; ++mapToDiag ["ilosc przypisania"];
+            for(k=j; k>=i &&records[k-i].key>newRecords.key; k-=i, ++mapToDiag["ilosc porownian"]) {
+                records[k]=records[k-i];
+                ++mapToDiag ["ilosc przypisania"];
             }
-            records[k]=newRecords; ++mapToDiag ["ilosc przypisania"];
+            records[k]=newRecords;
+            ++mapToDiag ["ilosc przypisania"];
         }
     }
 }
-void Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size_t end, std::map <std::string,size_t>& mapToDiag){
+void AiSD::Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size_t end, std::map <std::string,size_t>& mapToDiag) {
     ++mapToDiag ["ilosc wywolania funkcji Diag_QuickSort"];
+    if(start>=end) {
+        return;
+    }
     size_t valueToCompare=records[(start+end)/2].key;
     Record record;
     size_t i,j;
     i=start;
     j=end;
-    do {
+    while (i<=j) {
         while (records[i].key<valueToCompare, ++mapToDiag["ilosc porownian"]) i++;
         while (records[j].key>valueToCompare, ++mapToDiag["ilosc porownian"]) j--;
         if (i<=j) {
-            record=records[i]; ++mapToDiag ["ilosc przypisania"];
-            records[i]=records[j]; ++mapToDiag ["ilosc przypisania"];
-            records[j]=record; ++mapToDiag ["ilosc przypisania"];
+            record=records[i];
+            ++mapToDiag ["ilosc przypisania"];
+            records[i]=records[j];
+            ++mapToDiag ["ilosc przypisania"];
+            records[j]=record;
+            ++mapToDiag ["ilosc przypisania"];
             i++;
             j--;
+        } else {
+            break;
         }
-    } while (i<=j);
+    }
     if (j>start) Diag_QuickSort(records,start, j, mapToDiag);
     if (i<end) Diag_QuickSort(records, i, end, mapToDiag);
 }
-void Sort::Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, std::map <std::string,size_t>& mapToDiag) {
+void AiSD::Sort::Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, std::map <std::string,size_t>& mapToDiag) {
     int middle;
     ++mapToDiag["ilosc wywolania funkcji Diag_MergeSort"];
     if (start != end) {
@@ -154,24 +163,27 @@ void Sort::Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, 
         Diag_Merge(records, start, middle, end, mapToDiag);
     }
 }
-void Sort::Diag_InsertionSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag) {
+void AiSD::Sort::Diag_InsertionSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag) {
 
     Record newRecord;
     size_t n=records.size();
     size_t i, j;
     for (i = 1; i < n; i++) {
-        newRecord = records[i]; ++mapToDiag ["ilosc przypisania"];
+        newRecord = records[i];
+        ++mapToDiag ["ilosc przypisania"];
         j = i - 1;
 
         while (j >= 0 && records[j].key > newRecord.key, ++mapToDiag["ilosc Porownan"] ) {
-            records[j + 1] = records[j]; ++mapToDiag ["ilosc przypisania"];
+            records[j + 1] = records[j];
+            ++mapToDiag ["ilosc przypisania"];
             j = j - 1;
         }
-        records[j + 1] = newRecord; ++mapToDiag ["ilosc przypisania"];
+        records[j + 1] = newRecord;
+        ++mapToDiag ["ilosc przypisania"];
     }
 
 }
-void Sort::Diag_Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end, std::map <std::string,size_t>& mapToDiag) {
+void AiSD::Sort::Diag_Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end, std::map <std::string,size_t>& mapToDiag) {
     ++mapToDiag["ilosc wywolania funkcji Diag_Merge"];
     std::vector<Record> newRecords;
     ++mapToDiag["ilosc utworzenie nowego wektora"];
@@ -205,7 +217,7 @@ void Sort::Diag_Merge(std::vector<Record>& records, size_t start, size_t middle,
             k++;
         }
     }
-    for (i = 0; i <= end-start; i++){
+    for (i = 0; i <= end-start; i++) {
         records[start+i] = newRecords[i];
         ++mapToDiag["ilosc przypisania"];
     }

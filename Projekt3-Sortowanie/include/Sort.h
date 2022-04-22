@@ -6,7 +6,7 @@
 #include <map>
 
 
-
+namespace AiSD {
 class Sort {
 public:
     void ShellSort(std::vector<Record>& records);
@@ -25,6 +25,6 @@ private:
     void Diag_Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end, std::map <std::string,size_t>& mapToDiag);
 
 };
-
+}
 
 #endif // SORT_H

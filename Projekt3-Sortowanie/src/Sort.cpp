@@ -5,9 +5,9 @@
 
 void AiSD::Sort::ShellSort(std::vector<Record>& records) {
     size_t vectorSize=records.size();
-    int halfSizeVector=vectorSize/2;
-    for(int i =halfSizeVector; i>0; i/=2) {
-        for(int j=i; j<vectorSize; ++j) {
+    size_t halfSizeVector=vectorSize/2;
+    for(size_t i =halfSizeVector; i>0; i/=2) {
+        for(size_t j=i; j<vectorSize; ++j) {
             Record newRecords;
             newRecords=records[j];
             int k;
@@ -25,7 +25,7 @@ void AiSD::Sort::QuickSort(std::vector<Record>& records, size_t start, size_t en
     }
     int v=records[(start+end)/2].key;
     Record record;
-    int i,j;
+    size_t i,j;
     i=start;
     j=end;
     while (i<=j) {
@@ -108,8 +108,8 @@ void AiSD::Sort::InsertionSort(std::vector<Record>& records) {
 void AiSD::Sort::Diag_ShellSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag) {
     ++mapToDiag ["ilosc wywolania funkcji Diag_ShellSort"];
     size_t vectorSize=records.size();
-    int halfSizeVector=vectorSize/2;
-    for(int i =halfSizeVector; i>0; i/=2) {
+    size_t halfSizeVector=vectorSize/2;
+    for(size_t i =halfSizeVector; i>0; i/=2) {
         for(size_t j=i; j<vectorSize; ++j) {
             Record newRecords;
             newRecords=records[j];
@@ -154,7 +154,7 @@ void AiSD::Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size
     if (i<end) Diag_QuickSort(records, i, end, mapToDiag);
 }
 void AiSD::Sort::Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, std::map <std::string,size_t>& mapToDiag) {
-    int middle;
+    size_t middle;
     ++mapToDiag["ilosc wywolania funkcji Diag_MergeSort"];
     if (start != end) {
         middle = records[(start + end)/2].key;

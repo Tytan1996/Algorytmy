@@ -3,32 +3,27 @@
 #include <chrono>
 #include <vector>
 #include <boost/thread.hpp>
+#include "SortThread.hpp"
+#include "StructRecord.hpp"
+
 namespace AiSD
 {
 
-struct Record{
-    int key;
-    char ID[5];
-
-};
 class Sort
 {
+public:
+    void ShellSort(std::vector<Record>& records);
+    void QuickSort(std::vector<Record>& records, size_t start, size_t end);
+    void MergeSort(std::vector<Record>& records, size_t start, size_t end);
+    void InsertionSort(std::vector<Record>& records);
+    void Diag_ShellSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep);
+    void Diag_QuickSort(std::vector<Record>& records, size_t start, size_t end, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep);
+    void Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep);
+    void Diag_InsertionSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep);
 
-    public:
-        int ShellSort(std::vector <Record> &records,bool ThreadSleep);
-        int QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep);
-        int MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep);
-        int InsertionSort(std::vector <Record> &records,bool ThreadSleep);
-
-    protected:
-
-    private:
-        //std::vector <Record> records;
-        void scalanie(std::vector <Record> &records, int start, int srodek, int koniec);
-        //clock_t start,stop;
-        double czas;
-        void wcztyajTabliceZPliku();
-        void zapisPosortowonaTabliceDoPliku();
+private:
+    void Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end);
+    void Diag_Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep);
 
 
 };

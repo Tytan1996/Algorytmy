@@ -17,6 +17,7 @@ int main(int argc, char** argv)
 {
     boost::thread t1(AiSD::thread1);
 
+
     glutInit(&argc, argv);
     glutInitWindowSize(800, 600);
     glutCreateWindow("Presentation");

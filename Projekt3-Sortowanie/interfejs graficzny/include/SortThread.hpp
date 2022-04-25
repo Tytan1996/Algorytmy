@@ -8,6 +8,7 @@
 #include <chrono>
 #include "GenerateTable.hpp"
 #include "Sort.h"
+#include <map>
 
 #include "PresetLoader.hpp"
 #include "tinyfiledialog/tinyfiledialogs.h"
@@ -27,7 +28,13 @@ struct settingsPreset
 void setSetting(SortingMethod);
 void setSetting(TableTypes);
 void setSetting(long int);
+
 bool restrictDraw();
+void SetRestrictDraw(bool OnOff);
+
+std::vector<AiSD::Record> getPrintTable();
+void setPrintingTable(std::vector<AiSD::Record> tab);
+
 void Start(bool skipSleep);
 bool getProcessing();
 int getTime();

@@ -127,3 +127,42 @@
 	<Sort.h>
 	<chrono>
 
+1650920324 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\main.cpp
+	<iostream>
+	<algorithm>
+	<chrono>
+	<windows.h>
+	"Sort.h"
+	<vector>
+	<SortFunction.h>
+	<Sort.h>
+	<random>
+
+1650912762 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\include\sort.h
+	<vector>
+	<iostream>
+	<struktura.h>
+	<map>
+
+1650912762 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\include\struktura.h
+
+1650912762 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\include\sortfunction.h
+	<chrono>
+	<vector>
+	<struktura.h>
+	<map>
+	<iostream>
+
+1650912762 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\src\sort.cpp
+	"Sort.h"
+	<time.h>
+	<map>
+	<iostream>
+
+1650912762 source:c:\users\user\documents\github\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
+	"SortFunction.h"
+	"Sort.h"
+	<iostream>
+	<Sort.h>
+	<chrono>
+

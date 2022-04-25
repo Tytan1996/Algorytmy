@@ -51,6 +51,7 @@
 		<Unit filename="include/PresetLoader.hpp" />
 		<Unit filename="include/Sort.h" />
 		<Unit filename="include/SortThread.hpp" />
+		<Unit filename="include/StructRecord.hpp" />
 		<Unit filename="include/simpleini/ini.h" />
 		<Unit filename="include/tinyfiledialog/tinyfiledialogs.h" />
 		<Unit filename="main.cpp" />

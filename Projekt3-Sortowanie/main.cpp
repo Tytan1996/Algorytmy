@@ -6,6 +6,7 @@
 #include <vector>
 #include <SortFunction.h>
 #include <Sort.h>
+#include <random>
 
 using namespace std;
 
@@ -34,7 +35,14 @@ int main() {
 
 
 
+
+
     vector<Record> records ;
+
+
+
+
+
     //records.resize(50);
 
     //auto moja = nijaka();
@@ -43,11 +51,14 @@ int main() {
 
     //td::generate(records.begin(),records.end(), [](){return 1;} );
 
-    int rozmiar=10000000;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis1(0, std::numeric_limits<int>::max());
+    int rozmiar=4000;
     for(int i=0; i<rozmiar; ++i) {
         Record nowy;
         srand (time(NULL));
-        nowy.key= rand() % (4*(i+1))+i;
+        nowy.key= dis1(gen);
         nowy.ID[0]=char(i);
         nowy.ID[1]=char(i);
         nowy.ID[2]=char(i);

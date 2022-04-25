@@ -2,139 +2,263 @@
 
 using clockH=std::chrono::high_resolution_clock;
 
-int AiSD::Sort::ShellSort(std::vector <Record> &records,bool ThreadSleep){
-    int iloscElementow=records.size();
-    auto start = clockH::now();
-    for (int i=1; i<iloscElementow; i++)
-    {
-        for (int j=iloscElementow-1; j>=1; j--)
-        {
-            if (records[j].key<records[j-1].key)
-            {
-                Record bufor;
-                bufor=records[j-1];
-                records[j-1]=records[j];
-                records[j]=bufor;
-            }
-            if(ThreadSleep)boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
-        }
-
-    }
-    auto stop = clockH::now();
-    return std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count();
+void FunctionFinish(std::vector <AiSD::Record> &records)
+{
+    AiSD::SetRestrictDraw(true);
+    AiSD::setPrintingTable(records);
+    AiSD::SetRestrictDraw(false);
 }
-int AiSD::Sort::QuickSort(std::vector <Record> &records, int lewy, int prawy,bool ThreadSleep){
 
-    auto CzasStart = clockH::now();
+void FuntionForPrinting(bool threadSleep,std::vector <AiSD::Record> &records)
+{
+    if(threadSleep)
+    {
+        FunctionFinish(records);
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
+    }
+}
 
-    int v=records[(lewy+prawy)/2].key;
-    Record record;
-    int i,j;
-    i=lewy;
-    j=prawy;
+void AiSD::Sort::ShellSort(std::vector <Record> &records){
+
+    size_t vectorSize=records.size();
+    size_t halfSizeVector=vectorSize/2;
+
+    for(size_t i =halfSizeVector; i>0; i/=2) {
+        for(size_t j=i; j<vectorSize; ++j) {
+            Record newRecords;
+            newRecords=records[j];
+            int k;
+            for(k=j; k>=i &&records[k-i].key>newRecords.key; k-=i) {
+                records[k]=records[k-i];
+            }
+            records[k]=newRecords;
+        }
+    }
+}
+#include <iostream>
+void AiSD::Sort::QuickSort(std::vector <Record> &records, size_t start, size_t end)
+{
+    if(end<=start)return;
+    int v=records[(start+end)/2].key;
+    size_t i=start;
+    size_t j=end;
+
     do
     {
-        while (records[i].key<v) i++;
-        while (records[j].key>v) j--;
+        if(j>records.size())j=end;
+        while(v>records[i].key)i++;
+        while(v<records[j].key)j--;
         if (i<=j)
         {
-            record=records[i];
-            records[i]=records[j];
-            records[j]=record;
+            std::swap(records[i], records[j]);
             i++;
             j--;
+        } else {
+            break;
         }
-        if(ThreadSleep)boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
-    }
-    while (i<=j);
-    if (j>lewy) QuickSort(records,lewy, j,ThreadSleep);
-    if (i<prawy) QuickSort(records, i, prawy,ThreadSleep);
 
-    auto CzasStop = clockH::now();
-    //if(lewy==0)
-    //std::cout<<"z "<<std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count()<<std::endl;
-    return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
+    }while(i<=j);
+    if (j>start) QuickSort(records,start, j);
+    if (i<end) QuickSort(records, i, end);
 }
-int AiSD::Sort::MergeSort(std::vector <Record> &records, int start, int koniec,bool ThreadSleep)
-{
-    auto CzasStart = clockH::now();
-    int srodek;
 
-    if (start != koniec)
-    {
-        srodek = (start + koniec)/2;
-        MergeSort(records, start, srodek,ThreadSleep);
-        MergeSort(records, srodek+1, koniec,ThreadSleep);
-        scalanie(records, start, srodek, koniec);
-    }
-    if(ThreadSleep)boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
-    auto CzasStop = clockH::now();
-    return std::chrono::duration_cast<std::chrono::microseconds>(CzasStop-CzasStart).count();
-}
-void AiSD::Sort::scalanie(std::vector <Record> &records, int start, int srodek, int koniec)
+void AiSD::Sort::Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end)
 {
-    /*
-    int *tab_pom = new int[(koniec-start+1)]; // utworzenie tablicy pomocniczej
-    int i = start, j = srodek+1, k = 0; // zmienne pomocnicze
+    std::vector<Record> newRecords;
+    size_t i = start, j = middle+1, k = 0; // zmienne pomocnicze
 
-    while (i <= srodek && j <= koniec)
-    {
-        if (records[j].key < records[i].key)
-        {
-            tab_pom[k] = records[j].key;
+    while (i <= middle && j <= end) {
+        if (records[j].key < records[i].key) {
+            newRecords.push_back(records[j]);
             j++;
-        }
-        else
-        {
-            tab_pom[k] = records[i].key;
+        } else {
+            newRecords.push_back(records[i]);
             i++;
         }
         k++;
     }
 
-    if (i <= srodek)
-    {
-        while (i <= srodek)
-        {
-            tab_pom[k] = records[i];
+    if (i <= middle) {
+        while (i <= middle) {
+            newRecords.push_back(records[i]);
             i++;
             k++;
         }
-    }
-    else
-    {
-        while (j <= koniec)
-        {
-            tab_pom[k] = tablica[j];
+    } else {
+        while (j <= end) {
+            newRecords.push_back(records[j]);
             j++;
             k++;
         }
     }
 
-    for (i = 0; i <= koniec-start; i++)
-        records[start+i] = tab_pom[i];
+    for (i = 0; i <= end-start; i++)
+        records[start+i] = newRecords[i];
 
-    delete [] tab_pom;*/
+    newRecords.clear();
 }
-int AiSD::Sort::InsertionSort(std::vector <Record> &records,bool ThreadSleep)
+void AiSD::Sort::MergeSort(std::vector <Record> &records, size_t start, size_t end)
 {
-    auto start = clockH::now();
-    int n=records.size();
-    int i, key, j;
-    for (i = 1; i < n; i++)
-    {
-        key = records[i].key;
+    size_t middle;
+
+    if (start != end) {
+        middle = (start + end)/2;
+        MergeSort(records, start, middle);
+        MergeSort(records, middle+1, end);
+        Merge(records, start, middle, end);
+
+    }
+}
+
+void AiSD::Sort::InsertionSort(std::vector <Record> &records)
+{
+    Record newRecord;
+    size_t sizeVector=records.size();
+    size_t i, j;
+    for (i = 1; i < sizeVector; i++) {
+        newRecord = records[i];
         j = i - 1;
 
-        while (j >= 0 && records[j].key > key)
-        {
+        while (j >= 0 && records[j].key > newRecord.key) {
             records[j + 1] = records[j];
             j = j - 1;
         }
-        if(ThreadSleep)boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
-        records[j + 1].key = key;
+        records[j + 1] = newRecord;
+    }
+}
+
+void AiSD::Sort::Diag_ShellSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep)
+{
+    ++mapToDiag ["ilosc wywolania funkcji Diag_ShellSort"];
+    size_t vectorSize=records.size();
+    size_t halfSizeVector=vectorSize/2;
+    for(size_t i =halfSizeVector; i>0; i/=2) {
+        for(size_t j=i; j<vectorSize; ++j) {
+            Record newRecords;
+            newRecords=records[j];
+            ++mapToDiag ["ilosc przypisania"];
+            size_t k;
+            for(k=j; k>=i &&records[k-i].key>newRecords.key; k-=i, ++mapToDiag["ilosc porownian"]) {
+                records[k]=records[k-i];
+                ++mapToDiag ["ilosc przypisania"];
+                FuntionForPrinting(ThreadSleep,records);
+            }
+            records[k]=newRecords;
+            ++mapToDiag ["ilosc przypisania"];
+        }
+    }
+    FunctionFinish(records);
+}
+void AiSD::Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size_t end, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep)
+{
+    ++mapToDiag ["ilosc wywolania funkcji Diag_QuickSort"];
+    if(end<=start)return;
+    int v=records[(start+end)/2].key;
+    size_t i=start;
+    size_t j=end;
+
+    do
+    {
+        if(j>records.size())j=start;
+        while(v>records[i].key){i++;++mapToDiag["ilosc porownian"];};
+        while(v<records[j].key){j--;++mapToDiag["ilosc porownian"];};
+        if (i<=j)
+        {
+            std::swap(records[i], records[j]);
+            ++mapToDiag ["ilosc zamian"];
+            i++;
+            j--;
+            FuntionForPrinting(ThreadSleep,records);
+        } else {
+            break;
+        }
+
+    }while(i<=j);
+    if (j>start) Diag_QuickSort(records,start, j,mapToDiag,ThreadSleep);
+    if (i<end) Diag_QuickSort(records, i, end,mapToDiag,ThreadSleep);
+    FunctionFinish(records);
+
+}
+void AiSD::Sort::Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep)
+{
+    size_t middle;
+    ++mapToDiag["ilosc wywolania funkcji Diag_MergeSort"];
+    if (start != end) {
+        middle = (start + end)/2;
+        Diag_MergeSort(records, start, middle, mapToDiag,ThreadSleep);
+        Diag_MergeSort(records, middle+1, end, mapToDiag,ThreadSleep);
+        Diag_Merge(records, start, middle, end, mapToDiag,ThreadSleep);
+    }
+    FunctionFinish(records);
+}
+void AiSD::Sort::Diag_InsertionSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep)
+{
+
+    Record newRecord;
+    size_t n=records.size();
+    size_t i, j;
+    for (i = 1; i < n; i++) {
+        newRecord = records[i];
+        ++mapToDiag ["ilosc przypisania"];
+        j = i - 1;
+
+        while (j >= 0 && records[j].key > newRecord.key) {
+            ++mapToDiag["ilosc Porownan"];
+            records[j + 1] = records[j];
+            ++mapToDiag ["ilosc przypisania"];
+            j = j - 1;
+            FuntionForPrinting(ThreadSleep,records);
+        }
+        records[j + 1] = newRecord;
+        ++mapToDiag ["ilosc przypisania"];
+    }
+    FunctionFinish(records);
+}
+void AiSD::Sort::Diag_Merge(std::vector<Record>& records, size_t start, size_t middle, size_t end, std::map <std::string,size_t>& mapToDiag,bool ThreadSleep)
+{
+    ++mapToDiag["ilosc wywolania funkcji Diag_Merge"];
+    std::vector<Record> newRecords;
+    ++mapToDiag["ilosc utworzenie nowego wektora"];
+    size_t i = start, j = middle+1, k = 0; // zmienne pomocnicze
+
+    while (i <= middle && j <= end) {
+
+        if (records[j].key < records[i].key) {
+            ++mapToDiag["ilosc porownian"];
+            newRecords.push_back(records[j]);
+            ++mapToDiag["ilosc wstawienia wartosci do wektora"];
+            j++;
+        } else {
+            newRecords.push_back(records[i]);
+            ++mapToDiag["ilosc wstawienia wartosci do wektora"];
+            i++;
+        }
+        k++;
+        //FuntionForPrinting(ThreadSleep,records);
     }
 
-    auto stop = clockH::now();
-    return std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count();
+    if (i <= middle) {
+        while (i <= middle) {
+
+            newRecords.push_back(records[i]);
+            ++mapToDiag["ilosc wstawienia wartosci do wektora"];
+            i++;
+            k++;
+        }
+    } else {
+        while (j <= end) {
+
+            newRecords.push_back(records[j]);
+            ++mapToDiag["ilosc wstawienia wartosci do wektora"];
+            j++;
+            k++;
+        }
+    }
+    for (i = 0; i <= end-start; i++) {
+        records[start+i] = newRecords[i];
+        ++mapToDiag["ilosc przypisania"];
+    }
+    newRecords.clear();
 }
+
+

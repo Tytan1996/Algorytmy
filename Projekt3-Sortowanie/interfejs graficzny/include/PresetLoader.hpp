@@ -8,13 +8,14 @@
 #include <wchar.h>
 
 #include <string>
+#include <cstring>
 
 #include <cstdio>
 #include <vector>
 
 #include "tinyfiledialog\tinyfiledialogs.h"
 #include "simpleini/ini.h"
-#include "Sort.h"
+#include "StructRecord.hpp"
 
 namespace AiSD
 {
@@ -25,7 +26,7 @@ struct PresetStruct
 {
     std::string method;//sorting type
     std::string description;
-    std::vector<Record> Tab;
+    std::vector<AiSD::Record> Tab;
 };
 void savePreset(std::string src,PresetStruct presetStruct);
 PresetStruct openPreset(std::string src);

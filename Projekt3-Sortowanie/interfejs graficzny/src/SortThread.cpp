@@ -44,6 +44,17 @@ std::vector<AiSD::Record> AiSD::getTab()
 }
 std::vector<AiSD::Record> TabBeforeSorting;
 
+
+std::vector<AiSD::Record> PrintingTable;
+void AiSD::setPrintingTable(std::vector<AiSD::Record> tab)
+{
+    PrintingTable=tab;
+}
+std::vector<AiSD::Record> AiSD::getPrintTable()
+{
+    return PrintingTable;
+}
+
 using clockH=std::chrono::high_resolution_clock;
 
 
@@ -52,7 +63,10 @@ bool AiSD::restrictDraw()
 {
     return strictDraw;
 }
-
+void AiSD::SetRestrictDraw(bool OnOff)
+{
+    strictDraw=OnOff;
+}
 void AiSD::thread1()
 {
 
@@ -61,12 +75,13 @@ void AiSD::thread1()
 
         if(normalStart)
         {
-            strictDraw=true;
+            SetRestrictDraw(true);
             Sort classSort;
             if(preset.tabType!=notSelectedType)
                 generateTable(Tab,preset.tabType,preset.size);
             TabBeforeSorting=Tab;
-            strictDraw=false;
+            SetRestrictDraw(false);
+
 
             if(preset.method==notSelectedMethod)
                 tinyfd_messageBox("Error","Method is not selected","ok","error",0);
@@ -80,32 +95,44 @@ void AiSD::thread1()
 
                 for(int i=0;i<2;i++)//2 RAZY -> 0 WIZUALIZACJA, 1 FAKTYCZNE SORTOWANIE (DLA UZYSKANIA CZASU)
                 {
+                    std::map <std::string,size_t> mapToDiag;
                     Tab=TabBeforeSorting;//sortuj tylko nieposortowana tablce
                     if(skipSleepState==true||Tab.size()>200)i=1;
-                    bool ThreadSleep=true;
-                    if(i==1)ThreadSleep=false;
 
+                    SetRestrictDraw(false);
+
+                    size_t tabSize=Tab.size();
                     auto TimeStart = clockH::now();
+
                     switch(preset.method)//ZAPISZE SIE TYLKO TEN BACKUP OSTATNI
                     {
                     case Shell:
-                        classSort.ShellSort(Tab,ThreadSleep);
+                        if(i==1)classSort.ShellSort(Tab);
+                        else classSort.Diag_ShellSort(Tab,mapToDiag,true);
                         break;
                     case Quick:
-                        classSort.QuickSort(Tab,0,Tab.size(),ThreadSleep);
+                        if(i==1)classSort.QuickSort(Tab,0,tabSize);
+                        else classSort.Diag_QuickSort(Tab,0,tabSize,mapToDiag,true);
                         break;
                     case Merge:
-                        classSort.MergeSort(Tab,0,0,ThreadSleep);
+                        if(i==1)classSort.MergeSort(Tab,0,tabSize);
+                        else classSort.Diag_MergeSort(Tab,0,tabSize,mapToDiag,true);
                         break;
                     case Insertion:
-                        classSort.InsertionSort(Tab,ThreadSleep);
+                        if(i==1)classSort.InsertionSort(Tab);
+                        else classSort.Diag_InsertionSort(Tab,mapToDiag,true);
                         break;
                     }
                     auto TimeStop = clockH::now();
                     BackupTime=(int)(std::chrono::duration_cast<std::chrono::microseconds>(TimeStop-TimeStart).count());
+                    for (auto const &m: mapToDiag)
+                        std::cout << "{" << m.first << ": " << m.second << "}"<<std::endl;
+
+                    setPrintingTable(Tab);
                 }
                 processing=false;
             }
+            boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
             normalStart=false;
 
         }else if(startBenchmarkThr)
@@ -113,6 +140,8 @@ void AiSD::thread1()
             Benchmark();
             startBenchmarkThr=false;
         }
+
+        SetRestrictDraw(false);
     }
 }
 
@@ -145,7 +174,6 @@ void AiSD::Benchmark()
         resultBenchmark.push_back(SortResult);
         for(int j=0;j<100;j++)
         {
-            //std::cout<<"type "<<i<<" size "<<j*stepBenchmark<<std::endl;
             generateTable(Tab,preset.tabType,(j+1)*stepBenchmark);
 
             int time=0;
@@ -153,21 +181,21 @@ void AiSD::Benchmark()
             switch(i)
             {
             case 0:
-                classSort.QuickSort(Tab,0,Tab.size(),false);
+
+                classSort.QuickSort(Tab,0,Tab.size());
                 break;
             case 1:
-                classSort.MergeSort(Tab,0,Tab.size(),false);
+                classSort.MergeSort(Tab,0,Tab.size());
                 break;
             case 2:
-                classSort.InsertionSort(Tab,false);
+                classSort.InsertionSort(Tab);
                 break;
             case 3:
-                classSort.ShellSort(Tab,false);
+                classSort.ShellSort(Tab);
                 break;
             }
             auto TimeStop = clockH::now();
             time=(int)(std::chrono::duration_cast<std::chrono::microseconds>(TimeStop-TimeStart).count());
-            //std::cout<<"time: "<<time<<std::endl;
             AiSD::Record newRecord={time,(char)i};
 
             resultBenchmark[i].push_back(newRecord);
@@ -222,4 +250,5 @@ void AiSD::ApplyPresetStruct(AiSD::PresetStruct presetStruct)
     preset.tabType=notSelectedType;
     Tab=presetStruct.Tab;
     TabBeforeSorting=presetStruct.Tab;
+    setPrintingTable(Tab);
 }

@@ -13,6 +13,15 @@ float scale = 1.0f; //NOTE THIS IS A SCALE FOR DRAWTABLE FUNCTIONS ONLY !!!
 
 std::vector<std::vector<AiSD::Record>> backupBenchmark;
 
+
+size_t getNumber()
+{
+    size_t a;
+    std::cout<<"Podaj liczbe: ";
+    std::cin>>a;
+    return a;
+}
+
 AiSD::blockCollection newCollection;
 void AiSD::onStart()
 {
@@ -34,8 +43,8 @@ void AiSD::onStart()
 
     newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"2 000 000",false,2,7,[](){setSetting(2000000);}});
     newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"200",false,2,8,[](){setSetting(200);}});
-    newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"50",false,2,9,[](){setSetting(50);}});
-    newCollection.addNew({convertSize(600.0f,400.0f),convertSize(200.0f,50.0f),"10",false,2,10,[](){setSetting(10);}});
+    newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(50);}});
+    newCollection.addNew({convertSize(600.0f,400.0f),convertSize(200.0f,50.0f),"(Console)",false,2,10,[](){setSetting(getNumber());}});
 
     newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,11,[](){Start(false);menuActive=false;backupProcessing=-1;DefaultStart=true;}});//newCollection.boxes.clear();menuActive=false;
     newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,4,12,[](){AiSD::ApplyPresetStruct(AiSD::openPreset(AiSD::openFile()));menuActive=false;openMenuActive=true;backupProcessing=-1;}});
@@ -94,6 +103,7 @@ void AiSD::getMouse (int button, int state,int x, int y)
 {
     MouseBackup={(x/float(glutGet(GLUT_WINDOW_WIDTH)))*800.0f,(y/float(glutGet(GLUT_WINDOW_HEIGHT)))*600.0f};
 
+    if(state==0)
     newCollection.checkIfClick({x,y});
 }
 

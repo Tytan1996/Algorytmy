@@ -8955,7 +8955,7 @@
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1650961758 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650962122 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 
@@ -9275,7 +9275,7 @@
 	<sys/stat.h>
 	<cctype>
 
-1650961860 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\drawfunctions.cpp
+1650963184 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\drawfunctions.cpp
 	"DrawFunctions.hpp"
 	<iostream>
 

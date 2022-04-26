@@ -9234,7 +9234,7 @@
 	<functional>
 	<string>
 
-1650958456 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\generatetable.hpp
+1650977286 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\generatetable.hpp
 	<vector>
 	"StructRecord.hpp"
 	<random>
@@ -9306,7 +9306,7 @@
 	<signal.h>
 	"tinyfiledialog\tinyfiledialogs.h"
 
-1650975933 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
+1650976657 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
 
 1650479191 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\interfejs graficzny\include\drawfunctions.hpp

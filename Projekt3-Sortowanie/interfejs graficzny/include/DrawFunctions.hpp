@@ -21,6 +21,8 @@
 namespace AiSD
 {
 
+
+
 //STRUKTURA X, Y
 struct vector2  //SOME SIMPLE STRUCTURES. VECTOR 2 IS USED FOR HOLDING POSITION ON THE SCREEN
 {
@@ -35,6 +37,7 @@ struct vector3//AND THE VECTOR3 AM USING FOR HOLIDNG COLORS
 void onStart();
 
 
+void getNumber();
 void drawBenchmarkResult();
 void Circle(float r,float pos_x,float pos_y);
 float autoScale(const std::vector<Record> &Tab);

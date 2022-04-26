@@ -9222,7 +9222,7 @@
 1650479191 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
 
-1650453328 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\drawfunctions.hpp
+1650972735 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\drawfunctions.hpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -9275,7 +9275,7 @@
 	<sys/stat.h>
 	<cctype>
 
-1650963184 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\drawfunctions.cpp
+1650973587 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\drawfunctions.cpp
 	"DrawFunctions.hpp"
 	<iostream>
 
@@ -9306,9 +9306,8 @@
 	<signal.h>
 	"tinyfiledialog\tinyfiledialogs.h"
 
-1650961972 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
+1650975933 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
-	<iostream>
 
 1650479191 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\interfejs graficzny\include\drawfunctions.hpp
 	<GLUT/glut.h>

@@ -14,12 +14,19 @@ float scale = 1.0f; //NOTE THIS IS A SCALE FOR DRAWTABLE FUNCTIONS ONLY !!!
 std::vector<std::vector<AiSD::Record>> backupBenchmark;
 
 
-size_t getNumber()
+size_t inputGetNumber=0;
+void cinInput()
 {
+    inputGetNumber=-1;
     size_t a;
-    std::cout<<"Podaj liczbe: ";
+    std::cout<<"Input a number: ";
     std::cin>>a;
-    return a;
+    inputGetNumber=a;
+    AiSD::setSetting(inputGetNumber);
+}
+void AiSD::getNumber()
+{
+    boost::thread t2(cinInput);
 }
 
 AiSD::blockCollection newCollection;
@@ -44,11 +51,14 @@ void AiSD::onStart()
     newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"2 000 000",false,2,7,[](){setSetting(2000000);}});
     newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"200",false,2,8,[](){setSetting(200);}});
     newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(50);}});
-    newCollection.addNew({convertSize(600.0f,400.0f),convertSize(200.0f,50.0f),"(Console)",false,2,10,[](){setSetting(getNumber());}});
+    newCollection.addNew({convertSize(600.0f,400.0f),convertSize(200.0f,50.0f),"(Console)",false,2,10,[](){getNumber();}});
 
     newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,11,[](){Start(false);menuActive=false;backupProcessing=-1;DefaultStart=true;}});//newCollection.boxes.clear();menuActive=false;
     newCollection.addNew({convertSize(0.0f,550.0f),convertSize(200.0f,50.0f),"Open",false,4,12,[](){AiSD::ApplyPresetStruct(AiSD::openPreset(AiSD::openFile()));menuActive=false;openMenuActive=true;backupProcessing=-1;}});
     newCollection.addNew({convertSize(300.0f,550.0f),convertSize(200.0f,50.0f),"Benchmark",false,5,13,[](){AiSD::startBenchmark();benchState=true;menuActive=false;backupProcessing=-1;}});
+
+
+
 }
 
 
@@ -209,7 +219,14 @@ void AiSD::display()
             newCollection.drawAll();
 
     }
-    Circle(5,MouseBackup.x,MouseBackup.y);
+
+    if(inputGetNumber==-1)
+    {
+        drawString("Input value in console",convertSize(400.0f,-470.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
+        glutPostRedisplay();
+    }
+
+    Circle(2,MouseBackup.x,MouseBackup.y);
     glFlush();//rysuj
 }
 

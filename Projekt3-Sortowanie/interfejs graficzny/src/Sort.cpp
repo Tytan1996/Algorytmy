@@ -14,7 +14,7 @@ void FuntionForPrinting(bool threadSleep,std::vector <AiSD::Record> &records)
     if(threadSleep)
     {
         FunctionFinish(records);
-        boost::this_thread::sleep_for(boost::chrono::milliseconds(3));
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(15));
     }
 }
 
@@ -35,7 +35,7 @@ void AiSD::Sort::ShellSort(std::vector <Record> &records){
         }
     }
 }
-#include <iostream>
+
 void AiSD::Sort::QuickSort(std::vector <Record> &records, size_t start, size_t end)
 {
     if(end<=start)return;
@@ -138,7 +138,7 @@ void AiSD::Sort::Diag_ShellSort(std::vector<Record>& records, std::map <std::str
             newRecords=records[j];
             ++mapToDiag ["ilosc przypisania"];
             size_t k;
-            for(k=j; k>=i &&records[k-i].key>newRecords.key; k-=i, ++mapToDiag["ilosc porownian"]) {
+            for(k=j; k>=i &&records[k-i].key>newRecords.key; k-=i,++mapToDiag["ilosc porownian"]) {
                 records[k]=records[k-i];
                 ++mapToDiag ["ilosc przypisania"];
                 FuntionForPrinting(ThreadSleep,records);
@@ -160,8 +160,8 @@ void AiSD::Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size
     do
     {
         if(j>records.size())j=start;
-        while(v>records[i].key){i++;++mapToDiag["ilosc porownian"];};
-        while(v<records[j].key){j--;++mapToDiag["ilosc porownian"];};
+        while(v>records[i].key){i++;};++mapToDiag["ilosc porownian"];
+        while(v<records[j].key){j--;};++mapToDiag["ilosc porownian"];
         if (i<=j)
         {
             std::swap(records[i], records[j]);
@@ -202,8 +202,8 @@ void AiSD::Sort::Diag_InsertionSort(std::vector<Record>& records, std::map <std:
         ++mapToDiag ["ilosc przypisania"];
         j = i - 1;
 
-        while (j >= 0 && records[j].key > newRecord.key) {
-            ++mapToDiag["ilosc Porownan"];
+        while (j >= 0 && records[j].key > newRecord.key,++mapToDiag["ilosc porownan"]) {
+
             records[j + 1] = records[j];
             ++mapToDiag ["ilosc przypisania"];
             j = j - 1;
@@ -223,8 +223,8 @@ void AiSD::Sort::Diag_Merge(std::vector<Record>& records, size_t start, size_t m
 
     while (i <= middle && j <= end) {
 
-        if (records[j].key < records[i].key) {
-            ++mapToDiag["ilosc porownian"];
+        if (records[j].key < records[i].key,++mapToDiag["ilosc porownian"]) {
+
             newRecords.push_back(records[j]);
             ++mapToDiag["ilosc wstawienia wartosci do wektora"];
             j++;

@@ -14,7 +14,7 @@ void FuntionForPrinting(bool threadSleep,std::vector <AiSD::Record> &records)
     if(threadSleep)
     {
         FunctionFinish(records);
-        boost::this_thread::sleep_for(boost::chrono::milliseconds(1));
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(3));
     }
 }
 
@@ -234,7 +234,7 @@ void AiSD::Sort::Diag_Merge(std::vector<Record>& records, size_t start, size_t m
             i++;
         }
         k++;
-        //FuntionForPrinting(ThreadSleep,records);
+        FuntionForPrinting(ThreadSleep,records);
     }
 
     if (i <= middle) {

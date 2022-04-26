@@ -125,8 +125,13 @@ void AiSD::thread1()
                     }
                     auto TimeStop = clockH::now();
                     BackupTime=(int)(std::chrono::duration_cast<std::chrono::microseconds>(TimeStop-TimeStart).count());
-                    for (auto const &m: mapToDiag)
-                        std::cout << "{" << m.first << ": " << m.second << "}"<<std::endl;
+                    if(i==0)
+                    {
+                        std::cout<<"Diag ostatniego sortowania"<<std::endl;
+                        for (auto const &m: mapToDiag)
+                            std::cout << "{" << m.first << ": " << m.second << "}"<<std::endl;
+                    }
+
 
                     setPrintingTable(Tab);
                 }
@@ -151,11 +156,23 @@ void AiSD::startBenchmark()
     startBenchmarkThr=true;
 }
 std::vector<std::vector<AiSD::Record>> resultBenchmark;
+
+std::vector<std::vector<AiSD::Record>> resultBenchmarkSafeCopy;
 std::vector<std::vector<AiSD::Record>> AiSD::getResultBenchmark()
 {
-    return resultBenchmark;
+    return resultBenchmarkSafeCopy;
 }
 const float stepBenchmark=100.0f;
+
+void updateBenchmarkCopy(std::vector<std::vector<AiSD::Record>> &a)
+{
+    AiSD::SetRestrictDraw(true);
+    resultBenchmarkSafeCopy=a;
+    AiSD::SetRestrictDraw(false);
+}
+
+
+
 void AiSD::Benchmark()
 {
     if(preset.tabType==AiSD::notSelectedType)
@@ -172,6 +189,7 @@ void AiSD::Benchmark()
     {
         std::vector<AiSD::Record> SortResult;
         resultBenchmark.push_back(SortResult);
+
         for(int j=0;j<100;j++)
         {
             generateTable(Tab,preset.tabType,(j+1)*stepBenchmark);
@@ -181,7 +199,6 @@ void AiSD::Benchmark()
             switch(i)
             {
             case 0:
-
                 classSort.QuickSort(Tab,0,Tab.size());
                 break;
             case 1:
@@ -199,7 +216,10 @@ void AiSD::Benchmark()
             AiSD::Record newRecord={time,(char)i};
 
             resultBenchmark[i].push_back(newRecord);
+
         }
+        updateBenchmarkCopy(resultBenchmark);
+
     }
     processing=false;
     std::cout<<"Finished"<<std::endl;

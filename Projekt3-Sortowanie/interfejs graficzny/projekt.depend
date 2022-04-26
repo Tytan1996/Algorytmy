@@ -8922,7 +8922,7 @@
 1649084977 c:\users\user\desktop\opengl\app\projekt\include\sortthread.hpp
 	<stdio.h>
 
-1650455578 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
+1650958456 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\main.cpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
@@ -8940,13 +8940,14 @@
 	<boost/thread.hpp>
 	<functional>
 
-1650458337 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
+1650958456 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sortthread.hpp
 	<stdio.h>
 	<vector>
 	<GL/freeglut.h>
 	<chrono>
 	"GenerateTable.hpp"
 	"Sort.h"
+	<map>
 	"PresetLoader.hpp"
 	"tinyfiledialog/tinyfiledialogs.h"
 
@@ -8954,7 +8955,7 @@
 	"BasicDrawFunctions.hpp"
 	<iostream>
 
-1650458552 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
+1650961758 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sortthread.cpp
 	"SortThread.hpp"
 	<iostream>
 
@@ -9233,29 +9234,32 @@
 	<functional>
 	<string>
 
-1650453328 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\generatetable.hpp
+1650958456 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\generatetable.hpp
 	<vector>
-	"Sort.h"
+	"StructRecord.hpp"
 	<random>
 	<stdio.h>
 	<string.h>
 
-1650453328 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sort.h
+1650958456 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\sort.h
 	<chrono>
 	<vector>
 	<boost/thread.hpp>
+	"SortThread.hpp"
+	"StructRecord.hpp"
 
-1650453328 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\presetloader.hpp
+1650958456 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\presetloader.hpp
 	<stdio.h>
 	<stddef.h>
 	<stdlib.h>
 	<wchar.h>
 	<string>
+	<cstring>
 	<cstdio>
 	<vector>
 	"tinyfiledialog\tinyfiledialogs.h"
 	"simpleini/ini.h"
-	"Sort.h"
+	"StructRecord.hpp"
 
 1650453328 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\tinyfiledialog\tinyfiledialogs.h
 
@@ -9271,11 +9275,11 @@
 	<sys/stat.h>
 	<cctype>
 
-1650458482 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\drawfunctions.cpp
+1650961860 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\drawfunctions.cpp
 	"DrawFunctions.hpp"
 	<iostream>
 
-1650458728 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\generatetable.cpp
+1650960150 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\generatetable.cpp
 	"GenerateTable.hpp"
 	<iostream>
 
@@ -9302,8 +9306,9 @@
 	<signal.h>
 	"tinyfiledialog\tinyfiledialogs.h"
 
-1650453781 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
+1650961972 source:c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\src\sort.cpp
 	"Sort.h"
+	<iostream>
 
 1650479191 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\interfejs graficzny\include\drawfunctions.hpp
 	<GLUT/glut.h>
@@ -9338,4 +9343,6 @@
 	<iostream>
 
 1650914826 c:\users\user\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\structrecord.hpp
+
+1650958456 c:\users\student\documents\github\algorytmy\projekt3-sortowanie\interfejs graficzny\include\structrecord.hpp
 

@@ -162,7 +162,7 @@ std::vector<std::vector<AiSD::Record>> AiSD::getResultBenchmark()
 {
     return resultBenchmarkSafeCopy;
 }
-const float stepBenchmark=100.0f;
+
 
 void updateBenchmarkCopy(std::vector<std::vector<AiSD::Record>> &a)
 {
@@ -171,8 +171,10 @@ void updateBenchmarkCopy(std::vector<std::vector<AiSD::Record>> &a)
     AiSD::SetRestrictDraw(false);
 }
 
-
-
+float AiSD::stepSizeBenchmark()
+{
+    return preset.size;
+}
 void AiSD::Benchmark()
 {
     if(preset.tabType==AiSD::notSelectedType)
@@ -180,6 +182,12 @@ void AiSD::Benchmark()
         tinyfd_messageBox("Error","Type of table was not selected, try again","ok","error",0);
         return;
     }
+    if(preset.size<10)
+    {
+        tinyfd_messageBox("Error","Invalid step size","ok","error",0);
+        return;
+    }
+
     resultBenchmark.clear();
     std::cout<<"Starting Benchmark"<<std::endl;
     AiSD::Sort classSort;
@@ -192,7 +200,7 @@ void AiSD::Benchmark()
 
         for(int j=0;j<100;j++)
         {
-            generateTable(Tab,preset.tabType,(j+1)*stepBenchmark);
+            generateTable(Tab,preset.tabType,(j+1)*(preset.size));
 
             int time=0;
             auto TimeStart = clockH::now();

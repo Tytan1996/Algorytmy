@@ -48,9 +48,9 @@ void AiSD::onStart()
     newCollection.addNew({convertSize(300.0f,300.0f),convertSize(200.0f,50.0f),"MergeSort",false,1,5,[](){setSetting(SortingMethod::Merge);}});
     newCollection.addNew({convertSize(300.0f,400.0f),convertSize(200.0f,50.0f),"InsertSort",false,1,6,[](){setSetting(SortingMethod::Insertion);}});
 
-    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"2 000 000",false,2,7,[](){setSetting(2000000);}});
-    newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"200",false,2,8,[](){setSetting(200);}});
-    newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(50);}});
+    newCollection.addNew({convertSize(600.0f,100.0f),convertSize(200.0f,50.0f),"200",false,2,7,[](){setSetting(200);}});
+    newCollection.addNew({convertSize(600.0f,200.0f),convertSize(200.0f,50.0f),"100",false,2,8,[](){setSetting(100);}});
+    newCollection.addNew({convertSize(600.0f,300.0f),convertSize(200.0f,50.0f),"10",false,2,9,[](){setSetting(10);}});
     newCollection.addNew({convertSize(600.0f,400.0f),convertSize(200.0f,50.0f),"(Console)",false,2,10,[](){getNumber();}});
 
     newCollection.addNew({convertSize(600.0f,550.0f),convertSize(200.0f,50.0f),"Start",false,3,11,[](){Start(false);menuActive=false;backupProcessing=-1;DefaultStart=true;}});//newCollection.boxes.clear();menuActive=false;
@@ -205,7 +205,7 @@ void AiSD::display()
                     if(!benchState)
                         txt+="Cursor: "+std::to_string(tabX)+"x"+std::to_string(tabY)+"\nTab["+std::to_string(tabX)+"]={key="+std::to_string(getTab()[tabX].key)+",id=\""+getTab()[tabX].ID+"\"}";
                     else
-                        txt+=std::to_string(tabX*100)+"elements "+std::to_string(tabY)+"microsecounds";
+                        txt+=std::to_string(int(tabX*stepSizeBenchmark()))+"elements "+std::to_string(tabY)+"microsecounds";
                     drawString(txt.c_str(),convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});
                 }
                 if((alreadySorted||DefaultStart)&&!restrictDraw())
@@ -312,6 +312,7 @@ void AiSD::blockCollection::checkIfClick(vector2 mouse)
 {
     int hoverID=-1;
     int hoverSelectionId=-1;
+    //POZYCJA MYSZY
     float mx=(mouse.x/(glutGet(GLUT_WINDOW_WIDTH)/2.0f))-1.0f;
     float my=(mouse.y/(glutGet(GLUT_WINDOW_HEIGHT)/2.0f))-1.0f;
 

@@ -42,7 +42,6 @@ void drawBenchmarkResult();
 void Circle(float r,float pos_x,float pos_y);
 float autoScale(const std::vector<Record> &Tab);
 void getMouse (int button, int state,int x, int y);
-void keyPressed(unsigned char key, int x, int y);
 void display() ;
 
 vector2 convertSize(float x,float y);//CIEZKO SIE OPERUJE NA 1.0F-0.0F

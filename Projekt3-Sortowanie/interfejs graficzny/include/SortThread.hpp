@@ -39,6 +39,8 @@ void Start(bool skipSleep);
 bool getProcessing();
 int getTime();
 
+float stepSizeBenchmark();
+
 void startBenchmark();
 void Benchmark();
 std::vector<std::vector<AiSD::Record>> getResultBenchmark();

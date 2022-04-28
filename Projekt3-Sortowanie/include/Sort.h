@@ -17,7 +17,8 @@ public:
     void Diag_QuickSort(std::vector<Record>& records, size_t start, size_t end, std::map <std::string,size_t>& mapToDiag);
     void Diag_MergeSort(std::vector<Record>& records,size_t start,size_t end, std::map <std::string,size_t>& mapToDiag);
     void Diag_InsertionSort(std::vector<Record>& records, std::map <std::string,size_t>& mapToDiag);
-
+    void MergeSort2(std::vector<Record>& records, size_t start, size_t end);
+    void InsertionSort2(std::vector<Record>& records, size_t start, size_t end);
 
 
 private:

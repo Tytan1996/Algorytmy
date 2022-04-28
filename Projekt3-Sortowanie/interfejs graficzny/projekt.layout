@@ -2,39 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src\SortThread.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1005" topLine="33" />
-		</Cursor>
-	</File>
 	<File name="src\PresetLoader.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="872" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="src\DrawFunctions.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6354" topLine="151" />
-		</Cursor>
-	</File>
-	<File name="src\GenerateTable.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="458" topLine="17" />
-		</Cursor>
-	</File>
-	<File name="include\DrawFunctions.hpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="852" topLine="39" />
-		</Cursor>
-	</File>
-	<File name="src\tinyfiledialog\tinyfiledialogs.c" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="47300" topLine="1471" />
-		</Cursor>
-	</File>
-	<File name="include\StructRecord.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="144" topLine="0" />
+			<Cursor1 position="1404" topLine="45" />
 		</Cursor>
 	</File>
 	<File name="include\GenerateTable.hpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
@@ -42,24 +12,39 @@
 			<Cursor1 position="100" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Sort.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="include\DrawFunctions.hpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="420" topLine="66" />
+			<Cursor1 position="852" topLine="42" />
 		</Cursor>
 	</File>
-	<File name="include\Sort.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+	<File name="src\tinyfiledialog\tinyfiledialogs.c" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1072" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="275" topLine="0" />
+			<Cursor1 position="47300" topLine="1471" />
 		</Cursor>
 	</File>
 	<File name="include\PresetLoader.hpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="529" topLine="1" />
+			<Cursor1 position="613" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="include\tinyfiledialog\tinyfiledialogs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10387" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="src\SortThread.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7043" topLine="240" />
+		</Cursor>
+	</File>
+	<File name="include\Sort.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="215" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="src\GenerateTable.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="458" topLine="17" />
 		</Cursor>
 	</File>
 	<File name="include\SortThread.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
@@ -67,9 +52,24 @@
 			<Cursor1 position="770" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="include\tinyfiledialog\tinyfiledialogs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Sort.cpp" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10387" topLine="27" />
+			<Cursor1 position="5822" topLine="234" />
+		</Cursor>
+	</File>
+	<File name="include\StructRecord.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="144" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\DrawFunctions.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3479" topLine="88" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="253" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

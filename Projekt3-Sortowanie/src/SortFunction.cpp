@@ -78,3 +78,41 @@ std::map <std::string,size_t> AiSD::Diag_InsertionSort(std::vector<Record>& reco
     sortujaca.Diag_InsertionSort(records,mapToInsertionSort);
     return mapToInsertionSort;
 }
+int AiSD::ShellSort2(std::vector<Record>& records) {
+    Sort sortujaca;
+    auto startTimeSort=std::chrono::high_resolution_clock::now();
+    if(records.size()>20){
+        sortujaca.ShellSort(records);
+    }else{
+        sortujaca.InsertionSort(records);
+    }
+    auto endTimeSort = std::chrono::high_resolution_clock::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
+    std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
+}
+int AiSD::QuickSort2(std::vector<Record>& records) {
+    Sort sortujaca;
+    size_t wielkoscVectora=records.size();
+    auto startTimeSort=std::chrono::high_resolution_clock::now();
+    if(records.size()>20){
+        sortujaca.QuickSort(records, 0, wielkoscVectora);
+    }else{
+        sortujaca.InsertionSort(records);
+    }
+    auto endTimeSort = std::chrono::high_resolution_clock::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
+    std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
+}
+int AiSD::MergeSort2(std::vector<Record>& records) {
+    Sort sortujaca;
+    size_t wielkoscVectora=records.size();
+    auto startTimeSort=std::chrono::high_resolution_clock::now();
+    if(records.size()>20){
+        sortujaca.MergeSort(records,0,wielkoscVectora);
+    }else{
+        sortujaca.InsertionSort(records);
+    }
+    auto endTimeSort = std::chrono::high_resolution_clock::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
+    std::chrono::duration_cast<std::chrono::microseconds>(endTimeSort-startTimeSort).count();
+}

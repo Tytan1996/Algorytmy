@@ -11,6 +11,9 @@ int ShellSort(std::vector<Record>& records);
 int QuickSort(std::vector<Record>& records);
 int MergeSort(std::vector<Record>& records);
 int InsertionSort(std::vector<Record>& records);
+int ShellSort2(std::vector<Record>& records);
+int QuickSort2(std::vector<Record>& records);
+int MergeSort2(std::vector<Record>& records);
 
 std::map <std::string,size_t> Diag_ShellSort(std::vector<Record>& records);
 std::map <std::string,size_t> Diag_QuickSort(std::vector<Record>& records);

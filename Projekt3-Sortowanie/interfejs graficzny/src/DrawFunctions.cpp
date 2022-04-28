@@ -199,11 +199,11 @@ void AiSD::display()
 
                 int tabX=int((MouseBackup.x)/scaleX);
                 int tabY=int((600.0f-MouseBackup.y)/scaleY);
-                if(tabX>=0&&tabX<getTab().size())
+                if(tabX>=0&&tabX<getPrintTable().size())
                 {
                     std::string txt="";
                     if(!benchState)
-                        txt+="Cursor: "+std::to_string(tabX)+"x"+std::to_string(tabY)+"\nTab["+std::to_string(tabX)+"]={key="+std::to_string(getTab()[tabX].key)+",id=\""+getTab()[tabX].ID+"\"}";
+                        txt+="Cursor: "+std::to_string(tabX)+"x"+std::to_string(tabY)+"\nTab["+std::to_string(tabX)+"]={key="+std::to_string(getPrintTable()[tabX].key)+",id=\""+getPrintTable()[tabX].ID+"\"}";
                     else
                         txt+=std::to_string(int(tabX*stepSizeBenchmark()))+"elements "+std::to_string(tabY)+"microsecounds";
                     drawString(txt.c_str(),convertSize(0.0f,0.0f),{0.0f,0.0f,0.0f},{-1.0f,0.9f});

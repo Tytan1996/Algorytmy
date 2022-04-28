@@ -29,24 +29,24 @@
 1649248111 e:\algorytmy\projekt3-sortowanie\include\sort.h
 	<chrono>
 
-1651172155 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\main.cpp
+1651174000 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\main.cpp
 	<iostream>
 	<algorithm>
 	<chrono>
 	<windows.h>
 	"Sort.h"
 	<vector>
-	<SortFunction.h>
-	<Sort.h>
+	"SortFunction.h"
+	"Sort.h"
 	<random>
 
-1651172682 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sort.cpp
+1651173386 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sort.cpp
 	"Sort.h"
 	<time.h>
 	<map>
 	<iostream>
 
-1651172712 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sort.h
+1651173693 d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\include\sort.h
 	<vector>
 	<iostream>
 	<struktura.h>
@@ -85,7 +85,7 @@
 	<map>
 	<iostream>
 
-1651172508 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
+1651172899 source:d:\-=uczelnia=-\sem4\algorytmy\projekt3-sortowanie\src\sortfunction.cpp
 	"SortFunction.h"
 	"Sort.h"
 	<iostream>

@@ -20,27 +20,26 @@ void AiSD::Sort::ShellSort(std::vector<Record>& records) {
 }
 void AiSD::Sort::QuickSort(std::vector<Record>& records, size_t start, size_t end) {
 
-    if(start>=end) {
-        return;
-    }
-    int v=records[(start+end)/2].key;
-    Record record;
-    size_t i,j;
-    i=start;
-    j=end;
-    while (i<=j) {
-        while (records[i].key<v) i++;
-        while (records[j].key>v) j--;
-        if (i<=j) {
-            record=records[i];
-            records[i]=records[j];
-            records[j]=record;
+    if(end<=start)return;
+    int v=records[(start+end)/2].key; //punkt odniesienia
+    size_t i=start;
+    size_t j=end;
+
+    do
+    {
+        if(j>records.size())j=end;
+        while(v>records[i].key)i++;
+        while(v<records[j].key)j--;
+        if (i<=j)
+        {
+            std::swap(records[i], records[j]);
             i++;
             j--;
         } else {
             break;
         }
-    }
+
+    }while(i<=j);
     if (j>start) QuickSort(records,start, j);
     if (i<end) QuickSort(records, i, end);
 }
@@ -126,7 +125,7 @@ void AiSD::Sort::Diag_ShellSort(std::vector<Record>& records, std::map <std::str
 }
 void AiSD::Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size_t end, std::map <std::string,size_t>& mapToDiag) {
     ++mapToDiag ["ilosc wywolania funkcji Diag_QuickSort"];
-     if(end<=start)return;
+    if(end<=start)return;
     int v=records[(start+end)/2].key;
     size_t i=start;
     size_t j=end;
@@ -134,8 +133,8 @@ void AiSD::Sort::Diag_QuickSort(std::vector<Record>& records, size_t start, size
     do
     {
         if(j>records.size())j=start;
-        while(v>records[i].key){i++;};++mapToDiag["ilosc porownian"];
-        while(v<records[j].key){j--;};++mapToDiag["ilosc porownian"];
+        while(v>records[i].key){i++;++mapToDiag["ilosc porownian"];}
+        while(v<records[j].key){j--;++mapToDiag["ilosc porownian"];}
         if (i<=j)
         {
             std::swap(records[i], records[j]);

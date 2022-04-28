@@ -4,8 +4,8 @@
 #include <windows.h>
 #include "Sort.h"
 #include <vector>
-#include <SortFunction.h>
-#include <Sort.h>
+#include "SortFunction.h"
+#include "Sort.h"
 #include <random>
 
 using namespace std;

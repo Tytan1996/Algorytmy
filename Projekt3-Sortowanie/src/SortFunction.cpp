@@ -108,7 +108,7 @@ int AiSD::MergeSort2(std::vector<Record>& records) {
     size_t wielkoscVectora=records.size();
     auto startTimeSort=std::chrono::high_resolution_clock::now();
     if(records.size()>20){
-        sortujaca.MergeSort(records,0,wielkoscVectora);
+        sortujaca.MergeSort2(records,0,wielkoscVectora);
     }else{
         sortujaca.InsertionSort(records);
     }

@@ -56,7 +56,7 @@ namespace AiSD
 
     //FUNKCJA DO KONWERSJI TYPOW
     template <typename Type>
-    Type convert(std::string str);
+    Type convert(const std::string &str);
     template <typename Type>
     std::string convertString(const Type val);
 }

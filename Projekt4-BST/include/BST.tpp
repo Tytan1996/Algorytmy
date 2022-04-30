@@ -137,7 +137,7 @@ template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Load(std::string src)
 {
     Clear();//usun dotychczasowa zawartosc BST
-    mINI::INIFile file(src);std::cout<<"PRINT"<<std::endl;
+    mINI::INIFile file(src);
     mINI::INIStructure ini;
     file.read(ini);
 
@@ -185,8 +185,6 @@ void AiSD::BST<key_t,data_t>::Clear()
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 {
-    if(node==nullptr)
-        return;
     if(node->left!=nullptr)
         Clear(node->left);
     if(node->right!=nullptr)
@@ -272,13 +270,12 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k)
 }
 
 template <typename Type>
-Type AiSD::convert(std::string str)
+Type AiSD::convert(const std::string &str)
 {
-    Type val;
-    std::replace(str.begin(), str.end(), ' ', '_');
-    std::stringstream ss(str);
-    ss >> val;
-    return val;
+    std::istringstream ss(str);
+    Type num;
+    ss >> num;
+    return num;
 }
 template <typename Type>
 std::string AiSD::convertString(const Type val)

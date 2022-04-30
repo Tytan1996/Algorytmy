@@ -1,9 +1,12 @@
 #include <iostream>
-
+#include "Testing.h"
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    AiSD::Testing test;
+    size_t liczba;
+    std::cin>>liczba;
+    test.randing(liczba);
     return 0;
 }

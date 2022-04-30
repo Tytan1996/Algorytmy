@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1651252621 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
+	<iostream>
+	"Testing.h"
+
+1651252527 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\src\testing.cpp
+	"Testing.h"
+	<chrono>
+	<vector>
+
+1651254567 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\testing.h
+	<iostream>
+

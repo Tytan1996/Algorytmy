@@ -3,7 +3,6 @@
 
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
-
 {
     parent=nullptr;
     left=nullptr;
@@ -12,21 +11,17 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
     data=dataArg;
 }
 
-
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
-
 {
     if(Search(k)!=nullptr)
     {
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
     }
-
     BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
     BSTNode<key_t,data_t>* tmp=root;
     BSTNode<key_t,data_t>* prev=nullptr;
-
 
     while(tmp!=nullptr)
     {
@@ -52,10 +47,8 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 }
 
 
-
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
-
 {
     if(u->parent==nullptr)
     {
@@ -71,10 +64,8 @@ void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,
     }
 }
 
-
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node)
-
 {
     if(node==nullptr)
         node=root;
@@ -100,7 +91,6 @@ template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Delete(const key_t k)
 {
     BSTNode<key_t,data_t>* x=Search(k);
-
     if(x->left==nullptr)
     {
         Transplant(x,x->right);
@@ -111,9 +101,7 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
             Transplant(x,x->left);
         }else
         {
-
             BSTNode<key_t,data_t>* y=Min(x->right);
-
             if(y->parent!=x)
             {
                 Transplant(y,y->right);
@@ -189,16 +177,13 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k)
 
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Clear()
-
 {
     Clear(root);
     root=nullptr;
 }
 
-
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
-
 {
     if(node->left!=nullptr)
         Clear(node->left);
@@ -209,45 +194,36 @@ void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min()
-
 {
     return Min(root);
 }
 
-
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>* subtree_root)
-
 {
     while(subtree_root!=nullptr&&subtree_root->left == nullptr)
         subtree_root=subtree_root->left;
     return subtree_root;
 }
 
-
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max()
-
 {
     return Max(root);
 }
 
-
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>* subtree_root)
-
 {
     while(subtree_root!=nullptr&&subtree_root->right==nullptr)
         subtree_root=subtree_root->right;
     return subtree_root;
 }
 
-
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
     BSTNode<key_t,data_t>* x=Search(k,subtree_root);
-
     if(x==nullptr)
     {
         std::cout<<"Key dont exist!"<<std::endl;
@@ -255,9 +231,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
     }
     if(x->left!=nullptr)
         return Max(x->right);
-
     BSTNode<key_t,data_t>* y=x->parent;
-
     while(y!=nullptr&&x==y->left)
     {
         x=y;
@@ -274,7 +248,6 @@ template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
     BSTNode<key_t,data_t>* x=Search(k,subtree_root);
-
     if(x==nullptr)
     {
         std::cout<<"Key dont exist!"<<std::endl;
@@ -290,7 +263,6 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
     }
     return y;
 }
-
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k)
 {
@@ -313,6 +285,5 @@ std::string AiSD::convertString(const Type val)
     std::string str = ss.str();
     return str;
 }
-
 
 #endif // BST_TPP

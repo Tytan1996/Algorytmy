@@ -30,6 +30,7 @@ namespace AiSD
             void Delete(const key_t k);
             BSTNode<T>* Search(const key_t k);
             void Clear();
+            void Clear(BSTNode<T>* node);
             void Transplant(BSTNode<T>* u,BSTNode<T>* v);
             BSTNode<T>* Min();
             BSTNode<T>* Min(BSTNode<T>* subtree_root);

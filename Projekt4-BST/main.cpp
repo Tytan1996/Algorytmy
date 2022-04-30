@@ -6,10 +6,22 @@ using namespace std;
 int main()
 {
     std::cout<<"INSERT"<<std::endl;
-    AiSD::BST<int> BT;
-    BT.Insert(10,5);
-    BT.Insert(10,5);
-    BT.Insert(2,5);
+    AiSD::BST<int,string> BT;
+    BT.Insert(10,"text A");
+    BT.Insert(5,"text B");
+    BT.Insert(2,"text C");
+    //std::cout<<"INSERT"<<std::endl;
+    BT.Insert(1,"text E");
+    BT.Insert(4,"text F");
+    BT.Save("file.ini");
+    BT.Load("file.ini");
+    std::cout<<"Predecessor"<<std::endl;
+    BT.Predecessor(1);
+    std::cout<<"Successor"<<std::endl;
+    BT.Successor(4);
+    std::cout<<"PRINT"<<std::endl;
+    BT.PrintAscending();
+
     std::cout<<"MIN"<<std::endl;
     BT.Min();
     std::cout<<"MAX"<<std::endl;
@@ -19,13 +31,5 @@ int main()
     std::cout<<"CLEAR"<<std::endl;
     BT.Clear();
 
-    std::cout<<"INSERT"<<std::endl;
-    BT.Insert(1,5);
-    BT.Insert(4,5);
-    std::cout<<"Predecessor"<<std::endl;
-    BT.Predecessor(1);
-    std::cout<<"Successor"<<std::endl;
-    BT.Successor(4);
-    BT.PrintFromLeftBottom();
     return 0;
 }

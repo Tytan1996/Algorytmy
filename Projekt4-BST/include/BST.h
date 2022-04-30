@@ -2,49 +2,66 @@
 #define BST_H
 
 #include <iostream>
+#include <sstream>
+#include <vector>
+#include "simpleini/ini.h"
 
-using key_t=unsigned short;
+//using key_t=unsigned short;
 
 namespace AiSD
 {
-    template<typename T>
+    template<typename key_t,typename data_t>
     class BSTNode
     {
         public:
         key_t key;
-        T data;
+        data_t data;
 
-        BSTNode(key_t k,T data);
+        BSTNode(key_t k,data_t data);
 
         BSTNode* parent;
         BSTNode* left;
         BSTNode* right;
     };
 
-    template<typename T>
+    template<typename key_t,typename data_t>
     class BST
     {
 
         public:
-            void Insert(const key_t k,T data);
+            void Insert(const key_t k,data_t data);
             void Delete(const key_t k);
-            BSTNode<T>* Search(const key_t k);
+            BSTNode<key_t,data_t>* Search(const key_t k);
+            BSTNode<key_t,data_t>* Search(const key_t k,BSTNode<key_t,data_t>* subtree_root);
             void Clear();
-            void Clear(BSTNode<T>* node);
-            void Transplant(BSTNode<T>* u,BSTNode<T>* v);
-            BSTNode<T>* Min();
-            BSTNode<T>* Min(BSTNode<T>* subtree_root);
-            BSTNode<T>* Max();
-            BSTNode<T>* Max(BSTNode<T>* subtree_root);
-            BSTNode<T>* Predecessor(const key_t k);
-            BSTNode<T>* Successor(const key_t k);
-            void PrintFromLeftBottom(BSTNode<T> *node=nullptr);
+            void Clear(BSTNode<key_t,data_t>* node);
+            void Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v);
+            BSTNode<key_t,data_t>* Min();
+            BSTNode<key_t,data_t>* Min(BSTNode<key_t,data_t>* subtree_root);
+            BSTNode<key_t,data_t>* Max();
+            BSTNode<key_t,data_t>* Max(BSTNode<key_t,data_t>* subtree_root);
+            BSTNode<key_t,data_t>* Predecessor(const key_t k);
+            BSTNode<key_t,data_t>* Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root);
+            BSTNode<key_t,data_t>* Successor(const key_t k);
+            BSTNode<key_t,data_t>* Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root);
+            void PrintAscending(BSTNode<key_t,data_t> *node=nullptr);
+            void VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>>& vec);
+            void Save(std::string src);
+            void Load(std::string src);
         protected:
-            BSTNode<T> *root=nullptr;
+            BSTNode<key_t,data_t> *root=nullptr;
         private:
     };
 
+
+    //FUNKCJA DO KONWERSJI TYPOW
+    template <typename Type>
+    Type convert(const std::string &str);
+    template <typename Type>
+    std::string convertString(const Type val);
 }
+
+
 
 
 /*

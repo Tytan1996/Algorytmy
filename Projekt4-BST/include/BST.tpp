@@ -1,8 +1,8 @@
 #ifndef BST_TPP
 #define BST_TPP
 
-template <typename T>
-AiSD::BSTNode<T>::BSTNode(key_t k,T dataArg)
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 {
     parent=nullptr;
     left=nullptr;
@@ -11,17 +11,17 @@ AiSD::BSTNode<T>::BSTNode(key_t k,T dataArg)
     data=dataArg;
 }
 
-template <typename T>
-void AiSD::BST<T>::Insert(const key_t k,T data)
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 {
     if(Search(k)!=nullptr)
     {
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
     }
-    BSTNode<T>* newNode=new BSTNode<T>(k,data);
-    BSTNode<T>* tmp=root;
-    BSTNode<T>* prev=nullptr;
+    BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
+    BSTNode<key_t,data_t>* tmp=root;
+    BSTNode<key_t,data_t>* prev=nullptr;
 
     while(tmp!=nullptr)
     {
@@ -47,8 +47,8 @@ void AiSD::BST<T>::Insert(const key_t k,T data)
 }
 
 
-template <typename T>
-void AiSD::BST<T>::Transplant(BSTNode<T>* u,BSTNode<T>* v)
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
 {
     if(u->parent==nullptr)
     {
@@ -64,22 +64,33 @@ void AiSD::BST<T>::Transplant(BSTNode<T>* u,BSTNode<T>* v)
     }
 }
 
-template <typename T>
-void AiSD::BST<T>::PrintFromLeftBottom(BSTNode<T> *node)
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node)
 {
     if(node==nullptr)
         node=root;
     if(node->left!=nullptr)
-        PrintFromLeftBottom(node->left);
+        PrintAscending(node->left);
+    std::cout<<"node={key="<<node->key<<" data=\""<<node->data<<"\"}"<<std::endl;
     if(node->right!=nullptr)
-        PrintFromLeftBottom(node->right);
-    std::cout<<"node={key="<<node->key<<" data="<<node->data<<"}"<<std::endl;
+        PrintAscending(node->right);
+}
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>>& vec)
+{
+    if(node==nullptr)
+        return;
+    vec.push_back(*node);
+    if(node->left!=nullptr)
+        VectorOfNodes(node->left,vec);
+    if(node->right!=nullptr)
+        VectorOfNodes(node->right,vec);
 }
 
-template <typename T>
-void AiSD::BST<T>::Delete(const key_t k)
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Delete(const key_t k)
 {
-    BSTNode<T>* x=Search(k);
+    BSTNode<key_t,data_t>* x=Search(k);
     if(x->left==nullptr)
     {
         Transplant(x,x->right);
@@ -90,7 +101,7 @@ void AiSD::BST<T>::Delete(const key_t k)
             Transplant(x,x->left);
         }else
         {
-            BSTNode<T>* y=Min(x->right);
+            BSTNode<key_t,data_t>* y=Min(x->right);
             if(y->parent!=x)
             {
                 Transplant(y,y->right);
@@ -105,30 +116,74 @@ void AiSD::BST<T>::Delete(const key_t k)
     delete(x);
 }
 
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Search(const key_t k)
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Save(std::string src)
 {
-    BSTNode<T>* tmp=root;
-    while(tmp!=nullptr && k != tmp->key)
+    mINI::INIFile file(src);
+    mINI::INIStructure ini;
+    file.read(ini);
+    ini.clear();//jezeli cos tu juz jest to to usun
+
+    std::vector<BSTNode<key_t,data_t>> vec;
+    VectorOfNodes(root,vec);
+    for(int i=0;i<vec.size();i++)
     {
-        if(k<tmp->key)
-            tmp=tmp->left;
-        else
-            tmp=tmp->right;
+        ini[std::to_string(i)]["key"] = convertString<key_t>(vec[i].key);
+        ini[std::to_string(i)]["data"] = convertString<data_t>(vec[i].data);
     }
-    return tmp;
+    file.write(ini);
+}
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Load(std::string src)
+{
+    Clear();//usun dotychczasowa zawartosc BST
+    mINI::INIFile file(src);
+    mINI::INIStructure ini;
+    file.read(ini);
+
+    for(int i=0;true;i++)
+    {
+        if(ini.has(std::to_string(i)))
+        {
+            key_t cpyKey=convert<key_t>(ini[std::to_string(i)]["key"]);
+            data_t cpyData=convert<data_t>(ini[std::to_string(i)]["data"]);
+            Insert(cpyKey,cpyData);
+        }else
+        {
+            break;
+        }
+    }
+
+}
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNode<key_t,data_t>* subtree_root)
+{
+    while(subtree_root!=nullptr && k != subtree_root->key)
+    {
+        if(k<subtree_root->key)
+            subtree_root=subtree_root->left;
+        else
+            subtree_root=subtree_root->right;
+    }
+    return subtree_root;
+}
+
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k)
+{
+    Search(k,root);
 }
 
 
-template <typename T>
-void AiSD::BST<T>::Clear()
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Clear()
 {
     Clear(root);
     root=nullptr;
 }
 
-template <typename T>
-void AiSD::BST<T>::Clear(AiSD::BSTNode<T>* node)
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 {
     if(node->left!=nullptr)
         Clear(node->left);
@@ -137,39 +192,38 @@ void AiSD::BST<T>::Clear(AiSD::BSTNode<T>* node)
     delete(node);
 }
 
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Min()
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min()
 {
     return Min(root);
 }
 
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Min(BSTNode<T>* subtree_root)
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>* subtree_root)
 {
     while(subtree_root!=nullptr&&subtree_root->left == nullptr)
         subtree_root=subtree_root->left;
     return subtree_root;
 }
 
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Max()
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max()
 {
     return Max(root);
 }
 
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Max(BSTNode<T>* subtree_root)
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>* subtree_root)
 {
     while(subtree_root!=nullptr&&subtree_root->right==nullptr)
         subtree_root=subtree_root->right;
     return subtree_root;
 }
 
-
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Predecessor(const key_t k)
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
-    BSTNode<T>* x=Search(k);
+    BSTNode<key_t,data_t>* x=Search(k,subtree_root);
     if(x==nullptr)
     {
         std::cout<<"Key dont exist!"<<std::endl;
@@ -177,7 +231,7 @@ AiSD::BSTNode<T>* AiSD::BST<T>::Predecessor(const key_t k)
     }
     if(x->left!=nullptr)
         return Max(x->right);
-    BSTNode<T>* y=x->parent;
+    BSTNode<key_t,data_t>* y=x->parent;
     while(y!=nullptr&&x==y->left)
     {
         x=y;
@@ -185,11 +239,15 @@ AiSD::BSTNode<T>* AiSD::BST<T>::Predecessor(const key_t k)
     }
     return y;
 }
-
-template <typename T>
-AiSD::BSTNode<T>* AiSD::BST<T>::Successor(const key_t k)
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k)
 {
-    BSTNode<T>* x=Search(k);
+    return Predecessor(k,root);
+}
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
+{
+    BSTNode<key_t,data_t>* x=Search(k,subtree_root);
     if(x==nullptr)
     {
         std::cout<<"Key dont exist!"<<std::endl;
@@ -197,7 +255,7 @@ AiSD::BSTNode<T>* AiSD::BST<T>::Successor(const key_t k)
     }
     if(x->right!=nullptr)
         return Min(x->right);
-    BSTNode<T>* y=x->parent;
+    BSTNode<key_t,data_t>* y=x->parent;
     while(y!=nullptr&&x==y->right)
     {
         x=y;
@@ -205,6 +263,27 @@ AiSD::BSTNode<T>* AiSD::BST<T>::Successor(const key_t k)
     }
     return y;
 }
+template <typename key_t,typename data_t>
+AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k)
+{
+    return Successor(k,root);
+}
 
+template <typename Type>
+Type AiSD::convert(const std::string &str)
+{
+    std::istringstream ss(str);
+    Type num;
+    ss >> num;
+    return num;
+}
+template <typename Type>
+std::string AiSD::convertString(const Type val)
+{
+    std::stringstream ss;
+    ss << val;
+    std::string str = ss.str();
+    return str;
+}
 
 #endif // BST_TPP

@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1651318723 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
+1651325518 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
 
 1651261432 source:c:\users\user\documents\github\algorytmy\projekt4-bst\src\bst.cpp
 	"BST.h"
 
-1651318012 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.h
+1651325245 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.h
 	<iostream>
 	"BST.tpp"
 
-1651318742 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
+1651325528 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
 

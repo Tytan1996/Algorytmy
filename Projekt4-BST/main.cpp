@@ -18,9 +18,14 @@ int main()
     BT.Delete(10);
     std::cout<<"CLEAR"<<std::endl;
     BT.Clear();
+
     std::cout<<"INSERT"<<std::endl;
     BT.Insert(1,5);
     BT.Insert(4,5);
+    std::cout<<"Predecessor"<<std::endl;
+    BT.Predecessor(1);
+    std::cout<<"Successor"<<std::endl;
+    BT.Successor(4);
     BT.PrintFromLeftBottom();
     return 0;
 }

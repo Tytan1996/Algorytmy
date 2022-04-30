@@ -35,6 +35,7 @@ namespace AiSD
             BSTNode<T>* Min();
             BSTNode<T>* Min(BSTNode<T>* subtree_root);
             BSTNode<T>* Max();
+            BSTNode<T>* Max(BSTNode<T>* subtree_root);
             BSTNode<T>* Predecessor(const key_t k);
             BSTNode<T>* Successor(const key_t k);
             void PrintFromLeftBottom(BSTNode<T> *node=nullptr);

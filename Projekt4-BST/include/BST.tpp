@@ -140,39 +140,48 @@ void AiSD::BST<T>::Clear(AiSD::BSTNode<T>* node)
 template <typename T>
 AiSD::BSTNode<T>* AiSD::BST<T>::Min()
 {
-    BSTNode<T>* tmp=root;
-    while(tmp!=nullptr&&tmp->left == nullptr)
-        tmp=tmp->left;
-    return tmp;
-
+    return Min(root);
 }
 
 template <typename T>
 AiSD::BSTNode<T>* AiSD::BST<T>::Min(BSTNode<T>* subtree_root)
 {
-
+    while(subtree_root!=nullptr&&subtree_root->left == nullptr)
+        subtree_root=subtree_root->left;
+    return subtree_root;
 }
 
 template <typename T>
 AiSD::BSTNode<T>* AiSD::BST<T>::Max()
 {
-    BSTNode<T>* tmp=root;
-    while(tmp!=nullptr&&tmp->right==nullptr)
-        tmp=tmp->right;
-    return tmp;
+    return Max(root);
 }
+
+template <typename T>
+AiSD::BSTNode<T>* AiSD::BST<T>::Max(BSTNode<T>* subtree_root)
+{
+    while(subtree_root!=nullptr&&subtree_root->right==nullptr)
+        subtree_root=subtree_root->right;
+    return subtree_root;
+}
+
 
 template <typename T>
 AiSD::BSTNode<T>* AiSD::BST<T>::Predecessor(const key_t k)
 {
     BSTNode<T>* x=Search(k);
-    if(x.left!=nullptr)
-        return Max(x.right);
-    BSTNode<T>* y=x.parent;
-    while(y==nullptr&&x==y.left)
+    if(x==nullptr)
+    {
+        std::cout<<"Key dont exist!"<<std::endl;
+        return nullptr;
+    }
+    if(x->left!=nullptr)
+        return Max(x->right);
+    BSTNode<T>* y=x->parent;
+    while(y!=nullptr&&x==y->left)
     {
         x=y;
-        y=y.parent;
+        y=y->parent;
     }
     return y;
 }
@@ -181,13 +190,18 @@ template <typename T>
 AiSD::BSTNode<T>* AiSD::BST<T>::Successor(const key_t k)
 {
     BSTNode<T>* x=Search(k);
-    if(x.right!=nullptr)
-        return Min(x.right);
-    BSTNode<T>* y=x.parent;
-    while(y==nullptr&&x==y.right)
+    if(x==nullptr)
+    {
+        std::cout<<"Key dont exist!"<<std::endl;
+        return nullptr;
+    }
+    if(x->right!=nullptr)
+        return Min(x->right);
+    BSTNode<T>* y=x->parent;
+    while(y!=nullptr&&x==y->right)
     {
         x=y;
-        y=y.parent;
+        y=y->parent;
     }
     return y;
 }

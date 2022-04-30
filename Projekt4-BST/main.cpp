@@ -1,22 +1,16 @@
-/*
-    Maciej Pestka
-    Damian Szopinski
-*/
 #include <iostream>
-
 #include "BST.h"
 
-#include "Testing.h"
+using namespace std;
 
 int main()
 {
-
     std::cout<<"INSERT"<<std::endl;
     AiSD::BST<int,string> BT;
     BT.Insert(10,"text A");
     BT.Insert(5,"text B");
     BT.Insert(2,"text C");
-    //std::cout<<"INSERT"<<std::endl;
+    std::cout<<"INSERT"<<std::endl;
     BT.Insert(1,"text E");
     BT.Insert(4,"text F");
     BT.Save("file.ini");
@@ -27,7 +21,6 @@ int main()
     BT.Successor(4);
     std::cout<<"PRINT"<<std::endl;
     BT.PrintAscending();
-
     std::cout<<"MIN"<<std::endl;
     BT.Min();
     std::cout<<"MAX"<<std::endl;

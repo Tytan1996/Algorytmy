@@ -2,7 +2,6 @@
 #define BST_H
 
 #include <iostream>
-<<<<<<< HEAD
 #include <sstream>
 #include <vector>
 #include "simpleini/ini.h"
@@ -12,43 +11,24 @@
 namespace AiSD
 {
     template<typename key_t,typename data_t>
-=======
-
-using key_t=unsigned short;
-
-namespace AiSD
-{
-    template<typename T>
->>>>>>> feature/wstepnie-prace-BST
     class BSTNode
     {
         public:
         key_t key;
-<<<<<<< HEAD
         data_t data;
 
         BSTNode(key_t k,data_t data);
-=======
-        T data;
-
-        BSTNode(key_t k,T data);
->>>>>>> feature/wstepnie-prace-BST
 
         BSTNode* parent;
         BSTNode* left;
         BSTNode* right;
     };
 
-<<<<<<< HEAD
     template<typename key_t,typename data_t>
-=======
-    template<typename T>
->>>>>>> feature/wstepnie-prace-BST
     class BST
     {
 
         public:
-<<<<<<< HEAD
             void Insert(const key_t k,data_t data);
             void Delete(const key_t k);
             BSTNode<key_t,data_t>* Search(const key_t k);
@@ -76,7 +56,7 @@ namespace AiSD
 
     //FUNKCJA DO KONWERSJI TYPOW
     template <typename Type>
-    Type convert(const std::string &str);
+    Type convert(std::string str);
     template <typename Type>
     std::string convertString(const Type val);
 }
@@ -84,29 +64,6 @@ namespace AiSD
 
 
 
-=======
-            void Insert(const key_t k,T data);
-            void Delete(const key_t k);
-            BSTNode<T>* Search(const key_t k);
-            void Clear();
-            void Clear(BSTNode<T>* node);
-            void Transplant(BSTNode<T>* u,BSTNode<T>* v);
-            BSTNode<T>* Min();
-            BSTNode<T>* Min(BSTNode<T>* subtree_root);
-            BSTNode<T>* Max();
-            BSTNode<T>* Max(BSTNode<T>* subtree_root);
-            BSTNode<T>* Predecessor(const key_t k);
-            BSTNode<T>* Successor(const key_t k);
-            void PrintFromLeftBottom(BSTNode<T> *node=nullptr);
-        protected:
-            BSTNode<T> *root=nullptr;
-        private:
-    };
-
-}
-
-
->>>>>>> feature/wstepnie-prace-BST
 /*
 To rozwiazanie znalazlem na stronie
 https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file

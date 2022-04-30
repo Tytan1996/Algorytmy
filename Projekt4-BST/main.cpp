@@ -1,10 +1,16 @@
+/*
+    Maciej Pestka
+    Damian Szopinski
+*/
 #include <iostream>
+
 #include "BST.h"
 
-using namespace std;
+#include "Testing.h"
 
 int main()
 {
+
     std::cout<<"INSERT"<<std::endl;
     AiSD::BST<int,string> BT;
     BT.Insert(10,"text A");

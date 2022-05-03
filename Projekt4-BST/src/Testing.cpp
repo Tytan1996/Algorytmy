@@ -64,24 +64,29 @@ void AiSD::Testing::generalTest(){
 
 }
 bool AiSD::Testing::testInsert() {
+    /*
     if(opcja==1){
         if(parent!=nullptr){
             return false;
+        }
         if(left!=nullptr){
             return false;
+        }
         if(right!=nullptr){
             return false;
         }
     }else if(opcja==2){
         if(parent==nullptr){
             return false;
+        }
         if(left!=nullptr){
             return false;
+        }
         if(right!=nullptr){
             return false;
         }
     }
-    return true;
+    return true;*/
 }
 bool AiSD::Testing::testDelete(){
     return true;

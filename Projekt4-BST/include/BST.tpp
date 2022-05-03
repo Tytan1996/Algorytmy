@@ -1,6 +1,9 @@
 #ifndef BST_TPP
 #define BST_TPP
 
+#include <queue>
+#include <map>
+
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 {
@@ -285,5 +288,158 @@ std::string AiSD::convertString(const Type val)
     std::string str = ss.str();
     return str;
 }
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::ShowBSTTree(){
+    BSTNode<key_t,data_t> *tmp;
+    std::queue<BSTNode<key_t,data_t>> kolejka;
+    int height,nextMaxSons,number,numberOfMaxSons;
+    numberOfMaxSons=2;
+    number=nextMaxSons=0;
+    height=3;
+    tmp=root;
+    if(tmp!=nullptr){
+        kolejka.push(*tmp);
+        for(int i=0;i<height*3;++i){
+            std::cout<<"   ";
+        }
+        std::cout<<'\ ';
+        while(!kolejka.empty() && height!=0){
+            tmp=&kolejka.front();
+            if(tmp->parent!=nullptr){
+                if(tmp->parent->left==nullptr){
+                    std::cout<<"null ";
+                    for(int i=0;i<height;++i){
+                        std::cout<<"        ";
+                    }
+                }
+            }
+            std::cout<<tmp->key<<" "<<tmp->data;
+            for(int i=0;i<height;++i){
+                std::cout<<"        ";
+            }
+            if(tmp->parent!=nullptr){
+                if(tmp->parent->right==nullptr){
+                    std::cout<<"null ";
+                    for(int i=0;i<height;++i){
+                        std::cout<<"        ";
+                    }
+                }
+            }
+            if(height>1){
+                if(tmp->left!=nullptr){
+                    kolejka.push(*tmp->left);
+                    nextMaxSons+=2;
+                    number++;
+                }else{
+                    number++;
+                }
+                if(tmp->right!=nullptr){
+                    kolejka.push(*tmp->right);
+                    nextMaxSons+=2;
+                    number++;
+                }else{
+                    number++;
+                }
 
+                if(numberOfMaxSons==number){
+                    std::cout<<'\n';
+                    numberOfMaxSons=nextMaxSons;
+                    nextMaxSons=0;
+                    int helpNumber=number;
+                    for(int i=0;i<height;++i){
+                        std::cout<<"        ";
+                    }
+                    while(number!=0){
+                        for(int i=0;i<height*3;++i){
+                            std::cout<<"_";
+                        }
+                        std::cout<<"|";
+                        for(int i=0;i<height*3;++i){
+                            std::cout<<"_";
+                        }
+                        for(int i=0;i<height;++i){
+                            std::cout<<"     ";
+                        }
+                        number-=2;
+
+                    }
+
+                    std::cout<<'\n';
+
+                    for(int i=0;i<height*2;++i){
+                        std::cout<<"    ";
+                    }
+                    while(helpNumber!=0){
+                        std::cout<<'/';
+                        for(int i=0;i<height;++i){
+                            std::cout<<"      ";
+                        }
+                        std::cout<<'\\';
+                        for(int i=0;i<height;++i){
+                        std::cout<<"    ";
+                        }
+
+                        helpNumber-=2;
+                    }
+                    std::cout<<'\n';
+                    for(int i=0;i<height;++i){
+                        std::cout<<"      ";
+                    }
+                    number=0;
+                    --height;
+                }
+            }
+            kolejka.pop();
+        }
+
+    }
+    std::cout<<'\n';
+}
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::ShowBST(){
+    BSTNode<key_t,data_t> *tmp;
+    std::queue<BSTNode<key_t,data_t>> kolejka;
+    int height=0,maxSons=1;
+    int sons=0;
+    int nextMaxSons=0;
+    std::cout<<"aktualan wysokosc drzewa: "<<++height<<'\n';
+    tmp=root;
+    if(tmp!=nullptr){
+        kolejka.push(*tmp);
+        while(!kolejka.empty()){
+            tmp=&kolejka.front();
+            if(sons==maxSons){
+                std::cout<<"aktualan wysokosc drzewa: "<<++height<<'\n';
+                sons=0;
+                maxSons=nextMaxSons;
+                nextMaxSons=0;
+            }
+            if(tmp->parent!=nullptr){
+                if(tmp->parent->left==nullptr){
+                    std::cout<<"null "<<'\n';
+                    ++sons;
+                }
+            }
+            std::cout<<tmp->key<<" "<<tmp->data<<'\n';
+            if(tmp->parent!=nullptr){
+                if(tmp->parent->right==nullptr){
+                    std::cout<<"null "<<'\n';
+                    ++sons;
+                }
+            }
+            ++sons;
+            if(tmp->left!=nullptr){
+                kolejka.push(*tmp->left);
+                nextMaxSons+=2;
+            }
+            if(tmp->right!=nullptr){
+                kolejka.push(*tmp->right);
+                nextMaxSons+=2;
+            }
+
+            kolejka.pop();
+        }
+    }
+
+}
 #endif // BST_TPP

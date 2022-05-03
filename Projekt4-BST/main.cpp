@@ -12,7 +12,10 @@ int main()
     BT.Insert(2,"text C");
     //std::cout<<"INSERT"<<std::endl;
     BT.Insert(1,"text E");
-    BT.Insert(4,"text F");
+    BT.Insert(11,"text F");
+    BT.Insert(15,"text s");
+    BT.Insert(17,"text E");
+    BT.Insert(22,"text E");
     BT.Save("file.ini");
     BT.Load("file.ini");
     std::cout<<"Predecessor"<<std::endl;
@@ -20,6 +23,8 @@ int main()
     std::cout<<"Successor"<<std::endl;
     BT.Successor(4);
     std::cout<<"PRINT"<<std::endl;
+    BT.ShowBSTTree();
+    BT.ShowBST();
     BT.PrintAscending();
 
     std::cout<<"MIN"<<std::endl;

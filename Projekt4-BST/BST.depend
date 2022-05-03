@@ -27,11 +27,11 @@
 	<sys/stat.h>
 	<cctype>
 
-1651340312 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
+1651588414 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
 
-1651340312 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.h
+1651588399 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.h
 	<iostream>
 	<sstream>
 	<vector>
@@ -50,5 +50,7 @@
 	<sys/stat.h>
 	<cctype>
 
-1651340312 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.tpp
+1651591687 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.tpp
+	<queue>
+	<map>
 

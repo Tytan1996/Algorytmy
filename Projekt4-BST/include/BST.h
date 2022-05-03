@@ -1,3 +1,7 @@
+/*
+    Maciej Pestka
+    Damian Szopinski 185394
+*/
 #ifndef BST_H
 #define BST_H
 
@@ -48,6 +52,12 @@ namespace AiSD
             void VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>>& vec);
             void Save(std::string src);
             void Load(std::string src);
+
+            //metody MP
+            void ShowBSTTree();
+            void ShowBST();
+
+
         protected:
             BSTNode<key_t,data_t> *root=nullptr;
         private:

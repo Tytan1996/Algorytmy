@@ -1,3 +1,7 @@
+/*
+    Maciej Pestka
+    Damian Szopinski 185394
+*/
 #include <iostream>
 #include "BST.h"
 
@@ -19,6 +23,9 @@ int main()
     BT.Predecessor(1);
     std::cout<<"Successor"<<std::endl;
     BT.Successor(4);
+    std::cout<<"PRINT drzewo"<<std::endl;
+    BT.ShowBSTTree();
+    BT.ShowBST();
     std::cout<<"PRINT"<<std::endl;
     BT.PrintAscending();
     std::cout<<"MIN"<<std::endl;

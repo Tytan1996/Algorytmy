@@ -20,11 +20,11 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 {
-    if(Search(k)!=nullptr)
+    /*if(Search(k)!=nullptr)
     {
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
-    }
+    }*/
     BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
     BSTNode<key_t,data_t>* tmp=root;
     BSTNode<key_t,data_t>* prev=nullptr;
@@ -71,15 +71,26 @@ void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,
 }
 
 template <typename key_t,typename data_t>
-void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node)
+void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int deep)
 {
     if(node==nullptr)
-        node=root;
+    {
+        if(root!=nullptr)
+            node=root;
+        else
+            return;
+    }
+
     if(node->left!=nullptr)
-        PrintAscending(node->left);
+    {
+        PrintAscending(node->left,deep+1);
+    }
+    for(int i=0;i<deep;i++)std::cout<<".";
     std::cout<<"node={key="<<node->key<<" data=\""<<node->data<<"\"}"<<std::endl;
     if(node->right!=nullptr)
-        PrintAscending(node->right);
+    {
+        PrintAscending(node->right,deep+1);
+    }
 }
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>>& vec)
@@ -164,6 +175,13 @@ void AiSD::BST<key_t,data_t>::Load(std::string src)
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
+    if(subtree_root==nullptr)
+    {
+        if(subtree_root!=nullptr)
+            subtree_root=root;
+        else
+            return nullptr;
+    }
     while(subtree_root!=nullptr && k != subtree_root->key)
     {
         if(k<subtree_root->key)
@@ -172,12 +190,6 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNo
             subtree_root=subtree_root->right;
     }
     return subtree_root;
-}
-
-template <typename key_t,typename data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k)
-{
-    Search(k,root);
 }
 
 
@@ -201,28 +213,30 @@ void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 }
 
 template <typename key_t,typename data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min()
-{
-    return Min(root);
-}
-
-template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>* subtree_root)
 {
+    if(subtree_root==nullptr)
+    {
+        if(subtree_root!=nullptr)
+            subtree_root=root;
+        else
+            return nullptr;
+    }
     while(subtree_root!=nullptr&&subtree_root->left == nullptr)
         subtree_root=subtree_root->left;
     return subtree_root;
 }
 
 template <typename key_t,typename data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max()
-{
-    return Max(root);
-}
-
-template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>* subtree_root)
 {
+    if(subtree_root==nullptr)
+    {
+        if(subtree_root!=nullptr)
+            subtree_root=root;
+        else
+            return nullptr;
+    }
     while(subtree_root!=nullptr&&subtree_root->right==nullptr)
         subtree_root=subtree_root->right;
     return subtree_root;
@@ -231,6 +245,13 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
+    if(subtree_root==nullptr)
+    {
+        if(subtree_root!=nullptr)
+            subtree_root=root;
+        else
+            return nullptr;
+    }
     BSTNode<key_t,data_t>* x=Search(k,subtree_root);
     if(x==nullptr)
     {
@@ -247,14 +268,17 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
     }
     return y;
 }
-template <typename key_t,typename data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k)
-{
-    return Predecessor(k,root);
-}
+
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
+    if(subtree_root==nullptr)
+    {
+        if(subtree_root!=nullptr)
+            subtree_root=root;
+        else
+            return nullptr;
+    }
     BSTNode<key_t,data_t>* x=Search(k,subtree_root);
     if(x==nullptr)
     {
@@ -271,11 +295,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
     }
     return y;
 }
-template <typename key_t,typename data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k)
-{
-    return Successor(k,root);
-}
+
 
 template <typename Type>
 Type AiSD::convert(std::string str)
@@ -405,6 +425,7 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree(){
     }
     std::cout<<'\n';
 }
+
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::ShowBST(){
     BSTNode<key_t,data_t> *tmp;
@@ -451,7 +472,113 @@ void AiSD::BST<key_t,data_t>::ShowBST(){
         }
     }
 }
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::ListOfNodesInLevel(const int level,std::vector<AiSD::BSTNode<key_t,data_t>*>& table,AiSD::BSTNode<key_t,data_t>* node)
+{
+    if(level<0)return;
+    if(node==nullptr)
+    {
+        if(root!=nullptr)
+            node=root;
+        else
+            return;
+    }
+    if(level==0)
+    {
+        table.push_back(node);
+    }
+    else
+    {
+        if(node->left!=nullptr)
+            ListOfNodesInLevel(level-1,table,node->left);
+        if(node->right!=nullptr)
+            ListOfNodesInLevel(level-1,table,node->right);
+    }
+}
+template <typename key_t,typename data_t>
+int AiSD::BST<key_t,data_t>::height(BSTNode<key_t,data_t>* subtree_root,int sum)
+{
+    if(subtree_root==nullptr)
+    {
+        if(root!=nullptr)
+            subtree_root=root;
+        else
+            return 0;
+    }
+    std::cout<<"sum "<<sum<<" "<<subtree_root->key<<std::endl;
+    int v=0;
+    if(subtree_root->left!=nullptr)
+    {
+        v=height(subtree_root->left,sum+1);
+        if(v>sum)
+            sum=v;
+    }
+    if(subtree_root->right!=nullptr)
+    {
+        v=height(subtree_root->right,sum+1);
+        if(v>sum)
+            sum=v;
+    }
 
+    return sum;
+}
+template <typename key_t,typename data_t>
+int AiSD::BST<key_t,data_t>::leavesCount(BSTNode<key_t,data_t>* subtree_root)
+{
+    if(subtree_root==nullptr)
+    {
+        if(root!=nullptr)
+            subtree_root=root;
+        else
+            return 0;
+    }
 
+    if(subtree_root->left==nullptr&&subtree_root->right==nullptr)
+        return 1;
+
+    int l=0;
+    int r=0;
+    if(subtree_root->left!=nullptr)
+        l=leavesCount(subtree_root->left);
+    if(subtree_root->right!=nullptr)
+        r=leavesCount(subtree_root->right);
+    return r+l;
+
+}
+template <typename key_t,typename data_t>
+int AiSD::BST<key_t,data_t>::nodesCount(BSTNode<key_t,data_t>* subtree_root)
+{
+    if(subtree_root==nullptr)
+    {
+        if(root!=nullptr)
+            subtree_root=root;
+        else
+            return 0;
+    }
+
+    int l=0;
+    int r=0;
+    if(subtree_root->left!=nullptr)
+        l=leavesCount(subtree_root->left);
+    if(subtree_root->right!=nullptr)
+        r=leavesCount(subtree_root->right);
+    return 1+r+l;
+}
+
+template <typename key_t,typename data_t>
+int AiSD::BST<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::BSTNode<key_t,data_t>* subtree_root)
+{
+    if(level<0)return 0;
+    if(subtree_root==nullptr)
+    {
+        if(root!=nullptr)
+            subtree_root=root;
+        else
+            return 0;
+    }
+    std::vector<AiSD::BSTNode<key_t,data_t>*> table;
+    ListOfNodesInLevel(level,table,subtree_root);
+    return table.size();
+}
 
 #endif // BST_TPP

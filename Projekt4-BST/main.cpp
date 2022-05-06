@@ -23,6 +23,7 @@ int main()
     BT.Predecessor(1);
     std::cout<<"Successor"<<std::endl;
     BT.Successor(4);
+    BT.Delete(10);
 
     std::cout<<"PRINT"<<std::endl;
     BT.PrintAscending();

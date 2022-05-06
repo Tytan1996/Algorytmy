@@ -103,11 +103,16 @@ void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vec
     if(node->right!=nullptr)
         VectorOfNodes(node->right,vec);
 }
-
+#include <iostream>
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Delete(const key_t k)
 {
     BSTNode<key_t,data_t>* x=Search(k);
+    if(x==nullptr)
+    {
+        std::cout<<"nie znaleziono obiektu do usuniecia"<<std::endl;
+        return;
+    }
     if(x->left==nullptr)
     {
         Transplant(x,x->right);
@@ -177,7 +182,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNo
 {
     if(subtree_root==nullptr)
     {
-        if(subtree_root!=nullptr)
+        if(root!=nullptr)
             subtree_root=root;
         else
             return nullptr;
@@ -217,7 +222,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>*
 {
     if(subtree_root==nullptr)
     {
-        if(subtree_root!=nullptr)
+        if(root!=nullptr)
             subtree_root=root;
         else
             return nullptr;
@@ -232,7 +237,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
 {
     if(subtree_root==nullptr)
     {
-        if(subtree_root!=nullptr)
+        if(root!=nullptr)
             subtree_root=root;
         else
             return nullptr;
@@ -247,7 +252,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
 {
     if(subtree_root==nullptr)
     {
-        if(subtree_root!=nullptr)
+        if(root!=nullptr)
             subtree_root=root;
         else
             return nullptr;
@@ -274,7 +279,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
 {
     if(subtree_root==nullptr)
     {
-        if(subtree_root!=nullptr)
+        if(root!=nullptr)
             subtree_root=root;
         else
             return nullptr;

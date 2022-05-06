@@ -33,7 +33,7 @@ namespace AiSD
     {
 
         public:
-            void Insert(const key_t k,data_t data);//zbudblowane key beda po lewej stronie poddrzewa o tym samym key
+            void Insert(const key_t k,data_t data);//zbudblowane key beda po prawej stronie poddrzewa o tym samym key
             void Delete(const key_t k);
             BSTNode<key_t,data_t>* Search(const key_t k,BSTNode<key_t,data_t>* subtree_root=nullptr);
             void Clear();

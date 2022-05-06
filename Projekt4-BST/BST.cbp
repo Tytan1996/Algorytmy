@@ -39,6 +39,7 @@
 		<Unit filename="include/Testing.h" />
 		<Unit filename="include/simpleini/ini.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Testing.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

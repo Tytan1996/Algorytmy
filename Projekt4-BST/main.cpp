@@ -47,9 +47,9 @@ int main()
     BT.ShowBST();
 
     std::cout<<"MIN"<<std::endl;
-    BT.Min();
+    BT.Min()->key;
     std::cout<<"MAX"<<std::endl;
-    BT.Max();
+    BT.Max()->key;
     std::cout<<"DELETE"<<std::endl;
     BT.Delete(10);
     std::cout<<"CLEAR"<<std::endl;

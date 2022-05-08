@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1652015738 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
+1652021389 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
 	"Testing.h"

@@ -28,6 +28,10 @@ int main()
     BT.Insert(4,"text F");
     BT.Save("file.ini");
     BT.Load("file.ini");
+
+
+
+
     std::cout<<"Predecessor"<<std::endl;
     BT.Predecessor(1);
     std::cout<<"Successor"<<std::endl;
@@ -46,10 +50,13 @@ int main()
     BT.ShowBSTTree();
     BT.ShowBST();
 
-    std::cout<<"MIN"<<std::endl;
-    BT.Min()->key;
-    std::cout<<"MAX"<<std::endl;
-    BT.Max()->key;
+
+
+    BT.pointersInfo(BT.root->right);
+
+
+    std::cout<<"MIN "<<BT.Min()->key<<std::endl;
+    std::cout<<"MAX "<<BT.Max()->key<<std::endl;
     std::cout<<"DELETE"<<std::endl;
     BT.Delete(10);
     std::cout<<"CLEAR"<<std::endl;

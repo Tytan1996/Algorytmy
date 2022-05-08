@@ -20,11 +20,11 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 {
-    /*if(Search(k)!=nullptr)
+    if(Search(k)!=nullptr)
     {
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
-    }*/
+    }
     BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
     BSTNode<key_t,data_t>* tmp=root;
     BSTNode<key_t,data_t>* prev=nullptr;
@@ -56,9 +56,12 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
 {
+
     if(u->parent==nullptr)
     {
+        v->parent=nullptr;
         root=v;
+
     }else
     {
         if(u==u->parent->left)
@@ -104,37 +107,72 @@ void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vec
         VectorOfNodes(node->right,vec);
 }
 #include <iostream>
+
+
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Delete(const key_t k)
 {
+    std::cout<<"Przed usuwaniem: "<<std::endl;
+    ShowBSTTree();
     BSTNode<key_t,data_t>* x=Search(k);
     if(x==nullptr)
     {
         std::cout<<"nie znaleziono obiektu do usuniecia"<<std::endl;
         return;
     }
-    if(x->left==nullptr)
+    if(x->left==nullptr&&x->right==nullptr)//FORGET CHILDREN BY PARENT
     {
-        Transplant(x,x->right);
-    }else
-    {
-        if(x->right==nullptr)
+        //std::cout<<"1s";
+        if(x!=nullptr)
         {
-            Transplant(x,x->left);
-        }else
-        {
-            BSTNode<key_t,data_t>* y=Min(x->right);
-            if(y->parent!=x)
+            if(x->parent!=nullptr)
             {
-                Transplant(y,y->right);
-                y->right=x->right;
-                y->right->parent=y;
+                if(x->parent->left!=nullptr&&x->key==x->parent->left->key)
+                {
+                    x->parent->left=nullptr;
+                }
+                if(x->parent->right!=nullptr&&x->key==x->parent->right->key)
+                {
+                    x->parent->right=nullptr;
+                }
+            }else
+            {
+                root=nullptr;
             }
-            Transplant(x,y);
-            y->left=x->left;
-            y->left->parent=y;
         }
+        //std::cout<<"1e";
     }
+    if(x->left==nullptr&&x->right!=nullptr)//MOVE RIGHT TO PARENT
+    {
+        //std::cout<<"2s";
+        Transplant(x,x->right);
+        //std::cout<<"2e";
+    }
+
+    if(x->right==nullptr&&x->left!=nullptr)//MOVE LEFT TO PARENT
+    {
+        //std::cout<<"3e";
+        Transplant(x,x->left);
+        //std::cout<<"3e";
+    }
+    if(x->right!=nullptr&&x->left!=nullptr)//TRANSPLANT
+    {
+        //std::cout<<"4s";
+        BSTNode<key_t,data_t>* y=Min(x->right);
+        if(y->parent!=x)
+        {
+            Transplant(y,y->right);
+            y->right=x->right;
+            y->right->parent=y;
+        }
+        Transplant(x,y);
+        y->left=x->left;
+        y->left->parent=y;
+        //std::cout<<"4e";
+    }
+
+    std::cout<<"Po usuwaniu: "<<std::endl;
+    ShowBSTTree();
     delete(x);
 }
 
@@ -227,7 +265,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>*
         else
             return nullptr;
     }
-    while(subtree_root!=nullptr&&subtree_root->left == nullptr)
+    while(subtree_root!=nullptr&&subtree_root->left != nullptr)
         subtree_root=subtree_root->left;
     return subtree_root;
 }
@@ -242,7 +280,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
         else
             return nullptr;
     }
-    while(subtree_root!=nullptr&&subtree_root->right==nullptr)
+    while(subtree_root!=nullptr&&subtree_root->right!=nullptr)
         subtree_root=subtree_root->right;
     return subtree_root;
 }
@@ -584,6 +622,40 @@ int AiSD::BST<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::BSTNode<key
     std::vector<AiSD::BSTNode<key_t,data_t>*> table;
     ListOfNodesInLevel(level,table,subtree_root);
     return table.size();
+}
+
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
+{
+    if(subtree_root==nullptr)
+    {
+        std::cout<<"Subtree unvalid"<<std::endl;
+        return;
+    }
+    std::cout<<std::endl<<std::endl<<"INFO SUBTREE ID: "<<subtree_root->key<<std::endl;
+
+    std::cout<<"PARENT ID: ";
+    if(subtree_root->parent!=nullptr)
+        std::cout<<subtree_root->parent->key;
+    else
+        std::cout<<"NULL";
+    std::cout<<std::endl;
+
+    std::cout<<"LEFT ID: ";
+    if(subtree_root->left!=nullptr)
+        std::cout<<subtree_root->left->key;
+    else
+        std::cout<<"NULL";
+    std::cout<<std::endl;
+
+    std::cout<<"RIGHT ID: ";
+    if(subtree_root->right!=nullptr)
+        std::cout<<subtree_root->right->key;
+    else
+        std::cout<<"NULL";
+    std::cout<<std::endl;
+
+    std::cout<<std::endl<<std::endl<<std::endl;
 }
 
 #endif // BST_TPP

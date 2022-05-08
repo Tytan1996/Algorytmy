@@ -84,15 +84,19 @@ void AiSD::Testing::detailsTest(){
     if(!testInsert(2,test.root->left)){
         std::cout<<"dodany jako drugi element jako lewego syna i poszlo cos nie tak"<<'\n';
     }
+    std::cout<<std::endl<<"1 przypadek "<<std::endl;
     if(!testDelete(1)){
         std::cout<<"Jedno elementowe drzewo jest zle usuwanie"<<'\n';
     }
+    std::cout<<std::endl<<"2 przypadek "<<std::endl;
     if(!testDelete(2)){
         std::cout<<"Dwu elementowe drzewo jest zle usuwanie (1)"<<'\n';
     }
+    std::cout<<std::endl<<"3 przypadek "<<std::endl;
     if(!testDelete(3)){
         std::cout<<"Dwu elementowe drzewo jest zle usuwanie (2)"<<'\n';
     }
+    std::cout<<std::endl<<"4 przypadek "<<std::endl;
     if(!testDelete(4)){
         std::cout<<"Usuwanie root nie dzialaj poprawnie"<<'\n';
     }
@@ -215,6 +219,7 @@ bool AiSD::Testing::testDelete(int opcja){
         test.Delete(dane.front());
         tmp=test.root;
         if(tmp!=nullptr){
+
             std::cout<<"root NIE jest ustawiony na nullptr"<<'\n';
             return false;
         }
@@ -237,7 +242,7 @@ bool AiSD::Testing::testDelete(int opcja){
             return false;
         }
         if(tmp->right!=nullptr){
-            std::cout<<"wskaznik posiada wskaznik na prawego synka"<<'\n';
+            std::cout<<"wskaznik posiada wskaznik na prawego syna"<<'\n';
             return false;
         }
         if(tmp->parent!=nullptr){

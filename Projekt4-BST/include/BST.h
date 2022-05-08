@@ -54,6 +54,7 @@ namespace AiSD
             int nodesCount(BSTNode<key_t,data_t>* subtree_root=nullptr);
             int nodesCountOnLevel(const int level,BSTNode<key_t,data_t>* subtree_root=nullptr);//poziom root to liczymy jako 0
 
+            void pointersInfo(BSTNode<key_t,data_t>* subtree_root);
             //metody MP
             void ShowBSTTree();
             void ShowBST();

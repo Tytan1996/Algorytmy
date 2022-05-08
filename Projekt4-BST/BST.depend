@@ -29,11 +29,12 @@
 
 1652004654 D
 
-1651857040 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
+1652029573 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
+	"Testing.h"
 
-1651857095 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.h
+1652028000 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.h
 	<iostream>
 	<sstream>
 	<vector>
@@ -52,8 +53,9 @@
 	<sys/stat.h>
 	<cctype>
 
-1651857023 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
+1652029621 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
 	<queue>
+	<iostream>
 
 1652015795 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\src\testing.cpp
 	"Testing.h"
@@ -68,4 +70,16 @@
 	<BST.h>
 
 1652006141 ture/cd-funkcje-testujace-BST
+
+1652022169 c:\users\user\documents\github\algorytmy\projekt4-bst\include\testing.h
+	<iostream>
+	<vector>
+	<BST.h>
+
+1652028950 source:c:\users\user\documents\github\algorytmy\projekt4-bst\src\testing.cpp
+	"Testing.h"
+	"BST.h"
+	<chrono>
+	<vector>
+	<map>
 

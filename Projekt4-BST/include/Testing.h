@@ -12,7 +12,7 @@ class Testing
 {
     public:
         void randing(size_t amountOfElements);
-        void rand(float mnoznik);
+        int  rand(float mnoznik);
         void detailsTest();
         void generalTest();
 
@@ -20,6 +20,7 @@ class Testing
     private:
         std::vector< int > dane;
         BST<int,std::string>test;
+        BSTNode<int,std::string> *tmp;
         bool testInsert(int opcja, BSTNode<int,std::string> *tmp);
         bool testDelete(int opcja);
         bool testClear();

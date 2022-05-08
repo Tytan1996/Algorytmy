@@ -39,6 +39,8 @@ int main()
     BT.Max();
     std::cout<<"DELETE"<<std::endl;
     BT.Delete(10);
+    //BT.ShowBSTTree();
+    //BT.ShowBST();
     std::cout<<"CLEAR"<<std::endl;
     BT.Clear();
 

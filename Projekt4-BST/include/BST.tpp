@@ -198,6 +198,7 @@ void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
     if(node->right!=nullptr)
         Clear(node->right);
     delete(node);
+
 }
 
 template <typename key_t,typename data_t>

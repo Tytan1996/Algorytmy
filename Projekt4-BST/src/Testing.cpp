@@ -25,7 +25,7 @@ void AiSD::Testing::randing(size_t amountOfElements){
         test.Insert(dane[i],strukturaString[i]);
     }
 }
-void AiSD::Testing::rand(float mnoznik) {
+int AiSD::Testing::rand(float mnoznik) {
     std::string randomString="";
     int liczba;
     srand( time( NULL ) );
@@ -36,31 +36,58 @@ void AiSD::Testing::rand(float mnoznik) {
     }
 
     test.Insert(liczba,randomString);
+    return liczba;
 
 }
 void AiSD::Testing::detailsTest(){
 
     std::cout<<"Prosze czekac, testy moga troche zajac!"<<std::endl;
     //testy zwiazanie z insert
-    testInsert(0,test.root);
+    if(!testInsert(0,test.root)){
+        std::cout<<"root jest zle ustawiony, gdy nie ma ustawionego drzewa"<<'\n';
+    }
     randing(1);
-    testInsert(1,test.root);
+    if(!testInsert(1,test.root)){
+        std::cout<<"priewszy element nie zostal poprawnie ustawiony"<<'\n';
+    }
     rand(1.0/2);
-    testInsert(2,test.root->left);
+    if(!testInsert(2,test.root->left)){
+        std::cout<<"drzewo jest zle ustawione gdy dodanie jest lewy syn"<<'\n';
+    }
     rand(2);
-    testInsert(3,test.root->right);
-    testClear();
+    if(!testInsert(3,test.root->right)){
+        std::cout<<"drzewo jest zle ustawione gdy dodanie jest prawy syn, po dodaniu lewego syna"<<'\n';
+    }
+    if(!testClear()){
+        std::cout<<"Clear dziala zle"<<'\n';
+    }
+    if(!testInsert(0,test.root)){
+        std::cout<<"wskaznik root zle pokazuje po clean"<<'\n';
+    }
     randing(1);
-    testInsert(1,test.root);
+    if(!testInsert(1,test.root)){
+        std::cout<<"priewszy element jest zle ustawiony"<<'\n';
+    }
     rand(2);
-    testInsert(3,test.root->right);
+    if(!testInsert(3,test.root->right)){
+        std::cout<<"dodawy jako priewszy prawy syn i poszlo cos nie tak"<<'\n';
+    }
     rand(1.0/2);
-    testInsert(2,test.root->left);
-    testClear();
-    randing(1);
-    //test.Delete(1);
-
-
+    if(!testInsert(2,test.root->left)){
+        std::cout<<"dodany jako drugi element jako lewego syna i poszlo cos nie tak"<<'\n';
+    }
+    if(!testDelete(1)){
+        std::cout<<"Jedno elementowe drzewo jest zle usuwanie"<<'\n';
+    }
+    if(!testDelete(2)){
+        std::cout<<"Dwu elementowe drzewo jest zle usuwanie (1)"<<'\n';
+    }
+    if(!testDelete(3)){
+        std::cout<<"Dwu elementowe drzewo jest zle usuwanie (2)"<<'\n';
+    }
+    if(!testDelete(4)){
+        std::cout<<"Usuwanie priewszego elementu cos poszlo nie tak"<<'\n';
+    }
 }
 void AiSD::Testing::generalTest(){
     size_t amountTest;
@@ -103,9 +130,11 @@ void AiSD::Testing::generalTest(){
 
 }
 bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
+
     switch(opcja){
     case 0:
-        if(tmp==nullptr){
+        if(tmp!=nullptr){
+            std::cout<<"Element root NIE jest ustawiony na nullptr"<<std::endl;
             return false;
         }
         break;
@@ -163,32 +192,114 @@ bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
     return true;
 }
 bool AiSD::Testing::testDelete(int opcja){
-    BSTNode<int,std::string> *tmp;
+    test.Clear();
+    randing(1);
+    int licz;
     switch(opcja){
-    case 1:
+    case 1: //dla drzewa, ktory zawiera jeden element
+        test.Delete(dane.front());
         tmp=test.root;
         if(tmp!=nullptr){
+            std::cout<<"root NIE jest ustawiony na nullptr"<<'\n';
+            return false;
+        }
+        randing(1);
+        tmp=test.root;
+        if(!testInsert(1,tmp)){
+            std::cout<<"dodanie nowego elmentu po DELETE, gdy z drzewa usunieto wszystkie elementy"<<'\n';
             return false;
         }
         break;
-    case 2:
-        if(tmp!=nullptr){
+    case 2: //dla drzewa, ktore ma dwa elementy (jeden z nich to jest lewy syn)
+        rand(1.0/2);
+        test.Delete(dane.back());
+        tmp=test.root;
+        if(tmp==nullptr){
             return false;
         }
         if(tmp->left!=nullptr){
-            std::cout<<"wskaznik posiada na lewego syna"<<'\n';
+            std::cout<<"wskaznik posiada wskaznik na lewego syna"<<'\n';
+            return false;
         }
         if(tmp->right!=nullptr){
             std::cout<<"wskaznik posiada wskaznik na prawego synka"<<'\n';
+            return false;
         }
         if(tmp->parent!=nullptr){
             std::cout<<"wskaznik posiada wskaznik na rodzica"<<'\n';
-        }
-        break;
-    case 3:
-        if(tmp!=nullptr){
             return false;
         }
+        rand(1.0/2);
+        if(!testInsert(2,tmp->left)){
+            return false;
+        }
+        test.Delete(dane.back());
+        rand(2);
+        tmp=test.root;
+        if(!testInsert(3,tmp->right)){
+            return false;
+        }
+        break;
+    case 3: //usuwanie prawego syna
+        rand(2);
+        test.Delete(dane.back());
+        tmp=test.root;
+        if(tmp==nullptr){
+            std::cout<<"root jest ustwawiony na nullptr"<<'\n';
+            return false;
+        }
+        if(tmp->left!=nullptr){
+            std::cout<<"wskaznik posiada wskaznik na lewego syna"<<'\n';
+            return false;
+        }
+        if(tmp->right!=nullptr){
+            std::cout<<"wskaznik posiada wskaznik na prawego synka"<<'\n';
+            return false;
+        }
+        if(tmp->parent!=nullptr){
+            std::cout<<"wskaznik posiada wskaznik na rodzica"<<'\n';
+            return false;
+        }
+        rand(2);
+        if(!testInsert(3,tmp->right)){
+            return false;
+        }
+        test.Delete(dane.back());
+        rand(1.0/2);
+        if(!testInsert(2,tmp->left)){
+            return false;
+        }
+        break;
+    case 4:
+        licz=rand(2);
+        test.ShowBSTTree();
+        test.Delete(dane[0]);
+        std::cout<<'\n';
+        test.ShowBSTTree();
+        tmp=test.root;
+        if(!testInsert(dane[0],tmp)){
+            std::cout<<"zle przupisanie wskazniki po usuniecu priewszego elementu drzewa (1)"<<'\n';
+            return false;
+        }
+        if(licz!=tmp->key){
+            std::cout<<"Wartosci key sie nie zgadzaja"<<'\n';
+            return false;
+        }
+
+        licz=rand(1.0/2);
+        test.Delete(dane[0]);
+        dane.pop_back();
+        tmp=test.root;
+        if(!testInsert(dane[0],tmp)){
+            std::cout<<"zle przupisanie wskazniki po usuniecu priewszego elementu drzewa (2)"<<'\n';
+            return false;
+        }
+        if(licz!=tmp->key){
+            std::cout<<"Wartosci key sie nie zgadzaja"<<'\n';
+            return false;
+        }
+
+
         break;
     }
     return true;
@@ -202,7 +313,6 @@ bool AiSD::Testing::testClear(){
         std::cout<<"drzewo nie zostalo usuniete"<<'\n';
         return false;
     }
-    return false;
 }
 bool AiSD::Testing::testMin(){
     return true;

@@ -22,6 +22,7 @@ int main()
     std::cout<<"INSERT"<<std::endl;
     BT.Insert(1,"text E");
     BT.Insert(4,"text F");
+    //std::cout<<BT.Max()->key<<'\n';
     BT.Save("file.ini");
     BT.Load("file.ini");
     std::cout<<"Predecessor"<<std::endl;
@@ -34,9 +35,10 @@ int main()
     std::cout<<"PRINT"<<std::endl;
     BT.PrintAscending();
     std::cout<<"MIN"<<std::endl;
-    BT.Min();
+    std::cout<<BT.Min()->key<<'\n';
+
     std::cout<<"MAX"<<std::endl;
-    BT.Max();
+    std::cout<<BT.Max()->key<<'\n';
     std::cout<<"DELETE"<<std::endl;
     BT.Delete(10);
     //BT.ShowBSTTree();

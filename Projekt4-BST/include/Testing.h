@@ -26,6 +26,9 @@ class Testing
         bool testClear();
         bool testMin();
         bool testMax();
+        int maly;
+        int maly1;
+        int duzy;
 
 };
 }

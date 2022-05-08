@@ -11,10 +11,17 @@ void AiSD::Testing::randing(size_t amountOfElements){
     std::vector<std::string> strukturaString;
     std::string randomString="";
     int liczba;
+    int malypom;
     srand( time( NULL ) );
     for(size_t i=0; i<amountOfElements; ++i) {
         liczba=std::rand();
         dane.push_back(liczba);
+        if(i==0){
+            malypom=liczba;
+        }
+        if(malypom>liczba){
+            malypom=liczba;
+        }
         for(int j=0;j<10;++j){
             randomString+=std::rand()%90+33;
         }
@@ -24,6 +31,7 @@ void AiSD::Testing::randing(size_t amountOfElements){
     for(size_t i=0; i<amountOfElements; ++i) {
         test.Insert(dane[i],strukturaString[i]);
     }
+    maly=malypom;
 }
 int AiSD::Testing::rand(float mnoznik) {
     std::string randomString="";
@@ -43,7 +51,7 @@ void AiSD::Testing::detailsTest(){
 
     std::cout<<"Prosze czekac, testy moga troche zajac!"<<std::endl;
     //testy zwiazanie z insert
-    if(!testInsert(0,test.root)){
+    /*if(!testInsert(0,test.root)){
         std::cout<<"root jest zle ustawiony, gdy nie ma ustawionego drzewa"<<'\n';
     }
     randing(1);
@@ -86,8 +94,15 @@ void AiSD::Testing::detailsTest(){
         std::cout<<"Dwu elementowe drzewo jest zle usuwanie (2)"<<'\n';
     }
     if(!testDelete(4)){
-        std::cout<<"Usuwanie priewszego elementu cos poszlo nie tak"<<'\n';
+        std::cout<<"Usuwanie root nie dzialaj poprawnie"<<'\n';
     }
+    if(!testClear()){
+        std::cout<<"Clear dziala zle"<<'\n';
+    }*/
+    if(!testMin()){
+        std::cout<<"MIN nie dziala poprawnie"<<'\n';
+    }
+
 }
 void AiSD::Testing::generalTest(){
     size_t amountTest;
@@ -152,7 +167,7 @@ bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
             return false;
         }
         break;
-    case 2:
+    case 2: // sprawdzanie insert kiedy dodaje sie lewego syna
         if(tmp->parent==nullptr){
             std::cout<<"Kolejny wartosc dodania do drzeqa nie posiada wskaznika na rodzica."<<'\n';
             return false;
@@ -171,7 +186,7 @@ bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
             return false;
         }
         break;
-    case 3:
+    case 3:// sprawdzanie insert kiedy dodaje sie prawego syna
         if(tmp->parent==nullptr){
             std::cout<<"Kolejny wartosc dodania do drzewa nie posiada wskaznika na rodzica."<<'\n';
             return false;
@@ -270,15 +285,12 @@ bool AiSD::Testing::testDelete(int opcja){
             return false;
         }
         break;
-    case 4:
+    case 4: //usuwanie root
         licz=rand(2);
-        test.ShowBSTTree();
         test.Delete(dane[0]);
-        std::cout<<'\n';
-        test.ShowBSTTree();
         tmp=test.root;
-        if(!testInsert(dane[0],tmp)){
-            std::cout<<"zle przupisanie wskazniki po usuniecu priewszego elementu drzewa (1)"<<'\n';
+        if(tmp->parent!=nullptr){
+            std::cout<<"root posiada wskaznik na parent, kiedy ma prawego syna"<<'\n';
             return false;
         }
         if(licz!=tmp->key){
@@ -290,16 +302,22 @@ bool AiSD::Testing::testDelete(int opcja){
         test.Delete(dane[0]);
         dane.pop_back();
         tmp=test.root;
-        if(!testInsert(dane[0],tmp)){
-            std::cout<<"zle przupisanie wskazniki po usuniecu priewszego elementu drzewa (2)"<<'\n';
+        if(tmp->parent!=nullptr){
+            std::cout<<"nowy root ma zle ustawony wskaznik na parent"<<'\n';
             return false;
         }
         if(licz!=tmp->key){
             std::cout<<"Wartosci key sie nie zgadzaja"<<'\n';
             return false;
         }
-
-
+        rand(2);
+        rand(1.0/2);
+        test.Delete(dane[0]);
+        tmp=test.root;
+        if(tmp->parent!=nullptr){
+            std::cout<<"nowy root ma ustawiony wskaznik na parent."<<'\n';
+            return false;
+        }
         break;
     }
     return true;
@@ -315,6 +333,8 @@ bool AiSD::Testing::testClear(){
     }
 }
 bool AiSD::Testing::testMin(){
+    randing(10);
+    //tmp=test.Min();
     return true;
 }
 bool AiSD::Testing::testMax(){

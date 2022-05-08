@@ -1,10 +1,9 @@
 # depslib dependency file v1.0
-1652014575 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
+1652015042 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
-	"Testing.h"
 
-1652004654 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.h
+1652015042 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.h
 	<iostream>
 	<sstream>
 	<vector>
@@ -23,10 +22,12 @@
 	<sys/stat.h>
 	<cctype>
 
-1652004654 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.tpp
+1652015042 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.tpp
 	<queue>
+	<iostream>
 
-<<<<<<< HEAD
+1652004654 D
+
 1651857040 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
@@ -52,7 +53,7 @@
 
 1651857023 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
 	<queue>
-=======
+
 1652014111 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\src\testing.cpp
 	"Testing.h"
 	"BST.h"
@@ -64,5 +65,6 @@
 	<iostream>
 	<vector>
 	<BST.h>
->>>>>>> feature/cd-funkcje-testujace-BST
+
+1652006141 ture/cd-funkcje-testujace-BST
 

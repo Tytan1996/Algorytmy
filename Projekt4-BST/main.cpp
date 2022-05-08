@@ -4,11 +4,20 @@
 */
 #include <iostream>
 #include "BST.h"
+#include "Testing.h"
 
 using namespace std;
 
 int main()
 {
+    std::cout<<"TESTY"<<'\n';
+    AiSD::Testing testy;
+    testy.detailsTest();
+
+    std::cout<<std::endl;
+
+
+
     std::cout<<"INSERT"<<std::endl;
     AiSD::BST<int,string> BT;
     BT.Insert(10,"text A");

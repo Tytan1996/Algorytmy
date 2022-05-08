@@ -51,7 +51,7 @@ void AiSD::Testing::detailsTest(){
 
     std::cout<<"Prosze czekac, testy moga troche zajac!"<<std::endl;
     //testy zwiazanie z insert
-    /*if(!testInsert(0,test.root)){
+    if(!testInsert(0,test.root)){
         std::cout<<"root jest zle ustawiony, gdy nie ma ustawionego drzewa"<<'\n';
     }
     randing(1);
@@ -98,7 +98,7 @@ void AiSD::Testing::detailsTest(){
     }
     if(!testClear()){
         std::cout<<"Clear dziala zle"<<'\n';
-    }*/
+    }
     if(!testMin()){
         std::cout<<"MIN nie dziala poprawnie"<<'\n';
     }

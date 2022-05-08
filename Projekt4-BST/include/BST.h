@@ -59,7 +59,7 @@ namespace AiSD
             void ShowBST();
 
 
-        protected:
+        //protected:
             BSTNode<key_t,data_t> *root=nullptr;
         private:
     };

@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1652015042 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
+1652015738 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
+	"Testing.h"
 
-1652015042 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.h
+1652015769 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\bst.h
 	<iostream>
 	<sstream>
 	<vector>
@@ -54,14 +55,14 @@
 1651857023 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
 	<queue>
 
-1652014111 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\src\testing.cpp
+1652015795 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\src\testing.cpp
 	"Testing.h"
 	"BST.h"
 	<chrono>
 	<vector>
 	<map>
 
-1652006141 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\testing.h
+1652015719 d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\include\testing.h
 	<iostream>
 	<vector>
 	<BST.h>

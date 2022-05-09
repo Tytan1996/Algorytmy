@@ -96,17 +96,16 @@ void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int dee
     }
 }
 template <typename key_t,typename data_t>
-void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>>& vec)
+void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec)
 {
     if(node==nullptr)
         return;
-    vec.push_back(*node);
+    vec.push_back(node);
     if(node->left!=nullptr)
         VectorOfNodes(node->left,vec);
     if(node->right!=nullptr)
         VectorOfNodes(node->right,vec);
 }
-#include <iostream>
 
 
 template <typename key_t,typename data_t>
@@ -184,12 +183,12 @@ void AiSD::BST<key_t,data_t>::Save(std::string src)
     file.read(ini);
     ini.clear();//jezeli cos tu juz jest to to usun
 
-    std::vector<BSTNode<key_t,data_t>> vec;
+    std::vector<BSTNode<key_t,data_t>*> vec;
     VectorOfNodes(root,vec);
     for(int i=0;i<vec.size();i++)
     {
-        ini[std::to_string(i)]["key"] = convertString<key_t>(vec[i].key);
-        ini[std::to_string(i)]["data"] = convertString<data_t>(vec[i].data);
+        ini[std::to_string(i)]["key"] = convertString<key_t>(vec[i]->key);
+        ini[std::to_string(i)]["data"] = convertString<data_t>(vec[i]->data);
     }
     file.write(ini);
 }
@@ -285,6 +284,20 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
     return subtree_root;
 }
 
+
+
+template <typename key_t,typename data_t>
+void AiSD::BST<key_t,data_t>::VectorOfNodesAscending(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec)
+{
+    if(node==nullptr)
+        return;
+    if(node->left!=nullptr)
+        VectorOfNodesAscending(node->left,vec);
+    vec.push_back(node);
+    if(node->right!=nullptr)
+        VectorOfNodesAscending(node->right,vec);
+}
+
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
@@ -295,21 +308,17 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
         else
             return nullptr;
     }
-    BSTNode<key_t,data_t>* x=Search(k,subtree_root);
-    if(x==nullptr)
+    std::vector<BSTNode<key_t,data_t>*> vec;
+    VectorOfNodesAscending(subtree_root,vec);
+    for(int i=0;i<vec.size();i++)
     {
-        std::cout<<"Key dont exist!"<<std::endl;
-        return nullptr;
+        if(vec[i]->key==k)
+        {
+            if(i>0)//BY NIE WYPASC POZA TABLICE
+                return vec[i-1];
+        }
     }
-    if(x->left!=nullptr)
-        return Max(x->right);
-    BSTNode<key_t,data_t>* y=x->parent;
-    while(y!=nullptr&&x==y->left)
-    {
-        x=y;
-        y=y->parent;
-    }
-    return y;
+    return nullptr;
 }
 
 template <typename key_t,typename data_t>
@@ -322,21 +331,17 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
         else
             return nullptr;
     }
-    BSTNode<key_t,data_t>* x=Search(k,subtree_root);
-    if(x==nullptr)
+    std::vector<BSTNode<key_t,data_t>*> vec;
+    VectorOfNodesAscending(subtree_root,vec);
+    for(int i=0;i<vec.size();i++)
     {
-        std::cout<<"Key dont exist!"<<std::endl;
-        return nullptr;
+        if(vec[i]->key==k)
+        {
+            if(i<vec.size())//BY NIE WYPASC POZA TABLICE
+                return vec[i+1];
+        }
     }
-    if(x->right!=nullptr)
-        return Min(x->right);
-    BSTNode<key_t,data_t>* y=x->parent;
-    while(y!=nullptr&&x==y->right)
-    {
-        x=y;
-        y=y->parent;
-    }
-    return y;
+    return nullptr;
 }
 
 

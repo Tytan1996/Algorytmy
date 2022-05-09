@@ -44,7 +44,8 @@ namespace AiSD
             BSTNode<key_t,data_t>* Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root=nullptr);
             BSTNode<key_t,data_t>* Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root=nullptr);
             void PrintAscending(BSTNode<key_t,data_t> *node=nullptr,int deep=0);
-            void VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>>& vec);
+            void VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec);
+            void VectorOfNodesAscending(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec);
             void Save(std::string src);
             void Load(std::string src);
 

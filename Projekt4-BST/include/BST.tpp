@@ -111,8 +111,6 @@ void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vec
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Delete(const key_t k)
 {
-    std::cout<<"Przed usuwaniem: "<<std::endl;
-    ShowBSTTree();
     BSTNode<key_t,data_t>* x=Search(k);
     if(x==nullptr)
     {
@@ -121,7 +119,6 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
     }
     if(x->left==nullptr&&x->right==nullptr)//FORGET CHILDREN BY PARENT
     {
-        //std::cout<<"1s";
         if(x!=nullptr)
         {
             if(x->parent!=nullptr)
@@ -139,24 +136,17 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
                 root=nullptr;
             }
         }
-        //std::cout<<"1e";
     }
-    if(x->left==nullptr&&x->right!=nullptr)//MOVE RIGHT TO PARENT
+    else if(x->left==nullptr&&x->right!=nullptr)//MOVE RIGHT TO PARENT
     {
-        //std::cout<<"2s";
         Transplant(x,x->right);
-        //std::cout<<"2e";
     }
-
-    if(x->right==nullptr&&x->left!=nullptr)//MOVE LEFT TO PARENT
+    else if(x->right==nullptr&&x->left!=nullptr)//MOVE LEFT TO PARENT
     {
-        //std::cout<<"3e";
         Transplant(x,x->left);
-        //std::cout<<"3e";
     }
-    if(x->right!=nullptr&&x->left!=nullptr)//TRANSPLANT
+    else if(x->right!=nullptr&&x->left!=nullptr)//TRANSPLANT
     {
-        //std::cout<<"4s";
         BSTNode<key_t,data_t>* y=Min(x->right);
         if(y->parent!=x)
         {
@@ -167,11 +157,7 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
         Transplant(x,y);
         y->left=x->left;
         y->left->parent=y;
-        //std::cout<<"4e";
     }
-
-    std::cout<<"Po usuwaniu: "<<std::endl;
-    ShowBSTTree();
     delete(x);
 }
 
@@ -196,7 +182,7 @@ template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Load(std::string src)
 {
     Clear();//usun dotychczasowa zawartosc BST
-    mINI::INIFile file(src);std::cout<<"PRINT"<<std::endl;
+    mINI::INIFile file(src);
     mINI::INIStructure ini;
     file.read(ini);
 
@@ -481,14 +467,14 @@ void AiSD::BST<key_t,data_t>::ShowBST(){
     int height=0,maxSons=1;
     int sons=0;
     int nextMaxSons=0;
-    std::cout<<"aktualan wysokosc drzewa: "<<++height<<'\n';
+    std::cout<<"aktualna wysokosc drzewa: "<<++height<<'\n';
     tmp=root;
     if(tmp!=nullptr){
         kolejka.push(*tmp);
         while(!kolejka.empty()){
             tmp=&kolejka.front();
             if(sons==maxSons){
-                std::cout<<"aktualan wysokosc drzewa: "<<++height<<'\n';
+                std::cout<<"aktualana wysokosc drzewa: "<<++height<<'\n';
                 sons=0;
                 maxSons=nextMaxSons;
                 nextMaxSons=0;
@@ -553,7 +539,6 @@ int AiSD::BST<key_t,data_t>::height(BSTNode<key_t,data_t>* subtree_root,int sum)
         else
             return 0;
     }
-    std::cout<<"sum "<<sum<<" "<<subtree_root->key<<std::endl;
     int v=0;
     if(subtree_root->left!=nullptr)
     {

@@ -36,8 +36,7 @@ namespace AiSD
             void Insert(const key_t k,data_t data);//zbudblowane key beda po prawej stronie poddrzewa o tym samym key
             void Delete(const key_t k);
             BSTNode<key_t,data_t>* Search(const key_t k,BSTNode<key_t,data_t>* subtree_root=nullptr);
-            void Clear();
-            void Clear(BSTNode<key_t,data_t>* node);
+            void Clear(BSTNode<key_t,data_t>* node=nullptr);
             void Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v);
             BSTNode<key_t,data_t>* Min(BSTNode<key_t,data_t>* subtree_root=nullptr);
             BSTNode<key_t,data_t>* Max(BSTNode<key_t,data_t>* subtree_root=nullptr);

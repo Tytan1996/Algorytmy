@@ -220,25 +220,33 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNo
     return subtree_root;
 }
 
-
-template <typename key_t,typename data_t>
-void AiSD::BST<key_t,data_t>::Clear()
-{
-    Clear(root);
-    root=nullptr;
-}
-
 template <typename key_t,typename data_t>
 void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 {
     if(node==nullptr)
-        return;
+    {
+        if(root!=nullptr)
+            node=root;
+        else
+            return;
+    }
     if(node->left!=nullptr)
         Clear(node->left);
     if(node->right!=nullptr)
         Clear(node->right);
+    if(node->parent!=nullptr)
+    {
+        if(node->parent->left!=nullptr&&node->key==node->parent->left->key)
+            node->parent->left=nullptr;
+        if(node->parent->right!=nullptr&&node->key==node->parent->right->key)
+            node->parent->right=nullptr;
+    }else
+    {
+        root=nullptr;
+    }
     delete(node);
 }
+
 
 template <typename key_t,typename data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>* subtree_root)

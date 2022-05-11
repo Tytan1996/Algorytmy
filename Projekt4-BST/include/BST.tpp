@@ -5,9 +5,8 @@
 #ifndef BST_TPP
 #define BST_TPP
 
-#include <queue>
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 std::string AiSD::BSTNode<key_t,data_t>::Data()
 {
     std::string act="";
@@ -16,7 +15,7 @@ std::string AiSD::BSTNode<key_t,data_t>::Data()
     return act;
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k)
 {
     parent=nullptr;
@@ -25,7 +24,7 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k)
     key=k;
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 {
     BSTNode<key_t,data_t>* node=Search(k);
@@ -67,7 +66,7 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 }
 
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
 {
     if(u->parent==nullptr)
@@ -86,7 +85,7 @@ void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,
     }
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int deep)
 {
     if(node==nullptr)
@@ -109,7 +108,7 @@ void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int dee
         PrintAscending(node->right,deep+1);
     }
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec)
 {
     if(node==nullptr)
@@ -122,21 +121,21 @@ void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vec
 }
 
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Delete(const key_t k)
 {
     BSTNode<key_t,data_t>* x=Search(k);
-    if(x==nullptr)
+    if(x==nullptr)//SPRAWDZAMY, CZY TAKI OBIEKT ISTNIEJE
     {
         std::cout<<"nie znaleziono obiektu do usuniecia"<<std::endl;
         return;
     }
-    if(x->data.size()>1)//jezeli jest zdublowany klucz to skasuj tylko jedne dane
+    if(x->data.size()>1)//KROK 1 Z DOKUMENTACJI. jezeli jest zdublowany klucz to skasuj tylko jedne dane
     {
         x->data.pop_back();
         return;
     }
-    else if(x->left==nullptr&&x->right==nullptr)//FORGET CHILDREN BY PARENT
+    else if(x->left==nullptr&&x->right==nullptr)//KROK 2 Z DOKUMENTACJI. FORGET CHILDREN BY PARENT
     {
         if(x!=nullptr)
         {
@@ -156,15 +155,15 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
             }
         }
     }
-    else if(x->left==nullptr&&x->right!=nullptr)//MOVE RIGHT TO PARENT
+    else if(x->left==nullptr&&x->right!=nullptr)//KROK 3 Z DOKUMENTACJI. MOVE RIGHT TO PARENT
     {
         Transplant(x,x->right);
     }
-    else if(x->right==nullptr&&x->left!=nullptr)//MOVE LEFT TO PARENT
+    else if(x->right==nullptr&&x->left!=nullptr)//KROK 4 Z DOKUMENTACJI. MOVE LEFT TO PARENT
     {
         Transplant(x,x->left);
     }
-    else if(x->right!=nullptr&&x->left!=nullptr)//TRANSPLANT
+    else if(x->right!=nullptr&&x->left!=nullptr)//KROK 5 Z DOKUMENTACJI. TRANSPLANT
     {
         BSTNode<key_t,data_t>* y=Min(x->right);
         if(y->parent!=x)
@@ -180,7 +179,7 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
     delete(x);
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Save(std::string src)
 {
     mINI::INIFile file(src);
@@ -198,7 +197,7 @@ void AiSD::BST<key_t,data_t>::Save(std::string src)
     }
     file.write(ini);
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Load(std::string src)
 {
     Clear();//usun dotychczasowa zawartosc BST
@@ -229,7 +228,7 @@ void AiSD::BST<key_t,data_t>::Load(std::string src)
     }
 
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -249,7 +248,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNo
     return subtree_root;
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 {
     if(node==nullptr)
@@ -277,7 +276,7 @@ void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 }
 
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -292,7 +291,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>*
     return subtree_root;
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -309,7 +308,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
 
 
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::VectorOfNodesAscending(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec)
 {
     if(node==nullptr)
@@ -321,7 +320,7 @@ void AiSD::BST<key_t,data_t>::VectorOfNodesAscending(BSTNode<key_t,data_t> *node
         VectorOfNodesAscending(node->right,vec);
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -344,7 +343,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
     return nullptr;
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -368,7 +367,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
 }
 
 
-template <typename Type>
+template <AiSD::RightType Type>
 Type AiSD::convert(std::string str)
 {
     Type val;
@@ -377,7 +376,7 @@ Type AiSD::convert(std::string str)
     ss >> val;
     return val;
 }
-template <typename Type>
+template <AiSD::RightType Type>
 std::string AiSD::convertString(const Type val)
 {
     std::stringstream ss;
@@ -391,7 +390,7 @@ std::string AiSD::convertString(const Type val)
 
 
 //metody MP
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::ShowBSTTree(){
     BSTNode<key_t,data_t> *tmp;
     std::queue<BSTNode<key_t,data_t>> kolejka;
@@ -499,7 +498,7 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree(){
     std::cout<<'\n';
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::ShowBST(){
     BSTNode<key_t,data_t> *tmp;
     std::queue<BSTNode<key_t,data_t>> kolejka;
@@ -545,7 +544,7 @@ void AiSD::BST<key_t,data_t>::ShowBST(){
         }
     }
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::ListOfNodesInLevel(const int level,std::vector<AiSD::BSTNode<key_t,data_t>*>& table,AiSD::BSTNode<key_t,data_t>* node)
 {
     if(level<0)return;
@@ -568,7 +567,7 @@ void AiSD::BST<key_t,data_t>::ListOfNodesInLevel(const int level,std::vector<AiS
             ListOfNodesInLevel(level-1,table,node->right);
     }
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 int AiSD::BST<key_t,data_t>::height(BSTNode<key_t,data_t>* subtree_root,int sum)
 {
     if(subtree_root==nullptr)
@@ -594,7 +593,7 @@ int AiSD::BST<key_t,data_t>::height(BSTNode<key_t,data_t>* subtree_root,int sum)
 
     return sum;
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 int AiSD::BST<key_t,data_t>::leavesCount(BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -617,7 +616,7 @@ int AiSD::BST<key_t,data_t>::leavesCount(BSTNode<key_t,data_t>* subtree_root)
     return r+l;
 
 }
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 int AiSD::BST<key_t,data_t>::nodesCount(BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
@@ -637,7 +636,7 @@ int AiSD::BST<key_t,data_t>::nodesCount(BSTNode<key_t,data_t>* subtree_root)
     return 1+r+l;
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 int AiSD::BST<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::BSTNode<key_t,data_t>* subtree_root)
 {
     if(level<0)return 0;
@@ -653,7 +652,7 @@ int AiSD::BST<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::BSTNode<key
     return table.size();
 }
 
-template <typename key_t,typename data_t>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)

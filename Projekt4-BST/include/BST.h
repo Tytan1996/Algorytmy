@@ -8,13 +8,38 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include "simpleini/ini.h"
+#include <queue>
+#include <concepts>
 
-//using key_t=unsigned short;
+#include "simpleini/ini.h"
 
 namespace AiSD
 {
-    template<typename key_t,typename data_t>
+
+    template <typename T>
+    concept RightType =
+    (requires(std::ostream& os, T a)//Drukowanie w oknie CMD
+    {
+        os << a;
+    })
+    &&
+    (requires(std::stringstream& os, T a)//Zapis do pliku
+    {
+        os << a;
+        os >> a;
+    }
+    )
+    &&
+    (requires(T a,T b)//Klucze s¹ porównywalne
+    {
+        a<b;
+        a>b;
+        a=b;
+    }
+    );
+
+
+    template<RightType key_t,RightType data_t>
     class BSTNode
     {
         public:
@@ -29,7 +54,7 @@ namespace AiSD
         BSTNode* right;
     };
 
-    template<typename key_t,typename data_t>
+    template<RightType key_t,RightType data_t>
     class BST
     {
 
@@ -68,9 +93,9 @@ namespace AiSD
 
 
     //FUNKCJA DO KONWERSJI TYPOW
-    template <typename Type>
+    template <RightType Type>
     Type convert(std::string str);
-    template <typename Type>
+    template <RightType Type>
     std::string convertString(const Type val);
 }
 

@@ -30,16 +30,22 @@ int main()
     BT.Load("file.ini");
 
 
+    BT.Delete(2);
 
+    std::cout<<"PRINT"<<std::endl;
+    BT.PrintAscending();
 
     std::cout<<"Predecessor"<<std::endl;
     BT.Predecessor(1);
     std::cout<<"Successor"<<std::endl;
     BT.Successor(4);
+    std::cout<<"delete 10"<<std::endl;
     BT.Delete(10);
 
-    std::cout<<"PRINT"<<std::endl;
-    BT.PrintAscending();
+
+
+
+
 
     std::cout<<"BT height "<<BT.height()<<std::endl;
     std::cout<<"BT leavesCount "<<BT.leavesCount()<<std::endl;

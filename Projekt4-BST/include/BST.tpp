@@ -5,40 +5,26 @@
 #ifndef BST_TPP
 #define BST_TPP
 
-
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-std::string AiSD::BSTNode<key_t,data_t>::Data()
-{
-    std::string act="";
-    for(data_t i:data)
-        act+=convertString<data_t>(i)+" ";
-    return act;
-}
-
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k)
+AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 {
     parent=nullptr;
     left=nullptr;
     right=nullptr;
     key=k;
+    data=dataArg;
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 {
-    BSTNode<key_t,data_t>* node=Search(k);
+    /*
     if(Search(k)!=nullptr)
     {
-        std::cout<<"data: "<<data<<std::endl;
-        node->data.push_back(data);
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
-    }
-    std::cout<<"got "<<k<<" "<<data<<std::endl;
-    BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k);
-    newNode->data.push_back(data);
-
+    }*/
+    BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
     BSTNode<key_t,data_t>* tmp=root;
     BSTNode<key_t,data_t>* prev=nullptr;
 
@@ -69,6 +55,7 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
 {
+
     if(u->parent==nullptr)
     {
         v->parent=nullptr;
@@ -101,8 +88,7 @@ void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int dee
         PrintAscending(node->left,deep+1);
     }
     for(int i=0;i<deep;i++)std::cout<<".";
-    std::cout<<"node={key="<<node->key<<" data=\""<<node->Data()<<"\"}"<<std::endl;
-
+    std::cout<<"node={key="<<node->key<<" data=\""<<node->data<<"\"}"<<std::endl;
     if(node->right!=nullptr)
     {
         PrintAscending(node->right,deep+1);
@@ -130,12 +116,8 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
         std::cout<<"nie znaleziono obiektu do usuniecia"<<std::endl;
         return;
     }
-    if(x->data.size()>1)//KROK 1 Z DOKUMENTACJI. jezeli jest zdublowany klucz to skasuj tylko jedne dane
-    {
-        x->data.pop_back();
-        return;
-    }
-    else if(x->left==nullptr&&x->right==nullptr)//KROK 2 Z DOKUMENTACJI. FORGET CHILDREN BY PARENT
+
+    if(x->left==nullptr&&x->right==nullptr)//KROK 1. FORGET CHILDREN BY PARENT
     {
         if(x!=nullptr)
         {
@@ -155,15 +137,15 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
             }
         }
     }
-    else if(x->left==nullptr&&x->right!=nullptr)//KROK 3 Z DOKUMENTACJI. MOVE RIGHT TO PARENT
+    else if(x->left==nullptr&&x->right!=nullptr)//KROK 2 Z DOKUMENTACJI. MOVE RIGHT TO PARENT
     {
         Transplant(x,x->right);
     }
-    else if(x->right==nullptr&&x->left!=nullptr)//KROK 4 Z DOKUMENTACJI. MOVE LEFT TO PARENT
+    else if(x->right==nullptr&&x->left!=nullptr)//KROK 3 Z DOKUMENTACJI. MOVE LEFT TO PARENT
     {
         Transplant(x,x->left);
     }
-    else if(x->right!=nullptr&&x->left!=nullptr)//KROK 5 Z DOKUMENTACJI. TRANSPLANT
+    else if(x->right!=nullptr&&x->left!=nullptr)//KROK 4 Z DOKUMENTACJI. TRANSPLANT
     {
         BSTNode<key_t,data_t>* y=Min(x->right);
         if(y->parent!=x)
@@ -192,8 +174,7 @@ void AiSD::BST<key_t,data_t>::Save(std::string src)
     for(int i=0;i<vec.size();i++)
     {
         ini[std::to_string(i)]["key"] = convertString<key_t>(vec[i]->key);
-        for(int j=0;j<vec[i]->data.size();j++)
-            ini[std::to_string(i)][std::to_string(j)] = convertString<data_t>(vec[i]->data[j]);
+        ini[std::to_string(i)]["data"] = convertString<data_t>(vec[i]->data);
     }
     file.write(ini);
 }
@@ -210,17 +191,8 @@ void AiSD::BST<key_t,data_t>::Load(std::string src)
         if(ini.has(std::to_string(i)))
         {
             key_t cpyKey=convert<key_t>(ini[std::to_string(i)]["key"]);
-            for(int j=0;true;j++)
-            {
-                if(ini[std::to_string(i)].has(std::to_string(j)))
-                {
-                    data_t cpyData=convert<data_t>(ini[std::to_string(i)][std::to_string(j)]);
-                    Insert(cpyKey,cpyData);
-                }else
-                {
-                    break;
-                }
-            }
+            data_t cpyData=convert<data_t>(ini[std::to_string(i)]["data"]);
+            Insert(cpyKey,cpyData);
         }else
         {
             break;
@@ -380,9 +352,7 @@ template <AiSD::RightType Type>
 std::string AiSD::convertString(const Type val)
 {
     std::stringstream ss;
-    std::cout<<"a";
     ss << val;
-    std::cout<<"b";
     std::string str = ss.str();
     return str;
 }
@@ -415,7 +385,7 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree(){
                     }
                 }
             }
-            std::cout<<tmp->key<<" "<<tmp->Data();
+            std::cout<<tmp->key<<" "<<tmp->data;
             for(int i=0;i<height;++i){
                 std::cout<<"        ";
             }
@@ -523,7 +493,7 @@ void AiSD::BST<key_t,data_t>::ShowBST(){
                     ++sons;
                 }
             }
-            std::cout<<tmp->key<<" "<<tmp->Data()<<'\n';
+            std::cout<<tmp->key<<" "<<tmp->data<<'\n';
             if(tmp->parent!=nullptr){
                 if(tmp->parent->right==nullptr){
                     std::cout<<"null "<<'\n';

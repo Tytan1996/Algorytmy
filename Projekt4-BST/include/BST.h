@@ -44,10 +44,9 @@ namespace AiSD
     {
         public:
         key_t key;
-        std::vector<data_t> data;
-        std::string Data();
+        data_t data;
 
-        BSTNode(key_t k);
+        BSTNode(key_t k,data_t data);
 
         BSTNode* parent;
         BSTNode* left;

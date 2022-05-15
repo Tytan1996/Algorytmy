@@ -9,6 +9,9 @@
 using namespace std;
 
 int main() {
+    int option, number;
+    string text="";
+    AiSD::BST<int,string> BT;
     std::cout<<"TESTY"<<'\n';
     AiSD::Testing testy;
     testy.detailsTest();
@@ -19,9 +22,70 @@ int main() {
     std::cout<<"Koniec testow";
     std::cout<<'\n'<<"-------------------------"<<'\n';
 
-
-    std::cout<<"INSERT"<<std::endl;
-    AiSD::BST<int,string> BT;
+    //MENU//
+    std::cout<<"-------------------------"<<'\n';
+    std::cout<<"MENU"<<'\n';
+    std::cout<<"-------------------------"<<'\n';
+    while(true){
+        std::cout<<"1 - INSERT (dodaj);"<<'\n';
+        std::cout<<"2 - DELETE (usun);"<<'\n';
+        std::cout<<"3 - SHOW BST (TREE) (pokaz drzewo w formie drzewa);"<<'\n';
+        std::cout<<"4 - SHOW BST (pokaz drzewo);"<<'\n';
+        std::cout<<"5 - SHOW HEIGHT BST (pokaz wysokosc BST);"<<'\n';
+        std::cout<<"6 - SHOW AMOUNT LEAVES (pokaz ilosc lisci BST);"<<'\n';
+        std::cout<<"7 - SHOW AMOUNT NODES (pokaz ilosc wiezlow BST);"<<'\n';
+        std::cout<<"8 - SHOW AMOUNT NODES ON LEVEL (pokaz ilosc wiezlow BST od poziomu);"<<'\n';
+        std::cout<<"9 - SHOW MIN (pokaz min);"<<'\n';
+        std::cout<<"10 - SHOW MAX (pokaz max);"<<'\n';
+        std::cout<<"11 - BST CLEAR;"<<'\n';
+        std::cout<<"0 - EXIT;"<<'\n';
+        std::cin>>option;
+        switch(option){
+        case 1:
+            std::cout<<"Dodaj wartosc elemetnu (int): ";
+            std::cin>>number;
+            std::cout<<"Dodaj wartosc elemetnu (string): ";
+            std::cin>>text;
+            BT.Insert(number,text);
+            break;
+        case 2:
+            std::cout<<"Jaki element chcesz usunac (podaj int): ";
+            std::cin>>number;
+            BT.Delete(number);
+            break;
+        case 3:
+            BT.ShowBSTTree();
+            break;
+        case 4:
+            BT.ShowBST();
+            break;
+        case 5:
+            std::cout<<"Wysokosc: "<<BT.height();
+            break;
+        case 6:
+            std::cout<<"Ilosc lisci: "<<BT.leavesCount();
+            break;
+        case 7:
+            std::cout<<"Ilosc wezlow: "<<BT.nodesCount();
+            break;
+        case 8:
+            std::cout<<"od jakiego poziomu wyswietlisc ilosc wezlow: ";
+            std::cin>>number;
+            std::cout<<"Wysokosc (od poziomu "<<number<<" ): "<<BT.nodesCountOnLevel(number);
+            break;
+        case 9:
+            std::cout<<"Najmniejszy element: "<<BT.Min();
+            break;
+        case 10:
+            std::cout<<"Najwiekszy element: "<<BT.Max();
+            break;
+        case 11:
+            BT.Clear();
+            std::cout<<"Dziewo jest puste";
+        }
+        std::cout<<'\n';
+    }
+    /*std::cout<<"INSERT"<<std::endl;
     BT.Insert(10,"text A");
     BT.Insert(2,"text B");
     BT.Insert(2,"text C");
@@ -74,6 +138,6 @@ int main() {
     std::vector<AiSD::BSTNode<int,string>*> tab;
     BT.ListOfNodesInLevel(0,tab);
 
-
+*/
     return 0;
 }

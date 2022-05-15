@@ -8,14 +8,16 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     std::cout<<"TESTY"<<'\n';
     AiSD::Testing testy;
     testy.detailsTest();
 
-    std::cout<<std::endl;
-
+    std::cout<<'\n'<<"-------------------------"<<'\n';
+    testy.generalTest();
+    std::cout<<'\n'<<"-------------------------"<<'\n';
+    std::cout<<"Koniec testow";
+    std::cout<<'\n'<<"-------------------------"<<'\n';
 
 
     std::cout<<"INSERT"<<std::endl;
@@ -26,20 +28,28 @@ int main()
     std::cout<<"INSERT"<<std::endl;
     BT.Insert(1,"text E");
     BT.Insert(4,"text F");
+    BT.ShowBSTTree();
+    BT.ShowBST();
     BT.Save("file.ini");
     BT.Load("file.ini");
 
 
+    BT.Delete(2);
 
+    std::cout<<"PRINT"<<std::endl;
+    BT.PrintAscending();
 
     std::cout<<"Predecessor"<<std::endl;
     BT.Predecessor(1);
     std::cout<<"Successor"<<std::endl;
     BT.Successor(4);
+    std::cout<<"delete 10"<<std::endl;
     BT.Delete(10);
 
-    std::cout<<"PRINT"<<std::endl;
-    BT.PrintAscending();
+
+
+
+
 
     std::cout<<"BT height "<<BT.height()<<std::endl;
     std::cout<<"BT leavesCount "<<BT.leavesCount()<<std::endl;

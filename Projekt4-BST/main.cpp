@@ -37,7 +37,9 @@ int main() {
         std::cout<<"8 - SHOW AMOUNT NODES ON LEVEL (pokaz ilosc wiezlow BST od poziomu);"<<'\n';
         std::cout<<"9 - SHOW MIN (pokaz min);"<<'\n';
         std::cout<<"10 - SHOW MAX (pokaz max);"<<'\n';
-        std::cout<<"11 - BST CLEAR;"<<'\n';
+        std::cout<<"11 - SAVE (zapis);"<<'\n';
+        std::cout<<"12 - LOAD (wczytaj);"<<'\n';
+        std::cout<<"13 - BST CLEAR;"<<'\n';
         std::cout<<"0 - EXIT;"<<'\n';
         std::cin>>option;
         switch(option){
@@ -80,8 +82,24 @@ int main() {
             std::cout<<"Najwiekszy element: "<<BT.Max();
             break;
         case 11:
+            BT.Save("file.ini");
+            std::cout<<"Zapisano do pliku;";
+            break;
+        case 12:
+            BT.Load("file.ini");
+            std::cout<<"Wczytano plik;";
+            break;
+        case 13:
             BT.Clear();
             std::cout<<"Dziewo jest puste";
+            break;
+        case 0:
+            std::cout<<"koniec";
+            return 0;
+            break;
+        default:
+            std::cout<<"Nie ma takiej opcji!";
+            break;
         }
         std::cout<<'\n';
     }

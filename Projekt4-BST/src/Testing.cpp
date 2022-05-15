@@ -12,17 +12,16 @@ void AiSD::Testing::randing(size_t amountOfElements) {
     std::vector<std::string> strukturaString;
     std::string randomString="";
     int liczba;
-    int malypom;
     srand( time( NULL ) );
     for(size_t i=0; i<amountOfElements; ++i) {
         liczba=std::rand();
         dane.push_back(liczba);
         if(i==0) {
-            malypom=liczba;
+            maly=liczba;
             duzy=liczba;
         }
-        if(malypom>liczba) {
-            malypom=liczba;
+        if(maly>liczba) {
+            maly=liczba;
         }
         if(duzy<liczba) {
             duzy=liczba;
@@ -36,7 +35,6 @@ void AiSD::Testing::randing(size_t amountOfElements) {
     for(size_t i=0; i<amountOfElements; ++i) {
         test.Insert(dane[i],strukturaString[i]);
     }
-    maly=malypom;
 }
 int AiSD::Testing::rand(float mnoznik) {
     std::string randomString="";
@@ -117,33 +115,70 @@ void AiSD::Testing::detailsTest() {
 }
 void AiSD::Testing::generalTest() {
     size_t amountTest;
+    size_t amount;
     int ilosc=0;
+    int opcja;
     std::vector<int>::iterator itr;
     std::cout<<"Ile chcesz wykonac testow?"<<std::endl;
     std::cout<<"Ilosc testow: ";
     std::cin>>amountTest;
+    std::cout<<"Ile chcesz elementow w drzewie?"<<std::endl;
+    std::cout<<"Ilosc elementow: ";
+    std::cin>>amount;
     srand( time( NULL ) );
     int liczba;
     for(size_t i=0; i<amountTest; ++i) {
+        test.Clear();
         int opcja;
-        randing(amountTest);
+        randing(amount);
         for(size_t j=0; j<10; ++j) {
+            std::string randomString="";
             opcja=std::rand()%2+1;
             switch(opcja) {
             case 1:
                 liczba=std::rand();
-                test.Insert(liczba,"ff:");
+                for(int j=0; j<10; ++j) {
+                    randomString+=std::rand()%90+33;
+                }
+                if(liczba>duzy){
+                    duzy=liczba;
+                }
+                if(maly>liczba){
+                    maly=liczba;
+                }
+                test.Insert(liczba,"randomString");
                 dane.push_back(liczba);
                 break;
 
             case 2:
                 liczba=std::rand();
+                if(maly==liczba){
+                    opcja=1;
+                }else if(duzy==liczba){
+                    opcja=2;
+                }else{
+                    opcja=0;
+                }
                 test.Delete(liczba);
                 for(itr=dane.begin(); itr!=dane.end(); ++itr) {
                     if(liczba==*itr) {
                         dane.erase(itr);
                     }
                 }
+                /*for(itr=dane.begin(); itr!=dane.end(); ++itr) {
+                    switch(opcja){
+                    case 1:
+                        if(itr<maly){
+                            maly=itr;
+                        }
+                        break;
+                    case 2:
+                        if(itr>duzy){
+                            duzy=itr;
+                        }
+                        break;
+                    }
+                }*/
                 break;
             }
             if(!sprawdWskazniki()) {
@@ -194,7 +229,7 @@ bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
             return false;
         }
         if(tmp->right!=nullptr) {
-            std::cout<<"Nowy utworozny element posiada wskaznik na prawego syna (ktory nie ma prawa istniec)"<<'\n';
+            std::cout<<"Nowy utworzony element posiada wskaznik na prawego syna (ktory nie ma prawa istniec)"<<'\n';
             return false;
         }
         break;
@@ -388,7 +423,7 @@ bool AiSD::Testing::sprawdWskazniki() {
             tmp=&kolejka.front();
             if(tmp->left!=nullptr) {
                 kolejka.push(*tmp->left);
-                if(tmp->left->key>tmp->key) {
+                if(tmp->left->key>=tmp->key) {
                     std::cout<<"lewy syn jest wiekszy niz rodzic."<<'\n';
                     check=false;
 
@@ -437,6 +472,14 @@ bool AiSD::Testing::sprawdWskazniki() {
             std::cout<<"Ilosc lisci sie nie zgadza."<<'\n';
             check=false;
         }
+        /*if(maly==test.Min()){
+            std::cout<<"element minimalny nie zgadza sie."<<'\n';
+            check=false;
+        }
+        if(duzy==test.Max()){
+            std::cout<<"element najwiekszy nie zgadza sie."<<'\n';
+            check=false;
+        }*/
 
     }
     return check;

@@ -89,19 +89,15 @@ void AiSD::Testing::detailsTest() {
     if(!testInsert(2,test.root->left)) {
         std::cout<<"dodany jako drugi element jako lewego syna i poszlo cos nie tak"<<'\n';
     }
-    std::cout<<std::endl<<"1 przypadek "<<std::endl;
     if(!testDelete(1)) {
         std::cout<<"Jedno elementowe drzewo jest zle usuwanie"<<'\n';
     }
-    std::cout<<std::endl<<"2 przypadek "<<std::endl;
     if(!testDelete(2)) {
         std::cout<<"Dwu elementowe drzewo jest zle usuwanie (1)"<<'\n';
     }
-    std::cout<<std::endl<<"3 przypadek "<<std::endl;
     if(!testDelete(3)) {
         std::cout<<"Dwu elementowe drzewo jest zle usuwanie (2)"<<'\n';
     }
-    std::cout<<std::endl<<"4 przypadek "<<std::endl;
     if(!testDelete(4)) {
         std::cout<<"Usuwanie root nie dzialaj poprawnie"<<'\n';
     }
@@ -155,7 +151,6 @@ void AiSD::Testing::generalTest() {
             }
 
         }
-        std::cout<<"Koniec testow"<<'\n';
         std::cout<<"Ilosc nieudanych testow: "<<ilosc<<'\n';
 
     }

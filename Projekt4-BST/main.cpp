@@ -8,14 +8,16 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     std::cout<<"TESTY"<<'\n';
     AiSD::Testing testy;
     testy.detailsTest();
 
-    std::cout<<std::endl;
-
+    std::cout<<'\n'<<"-------------------------"<<'\n';
+    testy.generalTest();
+    std::cout<<'\n'<<"-------------------------"<<'\n';
+    std::cout<<"Koniec testow";
+    std::cout<<'\n'<<"-------------------------"<<'\n';
 
 
     std::cout<<"INSERT"<<std::endl;
@@ -26,6 +28,8 @@ int main()
     std::cout<<"INSERT"<<std::endl;
     BT.Insert(1,"text E");
     BT.Insert(4,"text F");
+    BT.ShowBSTTree();
+    BT.ShowBST();
     BT.Save("file.ini");
     BT.Load("file.ini");
 

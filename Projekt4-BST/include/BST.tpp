@@ -258,9 +258,16 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>*
         else
             return nullptr;
     }
-    while(subtree_root!=nullptr&&subtree_root->left != nullptr)
-        subtree_root=subtree_root->left;
-    return subtree_root;
+    std::vector<BSTNode<key_t,data_t>*> vec;
+    VectorOfNodesAscending(subtree_root,vec);//tablica wezlow posortowana rosnaco
+
+    BSTNode<key_t,data_t>* found=vec[0];//Mozemy tak zalozyc poniewaz uprzednio wspomnielismy ze BST nie ma byc pusty
+    for(int i=0;i<vec.size();i++)
+    {
+        if(found->key>vec[i]->key)
+            found=vec[i];
+    }
+    return found;
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
@@ -273,9 +280,16 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
         else
             return nullptr;
     }
-    while(subtree_root!=nullptr&&subtree_root->right!=nullptr)
-        subtree_root=subtree_root->right;
-    return subtree_root;
+    std::vector<BSTNode<key_t,data_t>*> vec;
+    VectorOfNodesAscending(subtree_root,vec);//tablica wezlow posortowana rosnaco
+
+    BSTNode<key_t,data_t>* found=vec[0];//Mozemy tak zalozyc poniewaz uprzednio wspomnielismy ze BST nie ma byc pusty
+    for(int i=0;i<vec.size();i++)
+    {
+        if(found->key<vec[i]->key)
+            found=vec[i];
+    }
+    return found;
 }
 
 
@@ -304,15 +318,34 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
     }
     std::vector<BSTNode<key_t,data_t>*> vec;
     VectorOfNodesAscending(subtree_root,vec);
+    BSTNode<key_t,data_t>* found=nullptr;//znaleziony wezel
     for(int i=0;i<vec.size();i++)
     {
         if(vec[i]->key==k)
         {
             if(i>0)//BY NIE WYPASC POZA TABLICE
-                return vec[i-1];
+            {
+                found=vec[i-1];
+                break;
+            }
         }
     }
-    return nullptr;
+    if(found!=nullptr)
+    {
+        for(int i=0;i<vec.size();i++)
+        {
+            if(vec[i]->key==found->key)
+            {
+                found=vec[i];
+                break;
+            }
+        }
+    }
+    //UWAGA
+    //ponizej celowy komentarz (nullptr jak wspomnialem w dokumentacji)
+    //if(found!=nullptr&&found->key==subtree_root->key)return nullptr;
+
+    return found;
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
@@ -326,14 +359,22 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
             return nullptr;
     }
     std::vector<BSTNode<key_t,data_t>*> vec;
-    VectorOfNodesAscending(subtree_root,vec);
+    VectorOfNodesAscending(subtree_root,vec);//tablica wezlow posortowana rosnaco
     for(int i=0;i<vec.size();i++)
     {
-        if(vec[i]->key==k)
+        if(vec[i]->key==k)//szukamy najblizszego elementu o takim samym kluczu w tablicy
         {
-            if(i<vec.size())//BY NIE WYPASC POZA TABLICE
-                return vec[i+1];
+            if(i<vec.size()-1)//nie chcemy wypasc poza tablice
+            {
+                for(int j=0;j<vec.size()-i;j++)//sprawdzamy tak dlugo az znajdziemy koniec tego samego klucza
+                {
+                    if(vec[i+j]->key!=k)//jezeli znalazles cos wiecej niz ten sam klucz to go zwroc
+                        return vec[i+j];
+                }
+                return vec[i];//jesli nie, to zwroc samo poddrzewo jak podalem w dokumentacji UWAGA (mozna zmienic na "=nullptr" jak wspomnialem w dokumentacji)
+            }
         }
+
     }
     return nullptr;
 }

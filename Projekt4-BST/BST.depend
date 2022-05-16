@@ -29,15 +29,17 @@
 
 1652004654 D
 
-1652029573 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
+1652727861 source:c:\users\user\documents\github\algorytmy\projekt4-bst\main.cpp
 	<iostream>
 	"BST.h"
 	"Testing.h"
 
-1652083078 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.h
+1652387204 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.h
 	<iostream>
 	<sstream>
 	<vector>
+	<queue>
+	<concepts>
 	"simpleini/ini.h"
 	"BST.tpp"
 
@@ -53,8 +55,7 @@
 	<sys/stat.h>
 	<cctype>
 
-1652083102 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
-	<queue>
+1652730612 c:\users\user\documents\github\algorytmy\projekt4-bst\include\bst.tpp
 
 1652601728 source:d:\-=uczelnia=-\sem4\algorytmy\projekt4-bst\src\testing.cpp
 	"Testing.h"
@@ -71,17 +72,18 @@
 
 1652006141 ture/cd-funkcje-testujace-BST
 
-1652022169 c:\users\user\documents\github\algorytmy\projekt4-bst\include\testing.h
+1652639650 c:\users\user\documents\github\algorytmy\projekt4-bst\include\testing.h
 	<iostream>
 	<vector>
 	<BST.h>
 
-1652028950 source:c:\users\user\documents\github\algorytmy\projekt4-bst\src\testing.cpp
+1652639650 source:c:\users\user\documents\github\algorytmy\projekt4-bst\src\testing.cpp
 	"Testing.h"
 	"BST.h"
 	<chrono>
 	<vector>
 	<map>
+	<queue>
 
 1652598382 source:c:\users\macie\onedrive\pulpit\nowy folder (9)\projekt4-bst\main.cpp
 	<iostream>

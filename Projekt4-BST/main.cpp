@@ -16,11 +16,6 @@ int main() {
     AiSD::Testing testy;
     testy.detailsTest();
 
-    BT.Insert(5,"aaa");
-    BT.Insert(5,"bbb");
-    BT.Insert(3,"ccc");
-    BT.Insert(3,"ddd");
-
     AiSD::BSTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
     std::cout<<'\n'<<"-------------------------"<<'\n';
@@ -113,7 +108,7 @@ int main() {
             act=BT.Predecessor(number);
             if(act!=nullptr)
             {
-                //std::cout<<"Predecessor element: "<<act;
+                std::cout<<"Predecessor element: "<<act;
                 std::cout<<std::endl<<act->key<<"\t"<<act->data<<std::endl;
             }else
             {
@@ -126,7 +121,7 @@ int main() {
             act=BT.Successor(number);
             if(act!=nullptr)
             {
-                //std::cout<<"Successor element: "<<act;
+                std::cout<<"Successor element: "<<act;
                 std::cout<<std::endl<<act->key<<"\t"<<act->data<<std::endl;
             }else
             {

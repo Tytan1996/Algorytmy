@@ -636,14 +636,9 @@ int AiSD::BST<key_t,data_t>::nodesCount(BSTNode<key_t,data_t>* subtree_root)
         else
             return 0;
     }
-
-    int l=0;
-    int r=0;
-    if(subtree_root->left!=nullptr)
-        l=leavesCount(subtree_root->left);
-    if(subtree_root->right!=nullptr)
-        r=leavesCount(subtree_root->right);
-    return 1+r+l;
+    std::vector<BSTNode<key_t,data_t>*> vec;
+    VectorOfNodes(subtree_root,vec);
+    return vec.size();
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>

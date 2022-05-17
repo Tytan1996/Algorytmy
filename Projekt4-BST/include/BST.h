@@ -84,10 +84,7 @@ namespace AiSD
             void ShowBSTTree();
             void ShowBST();
 
-
-        //protected:
             BSTNode<key_t,data_t> *root=nullptr;
-        private:
     };
 
 

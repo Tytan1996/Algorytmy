@@ -18,15 +18,15 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 {
-    /*
+    /* Jezeli chcemy zablokowac te same klucze, to wystarczy usunac komentarz!
     if(Search(k)!=nullptr)
     {
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
     }*/
-    BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
-    BSTNode<key_t,data_t>* tmp=root;
     BSTNode<key_t,data_t>* prev=nullptr;
+    BSTNode<key_t,data_t>* tmp=root;
+    BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
 
     while(tmp!=nullptr)
     {
@@ -55,7 +55,6 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
 {
-
     if(u->parent==nullptr)
     {
         v->parent=nullptr;
@@ -117,7 +116,7 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
         return;
     }
 
-    if(x->left==nullptr&&x->right==nullptr)//KROK 1. FORGET CHILDREN BY PARENT
+    if(x->left==nullptr&&x->right==nullptr)//CASE 1. FORGET CHILDREN BY PARENT
     {
         if(x!=nullptr)
         {
@@ -137,15 +136,15 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
             }
         }
     }
-    else if(x->left==nullptr&&x->right!=nullptr)//KROK 2 Z DOKUMENTACJI. MOVE RIGHT TO PARENT
+    else if(x->left==nullptr&&x->right!=nullptr)//CASE 2 Z DOKUMENTACJI. MOVE RIGHT TO PARENT
     {
         Transplant(x,x->right);
     }
-    else if(x->right==nullptr&&x->left!=nullptr)//KROK 3 Z DOKUMENTACJI. MOVE LEFT TO PARENT
+    else if(x->right==nullptr&&x->left!=nullptr)//CASE 3 Z DOKUMENTACJI. MOVE LEFT TO PARENT
     {
         Transplant(x,x->left);
     }
-    else if(x->right!=nullptr&&x->left!=nullptr)//KROK 4 Z DOKUMENTACJI. TRANSPLANT
+    else if(x->right!=nullptr&&x->left!=nullptr)//CASE 4 Z DOKUMENTACJI. TRANSPLANT
     {
         BSTNode<key_t,data_t>* y=Min(x->right);
         if(y->parent!=x)

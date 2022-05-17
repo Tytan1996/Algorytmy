@@ -30,7 +30,7 @@ namespace AiSD
     }
     )
     &&
-    (requires(T a,T b)//Klucze s¹ porównywalne
+    (requires(T a,T b)//Klucze sa porównywalne
     {
         a<b;
         a>b;

@@ -15,6 +15,11 @@
 
 namespace AiSD
 {
+    enum Color
+    {
+        RED=0,
+        BLACK=1
+    };
 
     template <typename T>
     concept RightType =
@@ -43,6 +48,7 @@ namespace AiSD
     class BSTNode
     {
         public:
+        Color color;
         key_t key;
         data_t data;
 

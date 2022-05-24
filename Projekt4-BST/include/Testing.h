@@ -14,7 +14,7 @@ public:
     int  rand(float mnoznik);
     void detailsTest();
     void generalTest();
-
+//        RED=0,BLACK=1
 
 private:
     std::vector< int > dane;

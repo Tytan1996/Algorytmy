@@ -16,6 +16,18 @@ int main() {
     AiSD::Testing testy;
     testy.detailsTest();
 
+    BT.Insert(10,"10a");
+    BT.Insert(5,"5aa");
+    BT.Insert(15,"15a");
+    BT.Insert(4,"4aa");
+    BT.Insert(6,"6aa");
+    BT.ShowBSTTree();
+    std::cout<<std::endl<<std::endl<<std::endl;
+    BT.Insert(5,"5bb");
+    BT.ShowBSTTree();
+    BT.pointersInfo(BT.Search(5)->right);
+
+
     AiSD::BSTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
     std::cout<<'\n'<<"-------------------------"<<'\n';
@@ -44,6 +56,7 @@ int main() {
         std::cout<<"13 - BST CLEAR;"<<'\n';
         std::cout<<"14 - SHOW Predecessor;"<<'\n';
         std::cout<<"15 - SHOW Successor;"<<'\n';
+        std::cout<<"16 - Print Ascending;"<<'\n';
         std::cout<<"0 - EXIT;"<<'\n';
         std::cin>>option;
         switch(option){
@@ -139,6 +152,9 @@ int main() {
         case 13:
             BT.Clear();
             std::cout<<"Dziewo jest puste";
+            break;
+        case 16:
+            BT.PrintAscending();
             break;
         case 0:
             std::cout<<"koniec";

@@ -33,10 +33,22 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
         prev=tmp;
 
         if(newNode->key<tmp->key)
+        {
             tmp=tmp->left;
-        else
+        }
+        else if(newNode->key>tmp->key)
+        {
             tmp=tmp->right;
-
+        }
+        else
+        {
+            while(tmp!=nullptr&&tmp->key==prev->key)
+            {
+                prev=tmp;
+                tmp=tmp->right;
+            }
+            break;
+        }
     }
     newNode->parent=prev;
     if(root==nullptr)
@@ -45,9 +57,25 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
     }else
     {
         if(newNode->key<prev->key)
+        {
             prev->left=newNode;
-        else
+        }
+        else if(newNode->key>prev->key)
+        {
             prev->right=newNode;
+        }else //ZDUBLOWANE KLUCZE
+        {
+            if(prev->right==nullptr)
+            {
+                prev->right=newNode;
+            }else
+            {
+                newNode->right=prev->right;
+                prev->right->parent=newNode;
+                prev->right=newNode;
+                newNode->parent=prev;
+            }
+        }
     }
 }
 
@@ -398,110 +426,259 @@ std::string AiSD::convertString(const Type val)
 }
 
 
-
-//metody MP
+#include <queue>
+#include <list>
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ShowBSTTree(){
+void AiSD::BST<key_t,data_t>::ShowBSTTree()
+{
     BSTNode<key_t,data_t> *tmp;
-    std::queue<BSTNode<key_t,data_t>> kolejka;
-    int height,nextMaxSons,number,numberOfMaxSons;
-    numberOfMaxSons=2;
-    number=nextMaxSons=0;
-    height=3;
+    std::list<BSTNode<key_t,data_t>*> listBST;
+    std::queue<BSTNode<key_t,data_t>*> kolejkaBST;
+    int nextMaxSons=1;
+    int number=0;
+    int height1=4;
+    bool sonsIsNull=false;
     tmp=root;
-    if(tmp!=nullptr){
-        kolejka.push(*tmp);
-        for(int i=0;i<height*3;++i){
-            std::cout<<"   ";
+    if(tmp!=nullptr)
+    {
+        kolejkaBST.push(tmp);
+        for(int i=0; i<height1*3; ++i)
+        {
+            std::cout<<"    ";
         }
         std::cout<<'\ ';
-        while(!kolejka.empty() && height!=0){
-            tmp=&kolejka.front();
-            if(tmp->parent!=nullptr){
-                if(tmp->parent->left==nullptr){
-                    std::cout<<"null ";
-                    for(int i=0;i<height;++i){
-                        std::cout<<"        ";
-                    }
+        while(!kolejkaBST.empty() && height1!=0)
+        {
+            tmp=kolejkaBST.front();
+            number++;
+            if(height1==3)
+            {
+                if(tmp!=nullptr)
+                {
+                    std::cout<<tmp->key<<" "<<tmp->data;
                 }
-            }
-            std::cout<<tmp->key<<" "<<tmp->data;
-            for(int i=0;i<height;++i){
+                else
+                {
+                    std::cout<<"null ";
+                }
                 std::cout<<"        ";
-            }
-            if(tmp->parent!=nullptr){
-                if(tmp->parent->right==nullptr){
-                    std::cout<<"null ";
-                    for(int i=0;i<height;++i){
-                        std::cout<<"        ";
-                    }
-                }
-            }
-            if(height>1){
-                if(tmp->left!=nullptr){
-                    kolejka.push(*tmp->left);
-                    nextMaxSons+=2;
-                    number++;
-                }else{
-                    number++;
-                }
-                if(tmp->right!=nullptr){
-                    kolejka.push(*tmp->right);
-                    nextMaxSons+=2;
-                    number++;
-                }else{
-                    number++;
-                }
 
-                if(numberOfMaxSons==number){
-                    std::cout<<'\n';
-                    numberOfMaxSons=nextMaxSons;
-                    nextMaxSons=0;
-                    int helpNumber=number;
-                    for(int i=0;i<height;++i){
-                        std::cout<<"        ";
+            }
+            else
+            {
+                if(tmp!=nullptr)
+                {
+                    std::cout<<tmp->key<<" "<<tmp->data;
+                }
+                else
+                {
+                    std::cout<<"null ";
+                }
+            }
+            for(int i=0;i<height1*2;++i){
+
+                std::cout<<"   ";
+
+            }
+
+
+
+
+            if(height1>1)
+            {
+                if(tmp!=nullptr)
+                {
+                    if(tmp->left!=nullptr)
+                    {
+                        kolejkaBST.push(tmp->left);
                     }
-                    while(number!=0){
-                        for(int i=0;i<height*3;++i){
+                    else
+                    {
+                        kolejkaBST.push(nullptr);
+                    }
+                }
+                else
+                {
+                    kolejkaBST.push(nullptr);
+                }
+                if(tmp!=nullptr)
+                {
+                    if(tmp->right!=nullptr)
+                    {
+                        kolejkaBST.push(tmp->right);
+                    }
+                }
+                else
+                {
+                    kolejkaBST.push(nullptr);
+                }
+            }
+            else
+            {
+                kolejkaBST.push(nullptr);
+            }
+            if(nextMaxSons==number)
+            {
+                if(height1==1)
+                {
+                    return;
+                }
+                std::cout<<'\n';
+                nextMaxSons*=2;
+                int helpNumber=nextMaxSons;
+                number=nextMaxSons;
+
+                if(height1==3 ||height1==4)
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
+                        std::cout<<"    ";
+                    }
+                }
+                else
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
+                        std::cout<<"     ";
+                    }
+                }
+                while(number>0)
+                {
+                    if(height1==4)
+                    {
+                        for(int i=0; i<height1*6; ++i)
+                        {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0;i<height*3;++i){
+                        for(int i=0; i<height1*6; ++i)
+                        {
                             std::cout<<"_";
                         }
-                        for(int i=0;i<height;++i){
+                        for(int i=0; i<height1*3; ++i)
+                        {
+                            std::cout<<"        ";
+                        }
+                        number-=2;
+                    }
+                    else if(height1==3)
+                    {
+                        for(int i=0; i<height1*3; ++i)
+                        {
+                            std::cout<<"_";
+                        }
+                        std::cout<<"|";
+                        for(int i=0; i<height1*3; ++i)
+                        {
+                            std::cout<<"_";
+                        }
+                        std::cout<<'_';
+                        for(int i=0; i<height1*2; ++i)
+                        {
                             std::cout<<"     ";
                         }
                         number-=2;
-
                     }
-
-                    std::cout<<'\n';
-
-                    for(int i=0;i<height*2;++i){
+                    else
+                    {
+                        for(int i=0; i<height1*2; ++i)
+                        {
+                            std::cout<<"_";
+                        }
+                        std::cout<<"|";
+                        for(int i=0; i<height1*2; ++i)
+                        {
+                            std::cout<<"_";
+                        }
+                        for(int i=0; i<height1; ++i)
+                        {
+                            std::cout<<"       ";
+                        }
+                        number-=2;
+                    }
+                }
+                std::cout<<'\n';
+                if(height1==4 || height1==3)
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
                         std::cout<<"    ";
                     }
-                    while(helpNumber!=0){
+                }
+                else
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
+                        std::cout<<"     ";
+                    }
+                }
+                while(helpNumber!=0)
+                {
+                    if(height1==4)
+                    {
                         std::cout<<'/';
-                        for(int i=0;i<height;++i){
+                        for(int i=0; i<height1*2; ++i)
+                        {
                             std::cout<<"      ";
                         }
                         std::cout<<'\\';
-                        for(int i=0;i<height;++i){
-                        std::cout<<"    ";
+                        for(int i=0; i<height1; ++i)
+                        {
+                            std::cout<<"    ";
                         }
 
                         helpNumber-=2;
                     }
-                    std::cout<<'\n';
-                    for(int i=0;i<height;++i){
-                        std::cout<<"      ";
+                    else if(height1==3)
+                    {
+                        std::cout<<'/';
+                        for(int i=0; i<height1; ++i)
+                        {
+                            std::cout<<"      ";
+                        }
+                        std::cout<<'\\';
+                        for(int i=0; i<height1*1.7; ++i)
+                        {
+                            std::cout<<"     ";
+                        }
+
+                        helpNumber-=2;
                     }
-                    number=0;
-                    --height;
+                    else
+                    {
+                        std::cout<<'/';
+                        for(int i=0; i<height1; ++i)
+                        {
+                            std::cout<<"    ";
+                        }
+                        std::cout<<'\\';
+                        for(int i=0; i<height1; ++i)
+                        {
+                            std::cout<<"      ";
+                        }
+                        helpNumber-=2;
+                    }
                 }
+                std::cout<<'\n';
+                if(height1==4 ||height1==3 ||height1==2)
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
+                        std::cout<<"    ";
+                    }
+                }
+                else
+                {
+                    for(int i=0; i<height1; ++i)
+                    {
+                        std::cout<<"  ";
+                    }
+                }
+                number=0;
+                --height1;
             }
-            kolejka.pop();
+            kolejkaBST.pop();
+
         }
 
     }
@@ -665,25 +842,25 @@ void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
         std::cout<<"Subtree unvalid"<<std::endl;
         return;
     }
-    std::cout<<std::endl<<std::endl<<"INFO SUBTREE ID: "<<subtree_root->key<<std::endl;
+    std::cout<<std::endl<<std::endl<<"INFO SUBTREE ID: "<<subtree_root->data<<std::endl;
 
     std::cout<<"PARENT ID: ";
     if(subtree_root->parent!=nullptr)
-        std::cout<<subtree_root->parent->key;
+        std::cout<<subtree_root->parent->data;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<"LEFT ID: ";
     if(subtree_root->left!=nullptr)
-        std::cout<<subtree_root->left->key;
+        std::cout<<subtree_root->left->data;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<"RIGHT ID: ";
     if(subtree_root->right!=nullptr)
-        std::cout<<subtree_root->right->key;
+        std::cout<<subtree_root->right->data;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;

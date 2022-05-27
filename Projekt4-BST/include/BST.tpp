@@ -454,15 +454,24 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
             if(tmp!=nullptr) {
                 std::cout<<tmp->key<<" "<<tmp->data;
             } else {
-                std::cout<<"null        ";
+                std::cout<<"null";
             }
-            if(height1==2){
+            if(height1==3){
+                for(int i=0;i<height1*3;++i){
+                    std::cout<<"     ";
+                }
+                if(number==2){
+                    std::cout<<"              ";
+                }
+            }else if(height1==2){
                 for(int i=0;i<height1;++i){
                     std::cout<<"     ";
                 }
                 if(number==2){
                     std::cout<<"              ";
                 }
+            }else{
+                std::cout<<"        ";
             }
             if(height1>1) {
                 if(tmp!=nullptr) {

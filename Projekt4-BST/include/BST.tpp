@@ -429,248 +429,187 @@ std::string AiSD::convertString(const Type val)
 #include <queue>
 #include <list>
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ShowBSTTree()
-{
+void AiSD::BST<key_t,data_t>::ShowBSTTree() {
     BSTNode<key_t,data_t> *tmp;
     std::list<BSTNode<key_t,data_t>*> listBST;
     std::queue<BSTNode<key_t,data_t>*> kolejkaBST;
     int nextMaxSons=1;
     int number=0;
     int height1=4;
-    bool sonsIsNull=false;
+    bool parentsIsNull=false;
     tmp=root;
-    if(tmp!=nullptr)
-    {
+    if(tmp!=nullptr) {
         kolejkaBST.push(tmp);
-        for(int i=0; i<height1*3; ++i)
-        {
+        listBST.push_back(tmp);
+        for(int i=0; i<height1*3; ++i) {
             std::cout<<"    ";
         }
         std::cout<<'\ ';
-        while(!kolejkaBST.empty() && height1!=0)
-        {
+        while(!kolejkaBST.empty() && height1!=0) {
             tmp=kolejkaBST.front();
             number++;
-            if(height1==3)
-            {
-                if(tmp!=nullptr)
-                {
-                    std::cout<<tmp->key<<" "<<tmp->data;
-                }
-                else
-                {
-                    std::cout<<"null ";
-                }
-                std::cout<<"        ";
+            if(tmp->parent!=nullptr) {
 
             }
-            else
-            {
-                if(tmp!=nullptr)
-                {
-                    std::cout<<tmp->key<<" "<<tmp->data;
+            if(tmp!=nullptr) {
+                std::cout<<tmp->key<<" "<<tmp->data;
+            } else {
+                std::cout<<"null        ";
+            }
+            if(height1==2){
+                for(int i=0;i<height1;++i){
+                    std::cout<<"     ";
                 }
-                else
-                {
-                    std::cout<<"null ";
+                if(number==2){
+                    std::cout<<"              ";
                 }
             }
-            for(int i=0;i<height1*2;++i){
-
-                std::cout<<"   ";
-
-            }
-
-
-
-
-            if(height1>1)
-            {
-                if(tmp!=nullptr)
-                {
-                    if(tmp->left!=nullptr)
-                    {
+            if(height1>1) {
+                if(tmp!=nullptr) {
+                    if(tmp->left!=nullptr) {
                         kolejkaBST.push(tmp->left);
-                    }
-                    else
-                    {
+                        listBST.push_back(tmp->left);
+                    } else {
                         kolejkaBST.push(nullptr);
+                        listBST.push_back(nullptr);
                     }
-                }
-                else
-                {
+                } else {
                     kolejkaBST.push(nullptr);
+                    listBST.push_back(nullptr);
                 }
-                if(tmp!=nullptr)
-                {
-                    if(tmp->right!=nullptr)
-                    {
+                if(tmp!=nullptr) {
+                    if(tmp->right!=nullptr) {
                         kolejkaBST.push(tmp->right);
+                        listBST.push_back(tmp->right);
+                    } else {
+                        kolejkaBST.push(nullptr);
+                        listBST.push_back(nullptr);
                     }
-                }
-                else
-                {
+                } else {
                     kolejkaBST.push(nullptr);
+                    listBST.push_back(nullptr);
                 }
-            }
-            else
-            {
+            } else {
                 kolejkaBST.push(nullptr);
+                listBST.push_back(nullptr);
             }
-            if(nextMaxSons==number)
-            {
-                if(height1==1)
-                {
+            if(nextMaxSons==number) {
+                if(height1==1) {
                     return;
                 }
                 std::cout<<'\n';
                 nextMaxSons*=2;
                 int helpNumber=nextMaxSons;
                 number=nextMaxSons;
-
-                if(height1==3 ||height1==4)
-                {
-                    for(int i=0; i<height1*2; ++i)
-                    {
+                if(height1==3 ||height1==4) {
+                    for(int i=0; i<height1*2; ++i) {
                         std::cout<<"    ";
                     }
-                }
-                else
-                {
-                    for(int i=0; i<height1*2; ++i)
-                    {
+                } else {
+                    for(int i=0; i<height1*2; ++i) {
                         std::cout<<"     ";
                     }
                 }
-                while(number>0)
-                {
-                    if(height1==4)
-                    {
-                        for(int i=0; i<height1*6; ++i)
-                        {
+                while(number>0) {
+                    if(height1==4 && listBST.front()!=nullptr) {
+                        for(int i=0; i<height1*6; ++i) {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0; i<height1*6; ++i)
-                        {
+                        for(int i=0; i<height1*6; ++i) {
                             std::cout<<"_";
                         }
-                        for(int i=0; i<height1*3; ++i)
-                        {
+                        for(int i=0; i<height1*3; ++i) {
                             std::cout<<"        ";
                         }
                         number-=2;
-                    }
-                    else if(height1==3)
-                    {
-                        for(int i=0; i<height1*3; ++i)
-                        {
+                        listBST.pop_front();
+                    } else if(height1==3 && listBST.front()!=nullptr) {
+                        for(int i=0; i<height1*3; ++i) {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0; i<height1*3; ++i)
-                        {
+                        for(int i=0; i<height1*3; ++i) {
                             std::cout<<"_";
                         }
                         std::cout<<'_';
-                        for(int i=0; i<height1*2; ++i)
-                        {
+                        for(int i=0; i<height1*2; ++i) {
                             std::cout<<"     ";
                         }
                         number-=2;
-                    }
-                    else
-                    {
-                        for(int i=0; i<height1*2; ++i)
-                        {
+                        listBST.pop_front();
+                    } else if(height1==2 && listBST.front()!=nullptr){
+                        for(int i=0; i<height1*2; ++i) {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0; i<height1*2; ++i)
-                        {
+                        for(int i=0; i<height1*2; ++i) {
                             std::cout<<"_";
                         }
-                        for(int i=0; i<height1; ++i)
-                        {
+                        for(int i=0; i<height1; ++i) {
                             std::cout<<"       ";
                         }
                         number-=2;
+                        listBST.pop_front();
+                    }else if(listBST.front()==nullptr){
+                        std::cout<<"     ";
+                        number-=2;
+                        listBST.pop_front();
+                        parentsIsNull=true;
                     }
                 }
                 std::cout<<'\n';
-                if(height1==4 || height1==3)
-                {
-                    for(int i=0; i<height1*2; ++i)
-                    {
+                if(height1==4 || height1==3) {
+                    for(int i=0; i<height1*2; ++i) {
                         std::cout<<"    ";
                     }
-                }
-                else
-                {
-                    for(int i=0; i<height1*2; ++i)
-                    {
+                } else {
+                    for(int i=0; i<height1*2; ++i) {
                         std::cout<<"     ";
                     }
                 }
-                while(helpNumber!=0)
-                {
-                    if(height1==4)
-                    {
+                while(helpNumber!=0) {
+                    if(height1==4) {
                         std::cout<<'/';
-                        for(int i=0; i<height1*2; ++i)
-                        {
+                        for(int i=0; i<height1*2; ++i) {
                             std::cout<<"      ";
                         }
                         std::cout<<'\\';
-                        for(int i=0; i<height1; ++i)
-                        {
+                        for(int i=0; i<height1; ++i) {
                             std::cout<<"    ";
                         }
 
                         helpNumber-=2;
-                    }
-                    else if(height1==3)
-                    {
+                    } else if(height1==3) {
                         std::cout<<'/';
-                        for(int i=0; i<height1; ++i)
-                        {
+                        for(int i=0; i<height1; ++i) {
                             std::cout<<"      ";
                         }
                         std::cout<<'\\';
-                        for(int i=0; i<height1*1.7; ++i)
-                        {
+                        for(int i=0; i<height1*1.7; ++i) {
                             std::cout<<"     ";
                         }
 
                         helpNumber-=2;
-                    }
-                    else
-                    {
+                    } else{
                         std::cout<<'/';
-                        for(int i=0; i<height1; ++i)
-                        {
+                        for(int i=0; i<height1; ++i) {
                             std::cout<<"    ";
                         }
                         std::cout<<'\\';
-                        for(int i=0; i<height1; ++i)
-                        {
+                        for(int i=0; i<height1; ++i) {
                             std::cout<<"      ";
                         }
                         helpNumber-=2;
                     }
                 }
                 std::cout<<'\n';
-                if(height1==4 ||height1==3 ||height1==2)
-                {
-                    for(int i=0; i<height1*2; ++i)
-                    {
+                if(height1==4 ||height1==3 ||height1==2) {
+                    for(int i=0; i<height1*2; ++i) {
                         std::cout<<"    ";
                     }
-                }
-                else
-                {
-                    for(int i=0; i<height1; ++i)
-                    {
+                } else {
+                    for(int i=0; i<height1; ++i) {
                         std::cout<<"  ";
                     }
                 }
@@ -678,9 +617,7 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree()
                 --height1;
             }
             kolejkaBST.pop();
-
         }
-
     }
     std::cout<<'\n';
 }

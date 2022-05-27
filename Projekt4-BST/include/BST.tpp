@@ -11,6 +11,7 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
     parent=nullptr;
     left=nullptr;
     right=nullptr;
+    color=RED;
     key=k;
     data=dataArg;
 }
@@ -77,6 +78,7 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
             }
         }
     }
+    FixInsert(newNode);
 }
 
 
@@ -186,6 +188,7 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
         y->left->parent=y;
     }
     delete(x);
+    FixDelete(root);
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
@@ -813,4 +816,211 @@ void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
 
     std::cout<<std::endl<<std::endl<<std::endl;
 }
+
+
+
+/*DRZEWO CZERWONO CZARNE*/
+/*https://github.com/anandarao/Red-Black-Tree/blob/master/RBTree.cpp*/
+
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::BST<key_t,data_t>::rotateRight(BSTNode<key_t,data_t>* subtree_root)
+{
+    BSTNode<key_t,data_t>*prev= subtree_root->left;
+    subtree_root->left = prev->right;
+    if (subtree_root->left!=nullsubtree_root)
+    {
+        subtree_root->left->parent=subtree_root;
+    }
+    prev->parent=subtree_root->parent;
+    if (subtree_root->parent==nullsubtree_root)
+    {
+        root = prev;
+    }
+    else if (subtree_root==subtree_root->parent->left)
+    {
+        subtree_root->parent->left = prev;
+    }
+    else
+    {
+        subtree_root->parent->right = prev;
+    }
+    prev->right = subtree_root;
+    subtree_root->parent = prev;
+}
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::BST<key_t,data_t>::rotateLeft(BSTNode<key_t,data_t>* subtree_root)
+{
+    Node *prev = subtree_root->right;
+    subtree_root->right = prev->left;
+    if (subtree_root->right!=nullsubtree_root)
+    {
+        subtree_root->right->parent=subtree_root;
+    }
+    prev->parent = subtree_root->parent;
+    if (subtree_root->parent==nullsubtree_root)
+    {
+        root = prev;
+    }
+    else if (subtree_root==subtree_root->parent->left)
+    {
+        subtree_root->parent->left=prev;
+    }
+    else
+    {
+        subtree_root->parent->right=prev;
+    }
+    prev->left = subtree_root;
+    subtree_root->parent = prev;
+}
+
+
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::BST<key_t,data_t>::fixInsert(Node *&ptr)
+{
+    Node *parent = nullptr;
+    Node *grandparent = nullptr;
+    while (ptr != root && getColor(ptr) == RED && getColor(ptr->parent) == RED) {
+        parent = ptr->parent;
+        grandparent = parent->parent;
+        if (parent == grandparent->left) {
+            Node *uncle = grandparent->right;
+            if (getColor(uncle) == RED) {
+                setColor(uncle, BLACK);
+                setColor(parent, BLACK);
+                setColor(grandparent, RED);
+                ptr = grandparent;
+            } else {
+                if (ptr == parent->right) {
+                    rotateLeft(parent);
+                    ptr = parent;
+                    parent = ptr->parent;
+                }
+                rotateRight(grandparent);
+                swap(parent->color, grandparent->color);
+                ptr = parent;
+            }
+        } else {
+            Node *uncle = grandparent->left;
+            if (getColor(uncle) == RED) {
+                setColor(uncle, BLACK);
+                setColor(parent, BLACK);
+                setColor(grandparent, RED);
+                ptr = grandparent;
+            } else {
+                if (ptr == parent->left) {
+                    rotateRight(parent);
+                    ptr = parent;
+                    parent = ptr->parent;
+                }
+                rotateLeft(grandparent);
+                swap(parent->color, grandparent->color);
+                ptr = parent;
+            }
+        }
+    }
+    setColor(root, BLACK);
+}
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::BST<key_t,data_t>::fixDelete(Node *&node)
+{
+    if (node == nullptr)
+        return;
+
+    if (node == root) {
+        root = nullptr;
+        return;
+    }
+
+    if (getColor(node) == RED || getColor(node->left) == RED || getColor(node->right) == RED) {
+        Node *child = node->left != nullptr ? node->left : node->right;
+
+        if (node == node->parent->left) {
+            node->parent->left = child;
+            if (child != nullptr)
+                child->parent = node->parent;
+            setColor(child, BLACK);
+            delete (node);
+        } else {
+            node->parent->right = child;
+            if (child != nullptr)
+                child->parent = node->parent;
+            setColor(child, BLACK);
+            delete (node);
+        }
+    } else {
+        Node *sibling = nullptr;
+        Node *parent = nullptr;
+        Node *ptr = node;
+        setColor(ptr, DOUBLE_BLACK);
+        while (ptr != root && getColor(ptr) == DOUBLE_BLACK) {
+            parent = ptr->parent;
+            if (ptr == parent->left) {
+                sibling = parent->right;
+                if (getColor(sibling) == RED) {
+                    setColor(sibling, BLACK);
+                    setColor(parent, RED);
+                    rotateLeft(parent);
+                } else {
+                    if (getColor(sibling->left) == BLACK && getColor(sibling->right) == BLACK) {
+                        setColor(sibling, RED);
+                        if(getColor(parent) == RED)
+                            setColor(parent, BLACK);
+                        else
+                            setColor(parent, DOUBLE_BLACK);
+                        ptr = parent;
+                    } else {
+                        if (getColor(sibling->right) == BLACK) {
+                            setColor(sibling->left, BLACK);
+                            setColor(sibling, RED);
+                            rotateRight(sibling);
+                            sibling = parent->right;
+                        }
+                        setColor(sibling, parent->color);
+                        setColor(parent, BLACK);
+                        setColor(sibling->right, BLACK);
+                        rotateLeft(parent);
+                        break;
+                    }
+                }
+            } else {
+                sibling = parent->left;
+                if (getColor(sibling) == RED) {
+                    setColor(sibling, BLACK);
+                    setColor(parent, RED);
+                    rotateRight(parent);
+                } else {
+                    if (getColor(sibling->left) == BLACK && getColor(sibling->right) == BLACK) {
+                        setColor(sibling, RED);
+                        if (getColor(parent) == RED)
+                            setColor(parent, BLACK);
+                        else
+                            setColor(parent, DOUBLE_BLACK);
+                        ptr = parent;
+                    } else {
+                        if (getColor(sibling->left) == BLACK) {
+                            setColor(sibling->right, BLACK);
+                            setColor(sibling, RED);
+                            rotateLeft(sibling);
+                            sibling = parent->left;
+                        }
+                        setColor(sibling, parent->color);
+                        setColor(parent, BLACK);
+                        setColor(sibling->left, BLACK);
+                        rotateRight(parent);
+                        break;
+                    }
+                }
+            }
+        }
+        if (node == node->parent->left)
+            node->parent->left = nullptr;
+        else
+            node->parent->right = nullptr;
+        delete(node);
+        setColor(root, BLACK);
+    }
+}
+
+
+
 #endif // BST_TPP

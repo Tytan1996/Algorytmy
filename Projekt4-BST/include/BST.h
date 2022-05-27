@@ -11,6 +11,8 @@
 #include <queue>
 #include <concepts>
 
+#include <cstdlib>
+
 #include "simpleini/ini.h"
 
 namespace AiSD
@@ -19,7 +21,8 @@ namespace AiSD
     enum Color
     {
         RED=0,
-        BLACK=1
+        BLACK=1,
+        PINK=2
     };
 
     template <typename T>
@@ -93,8 +96,8 @@ namespace AiSD
 
             void rotateRight(BSTNode<key_t,data_t>* subtree_root);
             void rotateLeft(BSTNode<key_t,data_t>* subtree_root);
-            void fixInsert(BSTNode<key_t,data_t>*&subtree_root);
-            void fixDelete(BSTNode<key_t,data_t>*&subtree_root) ;
+            void FixInsert(BSTNode<key_t,data_t>*&subtree_root);
+            void FixDelete(BSTNode<key_t,data_t>*&subtree_root) ;
 
             BSTNode<key_t,data_t> *root=nullptr;
     };

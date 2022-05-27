@@ -15,7 +15,6 @@ public:
     void detailsTest();
     void generalTest();
 
-
 private:
     std::vector< int > dane;
     BST<int,std::string>test;

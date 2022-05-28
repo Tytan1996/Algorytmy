@@ -13,8 +13,8 @@ int main() {
     string text="";
     AiSD::BST<int,string> BT;
     std::cout<<"TESTY"<<'\n';
-    AiSD::Testing testy;
-    testy.detailsTest();
+    //AiSD::Testing testy;
+    //testy.detailsTest();
 
     BT.Insert(10,"10a");
     BT.Insert(5,"5aa");
@@ -31,7 +31,7 @@ int main() {
     AiSD::BSTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
     std::cout<<'\n'<<"-------------------------"<<'\n';
-    testy.generalTest();
+    //testy.generalTest();
     std::cout<<'\n'<<"-------------------------"<<'\n';
     std::cout<<"Koniec testow";
     std::cout<<'\n'<<"-------------------------"<<'\n';

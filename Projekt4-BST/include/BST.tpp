@@ -791,25 +791,26 @@ void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
         std::cout<<"Subtree unvalid"<<std::endl;
         return;
     }
-    std::cout<<std::endl<<std::endl<<"INFO SUBTREE ID: "<<subtree_root->data<<std::endl;
+    std::cout<<std::endl<<std::endl<<"THIS: ";
+    std::cout<<"key: "<<subtree_root->key<<" data:"<<subtree_root->data<<" color:"<<subtree_root->color<<std::endl;;
 
     std::cout<<"PARENT ID: ";
     if(subtree_root->parent!=nullptr)
-        std::cout<<subtree_root->parent->data;
+        std::cout<<"key: "<<subtree_root->parent->key<<" data:"<<subtree_root->parent->data<<" color:"<<subtree_root->parent->color;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<"LEFT ID: ";
     if(subtree_root->left!=nullptr)
-        std::cout<<subtree_root->left->data;
+        std::cout<<"key: "<<subtree_root->left->key<<" data:"<<subtree_root->left->data<<" color:"<<subtree_root->left->color;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<"RIGHT ID: ";
     if(subtree_root->right!=nullptr)
-        std::cout<<subtree_root->right->data;
+        std::cout<<"key: "<<subtree_root->right->key<<" data:"<<subtree_root->right->data<<" color:"<<subtree_root->right->color;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
@@ -875,23 +876,43 @@ void AiSD::BST<key_t,data_t>::rotateLeft(BSTNode<key_t,data_t>* subtree_root)
 
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::BST<key_t,data_t>::ReplaceColor(BSTNode<key_t,data_t>* subtree_root,Color newColor)
+{
+    if(subtree_root==nullptr)
+        return;
+    subtree_root->color=newColor;
+}
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+AiSD::Color AiSD::BST<key_t,data_t>::WhatColorIs(BSTNode<key_t,data_t>* subtree_root)
+{
+    if(subtree_root==nullptr)
+        return BLACK;
+    return subtree_root->color;
+}
+
+template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::FixInsert(BSTNode<key_t,data_t>*&subtree_root)
 {
-    BSTNode<key_t,data_t> *parent = nullptr;
-    BSTNode<key_t,data_t> *grand = nullptr;
     BSTNode<key_t,data_t> *uncle = nullptr;
-    while (subtree_root != root && subtree_root->color == RED && subtree_root->parent->color == RED)
+    BSTNode<key_t,data_t> *grand = nullptr;
+    BSTNode<key_t,data_t> *parent = nullptr;
+
+    while (subtree_root != root &&
+            WhatColorIs(subtree_root) == RED &&
+            WhatColorIs(subtree_root->parent) == RED)
     {
         parent = subtree_root->parent;
         grand = parent->parent;
+
         if (parent == grand->left)
         {
             uncle = grand->right;
-            if (uncle->color == RED)
+
+            if (WhatColorIs(uncle) == RED)
             {
-                uncle->color=BLACK;
-                parent->color=BLACK;
-                grand->color=RED;
+                ReplaceColor(uncle,BLACK);
+                ReplaceColor(grand,RED);
+                ReplaceColor(parent,BLACK);
                 subtree_root = grand;
             }
             else
@@ -905,9 +926,9 @@ void AiSD::BST<key_t,data_t>::FixInsert(BSTNode<key_t,data_t>*&subtree_root)
                 rotateRight(grand);
 
                 //swap
-                Color cpy=parent->color;
-                parent->color=grand->color;
-                grand->color=cpy;
+                Color cpy=WhatColorIs(parent);
+                ReplaceColor(parent,WhatColorIs(grand));
+                ReplaceColor(grand,cpy);
 
                 subtree_root = parent;
             }
@@ -915,16 +936,18 @@ void AiSD::BST<key_t,data_t>::FixInsert(BSTNode<key_t,data_t>*&subtree_root)
         else
         {
             uncle = grand->left;
-            if (uncle->color == RED)
+
+            if (WhatColorIs(uncle)==RED)
             {
-                uncle->color=BLACK;
-                parent->color=BLACK;
-                grand->color=RED;
+                ReplaceColor(parent,BLACK);
+                ReplaceColor(uncle,BLACK);
+                ReplaceColor(grand,RED);
+
                 subtree_root = grand;
             }
             else
             {
-                if (subtree_root == parent->left)
+                if (subtree_root==parent->left)
                 {
                     rotateRight(parent);
                     subtree_root = parent;
@@ -933,22 +956,24 @@ void AiSD::BST<key_t,data_t>::FixInsert(BSTNode<key_t,data_t>*&subtree_root)
                 rotateLeft(grand);
 
                 //swap
-                Color cpy=parent->color;
-                parent->color=grand->color;
-                grand->color=cpy;
+                Color cpy=WhatColorIs(parent);
+                ReplaceColor(parent,WhatColorIs(grand));
+                ReplaceColor(grand,cpy);
 
                 subtree_root = parent;
             }
         }
     }
-    root->color=BLACK;
+
+    //na koniec zmiana root na czarny
+    ReplaceColor(root,BLACK);
 }
 
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
 {
-    if (subtree_root == nullptr)
+    if (subtree_root == nullptr || root==nullptr)
     {
         return;
     }
@@ -957,76 +982,92 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
         root = nullptr;
         return;
     }
-
-    if (subtree_root->color == RED || subtree_root->left->color == RED || subtree_root->right->color == RED)
+    if (WhatColorIs(subtree_root->left) == RED || WhatColorIs(subtree_root) == RED || WhatColorIs(subtree_root->right) == RED)
     {
-        BSTNode<key_t,data_t> *child = subtree_root->left != nullptr ? subtree_root->left : subtree_root->right;
-        if (subtree_root == subtree_root->parent->left)
+        BSTNode<key_t,data_t> *kid;
+        if(subtree_root->left!=nullptr)
         {
-            subtree_root->parent->left = child;
-            if (child != nullptr)
-            {
-                child->parent = subtree_root->parent;
-            }
-            child->color=BLACK;
+            kid=subtree_root->left;
+        }
+        else
+        {
+            kid=subtree_root->right;
+        }
+        if (subtree_root==subtree_root->parent->left)
+        {
+            subtree_root->parent->left=kid;
+
+            if (kid != nullptr)
+                kid->parent = subtree_root->parent;
+
+
+            ReplaceColor(kid,BLACK);
             delete (subtree_root);
         }
         else
         {
-            subtree_root->parent->right = child;
-            if (child != nullptr)
-            {
-                child->parent = subtree_root->parent;
-            }
-            child->color=BLACK;
+
+            subtree_root->parent->right=kid;
+            if (kid!=nullptr)
+                kid->parent=subtree_root->parent;
+
+
+            ReplaceColor(kid,BLACK);
             delete (subtree_root);
         }
     }
     else
     {
-        BSTNode<key_t,data_t> *sibling = nullptr;
-        BSTNode<key_t,data_t> *parent = nullptr;
+        BSTNode<key_t,data_t> *parent=nullptr;
+        BSTNode<key_t,data_t> *sibling=nullptr;
+
         BSTNode<key_t,data_t> *ptr = subtree_root;
-        ptr->color= PINK;
-        while (ptr != root && ptr->color == PINK)
+
+        ReplaceColor(ptr,PINK);
+        while (ptr->color==PINK&&ptr!=root)
         {
-            parent = ptr->parent;
-            if (ptr == parent->left)
+            parent=ptr->parent;
+            if (ptr==parent->left)
             {
-                sibling = parent->right;
-                if (sibling->color == RED)
+                sibling=parent->right;
+                if (WhatColorIs(sibling)==RED)
                 {
-                    sibling->color= BLACK;
-                    parent->color= RED;
+                    ReplaceColor(parent,RED);
+                    ReplaceColor(sibling,BLACK);
+
                     rotateLeft(parent);
                 }
                 else
                 {
-                    if (sibling->left->color == BLACK && sibling->right->color == BLACK)
+                    if (WhatColorIs(sibling->left)==BLACK&&WhatColorIs(sibling->right)==BLACK)
                     {
-                        sibling->color=RED;
-                        if(parent->color == RED)
+                        ReplaceColor(sibling,RED);
+                        if(WhatColorIs(parent) == RED)
                         {
-                            parent->color=BLACK;
+                            ReplaceColor(parent,BLACK);
                         }
                         else
                         {
-                            parent->color=PINK;
+                            ReplaceColor(parent,PINK);
                         }
-                        ptr = parent;
+
+                        ptr=parent;
                     }
                     else
                     {
-                        if (sibling->right->color == BLACK)
+                        if (WhatColorIs(sibling->right)==BLACK)
                         {
-                            sibling->left->color=BLACK;
-                            sibling->color=RED;
+                            ReplaceColor(sibling->left,BLACK);
+                            ReplaceColor(sibling,RED);
+
                             rotateRight(sibling);
                             sibling = parent->right;
                         }
-                        sibling->color=parent->color;
-                        parent->color=BLACK;
-                        sibling->right->color=BLACK;
+
+                        ReplaceColor(sibling,WhatColorIs(parent));
+                        ReplaceColor(sibling->right,BLACK);
+                        ReplaceColor(parent,BLACK);
+
                         rotateLeft(parent);
                         break;
                     }
@@ -1034,46 +1075,52 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
             }
             else
             {
-                sibling = parent->left;
-                if (sibling->color == RED)
+                sibling=parent->left;
+                if (WhatColorIs(sibling)==RED)
                 {
-                    sibling->color= BLACK;
-                    parent->color=RED;
+
+                    ReplaceColor(sibling,BLACK);
+                    ReplaceColor(parent,RED);
                     rotateRight(parent);
                 }
                 else
                 {
-                    if (sibling->left->color == BLACK && sibling->right->color == BLACK)
+                    if (WhatColorIs(sibling->right)==BLACK&&WhatColorIs(sibling->left)==BLACK)
                     {
-                        sibling->color= RED;
-                        if (parent->color == RED)
+                        ReplaceColor(sibling,RED);
+
+                        if (WhatColorIs(parent) == RED)
                         {
-                            parent->color=BLACK;
+                            ReplaceColor(parent,BLACK);
                         }
                         else
                         {
-                            parent->color=PINK;
+                            ReplaceColor(parent,PINK);
                         }
                         ptr = parent;
                     }
                     else
                     {
-                        if (sibling->left->color == BLACK)
+
+                        if (WhatColorIs(sibling->left)==BLACK)
                         {
-                            sibling->right->color= BLACK;
-                            sibling->color=RED;
+                            ReplaceColor(sibling->right,BLACK);
+                            ReplaceColor(sibling,RED);
                             rotateLeft(sibling);
                             sibling = parent->left;
                         }
-                        sibling->color=parent->color;
-                        parent->color=BLACK;
-                        sibling->left->color=BLACK;
+
+                        ReplaceColor(sibling,WhatColorIs(parent));
+                        ReplaceColor(sibling->left,BLACK);
+                        ReplaceColor(parent,BLACK);
+
                         rotateRight(parent);
                         break;
                     }
                 }
             }
         }
+
         if (subtree_root == subtree_root->parent->left)
         {
             subtree_root->parent->left = nullptr;
@@ -1082,8 +1129,10 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
         {
             subtree_root->parent->right = nullptr;
         }
+
+        ReplaceColor(root,BLACK);
         delete(subtree_root);
-        root->color=BLACK;
+
     }
 }
 

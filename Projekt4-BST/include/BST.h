@@ -94,10 +94,13 @@ namespace AiSD
             void ShowBSTTree();
             void ShowBST();
 
+            void ReplaceColor(BSTNode<key_t,data_t>* subtree_root,Color newColor);
+            Color WhatColorIs(BSTNode<key_t,data_t>* subtree_root);
+
             void rotateRight(BSTNode<key_t,data_t>* subtree_root);
             void rotateLeft(BSTNode<key_t,data_t>* subtree_root);
             void FixInsert(BSTNode<key_t,data_t>*&subtree_root);
-            void FixDelete(BSTNode<key_t,data_t>*&subtree_root) ;
+            void FixDelete(BSTNode<key_t,data_t>*&subtree_root);
 
             BSTNode<key_t,data_t> *root=nullptr;
     };

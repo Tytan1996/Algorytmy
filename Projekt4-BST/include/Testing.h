@@ -9,10 +9,6 @@
 #include <BST.h>
 namespace AiSD {
 class Testing {
-
-
-    //    Color 0=RED  1=BLACK
-
 public:
     void randing(size_t amountOfElements);
     int  rand(float mnoznik);

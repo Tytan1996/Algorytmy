@@ -11,7 +11,6 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
     parent=nullptr;
     left=nullptr;
     right=nullptr;
-    color=RED;
     key=k;
     data=dataArg;
 }
@@ -78,7 +77,6 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
             }
         }
     }
-    FixInsert(newNode);
 }
 
 
@@ -188,7 +186,6 @@ void AiSD::BST<key_t,data_t>::Delete(const key_t k)
         y->left->parent=y;
     }
     delete(x);
-    FixDelete(root);
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
@@ -432,196 +429,248 @@ std::string AiSD::convertString(const Type val)
 #include <queue>
 #include <list>
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ShowBSTTree() {
+void AiSD::BST<key_t,data_t>::ShowBSTTree()
+{
     BSTNode<key_t,data_t> *tmp;
     std::list<BSTNode<key_t,data_t>*> listBST;
     std::queue<BSTNode<key_t,data_t>*> kolejkaBST;
     int nextMaxSons=1;
     int number=0;
     int height1=4;
-    bool parentsIsNull=false;
+    bool sonsIsNull=false;
     tmp=root;
-    if(tmp!=nullptr) {
+    if(tmp!=nullptr)
+    {
         kolejkaBST.push(tmp);
-        listBST.push_back(tmp);
-        for(int i=0; i<height1*3; ++i) {
+        for(int i=0; i<height1*3; ++i)
+        {
             std::cout<<"    ";
         }
         std::cout<<'\ ';
-        while(!kolejkaBST.empty() && height1!=0) {
+        while(!kolejkaBST.empty() && height1!=0)
+        {
             tmp=kolejkaBST.front();
             number++;
-            if(tmp->parent!=nullptr) {
+            if(height1==3)
+            {
+                if(tmp!=nullptr)
+                {
+                    std::cout<<tmp->key<<" "<<tmp->data;
+                }
+                else
+                {
+                    std::cout<<"null ";
+                }
+                std::cout<<"        ";
 
             }
-            if(tmp!=nullptr) {
-                std::cout<<tmp->key<<" "<<tmp->data;
-            } else {
-                std::cout<<"null";
+            else
+            {
+                if(tmp!=nullptr)
+                {
+                    std::cout<<tmp->key<<" "<<tmp->data;
+                }
+                else
+                {
+                    std::cout<<"null ";
+                }
             }
-            if(height1==3){
-                for(int i=0;i<height1*3;++i){
-                    std::cout<<"     ";
-                }
-                if(number==2){
-                    std::cout<<"              ";
-                }
-            }else if(height1==2){
-                for(int i=0;i<height1;++i){
-                    std::cout<<"     ";
-                }
-                if(number==2){
-                    std::cout<<"              ";
-                }
-            }else{
-                std::cout<<"        ";
+            for(int i=0;i<height1*2;++i){
+
+                std::cout<<"   ";
+
             }
-            if(height1>1) {
-                if(tmp!=nullptr) {
-                    if(tmp->left!=nullptr) {
+
+
+
+
+            if(height1>1)
+            {
+                if(tmp!=nullptr)
+                {
+                    if(tmp->left!=nullptr)
+                    {
                         kolejkaBST.push(tmp->left);
-                        listBST.push_back(tmp->left);
-                    } else {
-                        kolejkaBST.push(nullptr);
-                        listBST.push_back(nullptr);
                     }
-                } else {
-                    kolejkaBST.push(nullptr);
-                    listBST.push_back(nullptr);
+                    else
+                    {
+                        kolejkaBST.push(nullptr);
+                    }
                 }
-                if(tmp!=nullptr) {
-                    if(tmp->right!=nullptr) {
+                else
+                {
+                    kolejkaBST.push(nullptr);
+                }
+                if(tmp!=nullptr)
+                {
+                    if(tmp->right!=nullptr)
+                    {
                         kolejkaBST.push(tmp->right);
-                        listBST.push_back(tmp->right);
-                    } else {
-                        kolejkaBST.push(nullptr);
-                        listBST.push_back(nullptr);
                     }
-                } else {
-                    kolejkaBST.push(nullptr);
-                    listBST.push_back(nullptr);
                 }
-            } else {
-                kolejkaBST.push(nullptr);
-                listBST.push_back(nullptr);
+                else
+                {
+                    kolejkaBST.push(nullptr);
+                }
             }
-            if(nextMaxSons==number) {
-                if(height1==1) {
+            else
+            {
+                kolejkaBST.push(nullptr);
+            }
+            if(nextMaxSons==number)
+            {
+                if(height1==1)
+                {
                     return;
                 }
                 std::cout<<'\n';
                 nextMaxSons*=2;
                 int helpNumber=nextMaxSons;
                 number=nextMaxSons;
-                if(height1==3 ||height1==4) {
-                    for(int i=0; i<height1*2; ++i) {
+
+                if(height1==3 ||height1==4)
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
                         std::cout<<"    ";
                     }
-                } else {
-                    for(int i=0; i<height1*2; ++i) {
+                }
+                else
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
                         std::cout<<"     ";
                     }
                 }
-                while(number>0) {
-                    if(height1==4 && listBST.front()!=nullptr) {
-                        for(int i=0; i<height1*6; ++i) {
+                while(number>0)
+                {
+                    if(height1==4)
+                    {
+                        for(int i=0; i<height1*6; ++i)
+                        {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0; i<height1*6; ++i) {
+                        for(int i=0; i<height1*6; ++i)
+                        {
                             std::cout<<"_";
                         }
-                        for(int i=0; i<height1*3; ++i) {
+                        for(int i=0; i<height1*3; ++i)
+                        {
                             std::cout<<"        ";
                         }
                         number-=2;
-                        listBST.pop_front();
-                    } else if(height1==3 && listBST.front()!=nullptr) {
-                        for(int i=0; i<height1*3; ++i) {
+                    }
+                    else if(height1==3)
+                    {
+                        for(int i=0; i<height1*3; ++i)
+                        {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0; i<height1*3; ++i) {
+                        for(int i=0; i<height1*3; ++i)
+                        {
                             std::cout<<"_";
                         }
                         std::cout<<'_';
-                        for(int i=0; i<height1*2; ++i) {
+                        for(int i=0; i<height1*2; ++i)
+                        {
                             std::cout<<"     ";
                         }
                         number-=2;
-                        listBST.pop_front();
-                    } else if(height1==2 && listBST.front()!=nullptr){
-                        for(int i=0; i<height1*2; ++i) {
+                    }
+                    else
+                    {
+                        for(int i=0; i<height1*2; ++i)
+                        {
                             std::cout<<"_";
                         }
                         std::cout<<"|";
-                        for(int i=0; i<height1*2; ++i) {
+                        for(int i=0; i<height1*2; ++i)
+                        {
                             std::cout<<"_";
                         }
-                        for(int i=0; i<height1; ++i) {
+                        for(int i=0; i<height1; ++i)
+                        {
                             std::cout<<"       ";
                         }
                         number-=2;
-                        listBST.pop_front();
-                    }else if(listBST.front()==nullptr){
-                        std::cout<<"     ";
-                        number-=2;
-                        listBST.pop_front();
-                        parentsIsNull=true;
                     }
                 }
                 std::cout<<'\n';
-                if(height1==4 || height1==3) {
-                    for(int i=0; i<height1*2; ++i) {
+                if(height1==4 || height1==3)
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
                         std::cout<<"    ";
                     }
-                } else {
-                    for(int i=0; i<height1*2; ++i) {
+                }
+                else
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
                         std::cout<<"     ";
                     }
                 }
-                while(helpNumber!=0) {
-                    if(height1==4) {
+                while(helpNumber!=0)
+                {
+                    if(height1==4)
+                    {
                         std::cout<<'/';
-                        for(int i=0; i<height1*2; ++i) {
+                        for(int i=0; i<height1*2; ++i)
+                        {
                             std::cout<<"      ";
                         }
                         std::cout<<'\\';
-                        for(int i=0; i<height1; ++i) {
+                        for(int i=0; i<height1; ++i)
+                        {
                             std::cout<<"    ";
                         }
 
                         helpNumber-=2;
-                    } else if(height1==3) {
+                    }
+                    else if(height1==3)
+                    {
                         std::cout<<'/';
-                        for(int i=0; i<height1; ++i) {
+                        for(int i=0; i<height1; ++i)
+                        {
                             std::cout<<"      ";
                         }
                         std::cout<<'\\';
-                        for(int i=0; i<height1*1.7; ++i) {
+                        for(int i=0; i<height1*1.7; ++i)
+                        {
                             std::cout<<"     ";
                         }
 
                         helpNumber-=2;
-                    } else{
+                    }
+                    else
+                    {
                         std::cout<<'/';
-                        for(int i=0; i<height1; ++i) {
+                        for(int i=0; i<height1; ++i)
+                        {
                             std::cout<<"    ";
                         }
                         std::cout<<'\\';
-                        for(int i=0; i<height1; ++i) {
+                        for(int i=0; i<height1; ++i)
+                        {
                             std::cout<<"      ";
                         }
                         helpNumber-=2;
                     }
                 }
                 std::cout<<'\n';
-                if(height1==4 ||height1==3 ||height1==2) {
-                    for(int i=0; i<height1*2; ++i) {
+                if(height1==4 ||height1==3 ||height1==2)
+                {
+                    for(int i=0; i<height1*2; ++i)
+                    {
                         std::cout<<"    ";
                     }
-                } else {
-                    for(int i=0; i<height1; ++i) {
+                }
+                else
+                {
+                    for(int i=0; i<height1; ++i)
+                    {
                         std::cout<<"  ";
                     }
                 }
@@ -629,7 +678,9 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
                 --height1;
             }
             kolejkaBST.pop();
+
         }
+
     }
     std::cout<<'\n';
 }
@@ -791,350 +842,29 @@ void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
         std::cout<<"Subtree unvalid"<<std::endl;
         return;
     }
-    std::cout<<std::endl<<std::endl<<"THIS: ";
-    std::cout<<"key: "<<subtree_root->key<<" data:"<<subtree_root->data<<" color:"<<subtree_root->color<<std::endl;;
+    std::cout<<std::endl<<std::endl<<"INFO SUBTREE ID: "<<subtree_root->data<<std::endl;
 
     std::cout<<"PARENT ID: ";
     if(subtree_root->parent!=nullptr)
-        std::cout<<"key: "<<subtree_root->parent->key<<" data:"<<subtree_root->parent->data<<" color:"<<subtree_root->parent->color;
+        std::cout<<subtree_root->parent->data;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<"LEFT ID: ";
     if(subtree_root->left!=nullptr)
-        std::cout<<"key: "<<subtree_root->left->key<<" data:"<<subtree_root->left->data<<" color:"<<subtree_root->left->color;
+        std::cout<<subtree_root->left->data;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<"RIGHT ID: ";
     if(subtree_root->right!=nullptr)
-        std::cout<<"key: "<<subtree_root->right->key<<" data:"<<subtree_root->right->data<<" color:"<<subtree_root->right->color;
+        std::cout<<subtree_root->right->data;
     else
         std::cout<<"NULL";
     std::cout<<std::endl;
 
     std::cout<<std::endl<<std::endl<<std::endl;
 }
-
-
-
-/*DRZEWO CZERWONO CZARNE*/
-/*https://github.com/anandarao/Red-Black-Tree/blob/master/RBTree.cpp*/
-
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::rotateRight(BSTNode<key_t,data_t>* subtree_root)
-{
-    BSTNode<key_t,data_t>* prev= subtree_root->left;
-    subtree_root->left = prev->right;
-    if (subtree_root->left!=nullptr)
-    {
-        subtree_root->left->parent=subtree_root;
-    }
-    prev->parent=subtree_root->parent;
-    if (subtree_root->parent==nullptr)
-    {
-        root = prev;
-    }
-    else if (subtree_root==subtree_root->parent->left)
-    {
-        subtree_root->parent->left = prev;
-    }
-    else
-    {
-        subtree_root->parent->right = prev;
-    }
-    prev->right = subtree_root;
-    subtree_root->parent = prev;
-}
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::rotateLeft(BSTNode<key_t,data_t>* subtree_root)
-{
-    BSTNode<key_t,data_t> *prev = subtree_root->right;
-    subtree_root->right = prev->left;
-    if (subtree_root->right!=nullptr)
-    {
-        subtree_root->right->parent=subtree_root;
-    }
-    prev->parent = subtree_root->parent;
-    if (subtree_root->parent==nullptr)
-    {
-        root = prev;
-    }
-    else if (subtree_root==subtree_root->parent->left)
-    {
-        subtree_root->parent->left=prev;
-    }
-    else
-    {
-        subtree_root->parent->right=prev;
-    }
-    prev->left = subtree_root;
-    subtree_root->parent = prev;
-}
-
-
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ReplaceColor(BSTNode<key_t,data_t>* subtree_root,Color newColor)
-{
-    if(subtree_root==nullptr)
-        return;
-    subtree_root->color=newColor;
-}
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::Color AiSD::BST<key_t,data_t>::WhatColorIs(BSTNode<key_t,data_t>* subtree_root)
-{
-    if(subtree_root==nullptr)
-        return BLACK;
-    return subtree_root->color;
-}
-
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::FixInsert(BSTNode<key_t,data_t>*&subtree_root)
-{
-    BSTNode<key_t,data_t> *uncle = nullptr;
-    BSTNode<key_t,data_t> *grand = nullptr;
-    BSTNode<key_t,data_t> *parent = nullptr;
-
-    while (subtree_root != root &&
-            WhatColorIs(subtree_root) == RED &&
-            WhatColorIs(subtree_root->parent) == RED)
-    {
-        parent = subtree_root->parent;
-        grand = parent->parent;
-
-        if (parent == grand->left)
-        {
-            uncle = grand->right;
-
-            if (WhatColorIs(uncle) == RED)
-            {
-                ReplaceColor(uncle,BLACK);
-                ReplaceColor(grand,RED);
-                ReplaceColor(parent,BLACK);
-                subtree_root = grand;
-            }
-            else
-            {
-                if (subtree_root == parent->right)
-                {
-                    rotateLeft(parent);
-                    subtree_root = parent;
-                    parent = subtree_root->parent;
-                }
-                rotateRight(grand);
-
-                //swap
-                Color cpy=WhatColorIs(parent);
-                ReplaceColor(parent,WhatColorIs(grand));
-                ReplaceColor(grand,cpy);
-
-                subtree_root = parent;
-            }
-        }
-        else
-        {
-            uncle = grand->left;
-
-            if (WhatColorIs(uncle)==RED)
-            {
-                ReplaceColor(parent,BLACK);
-                ReplaceColor(uncle,BLACK);
-                ReplaceColor(grand,RED);
-
-                subtree_root = grand;
-            }
-            else
-            {
-                if (subtree_root==parent->left)
-                {
-                    rotateRight(parent);
-                    subtree_root = parent;
-                    parent = subtree_root->parent;
-                }
-                rotateLeft(grand);
-
-                //swap
-                Color cpy=WhatColorIs(parent);
-                ReplaceColor(parent,WhatColorIs(grand));
-                ReplaceColor(grand,cpy);
-
-                subtree_root = parent;
-            }
-        }
-    }
-
-    //na koniec zmiana root na czarny
-    ReplaceColor(root,BLACK);
-}
-
-
-template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
-{
-    if (subtree_root == nullptr || root==nullptr)
-    {
-        return;
-    }
-    if (subtree_root == root)
-    {
-        root = nullptr;
-        return;
-    }
-    if (WhatColorIs(subtree_root->left) == RED || WhatColorIs(subtree_root) == RED || WhatColorIs(subtree_root->right) == RED)
-    {
-        BSTNode<key_t,data_t> *kid;
-        if(subtree_root->left!=nullptr)
-        {
-            kid=subtree_root->left;
-        }
-        else
-        {
-            kid=subtree_root->right;
-        }
-        if (subtree_root==subtree_root->parent->left)
-        {
-            subtree_root->parent->left=kid;
-
-            if (kid != nullptr)
-                kid->parent = subtree_root->parent;
-
-
-            ReplaceColor(kid,BLACK);
-            delete (subtree_root);
-        }
-        else
-        {
-
-            subtree_root->parent->right=kid;
-            if (kid!=nullptr)
-                kid->parent=subtree_root->parent;
-
-
-            ReplaceColor(kid,BLACK);
-            delete (subtree_root);
-        }
-    }
-    else
-    {
-        BSTNode<key_t,data_t> *parent=nullptr;
-        BSTNode<key_t,data_t> *sibling=nullptr;
-
-        BSTNode<key_t,data_t> *ptr = subtree_root;
-
-        ReplaceColor(ptr,PINK);
-        while (ptr->color==PINK&&ptr!=root)
-        {
-            parent=ptr->parent;
-            if (ptr==parent->left)
-            {
-                sibling=parent->right;
-                if (WhatColorIs(sibling)==RED)
-                {
-                    ReplaceColor(parent,RED);
-                    ReplaceColor(sibling,BLACK);
-
-                    rotateLeft(parent);
-                }
-                else
-                {
-                    if (WhatColorIs(sibling->left)==BLACK&&WhatColorIs(sibling->right)==BLACK)
-                    {
-                        ReplaceColor(sibling,RED);
-                        if(WhatColorIs(parent) == RED)
-                        {
-                            ReplaceColor(parent,BLACK);
-                        }
-                        else
-                        {
-                            ReplaceColor(parent,PINK);
-                        }
-
-                        ptr=parent;
-                    }
-                    else
-                    {
-                        if (WhatColorIs(sibling->right)==BLACK)
-                        {
-                            ReplaceColor(sibling->left,BLACK);
-                            ReplaceColor(sibling,RED);
-
-                            rotateRight(sibling);
-                            sibling = parent->right;
-                        }
-
-                        ReplaceColor(sibling,WhatColorIs(parent));
-                        ReplaceColor(sibling->right,BLACK);
-                        ReplaceColor(parent,BLACK);
-
-                        rotateLeft(parent);
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                sibling=parent->left;
-                if (WhatColorIs(sibling)==RED)
-                {
-
-                    ReplaceColor(sibling,BLACK);
-                    ReplaceColor(parent,RED);
-                    rotateRight(parent);
-                }
-                else
-                {
-                    if (WhatColorIs(sibling->right)==BLACK&&WhatColorIs(sibling->left)==BLACK)
-                    {
-                        ReplaceColor(sibling,RED);
-
-                        if (WhatColorIs(parent) == RED)
-                        {
-                            ReplaceColor(parent,BLACK);
-                        }
-                        else
-                        {
-                            ReplaceColor(parent,PINK);
-                        }
-                        ptr = parent;
-                    }
-                    else
-                    {
-
-                        if (WhatColorIs(sibling->left)==BLACK)
-                        {
-                            ReplaceColor(sibling->right,BLACK);
-                            ReplaceColor(sibling,RED);
-                            rotateLeft(sibling);
-                            sibling = parent->left;
-                        }
-
-                        ReplaceColor(sibling,WhatColorIs(parent));
-                        ReplaceColor(sibling->left,BLACK);
-                        ReplaceColor(parent,BLACK);
-
-                        rotateRight(parent);
-                        break;
-                    }
-                }
-            }
-        }
-
-        if (subtree_root == subtree_root->parent->left)
-        {
-            subtree_root->parent->left = nullptr;
-        }
-        else
-        {
-            subtree_root->parent->right = nullptr;
-        }
-
-        ReplaceColor(root,BLACK);
-        delete(subtree_root);
-
-    }
-}
-
-
 #endif // BST_TPP

@@ -11,19 +11,10 @@
 #include <queue>
 #include <concepts>
 
-#include <cstdlib>
-
 #include "simpleini/ini.h"
 
 namespace AiSD
 {
-
-    enum Color
-    {
-        RED=0,
-        BLACK=1,
-        PINK=2
-    };
 
     template <typename T>
     concept RightType =
@@ -52,7 +43,6 @@ namespace AiSD
     class BSTNode
     {
         public:
-        Color color;
         key_t key;
         data_t data;
 
@@ -93,14 +83,6 @@ namespace AiSD
             //metody MP
             void ShowBSTTree();
             void ShowBST();
-
-            void ReplaceColor(BSTNode<key_t,data_t>* subtree_root,Color newColor);
-            Color WhatColorIs(BSTNode<key_t,data_t>* subtree_root);
-
-            void rotateRight(BSTNode<key_t,data_t>* subtree_root);
-            void rotateLeft(BSTNode<key_t,data_t>* subtree_root);
-            void FixInsert(BSTNode<key_t,data_t>*&subtree_root);
-            void FixDelete(BSTNode<key_t,data_t>*&subtree_root);
 
             BSTNode<key_t,data_t> *root=nullptr;
     };

@@ -19,9 +19,17 @@ int main() {
     testy.detailsTest();
 
     BT.Insert(10,"10a");
-    BT.Insert(5,"5aa");
-    BT.Insert(15,"15a");
+    BT.Insert(15,"5aa");
+    BT.Delete(10);
+    std::cout<<"BLAD: \n";
+    if(BT.root==nullptr){
+        std::cout<<"DELETE (ROOT) ZLE DZIALA. MA WARTOSC NIL\n";
+        return 0;
+    }
+    std::cout<<"kolor root: "<<BT.root->color<<'\n';
 
+
+/*
     std::cout<<"PRZED USUWANIEM--------"<<std::endl;
     BT.ShowRBTTree();
     BT.Delete(10);
@@ -36,11 +44,7 @@ int main() {
 
     BT.Delete(10);
     std::cout<<"TUTAJ CRASH:\n";
-    if(BT.root==nullptr){
-        return 0;
-    }
-    std::cout<<BT.root->key<<std::endl;
-    std::cout<<"KOROL: "<<BT.root->color;
+    std::cout<<"KOLOR ROOT: "<<BT.root->color;
     BT.ShowRBTTree();
 
     std::cout<<std::endl<<std::endl<<std::endl;
@@ -48,7 +52,7 @@ int main() {
     BT.Insert(5,"5bb");
     BT.ShowRBTTree();
     BT.pointersInfo(BT.Search(5)->right);
-
+*/
 
     AiSD::RBTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 

@@ -97,7 +97,7 @@ void AiSD::Testing::detailsTest() {
         std::cout<<"Dwu elementowe drzewo jest zle usuwanie (2)"<<'\n';
     }
     if(!testDelete(4)) {
-        std::cout<<"Usuwanie root nie dzialaj poprawnie"<<'\n';
+        std::cout<<"Usuwanie root nie dziala poprawnie"<<'\n';
     }
     if(!testClear()) {
         std::cout<<"Clear dziala zle"<<'\n';
@@ -219,11 +219,15 @@ bool AiSD::Testing::testInsert(int opcja,RBTNode<int,std::string> *tmp) {
         break;
     case 2: // sprawdzanie insert kiedy dodaje sie lewego syna
         if(tmp->parent==nullptr) {
-            std::cout<<"Kolejny wartosc dodania do drzeqa nie posiada wskaznika na rodzica."<<'\n';
+            std::cout<<"Kolejny wartosc dodania do drzewa nie posiada wskaznika na rodzica."<<'\n';
             return false;
         } else {
             if(tmp->parent->left==nullptr) {
-                std::cout<<"Rodzic nie zawiera ustawionego wskaznika na lewego syna"<<'\n';
+                std::cout<<"Rodzic nie zawiera ustawionego wskaznika na lewego syna\n";
+                return false;
+            }
+            if(tmp->parent->color!=1){
+                std::cout<<"root ma inny kolor niz czarny.\n";
                 return false;
             }
         }
@@ -244,6 +248,10 @@ bool AiSD::Testing::testInsert(int opcja,RBTNode<int,std::string> *tmp) {
             if(tmp->parent->right==nullptr) {
                 return false;
             }
+            if(tmp->parent->color!=1){
+                std::cout<<"root ma inny kolor niz czarny.\n";
+                return false;
+            }
         }
         if(tmp->left!=nullptr) {
             return false;
@@ -252,13 +260,6 @@ bool AiSD::Testing::testInsert(int opcja,RBTNode<int,std::string> *tmp) {
             return false;
         }
         break;
-
-    }
-    if(tmp!=nullptr){
-        if(tmp->color==0){
-            std::cout<<"root ma kolor czerwony!\n";
-            return false;
-        }
     }
     return true;
 }

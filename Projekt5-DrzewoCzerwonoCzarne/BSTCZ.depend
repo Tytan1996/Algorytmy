@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 99 <<<<<<< HEAD
 
-1653841110 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
+1653841664 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
 	<iostream>
 	"RBT.h"
 	"Testing.h"
@@ -50,7 +50,13 @@
 
 1653815306 D
 
-1653831556 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\src\testing.cpp
+1653843094 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\src\testing.cpp
+	"Testing.h"
+	"RBT.h"
+	<chrono>
+	<vector>
+	<map>
+	<queue>
 
 1653838258 source:c:\users\user\documents\github\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
 	<iostream>

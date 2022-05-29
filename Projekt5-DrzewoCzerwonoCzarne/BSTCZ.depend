@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1653813706 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
+	<iostream>
+	"BST.h"
+	"Testing.h"
+
+1653813706 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\bst.h
+	<iostream>
+	<sstream>
+	<vector>
+	<queue>
+	<concepts>
+	<cstdlib>
+	"simpleini/ini.h"
+	"BST.tpp"
+
+1652124490 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\simpleini\ini.h
+	<string>
+	<sstream>
+	<algorithm>
+	<utility>
+	<unordered_map>
+	<vector>
+	<memory>
+	<fstream>
+	<sys/stat.h>
+	<cctype>
+
+1653813706 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\bst.tpp
+	<queue>
+	<list>
+
+1653813706 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\testing.h
+	<iostream>
+	<vector>
+	<BST.h>
+
+1653663498 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\src\testing.cpp
+	"Testing.h"
+	"BST.h"
+	<chrono>
+	<vector>
+	<map>
+	<queue>
+

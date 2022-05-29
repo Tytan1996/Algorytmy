@@ -12,15 +12,19 @@ int main() {
     int option, number;
     string text="";
     AiSD::BST<int,string> BT;
-    std::cout<<"TESTY"<<'\n';
-    //AiSD::Testing testy;
-    //testy.detailsTest();
+    std::cout<<"TESTY\n";
+    AiSD::Testing testy;
+    testy.detailsTest();
 
     BT.Insert(10,"10a");
     BT.Insert(5,"5aa");
-    BT.Insert(15,"15a");
-    BT.Insert(4,"4aa");
-    BT.Insert(6,"6aa");
+    BT.Delete(10);
+    std::cout<<"TUTAJ CRASH:\n";
+    if(BT.root==nullptr){
+        return 0;
+    }
+    std::cout<<BT.root->key<<std::endl;
+    std::cout<<"KOROL: "<<BT.root->color;
     BT.ShowBSTTree();
     std::cout<<std::endl<<std::endl<<std::endl;
     BT.Insert(5,"5bb");
@@ -31,7 +35,7 @@ int main() {
     AiSD::BSTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
     std::cout<<'\n'<<"-------------------------"<<'\n';
-    //testy.generalTest();
+    testy.generalTest();
     std::cout<<'\n'<<"-------------------------"<<'\n';
     std::cout<<"Koniec testow";
     std::cout<<'\n'<<"-------------------------"<<'\n';

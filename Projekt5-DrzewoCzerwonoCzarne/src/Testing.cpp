@@ -213,6 +213,9 @@ bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
             std::cout<<"priewszy utworozny element ma ustawionego wskiaznika na right"<<'\n';
             return false;
         }
+        if(tmp->color==0){
+            std::cout<<"root ma kolor czerwony!";
+        }
         break;
     case 2: // sprawdzanie insert kiedy dodaje sie lewego syna
         if(tmp->parent==nullptr) {
@@ -250,6 +253,12 @@ bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
         }
         break;
 
+    }
+    if(tmp!=nullptr){
+        if(tmp->color==0){
+            std::cout<<"root ma kolor czerwony!\n";
+            return false;
+        }
     }
     return true;
 }
@@ -337,6 +346,11 @@ bool AiSD::Testing::testDelete(int opcja) {
         licz=rand(2);
         test.Delete(dane[0]);
         tmp=test.root;
+        if(tmp==nullptr){
+            std::cout<<"root jest ustawiony na nullptr.\n";
+            std::cout<<"podczas usuwania root, to nowy elemten na miejscu root ma ustawiony element na nullptr.\n";
+            return false;
+        }
         if(tmp->parent!=nullptr) {
             std::cout<<"root posiada wskaznik na parent, kiedy ma prawego syna"<<'\n';
             return false;
@@ -346,6 +360,11 @@ bool AiSD::Testing::testDelete(int opcja) {
         test.Delete(dane[0]);
         dane.pop_back();
         tmp=test.root;
+        if(tmp==nullptr){
+            std::cout<<"root jest ustawiony na nullptr.\n";
+            std::cout<<"podczas usuwania root, to nowy elemten na miejscu root ma ustawiony element na nullptr.\n";
+            return false;
+        }
         if(tmp->parent!=nullptr) {
             std::cout<<"nowy root ma zle ustawony wskaznik na parent"<<'\n';
             return false;
@@ -360,6 +379,13 @@ bool AiSD::Testing::testDelete(int opcja) {
         }
         break;
     }
+    if(tmp!=nullptr){
+        if(tmp->color==0){
+            std::cout<<"root ma kolor czerwony!\n";
+            return false;
+        }
+    }
+
     return true;
 }
 bool AiSD::Testing::testClear() {
@@ -418,15 +444,29 @@ bool AiSD::Testing::sprawdWskazniki() {
     std::queue<BSTNode<int,std::string>> kolejka;
     if(tmp!=nullptr) {
         kolejka.push(*tmp);
-
+        if(tmp->color==0){
+            std::cout<<"root jest czerwony!.\n";
+            return false;
+        }
         while(!kolejka.empty()) {
             tmp=&kolejka.front();
+            if(tmp!=nullptr){
+                if(tmp->color==0){
+                    if(tmp->left->color==0){
+                        std::cout<<"Rodzic jest czerwony i lewy syn tak samo!\n";
+                        return false;
+                    }
+                    if(tmp->right->color==0){
+                        std::cout<<"Rodzic jest czerwony i prawy syn tak samo!\n";
+                        return false;
+                    }
+                }
+            }
             if(tmp->left!=nullptr) {
                 kolejka.push(*tmp->left);
                 if(tmp->left->key>=tmp->key) {
-                    std::cout<<"lewy syn jest wiekszy niz rodzic."<<'\n';
+                    std::cout<<"lewy syn jest wiekszy niz rodzic.\n";
                     check=false;
-
                 }
                 if(tmp->left->parent==nullptr) {
                     std::cout<<"lewy syn nie ma ustawionego wskanznika na rodzica."<<'\n';

@@ -6,7 +6,7 @@
 #define TESTING_H
 #include <iostream>
 #include <vector>
-#include <BST.h>
+#include <RBT.h>
 namespace AiSD {
 class Testing {
 
@@ -21,9 +21,9 @@ public:
 
 private:
     std::vector< int > dane;
-    BST<int,std::string>test;
-    BSTNode<int,std::string> *tmp;
-    bool testInsert(int opcja, BSTNode<int,std::string> *tmp);
+    RBT<int,std::string>test;
+    RBTNode<int,std::string> *tmp;
+    bool testInsert(int opcja, RBTNode<int,std::string> *tmp);
     bool testDelete(int opcja);
     bool testClear();
     bool testMin();

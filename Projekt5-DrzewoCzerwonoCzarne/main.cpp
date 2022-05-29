@@ -3,7 +3,7 @@
     Damian Szopinski 185394
 */
 #include <iostream>
-#include "BST.h"
+#include "RBT.h"
 #include "Testing.h"
 
 using namespace std;
@@ -11,7 +11,7 @@ using namespace std;
 int main() {
     int option, number;
     string text="";
-    AiSD::BST<int,string> BT;
+    AiSD::RBT<int,string> BT;
     std::cout<<"TESTY"<<'\n';
     AiSD::Testing testy;
     testy.detailsTest();
@@ -19,19 +19,26 @@ int main() {
     BT.Insert(10,"10a");
     BT.Insert(5,"5aa");
     BT.Insert(15,"15a");
+
+    std::cout<<"PRZED USUWANIEM--------"<<std::endl;
+    BT.ShowRBTTree();
     BT.Delete(10);
+    std::cout<<"\nroot\n";
+    BT.pointersInfo(BT.root);
     std::cout<<"5\n";
     BT.pointersInfo(BT.Search(5));
     std::cout<<"15\n";
     BT.pointersInfo(BT.Search(15));
-    BT.ShowBSTTree();
+    std::cout<<"PO USUWANIU 10--------"<<std::endl;
+    BT.ShowRBTTree();
     std::cout<<std::endl<<std::endl<<std::endl;
+    std::cout<<"PO WSTAWIENIU 5--------"<<std::endl;
     BT.Insert(5,"5bb");
-    BT.ShowBSTTree();
+    BT.ShowRBTTree();
     BT.pointersInfo(BT.Search(5)->right);
 
 
-    AiSD::BSTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
+    AiSD::RBTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
     std::cout<<'\n'<<"-------------------------"<<'\n';
     //testy.generalTest();
@@ -46,17 +53,17 @@ int main() {
     while(true){
         std::cout<<"1 - INSERT (dodaj);"<<'\n';
         std::cout<<"2 - DELETE (usun);"<<'\n';
-        std::cout<<"3 - SHOW BST (TREE) (pokaz drzewo w formie drzewa);"<<'\n';
-        std::cout<<"4 - SHOW BST (pokaz drzewo);"<<'\n';
-        std::cout<<"5 - SHOW HEIGHT BST (pokaz wysokosc BST);"<<'\n';
-        std::cout<<"6 - SHOW AMOUNT LEAVES (pokaz ilosc lisci BST);"<<'\n';
-        std::cout<<"7 - SHOW AMOUNT NODES (pokaz ilosc wiezlow BST);"<<'\n';
-        std::cout<<"8 - SHOW AMOUNT NODES ON LEVEL (pokaz ilosc wiezlow BST od poziomu);"<<'\n';
+        std::cout<<"3 - SHOW RBT (TREE) (pokaz drzewo w formie drzewa);"<<'\n';
+        std::cout<<"4 - SHOW RBT (pokaz drzewo);"<<'\n';
+        std::cout<<"5 - SHOW HEIGHT RBT (pokaz wysokosc RBT);"<<'\n';
+        std::cout<<"6 - SHOW AMOUNT LEAVES (pokaz ilosc lisci RBT);"<<'\n';
+        std::cout<<"7 - SHOW AMOUNT NODES (pokaz ilosc wiezlow RBT);"<<'\n';
+        std::cout<<"8 - SHOW AMOUNT NODES ON LEVEL (pokaz ilosc wiezlow RBT od poziomu);"<<'\n';
         std::cout<<"9 - SHOW MIN (pokaz min);"<<'\n';
         std::cout<<"10 - SHOW MAX (pokaz max);"<<'\n';
         std::cout<<"11 - SAVE (zapis);"<<'\n';
         std::cout<<"12 - LOAD (wczytaj);"<<'\n';
-        std::cout<<"13 - BST CLEAR;"<<'\n';
+        std::cout<<"13 - RBT CLEAR;"<<'\n';
         std::cout<<"14 - SHOW Predecessor;"<<'\n';
         std::cout<<"15 - SHOW Successor;"<<'\n';
         std::cout<<"16 - Print Ascending;"<<'\n';
@@ -76,10 +83,10 @@ int main() {
             BT.Delete(number);
             break;
         case 3:
-            BT.ShowBSTTree();
+            BT.ShowRBTTree();
             break;
         case 4:
-            BT.ShowBST();
+            BT.ShowRBT();
             break;
         case 5:
             std::cout<<"Wysokosc: "<<BT.height();

@@ -34,8 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/BST.h" />
-		<Unit filename="include/BST.tpp" />
+		<Unit filename="include/RBT.h" />
+		<Unit filename="include/RBT.tpp" />
 		<Unit filename="include/Testing.h" />
 		<Unit filename="include/simpleini/ini.h" />
 		<Unit filename="main.cpp" />

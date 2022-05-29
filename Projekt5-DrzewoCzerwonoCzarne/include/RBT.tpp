@@ -2,11 +2,11 @@
     Maciej Pestka
     Damian Szopinski 185394
 */
-#ifndef BST_TPP
-#define BST_TPP
+#ifndef RBT_TPP
+#define RBT_TPP
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
+AiSD::RBTNode<key_t,data_t>::RBTNode(key_t k,data_t dataArg)
 {
     parent=nullptr;
     left=nullptr;
@@ -17,7 +17,7 @@ AiSD::BSTNode<key_t,data_t>::BSTNode(key_t k,data_t dataArg)
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
+void AiSD::RBT<key_t,data_t>::Insert(const key_t k,data_t data)
 {
     /* Jezeli chcemy zablokowac te same klucze, to wystarczy usunac komentarz!
     if(Search(k)!=nullptr)
@@ -25,9 +25,9 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
         std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
     }*/
-    BSTNode<key_t,data_t>* prev=nullptr;
-    BSTNode<key_t,data_t>* tmp=root;
-    BSTNode<key_t,data_t>* newNode=new BSTNode<key_t,data_t>(k,data);
+    RBTNode<key_t,data_t>* prev=nullptr;
+    RBTNode<key_t,data_t>* tmp=root;
+    RBTNode<key_t,data_t>* newNode=new RBTNode<key_t,data_t>(k,data);
 
     while(tmp!=nullptr)
     {
@@ -83,7 +83,7 @@ void AiSD::BST<key_t,data_t>::Insert(const key_t k,data_t data)
 
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,data_t>* v)
+void AiSD::RBT<key_t,data_t>::Transplant(RBTNode<key_t,data_t>* u,RBTNode<key_t,data_t>* v)
 {
     if(u->parent==nullptr)
     {
@@ -102,7 +102,7 @@ void AiSD::BST<key_t,data_t>::Transplant(BSTNode<key_t,data_t>* u,BSTNode<key_t,
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int deep)
+void AiSD::RBT<key_t,data_t>::PrintAscending(RBTNode<key_t,data_t> *node,int deep)
 {
     if(node==nullptr)
     {
@@ -124,7 +124,7 @@ void AiSD::BST<key_t,data_t>::PrintAscending(BSTNode<key_t,data_t> *node,int dee
     }
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec)
+void AiSD::RBT<key_t,data_t>::VectorOfNodes(RBTNode<key_t,data_t> *node,std::vector<RBTNode<key_t,data_t>*>& vec)
 {
     if(node==nullptr)
         return;
@@ -135,71 +135,43 @@ void AiSD::BST<key_t,data_t>::VectorOfNodes(BSTNode<key_t,data_t> *node,std::vec
         VectorOfNodes(node->right,vec);
 }
 
-
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::Delete(const key_t k)
+AiSD::RBTNode<key_t,data_t>* AiSD::RBT<key_t,data_t>::Delete(AiSD::RBTNode<key_t,data_t>* subtree_root, key_t k)
 {
-    BSTNode<key_t,data_t>* x=Search(k);
-    if(x==nullptr)//SPRAWDZAMY, CZY TAKI OBIEKT ISTNIEJE
-    {
-        std::cout<<"nie znaleziono obiektu do usuniecia"<<std::endl;
-        return;
-    }
+    if (subtree_root == nullptr)
+        return subtree_root;
 
-    if(x->left==nullptr&&x->right==nullptr)//CASE 1. FORGET CHILDREN BY PARENT
-    {
-        if(x!=nullptr)
-        {
-            if(x->parent!=nullptr)
-            {
-                if(x->parent->left!=nullptr&&x->key==x->parent->left->key)
-                {
-                    x->parent->left=nullptr;
-                }
-                if(x->parent->right!=nullptr&&x->key==x->parent->right->key)
-                {
-                    x->parent->right=nullptr;
-                }
-            }else
-            {
-                root=nullptr;
-            }
-        }
-    }
-    else if(x->left==nullptr&&x->right!=nullptr)//CASE 2 Z DOKUMENTACJI. MOVE RIGHT TO PARENT
-    {
-        Transplant(x,x->right);
-    }
-    else if(x->right==nullptr&&x->left!=nullptr)//CASE 3 Z DOKUMENTACJI. MOVE LEFT TO PARENT
-    {
-        Transplant(x,x->left);
-    }
-    else if(x->right!=nullptr&&x->left!=nullptr)//CASE 4 Z DOKUMENTACJI. TRANSPLANT
-    {
-        BSTNode<key_t,data_t>* y=Min(x->right);
-        if(y->parent!=x)
-        {
-            Transplant(y,y->right);
-            y->right=x->right;
-            y->right->parent=y;
-        }
-        Transplant(x,y);
-        y->left=x->left;
-        y->left->parent=y;
-    }
-    delete(x);
-    FixDelete(root);
+    if (k < subtree_root->key)
+        return Delete(subtree_root->left, k);
+
+    if (k > subtree_root->key)
+        return Delete(subtree_root->right, k);
+
+    if (subtree_root->left == nullptr || subtree_root->right == nullptr)
+        return subtree_root;
+
+    RBTNode<key_t,data_t>* tmp = Min(subtree_root->right);
+    subtree_root->key = tmp->key;
+    subtree_root->data = tmp->data;
+    return Delete(subtree_root->right, tmp->key);
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::Save(std::string src)
+void AiSD::RBT<key_t,data_t>::Delete(key_t k)
+{
+    RBTNode<key_t,data_t>* x=Delete(root,k);
+    FixDelete(x);
+}
+
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::RBT<key_t,data_t>::Save(std::string src)
 {
     mINI::INIFile file(src);
     mINI::INIStructure ini;
     file.read(ini);
     ini.clear();//jezeli cos tu juz jest to to usun
 
-    std::vector<BSTNode<key_t,data_t>*> vec;
+    std::vector<RBTNode<key_t,data_t>*> vec;
     VectorOfNodes(root,vec);
     for(int i=0;i<vec.size();i++)
     {
@@ -209,9 +181,9 @@ void AiSD::BST<key_t,data_t>::Save(std::string src)
     file.write(ini);
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::Load(std::string src)
+void AiSD::RBT<key_t,data_t>::Load(std::string src)
 {
-    Clear();//usun dotychczasowa zawartosc BST
+    Clear();//usun dotychczasowa zawartosc RBT
     mINI::INIFile file(src);
     mINI::INIStructure ini;
     file.read(ini);
@@ -231,7 +203,7 @@ void AiSD::BST<key_t,data_t>::Load(std::string src)
 
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNode<key_t,data_t>* subtree_root)
+AiSD::RBTNode<key_t,data_t>* AiSD::RBT<key_t,data_t>::Search(const key_t k,RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -251,7 +223,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Search(const key_t k,BSTNo
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
+void AiSD::RBT<key_t,data_t>::Clear(AiSD::RBTNode<key_t,data_t>* node)
 {
     if(node==nullptr)
     {
@@ -279,7 +251,7 @@ void AiSD::BST<key_t,data_t>::Clear(AiSD::BSTNode<key_t,data_t>* node)
 
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>* subtree_root)
+AiSD::RBTNode<key_t,data_t>* AiSD::RBT<key_t,data_t>::Min(RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -288,10 +260,10 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>*
         else
             return nullptr;
     }
-    std::vector<BSTNode<key_t,data_t>*> vec;
+    std::vector<RBTNode<key_t,data_t>*> vec;
     VectorOfNodesAscending(subtree_root,vec);//tablica wezlow posortowana rosnaco
 
-    BSTNode<key_t,data_t>* found=vec[0];//Mozemy tak zalozyc poniewaz uprzednio wspomnielismy ze BST nie ma byc pusty
+    RBTNode<key_t,data_t>* found=vec[0];//Mozemy tak zalozyc poniewaz uprzednio wspomnielismy ze RBT nie ma byc pusty
     for(int i=0;i<vec.size();i++)
     {
         if(found->key>vec[i]->key)
@@ -301,7 +273,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Min(BSTNode<key_t,data_t>*
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>* subtree_root)
+AiSD::RBTNode<key_t,data_t>* AiSD::RBT<key_t,data_t>::Max(RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -310,10 +282,10 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
         else
             return nullptr;
     }
-    std::vector<BSTNode<key_t,data_t>*> vec;
+    std::vector<RBTNode<key_t,data_t>*> vec;
     VectorOfNodesAscending(subtree_root,vec);//tablica wezlow posortowana rosnaco
 
-    BSTNode<key_t,data_t>* found=vec[0];//Mozemy tak zalozyc poniewaz uprzednio wspomnielismy ze BST nie ma byc pusty
+    RBTNode<key_t,data_t>* found=vec[0];//Mozemy tak zalozyc poniewaz uprzednio wspomnielismy ze RBT nie ma byc pusty
     for(int i=0;i<vec.size();i++)
     {
         if(found->key<vec[i]->key)
@@ -325,7 +297,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Max(BSTNode<key_t,data_t>*
 
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::VectorOfNodesAscending(BSTNode<key_t,data_t> *node,std::vector<BSTNode<key_t,data_t>*>& vec)
+void AiSD::RBT<key_t,data_t>::VectorOfNodesAscending(RBTNode<key_t,data_t> *node,std::vector<RBTNode<key_t,data_t>*>& vec)
 {
     if(node==nullptr)
         return;
@@ -337,7 +309,7 @@ void AiSD::BST<key_t,data_t>::VectorOfNodesAscending(BSTNode<key_t,data_t> *node
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
+AiSD::RBTNode<key_t,data_t>* AiSD::RBT<key_t,data_t>::Predecessor(const key_t k,RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -346,9 +318,9 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
         else
             return nullptr;
     }
-    std::vector<BSTNode<key_t,data_t>*> vec;
+    std::vector<RBTNode<key_t,data_t>*> vec;
     VectorOfNodesAscending(subtree_root,vec);
-    BSTNode<key_t,data_t>* found=nullptr;//znaleziony wezel
+    RBTNode<key_t,data_t>* found=nullptr;//znaleziony wezel
     for(int i=0;i<vec.size();i++)
     {
         if(vec[i]->key==k)
@@ -379,7 +351,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Predecessor(const key_t k,
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BSTNode<key_t,data_t>* subtree_root)
+AiSD::RBTNode<key_t,data_t>* AiSD::RBT<key_t,data_t>::Successor(const key_t k,RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -388,7 +360,7 @@ AiSD::BSTNode<key_t,data_t>* AiSD::BST<key_t,data_t>::Successor(const key_t k,BS
         else
             return nullptr;
     }
-    std::vector<BSTNode<key_t,data_t>*> vec;
+    std::vector<RBTNode<key_t,data_t>*> vec;
     VectorOfNodesAscending(subtree_root,vec);//tablica wezlow posortowana rosnaco
     for(int i=0;i<vec.size();i++)
     {
@@ -432,24 +404,24 @@ std::string AiSD::convertString(const Type val)
 #include <queue>
 #include <list>
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ShowBSTTree() {
-    BSTNode<key_t,data_t> *tmp;
-    std::list<BSTNode<key_t,data_t>*> listBST;
-    std::queue<BSTNode<key_t,data_t>*> kolejkaBST;
+void AiSD::RBT<key_t,data_t>::ShowRBTTree() {
+    RBTNode<key_t,data_t> *tmp;
+    std::list<RBTNode<key_t,data_t>*> listRBT;
+    std::queue<RBTNode<key_t,data_t>*> kolejkaRBT;
     int nextMaxSons=1;
     int number=0;
     int height1=4;
     bool parentsIsNull=false;
     tmp=root;
     if(tmp!=nullptr) {
-        kolejkaBST.push(tmp);
-        listBST.push_back(tmp);
+        kolejkaRBT.push(tmp);
+        listRBT.push_back(tmp);
         for(int i=0; i<height1*3; ++i) {
             std::cout<<"    ";
         }
         std::cout<<'\ ';
-        while(!kolejkaBST.empty() && height1!=0) {
-            tmp=kolejkaBST.front();
+        while(!kolejkaRBT.empty() && height1!=0) {
+            tmp=kolejkaRBT.front();
             number++;
             if(tmp->parent!=nullptr) {
 
@@ -479,31 +451,31 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
             if(height1>1) {
                 if(tmp!=nullptr) {
                     if(tmp->left!=nullptr) {
-                        kolejkaBST.push(tmp->left);
-                        listBST.push_back(tmp->left);
+                        kolejkaRBT.push(tmp->left);
+                        listRBT.push_back(tmp->left);
                     } else {
-                        kolejkaBST.push(nullptr);
-                        listBST.push_back(nullptr);
+                        kolejkaRBT.push(nullptr);
+                        listRBT.push_back(nullptr);
                     }
                 } else {
-                    kolejkaBST.push(nullptr);
-                    listBST.push_back(nullptr);
+                    kolejkaRBT.push(nullptr);
+                    listRBT.push_back(nullptr);
                 }
                 if(tmp!=nullptr) {
                     if(tmp->right!=nullptr) {
-                        kolejkaBST.push(tmp->right);
-                        listBST.push_back(tmp->right);
+                        kolejkaRBT.push(tmp->right);
+                        listRBT.push_back(tmp->right);
                     } else {
-                        kolejkaBST.push(nullptr);
-                        listBST.push_back(nullptr);
+                        kolejkaRBT.push(nullptr);
+                        listRBT.push_back(nullptr);
                     }
                 } else {
-                    kolejkaBST.push(nullptr);
-                    listBST.push_back(nullptr);
+                    kolejkaRBT.push(nullptr);
+                    listRBT.push_back(nullptr);
                 }
             } else {
-                kolejkaBST.push(nullptr);
-                listBST.push_back(nullptr);
+                kolejkaRBT.push(nullptr);
+                listRBT.push_back(nullptr);
             }
             if(nextMaxSons==number) {
                 if(height1==1) {
@@ -523,7 +495,7 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
                     }
                 }
                 while(number>0) {
-                    if(height1==4 && listBST.front()!=nullptr) {
+                    if(height1==4 && listRBT.front()!=nullptr) {
                         for(int i=0; i<height1*6; ++i) {
                             std::cout<<"_";
                         }
@@ -535,8 +507,8 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
                             std::cout<<"        ";
                         }
                         number-=2;
-                        listBST.pop_front();
-                    } else if(height1==3 && listBST.front()!=nullptr) {
+                        listRBT.pop_front();
+                    } else if(height1==3 && listRBT.front()!=nullptr) {
                         for(int i=0; i<height1*3; ++i) {
                             std::cout<<"_";
                         }
@@ -549,8 +521,8 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
                             std::cout<<"     ";
                         }
                         number-=2;
-                        listBST.pop_front();
-                    } else if(height1==2 && listBST.front()!=nullptr){
+                        listRBT.pop_front();
+                    } else if(height1==2 && listRBT.front()!=nullptr){
                         for(int i=0; i<height1*2; ++i) {
                             std::cout<<"_";
                         }
@@ -562,11 +534,11 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
                             std::cout<<"       ";
                         }
                         number-=2;
-                        listBST.pop_front();
-                    }else if(listBST.front()==nullptr){
+                        listRBT.pop_front();
+                    }else if(listRBT.front()==nullptr){
                         std::cout<<"     ";
                         number-=2;
-                        listBST.pop_front();
+                        listRBT.pop_front();
                         parentsIsNull=true;
                     }
                 }
@@ -628,16 +600,16 @@ void AiSD::BST<key_t,data_t>::ShowBSTTree() {
                 number=0;
                 --height1;
             }
-            kolejkaBST.pop();
+            kolejkaRBT.pop();
         }
     }
     std::cout<<'\n';
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ShowBST(){
-    BSTNode<key_t,data_t> *tmp;
-    std::queue<BSTNode<key_t,data_t>> kolejka;
+void AiSD::RBT<key_t,data_t>::ShowRBT(){
+    RBTNode<key_t,data_t> *tmp;
+    std::queue<RBTNode<key_t,data_t>> kolejka;
     int height=0,maxSons=1;
     int sons=0;
     int nextMaxSons=0;
@@ -681,7 +653,7 @@ void AiSD::BST<key_t,data_t>::ShowBST(){
     }
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ListOfNodesInLevel(const int level,std::vector<AiSD::BSTNode<key_t,data_t>*>& table,AiSD::BSTNode<key_t,data_t>* node)
+void AiSD::RBT<key_t,data_t>::ListOfNodesInLevel(const int level,std::vector<AiSD::RBTNode<key_t,data_t>*>& table,AiSD::RBTNode<key_t,data_t>* node)
 {
     if(level<0)return;
     if(node==nullptr)
@@ -704,7 +676,7 @@ void AiSD::BST<key_t,data_t>::ListOfNodesInLevel(const int level,std::vector<AiS
     }
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-int AiSD::BST<key_t,data_t>::height(BSTNode<key_t,data_t>* subtree_root,int sum)
+int AiSD::RBT<key_t,data_t>::height(RBTNode<key_t,data_t>* subtree_root,int sum)
 {
     if(subtree_root==nullptr)
     {
@@ -730,7 +702,7 @@ int AiSD::BST<key_t,data_t>::height(BSTNode<key_t,data_t>* subtree_root,int sum)
     return sum;
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-int AiSD::BST<key_t,data_t>::leavesCount(BSTNode<key_t,data_t>* subtree_root)
+int AiSD::RBT<key_t,data_t>::leavesCount(RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -753,7 +725,7 @@ int AiSD::BST<key_t,data_t>::leavesCount(BSTNode<key_t,data_t>* subtree_root)
 
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-int AiSD::BST<key_t,data_t>::nodesCount(BSTNode<key_t,data_t>* subtree_root)
+int AiSD::RBT<key_t,data_t>::nodesCount(RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -762,13 +734,13 @@ int AiSD::BST<key_t,data_t>::nodesCount(BSTNode<key_t,data_t>* subtree_root)
         else
             return 0;
     }
-    std::vector<BSTNode<key_t,data_t>*> vec;
+    std::vector<RBTNode<key_t,data_t>*> vec;
     VectorOfNodes(subtree_root,vec);
     return vec.size();
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-int AiSD::BST<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::BSTNode<key_t,data_t>* subtree_root)
+int AiSD::RBT<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::RBTNode<key_t,data_t>* subtree_root)
 {
     if(level<0)return 0;
     if(subtree_root==nullptr)
@@ -778,13 +750,13 @@ int AiSD::BST<key_t,data_t>::nodesCountOnLevel(const int level,AiSD::BSTNode<key
         else
             return 0;
     }
-    std::vector<AiSD::BSTNode<key_t,data_t>*> table;
+    std::vector<AiSD::RBTNode<key_t,data_t>*> table;
     ListOfNodesInLevel(level,table,subtree_root);
     return table.size();
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
+void AiSD::RBT<key_t,data_t>::pointersInfo(RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
     {
@@ -821,12 +793,11 @@ void AiSD::BST<key_t,data_t>::pointersInfo(BSTNode<key_t,data_t>* subtree_root)
 
 
 /*DRZEWO CZERWONO CZARNE*/
-/*https://github.com/anandarao/Red-Black-Tree/blob/master/RBTree.cpp*/
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::rotateRight(BSTNode<key_t,data_t>* subtree_root)
+void AiSD::RBT<key_t,data_t>::rotateRight(RBTNode<key_t,data_t>* subtree_root)
 {
-    BSTNode<key_t,data_t>* prev= subtree_root->left;
+    RBTNode<key_t,data_t>* prev= subtree_root->left;
     subtree_root->left = prev->right;
     if (subtree_root->left!=nullptr)
     {
@@ -849,9 +820,9 @@ void AiSD::BST<key_t,data_t>::rotateRight(BSTNode<key_t,data_t>* subtree_root)
     subtree_root->parent = prev;
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::rotateLeft(BSTNode<key_t,data_t>* subtree_root)
+void AiSD::RBT<key_t,data_t>::rotateLeft(RBTNode<key_t,data_t>* subtree_root)
 {
-    BSTNode<key_t,data_t> *prev = subtree_root->right;
+    RBTNode<key_t,data_t> *prev = subtree_root->right;
     subtree_root->right = prev->left;
     if (subtree_root->right!=nullptr)
     {
@@ -876,14 +847,14 @@ void AiSD::BST<key_t,data_t>::rotateLeft(BSTNode<key_t,data_t>* subtree_root)
 
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::ReplaceColor(BSTNode<key_t,data_t>* subtree_root,Color newColor)
+void AiSD::RBT<key_t,data_t>::ReplaceColor(RBTNode<key_t,data_t>* subtree_root,Color newColor)
 {
     if(subtree_root==nullptr)
         return;
     subtree_root->color=newColor;
 }
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-AiSD::Color AiSD::BST<key_t,data_t>::WhatColorIs(BSTNode<key_t,data_t>* subtree_root)
+AiSD::Color AiSD::RBT<key_t,data_t>::WhatColorIs(RBTNode<key_t,data_t>* subtree_root)
 {
     if(subtree_root==nullptr)
         return BLACK;
@@ -891,100 +862,94 @@ AiSD::Color AiSD::BST<key_t,data_t>::WhatColorIs(BSTNode<key_t,data_t>* subtree_
 }
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::FixInsert(BSTNode<key_t,data_t>*&subtree_root)
+void AiSD::RBT<key_t,data_t>::FixInsert(RBTNode<key_t,data_t>* subtree_root)
 {
-    BSTNode<key_t,data_t> *uncle = nullptr;
-    BSTNode<key_t,data_t> *grand = nullptr;
-    BSTNode<key_t,data_t> *parent = nullptr;
-
-    while (subtree_root != root &&
-            WhatColorIs(subtree_root) == RED &&
-            WhatColorIs(subtree_root->parent) == RED)
+    RBTNode<key_t,data_t> *parent = subtree_root->parent;
+    RBTNode<key_t,data_t> *grand = subtree_root->parent!=nullptr?subtree_root->parent->parent:nullptr;
+    while(WhatColorIs(parent)==RED)
     {
-        parent = subtree_root->parent;
-        grand = parent->parent;
-
-        if (parent == grand->left)
-        {
-            uncle = grand->right;
-
-            if (WhatColorIs(uncle) == RED)
+        if(parent!=nullptr&&parent->parent!=nullptr
+            &&parent==grand->left)
             {
-                ReplaceColor(uncle,BLACK);
-                ReplaceColor(grand,RED);
-                ReplaceColor(parent,BLACK);
-                subtree_root = grand;
+                RBTNode<key_t,data_t> *uncle=grand->right;
+                if(WhatColorIs(uncle)==RED)
+                {
+                    ReplaceColor(parent,BLACK);
+                    ReplaceColor(uncle,BLACK);
+                    ReplaceColor(grand,RED);
+                    subtree_root=grand;
+                }
+                else
+                {
+                    if(parent!=nullptr&&subtree_root==parent->right)
+                    {
+                        rotateLeft(parent);
+                        subtree_root=parent;
+                        parent=subtree_root->parent;
+                    }
+                    rotateRight(grand);
+                    ReplaceColor(parent,BLACK);
+                    ReplaceColor(grand,RED);
+                    subtree_root=parent;
+                }
             }
             else
             {
-                if (subtree_root == parent->right)
+               //to samo co wyzej z zamienionymi wskaznikami left i right
+                RBTNode<key_t,data_t> *uncle=grand->left;
+                if(WhatColorIs(uncle)==RED)
                 {
-                    rotateLeft(parent);
-                    subtree_root = parent;
-                    parent = subtree_root->parent;
+                    ReplaceColor(parent,BLACK);
+                    ReplaceColor(uncle,BLACK);
+                    ReplaceColor(grand,RED);
+                    subtree_root=grand;
                 }
-                rotateRight(grand);
-
-                //swap
-                Color cpy=WhatColorIs(parent);
-                ReplaceColor(parent,WhatColorIs(grand));
-                ReplaceColor(grand,cpy);
-
-                subtree_root = parent;
-            }
-        }
-        else
-        {
-            uncle = grand->left;
-
-            if (WhatColorIs(uncle)==RED)
-            {
-                ReplaceColor(parent,BLACK);
-                ReplaceColor(uncle,BLACK);
-                ReplaceColor(grand,RED);
-
-                subtree_root = grand;
-            }
-            else
-            {
-                if (subtree_root==parent->left)
+                else
                 {
-                    rotateRight(parent);
-                    subtree_root = parent;
-                    parent = subtree_root->parent;
+                    if(parent!=nullptr&&subtree_root==parent->left)
+                    {
+                        rotateRight(parent);
+                        subtree_root=parent;
+                        parent=subtree_root->parent;
+
+                    }
+                    rotateLeft(grand);
+                    ReplaceColor(parent,BLACK);
+                    ReplaceColor(grand,RED);
                 }
-                rotateLeft(grand);
-
-                //swap
-                Color cpy=WhatColorIs(parent);
-                ReplaceColor(parent,WhatColorIs(grand));
-                ReplaceColor(grand,cpy);
-
-                subtree_root = parent;
             }
-        }
     }
-
-    //na koniec zmiana root na czarny
     ReplaceColor(root,BLACK);
 }
 
 
+
+
 template <AiSD::RightType key_t,AiSD::RightType data_t>
-void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
+void AiSD::RBT<key_t,data_t>::FixDelete(RBTNode<key_t,data_t>* subtree_root)
 {
-    if (subtree_root == nullptr || root==nullptr)
+    if(root==nullptr)
+        return;
+    if (subtree_root==nullptr)
     {
         return;
     }
-    if (subtree_root == root)
+    if (subtree_root==root)
     {
+        delete(root);
         root = nullptr;
         return;
     }
+
+
+    RBTNode<key_t,data_t> *parent=nullptr;
+    RBTNode<key_t,data_t> *brother=nullptr;
+    RBTNode<key_t,data_t> *kid=nullptr;
+
     if (WhatColorIs(subtree_root->left) == RED || WhatColorIs(subtree_root) == RED || WhatColorIs(subtree_root->right) == RED)
     {
-        BSTNode<key_t,data_t> *kid;
+        //PRZYPADEK 1
+
         if(subtree_root->left!=nullptr)
         {
             kid=subtree_root->left;
@@ -1018,30 +983,29 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
     }
     else
     {
-        BSTNode<key_t,data_t> *parent=nullptr;
-        BSTNode<key_t,data_t> *sibling=nullptr;
-
-        BSTNode<key_t,data_t> *ptr = subtree_root;
+        //PRZYPADEK 2
+        RBTNode<key_t,data_t> *ptr = subtree_root;
 
         ReplaceColor(ptr,PINK);
-        while (ptr->color==PINK&&ptr!=root)
+        while (WhatColorIs(ptr)==PINK&&ptr!=root)
         {
+            //Jedna strona
             parent=ptr->parent;
             if (ptr==parent->left)
             {
-                sibling=parent->right;
-                if (WhatColorIs(sibling)==RED)
+                brother=parent->right;
+                if (WhatColorIs(brother)==RED)
                 {
                     ReplaceColor(parent,RED);
-                    ReplaceColor(sibling,BLACK);
+                    ReplaceColor(brother,BLACK);
 
                     rotateLeft(parent);
                 }
                 else
                 {
-                    if (WhatColorIs(sibling->left)==BLACK&&WhatColorIs(sibling->right)==BLACK)
+                    if (WhatColorIs(brother->left)==BLACK&&WhatColorIs(brother->right)==BLACK)
                     {
-                        ReplaceColor(sibling,RED);
+                        ReplaceColor(brother,RED);
                         if(WhatColorIs(parent) == RED)
                         {
                             ReplaceColor(parent,BLACK);
@@ -1055,17 +1019,16 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
                     }
                     else
                     {
-                        if (WhatColorIs(sibling->right)==BLACK)
+                        if (WhatColorIs(brother->right)==BLACK)
                         {
-                            ReplaceColor(sibling->left,BLACK);
-                            ReplaceColor(sibling,RED);
-
-                            rotateRight(sibling);
-                            sibling = parent->right;
+                            ReplaceColor(brother->left,BLACK);
+                            ReplaceColor(brother,RED);
+                            rotateRight(brother);
+                            brother = parent->right;
                         }
 
-                        ReplaceColor(sibling,WhatColorIs(parent));
-                        ReplaceColor(sibling->right,BLACK);
+                        ReplaceColor(brother,WhatColorIs(parent));
+                        ReplaceColor(brother->right,BLACK);
                         ReplaceColor(parent,BLACK);
 
                         rotateLeft(parent);
@@ -1075,19 +1038,20 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
             }
             else
             {
-                sibling=parent->left;
-                if (WhatColorIs(sibling)==RED)
+                //to samo co wyzej z zamienionymi wskaznikami left i right
+                brother=parent->left;
+                if (WhatColorIs(brother)==RED)
                 {
 
-                    ReplaceColor(sibling,BLACK);
+                    ReplaceColor(brother,BLACK);
                     ReplaceColor(parent,RED);
                     rotateRight(parent);
                 }
                 else
                 {
-                    if (WhatColorIs(sibling->right)==BLACK&&WhatColorIs(sibling->left)==BLACK)
+                    if (WhatColorIs(brother->right)==BLACK&&WhatColorIs(brother->left)==BLACK)
                     {
-                        ReplaceColor(sibling,RED);
+                        ReplaceColor(brother,RED);
 
                         if (WhatColorIs(parent) == RED)
                         {
@@ -1102,16 +1066,16 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
                     else
                     {
 
-                        if (WhatColorIs(sibling->left)==BLACK)
+                        if (WhatColorIs(brother->left)==BLACK)
                         {
-                            ReplaceColor(sibling->right,BLACK);
-                            ReplaceColor(sibling,RED);
-                            rotateLeft(sibling);
-                            sibling = parent->left;
+                            ReplaceColor(brother->right,BLACK);
+                            ReplaceColor(brother,RED);
+                            rotateLeft(brother);
+                            brother = parent->left;
                         }
 
-                        ReplaceColor(sibling,WhatColorIs(parent));
-                        ReplaceColor(sibling->left,BLACK);
+                        ReplaceColor(brother,WhatColorIs(parent));
+                        ReplaceColor(brother->left,BLACK);
                         ReplaceColor(parent,BLACK);
 
                         rotateRight(parent);
@@ -1129,12 +1093,14 @@ void AiSD::BST<key_t,data_t>::FixDelete(BSTNode<key_t,data_t>*&subtree_root)
         {
             subtree_root->parent->right = nullptr;
         }
-
+        //na koncu ustawiamy root na czarny
         ReplaceColor(root,BLACK);
+        //tak jak wspominalem w dokumentacji tutaj kasujemy wezel.
         delete(subtree_root);
 
     }
 }
 
 
-#endif // BST_TPP
+
+#endif // RBT_TPP

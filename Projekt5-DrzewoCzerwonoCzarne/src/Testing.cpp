@@ -3,7 +3,7 @@
 
 */
 #include "Testing.h"
-#include "BST.h"
+#include "RBT.h"
 #include <chrono>
 #include <vector>
 #include <map>
@@ -191,7 +191,7 @@ void AiSD::Testing::generalTest() {
     }
 
 }
-bool AiSD::Testing::testInsert(int opcja,BSTNode<int,std::string> *tmp) {
+bool AiSD::Testing::testInsert(int opcja,RBTNode<int,std::string> *tmp) {
 
     switch(opcja) {
     case 0:
@@ -424,7 +424,7 @@ bool AiSD::Testing::sprawdWskazniki() {
     int iloscLisc=0;
     bool check=true;
     tmp=test.root;
-    std::queue<BSTNode<int,std::string>> kolejka;
+    std::queue<RBTNode<int,std::string>> kolejka;
     if(tmp!=nullptr) {
         kolejka.push(*tmp);
         if(tmp->color==0){

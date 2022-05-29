@@ -278,6 +278,7 @@ bool AiSD::Testing::testDelete(int opcja) {
         test.Delete(dane.back());
         tmp=test.root;
         if(tmp==nullptr) {
+            std::cout<<"Root jest nullptr!\n";
             return false;
         }
         if(tmp->left!=nullptr) {
@@ -337,6 +338,10 @@ bool AiSD::Testing::testDelete(int opcja) {
         licz=rand(2);
         test.Delete(dane[0]);
         tmp=test.root;
+        if(tmp==nullptr){
+            std::cout<<"Nowy root jest ustwiony na nullptr, gdy stay zostal usuniety.\n";
+            return false;
+        }
         if(tmp->parent!=nullptr) {
             std::cout<<"root posiada wskaznik na parent, kiedy ma prawego syna"<<'\n';
             return false;
@@ -346,6 +351,10 @@ bool AiSD::Testing::testDelete(int opcja) {
         test.Delete(dane[0]);
         dane.pop_back();
         tmp=test.root;
+        if(tmp==nullptr){
+            std::cout<<"Nowy root jest ustwiony na nullptr, gdy stay zostal usuniety.\n";
+            return false;
+        }
         if(tmp->parent!=nullptr) {
             std::cout<<"nowy root ma zle ustawony wskaznik na parent"<<'\n';
             return false;
@@ -418,7 +427,9 @@ bool AiSD::Testing::sprawdWskazniki() {
     std::queue<BSTNode<int,std::string>> kolejka;
     if(tmp!=nullptr) {
         kolejka.push(*tmp);
-
+        if(tmp->color==0){
+            std::cout<<"Root jest czerwone!";
+        }
         while(!kolejka.empty()) {
             tmp=&kolejka.front();
             if(tmp->left!=nullptr) {
@@ -472,14 +483,6 @@ bool AiSD::Testing::sprawdWskazniki() {
             std::cout<<"Ilosc lisci sie nie zgadza."<<'\n';
             check=false;
         }
-        /*if(maly==test.Min()){
-            std::cout<<"element minimalny nie zgadza sie."<<'\n';
-            check=false;
-        }
-        if(duzy==test.Max()){
-            std::cout<<"element najwiekszy nie zgadza sie."<<'\n';
-            check=false;
-        }*/
 
     }
     return check;

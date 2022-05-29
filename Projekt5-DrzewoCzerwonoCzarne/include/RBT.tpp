@@ -943,8 +943,33 @@ void AiSD::RBT<key_t,data_t>::FixDelete(RBTNode<key_t,data_t>* subtree_root)
     }
     if (subtree_root==root)
     {
-        delete(root);
-        root = nullptr;
+        RBTNode<key_t,data_t> *to_delete=nullptr;
+        if(root->right!=nullptr)
+        {
+            RBTNode<key_t,data_t> *left=root->left;
+            to_delete=root;
+            root=root->right;
+            root->parent=nullptr;
+            if(root->left!=nullptr)
+            {
+                RBTNode<key_t,data_t> *mins=Min(root);
+                left->parent=mins;
+                mins->left=left;
+            }
+            ReplaceColor(root,BLACK);
+        }else if(root->left!=nullptr)
+        {
+            to_delete=root;
+            root=root->left;
+            root->parent=nullptr;
+            ReplaceColor(root,BLACK);
+        }else
+        {
+            to_delete=root;
+            root=nullptr;
+        }
+
+        delete(to_delete);
         return;
     }
 
@@ -956,12 +981,11 @@ void AiSD::RBT<key_t,data_t>::FixDelete(RBTNode<key_t,data_t>* subtree_root)
     if (WhatColorIs(subtree_root->left) == RED || WhatColorIs(subtree_root) == RED || WhatColorIs(subtree_root->right) == RED)
     {
         //PRZYPADEK 1
-
         if(subtree_root->left!=nullptr)
         {
             kid=subtree_root->left;
         }
-        else
+        else if(subtree_root->right!=nullptr)
         {
             kid=subtree_root->right;
         }
@@ -978,7 +1002,6 @@ void AiSD::RBT<key_t,data_t>::FixDelete(RBTNode<key_t,data_t>* subtree_root)
         }
         else
         {
-
             subtree_root->parent->right=kid;
             if (kid!=nullptr)
                 kid->parent=subtree_root->parent;

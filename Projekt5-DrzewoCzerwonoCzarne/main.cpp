@@ -17,9 +17,9 @@ int main() {
 
     AiSD::Testing testy;
     testy.detailsTest();
-
     BT.Insert(10,"10a");
-    BT.Insert(15,"5aa");
+    BT.Insert(5,"5aa");
+    BT.ShowRBTTree();
     BT.Delete(10);
     std::cout<<"BLAD: \n";
     if(BT.root==nullptr){

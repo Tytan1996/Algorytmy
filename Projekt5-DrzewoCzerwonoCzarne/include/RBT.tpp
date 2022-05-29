@@ -428,6 +428,13 @@ void AiSD::RBT<key_t,data_t>::ShowRBTTree() {
             }
             if(tmp!=nullptr) {
                 std::cout<<tmp->key<<" "<<tmp->data;
+                if(tmp->color==1){
+                    std::cout<<" black";
+                }else if(tmp->color==0){
+                    std::cout<<" red";
+                }else if(tmp->color==2){
+                    std::cout<<" pink";
+                }
             } else {
                 std::cout<<"null";
             }

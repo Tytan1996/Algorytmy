@@ -11,8 +11,10 @@ using namespace std;
 int main() {
     int option, number;
     string text="";
+
     AiSD::RBT<int,string> BT;
-    std::cout<<"TESTY"<<'\n';
+    std::cout<<"TESTY\n";
+
     AiSD::Testing testy;
     testy.detailsTest();
 
@@ -31,6 +33,16 @@ int main() {
     BT.pointersInfo(BT.Search(15));
     std::cout<<"PO USUWANIU 10--------"<<std::endl;
     BT.ShowRBTTree();
+
+    BT.Delete(10);
+    std::cout<<"TUTAJ CRASH:\n";
+    if(BT.root==nullptr){
+        return 0;
+    }
+    std::cout<<BT.root->key<<std::endl;
+    std::cout<<"KOROL: "<<BT.root->color;
+    BT.ShowRBTTree();
+
     std::cout<<std::endl<<std::endl<<std::endl;
     std::cout<<"PO WSTAWIENIU 5--------"<<std::endl;
     BT.Insert(5,"5bb");
@@ -41,7 +53,7 @@ int main() {
     AiSD::RBTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
     std::cout<<'\n'<<"-------------------------"<<'\n';
-    //testy.generalTest();
+    testy.generalTest();
     std::cout<<'\n'<<"-------------------------"<<'\n';
     std::cout<<"Koniec testow";
     std::cout<<'\n'<<"-------------------------"<<'\n';

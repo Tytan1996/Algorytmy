@@ -1,8 +1,21 @@
 # depslib dependency file v1.0
-1653820590 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
+99 <<<<<<< HEAD
+
+1653841110 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
+	<iostream>
+	"RBT.h"
+	"Testing.h"
+
+1653831556 ture/testy-BSTCZ
 	<iostream>
 	"BST.h"
 	"Testing.h"
+	"Testing.h"
+	"BST.h"
+	<chrono>
+	<vector>
+	<map>
+	<queue>
 
 1653815306 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\bst.h
 	<iostream>
@@ -30,18 +43,14 @@
 	<queue>
 	<list>
 
-1653815306 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\testing.h
+1653840877 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\testing.h
 	<iostream>
 	<vector>
-	<BST.h>
+	<RBT.h>
 
-1653821700 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\src\testing.cpp
-	"Testing.h"
-	"BST.h"
-	<chrono>
-	<vector>
-	<map>
-	<queue>
+1653815306 D
+
+1653831556 source:d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\src\testing.cpp
 
 1653838258 source:c:\users\user\documents\github\algorytmy\projekt5-drzewoczerwonoczarne\main.cpp
 	<iostream>
@@ -98,6 +107,20 @@
 	"RBT.tpp"
 
 1653838339 c:\users\user\documents\github\algorytmy\projekt5-drzewoczerwonoczarne\include\rbt.tpp
+	<queue>
+	<list>
+
+1653840877 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\rbt.h
+	<iostream>
+	<sstream>
+	<vector>
+	<queue>
+	<concepts>
+	<cstdlib>
+	"simpleini/ini.h"
+	"RBT.tpp"
+
+1653840877 d:\-=uczelnia=-\sem4\algorytmy\projekt5-drzewoczerwonoczarne\include\rbt.tpp
 	<queue>
 	<list>
 

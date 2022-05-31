@@ -1454,11 +1454,13 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
     }
 
 
-    RBTNode<key_t,data_t> *parent=nullptr;
-    RBTNode<key_t,data_t> *brother=nullptr;
-    RBTNode<key_t,data_t> *kid=nullptr;
+    RBTNode<key_t,data_t>* parent=nullptr;
+    RBTNode<key_t,data_t>* brother=nullptr;
+    RBTNode<key_t,data_t>* kid=nullptr;
 
-    if (WhatColorIs(subtree_root->left) == RED || WhatColorIs(subtree_root) == RED || WhatColorIs(subtree_root->right) == RED)
+    if (WhatColorIs(subtree_root->left)==RED
+        ||WhatColorIs(subtree_root) == RED
+        ||WhatColorIs(subtree_root->right)==RED)
     {
         //PRZYPADEK 1
 
@@ -1515,7 +1517,8 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
                 }
                 else
                 {
-                    if (WhatColorIs(brother->left)==BLACK&&WhatColorIs(brother->right)==BLACK)
+                    if (WhatColorIs(brother->left)==BLACK
+                        &&WhatColorIs(brother->right)==BLACK)
                     {
                         ReplaceColor(brother,RED);
                         if(WhatColorIs(parent) == RED)
@@ -1561,7 +1564,8 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
                 }
                 else
                 {
-                    if (WhatColorIs(brother->right)==BLACK&&WhatColorIs(brother->left)==BLACK)
+                    if (WhatColorIs(brother->right)==BLACK
+                        &&WhatColorIs(brother->left)==BLACK)
                     {
                         ReplaceColor(brother,RED);
 
@@ -1597,13 +1601,13 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
             }
         }
 
-        if (subtree_root == subtree_root->parent->left)
+        if (subtree_root==subtree_root->parent->left)
         {
-            subtree_root->parent->left = nullptr;
+            subtree_root->parent->left=nullptr;
         }
         else
         {
-            subtree_root->parent->right = nullptr;
+            subtree_root->parent->right=nullptr;
         }
         //na koncu ustawiamy root na czarny
         ReplaceColor(root,BLACK);

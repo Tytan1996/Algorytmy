@@ -21,10 +21,10 @@ AiSD::RBTNode<key_t,data_t>::RBTNode(key_t k,data_t dataArg)
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::RBT<key_t,data_t>::Insert(const key_t k,data_t data)
 {
-    // Jezeli chcemy zablokowac te same klucze, to wystarczy usunac komentarz!
+    // Jezeli chcemy odblokowac mozliwosc zdublowanych kluczy, to usuwamy ponizszego ifa
     if(Search(k)!=nullptr)
     {
-        std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
+        //std::cout<<"This key is already taken! ("<<k<<")"<<std::endl;
         return;
     }
     Node* prev=nullptr;
@@ -1366,7 +1366,7 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(uncle,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)
+                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
                     {
                         if(grand->parent!=nullptr)
                             ReplaceColor(grand->parent,BLACK);
@@ -1386,7 +1386,7 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     rotateRight(grand);
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)
+                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
                     {
                         if(grand->parent!=nullptr)
                             ReplaceColor(grand->parent,BLACK);
@@ -1405,7 +1405,7 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(uncle,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)
+                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
                     {
                         if(grand->parent!=nullptr)
                             ReplaceColor(grand->parent,BLACK);
@@ -1426,7 +1426,7 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     rotateLeft(grand);
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)
+                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
                     {
                         if(grand->parent!=nullptr)
                             ReplaceColor(grand->parent,BLACK);

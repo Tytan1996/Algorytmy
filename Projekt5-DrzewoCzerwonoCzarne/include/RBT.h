@@ -77,6 +77,7 @@ namespace AiSD
         void rotateLeft(Node* subtree_root);
 
         public:
+
             void Insert(const key_t k,data_t data);//zbudblowane key beda po prawej stronie poddrzewa o tym samym key
             void Delete(const key_t k);
 

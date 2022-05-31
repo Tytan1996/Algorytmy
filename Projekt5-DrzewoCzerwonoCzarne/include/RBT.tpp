@@ -886,6 +886,8 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     ReplaceColor(grand,RED);
                     if(grand!=nullptr)
                     {
+                        if(grand->parent!=nullptr)
+                            ReplaceColor(grand->parent,BLACK);
                         ReplaceColor(grand->left,BLACK);
                         ReplaceColor(grand->right,BLACK);
                     }
@@ -904,6 +906,8 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     ReplaceColor(grand,RED);
                     if(grand!=nullptr)
                     {
+                        if(grand->parent!=nullptr)
+                            ReplaceColor(grand->parent,BLACK);
                         ReplaceColor(grand->left,BLACK);
                         ReplaceColor(grand->right,BLACK);
                     }
@@ -921,6 +925,8 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     ReplaceColor(grand,RED);
                     if(grand!=nullptr)
                     {
+                        if(grand->parent!=nullptr)
+                            ReplaceColor(grand->parent,BLACK);
                         ReplaceColor(grand->left,BLACK);
                         ReplaceColor(grand->right,BLACK);
                     }
@@ -940,6 +946,8 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     ReplaceColor(grand,RED);
                     if(grand!=nullptr)
                     {
+                        if(grand->parent!=nullptr)
+                            ReplaceColor(grand->parent,BLACK);
                         ReplaceColor(grand->left,BLACK);
                         ReplaceColor(grand->right,BLACK);
                     }

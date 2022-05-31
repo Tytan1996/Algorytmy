@@ -1351,28 +1351,19 @@ AiSD::Color AiSD::RBT<key_t,data_t>::WhatColorIs(Node* subtree_root)
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
 {
-    Node *parent = nullptr;
-    Node *grand = nullptr;
-    while(subtree_root != root && WhatColorIs(subtree_root) == RED && WhatColorIs(subtree_root->parent) == RED)
+    RBTNode<key_t,data_t> *parent = subtree_root->parent;
+    RBTNode<key_t,data_t> *grand = subtree_root->parent!=nullptr?subtree_root->parent->parent:nullptr;
+    while(WhatColorIs(parent)==RED)
     {
-        subtree_root->parent;
-        grand = subtree_root->parent!=nullptr?subtree_root->parent->parent:nullptr;
         if(parent!=nullptr&&parent->parent!=nullptr
             &&parent==grand->left)
             {
-                Node *uncle=grand->right;
+                RBTNode<key_t,data_t> *uncle=grand->right;
                 if(WhatColorIs(uncle)==RED)
                 {
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(uncle,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
-                    {
-                        if(grand->parent!=nullptr)
-                            ReplaceColor(grand->parent,BLACK);
-                        ReplaceColor(grand->left,BLACK);
-                        ReplaceColor(grand->right,BLACK);
-                    }
                     subtree_root=grand;
                 }
                 else
@@ -1386,32 +1377,18 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     rotateRight(grand);
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
-                    {
-                        if(grand->parent!=nullptr)
-                            ReplaceColor(grand->parent,BLACK);
-                        ReplaceColor(grand->left,BLACK);
-                        ReplaceColor(grand->right,BLACK);
-                    }
                     subtree_root=parent;
                 }
             }
             else
             {
                //to samo co wyzej z zamienionymi wskaznikami left i right
-                Node *uncle=grand->left;
+                RBTNode<key_t,data_t> *uncle=grand->left;
                 if(WhatColorIs(uncle)==RED)
                 {
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(uncle,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
-                    {
-                        if(grand->parent!=nullptr)
-                            ReplaceColor(grand->parent,BLACK);
-                        ReplaceColor(grand->left,BLACK);
-                        ReplaceColor(grand->right,BLACK);
-                    }
                     subtree_root=grand;
                 }
                 else
@@ -1426,14 +1403,6 @@ void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
                     rotateLeft(grand);
                     ReplaceColor(parent,BLACK);
                     ReplaceColor(grand,RED);
-                    if(grand!=nullptr)//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
-                    {
-                        if(grand->parent!=nullptr)
-                            ReplaceColor(grand->parent,BLACK);
-                        ReplaceColor(grand->left,BLACK);
-                        ReplaceColor(grand->right,BLACK);
-                    }
-                    subtree_root=parent;
                 }
             }
     }
@@ -1447,9 +1416,7 @@ template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
 {
     if(root==nullptr)
-    {
         return;
-    }
     if (subtree_root==nullptr)
     {
         return;
@@ -1487,20 +1454,19 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
     }
 
 
-    Node *parent=nullptr;
-    Node *brother=nullptr;
-    Node *kid=nullptr;
+    RBTNode<key_t,data_t> *parent=nullptr;
+    RBTNode<key_t,data_t> *brother=nullptr;
+    RBTNode<key_t,data_t> *kid=nullptr;
 
-    if (WhatColorIs(subtree_root->left) == RED
-        ||WhatColorIs(subtree_root) == RED
-        ||WhatColorIs(subtree_root->right) == RED)
+    if (WhatColorIs(subtree_root->left) == RED || WhatColorIs(subtree_root) == RED || WhatColorIs(subtree_root->right) == RED)
     {
         //PRZYPADEK 1
+
         if(subtree_root->left!=nullptr)
         {
             kid=subtree_root->left;
         }
-        else if(subtree_root->right!=nullptr)
+        else
         {
             kid=subtree_root->right;
         }
@@ -1509,27 +1475,28 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
             subtree_root->parent->left=kid;
 
             if (kid != nullptr)
-                kid->parent=subtree_root->parent;
+                kid->parent = subtree_root->parent;
 
 
             ReplaceColor(kid,BLACK);
-            delete(subtree_root);
+            delete (subtree_root);
         }
         else
         {
+
             subtree_root->parent->right=kid;
-            if(kid!=nullptr)
+            if (kid!=nullptr)
                 kid->parent=subtree_root->parent;
 
 
             ReplaceColor(kid,BLACK);
-            delete(subtree_root);
+            delete (subtree_root);
         }
     }
     else
     {
         //PRZYPADEK 2
-        Node *ptr=subtree_root;
+        RBTNode<key_t,data_t> *ptr = subtree_root;
 
         ReplaceColor(ptr,PINK);
         while (WhatColorIs(ptr)==PINK&&ptr!=root)
@@ -1548,11 +1515,10 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
                 }
                 else
                 {
-                    if (WhatColorIs(brother->left)==BLACK
-                        &&WhatColorIs(brother->right)==BLACK)
+                    if (WhatColorIs(brother->left)==BLACK&&WhatColorIs(brother->right)==BLACK)
                     {
                         ReplaceColor(brother,RED);
-                        if(WhatColorIs(parent)==RED)
+                        if(WhatColorIs(parent) == RED)
                         {
                             ReplaceColor(parent,BLACK);
                         }
@@ -1595,12 +1561,11 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
                 }
                 else
                 {
-                    if (WhatColorIs(brother->right)==BLACK
-                        &&WhatColorIs(brother->left)==BLACK)
+                    if (WhatColorIs(brother->right)==BLACK&&WhatColorIs(brother->left)==BLACK)
                     {
                         ReplaceColor(brother,RED);
 
-                        if (WhatColorIs(parent)==RED)
+                        if (WhatColorIs(parent) == RED)
                         {
                             ReplaceColor(parent,BLACK);
                         }
@@ -1632,18 +1597,19 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
             }
         }
 
-        if (subtree_root==subtree_root->parent->left)
+        if (subtree_root == subtree_root->parent->left)
         {
-            subtree_root->parent->left=nullptr;
+            subtree_root->parent->left = nullptr;
         }
         else
         {
-            subtree_root->parent->right=nullptr;
+            subtree_root->parent->right = nullptr;
         }
         //na koncu ustawiamy root na czarny
         ReplaceColor(root,BLACK);
         //tak jak wspominalem w dokumentacji tutaj kasujemy wezel.
         delete(subtree_root);
+
     }
 }
 

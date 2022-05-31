@@ -103,6 +103,7 @@ namespace AiSD
             //metody MP
             void ShowRBTTree();
             void ShowRBT();
+            void SaveRBTTREE();
 
             void ReplaceColor(Node* subtree_root,Color newColor);
             Color WhatColorIs(Node* subtree_root);

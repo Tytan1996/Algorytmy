@@ -16,74 +16,40 @@ int main() {
     std::cout<<"TESTY\n";
 
     AiSD::Testing testy;
-    testy.detailsTest();
-    BT.Insert(10,"10a");
-    BT.Insert(5,"5aa");
-    BT.ShowRBTTree();
-    BT.Delete(10);
-    std::cout<<"BLAD: \n";
-    if(BT.root==nullptr){
-        std::cout<<"DELETE (ROOT) ZLE DZIALA. MA WARTOSC NIL\n";
-        return 0;
-    }
-    std::cout<<"kolor root: "<<BT.root->color<<'\n';
 
-
-/*
-    std::cout<<"PRZED USUWANIEM--------"<<std::endl;
-    BT.ShowRBTTree();
-    BT.Delete(10);
-    std::cout<<"\nroot\n";
-    BT.pointersInfo(BT.root);
-    std::cout<<"5\n";
-    BT.pointersInfo(BT.Search(5));
-    std::cout<<"15\n";
-    BT.pointersInfo(BT.Search(15));
-    std::cout<<"PO USUWANIU 10--------"<<std::endl;
-    BT.ShowRBTTree();
-
-    BT.Delete(10);
-    std::cout<<"TUTAJ CRASH:\n";
-    std::cout<<"KOLOR ROOT: "<<BT.root->color;
-    BT.ShowRBTTree();
-
-    std::cout<<std::endl<<std::endl<<std::endl;
-    std::cout<<"PO WSTAWIENIU 5--------"<<std::endl;
-    BT.Insert(5,"5bb");
-    BT.ShowRBTTree();
-    BT.pointersInfo(BT.Search(5)->right);
-*/
 
     AiSD::RBTNode<int,string> *act;//tu przechowywane beda wskazniki do min/max
 
-    std::cout<<'\n'<<"-------------------------"<<'\n';
+    std::cout<<"\n-------------------------\n";
+    testy.detailsTest();
     testy.generalTest();
-    std::cout<<'\n'<<"-------------------------"<<'\n';
+    std::cout<<"\n-------------------------\n";
     std::cout<<"Koniec testow";
-    std::cout<<'\n'<<"-------------------------"<<'\n';
+    std::cout<<"\n-------------------------\n";
 
     //MENU//
-    std::cout<<"-------------------------"<<'\n';
-    std::cout<<"MENU"<<'\n';
-    std::cout<<"-------------------------"<<'\n';
+    std::cout<<"-------------------------\n";
+    std::cout<<"MENU\n";
+    std::cout<<"-------------------------\n";
     while(true){
-        std::cout<<"1 - INSERT (dodaj);"<<'\n';
-        std::cout<<"2 - DELETE (usun);"<<'\n';
-        std::cout<<"3 - SHOW RBT (TREE) (pokaz drzewo w formie drzewa);"<<'\n';
-        std::cout<<"4 - SHOW RBT (pokaz drzewo);"<<'\n';
-        std::cout<<"5 - SHOW HEIGHT RBT (pokaz wysokosc RBT);"<<'\n';
-        std::cout<<"6 - SHOW AMOUNT LEAVES (pokaz ilosc lisci RBT);"<<'\n';
-        std::cout<<"7 - SHOW AMOUNT NODES (pokaz ilosc wiezlow RBT);"<<'\n';
+        std::cout<<"1 - INSERT (dodaj);\n";
+        std::cout<<"2 - DELETE (usun);\n";
+        std::cout<<"3 - SHOW RBT (TREE) (pokaz drzewo w formie drzewa);\n";
+        std::cout<<"4 - SHOW RBT (pokaz drzewo);\n";
+        std::cout<<"5 - SHOW HEIGHT RBT (pokaz wysokosc RBT);\n";
+        std::cout<<"6 - SHOW AMOUNT LEAVES (pokaz ilosc lisci RBT);\n";
+        std::cout<<"7 - SHOW AMOUNT NODES (pokaz ilosc wiezlow RBT);\n";
         std::cout<<"8 - SHOW AMOUNT NODES ON LEVEL (pokaz ilosc wiezlow RBT od poziomu);"<<'\n';
-        std::cout<<"9 - SHOW MIN (pokaz min);"<<'\n';
-        std::cout<<"10 - SHOW MAX (pokaz max);"<<'\n';
-        std::cout<<"11 - SAVE (zapis);"<<'\n';
-        std::cout<<"12 - LOAD (wczytaj);"<<'\n';
-        std::cout<<"13 - RBT CLEAR;"<<'\n';
-        std::cout<<"14 - SHOW Predecessor;"<<'\n';
-        std::cout<<"15 - SHOW Successor;"<<'\n';
-        std::cout<<"16 - Print Ascending;"<<'\n';
-        std::cout<<"0 - EXIT;"<<'\n';
+        std::cout<<"9 - SHOW MIN (pokaz min);\n";;
+        std::cout<<"10 - SHOW MAX (pokaz max);\n";;
+        std::cout<<"11 - SAVE (zapis);\n";
+        std::cout<<"12 - LOAD (wczytaj);\n";
+        std::cout<<"13 - RBT CLEAR;\n";
+        std::cout<<"14 - SHOW Predecessor;\n";
+        std::cout<<"15 - SHOW Successor;\n";
+        std::cout<<"16 - Print Ascending;\n";
+        std::cout<<"17 - SAVE TREE TO PLIK;\n";
+        std::cout<<"0 - EXIT;\n";
         std::cin>>option;
         switch(option){
         case 1:
@@ -141,7 +107,19 @@ int main() {
                 std::cout<<"NIE ISTNIEJE"<<std::endl;
             }
             break;
-        case 14:
+        case 11:
+            BT.Save("file.ini");
+            std::cout<<"Zapisano do pliku;";
+            break;
+        case 12:
+            BT.Load("file.ini");
+            std::cout<<"Wczytano plik;";
+            break;
+        case 13:
+            BT.Clear();
+            std::cout<<"Dziewo jest puste";
+            break;
+            case 14:
             std::cout<<"Szukaj od klucza (int): ";
             std::cin>>number;
             act=BT.Predecessor(number);
@@ -167,20 +145,11 @@ int main() {
                 std::cout<<"NIE ISTNIEJE"<<std::endl;
             }
             break;
-        case 11:
-            BT.Save("file.ini");
-            std::cout<<"Zapisano do pliku;";
-            break;
-        case 12:
-            BT.Load("file.ini");
-            std::cout<<"Wczytano plik;";
-            break;
-        case 13:
-            BT.Clear();
-            std::cout<<"Dziewo jest puste";
-            break;
         case 16:
             BT.PrintAscending();
+            break;
+        case 17:
+            BT.SaveRBTTREE();
             break;
         case 0:
             std::cout<<"koniec";

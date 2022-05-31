@@ -1,6 +1,6 @@
 /*
-
-
+    Maciej Pestka
+    Damian Szopinski 185394
 */
 #ifndef TESTING_H
 #define TESTING_H

@@ -4,6 +4,8 @@
 */
 #ifndef RBT_TPP
 #define RBT_TPP
+#include <queue>
+#include <list>
 
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 AiSD::RBTNode<key_t,data_t>::RBTNode(key_t k,data_t dataArg)
@@ -399,42 +401,47 @@ std::string AiSD::convertString(const Type val)
 }
 
 
-#include <queue>
-#include <list>
+
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::RBT<key_t,data_t>::ShowRBTTree() {
-    Node *tmp;
-    std::list<Node*> listRBT;
-    std::queue<Node*> kolejkaRBT;
+    RBTNode<key_t,data_t> *tmp;
+    std::list<RBTNode<key_t,data_t>*> listBST;
+    std::list<RBTNode<key_t,data_t>*> listBST2;
+    std::queue<RBTNode<key_t,data_t>*> kolejkaBST;
     int nextMaxSons=1;
     int number=0;
     int height1=4;
     bool parentsIsNull=false;
     tmp=root;
     if(tmp!=nullptr) {
-        kolejkaRBT.push(tmp);
-        listRBT.push_back(tmp);
+        kolejkaBST.push(tmp);
+        listBST.push_back(tmp);
         for(int i=0; i<height1*3; ++i) {
             std::cout<<"    ";
         }
         std::cout<<'\ ';
-        while(!kolejkaRBT.empty() && height1!=0) {
-            tmp=kolejkaRBT.front();
+        while(!kolejkaBST.empty() && height1!=0) {
+            tmp=kolejkaBST.front();
             number++;
-            if(tmp->parent!=nullptr) {
-
-            }
             if(tmp!=nullptr) {
-                std::cout<<tmp->key<<" "<<tmp->data;
-                if(tmp->color==1){
-                    std::cout<<" black";
-                }else if(tmp->color==0){
-                    std::cout<<" red";
-                }else if(tmp->color==2){
-                    std::cout<<" pink";
+                if(height1!=1){
+                    std::cout<<tmp->key<<" "<<tmp->data;
+                    if(tmp->color==1){
+                        std::cout<<" B";
+                    }else if(tmp->color==0){
+                        std::cout<<" R";
+                    }else if(tmp->color==2){
+                        std::cout<<" P";
+                    }
+                }
+                else{
+                    std::cout<<tmp->key;
                 }
             } else {
-                std::cout<<"null";
+                if(height1!=1){
+                    std::cout<<"    ";
+                }
+
             }
             if(height1==3){
                 for(int i=0;i<height1*3;++i){
@@ -445,42 +452,48 @@ void AiSD::RBT<key_t,data_t>::ShowRBTTree() {
                 }
             }else if(height1==2){
                 for(int i=0;i<height1;++i){
-                    std::cout<<"     ";
+                    std::cout<<"      ";
                 }
                 if(number==2){
-                    std::cout<<"              ";
+                    std::cout<<"             ";
                 }
             }else{
-                std::cout<<"        ";
+                if(number==2 || number==6){
+                    std::cout<<"         ";
+                }else if(number==4){
+                    std::cout<<"         ";
+                }else{
+                    std::cout<<"             ";
+                }
             }
             if(height1>1) {
                 if(tmp!=nullptr) {
                     if(tmp->left!=nullptr) {
-                        kolejkaRBT.push(tmp->left);
-                        listRBT.push_back(tmp->left);
+                        kolejkaBST.push(tmp->left);
+                        listBST.push_back(tmp->left);
                     } else {
-                        kolejkaRBT.push(nullptr);
-                        listRBT.push_back(nullptr);
+                        kolejkaBST.push(nullptr);
+                        listBST.push_back(nullptr);
                     }
                 } else {
-                    kolejkaRBT.push(nullptr);
-                    listRBT.push_back(nullptr);
+                    kolejkaBST.push(nullptr);
+                    listBST.push_back(nullptr);
                 }
                 if(tmp!=nullptr) {
                     if(tmp->right!=nullptr) {
-                        kolejkaRBT.push(tmp->right);
-                        listRBT.push_back(tmp->right);
+                        kolejkaBST.push(tmp->right);
+                        listBST.push_back(tmp->right);
                     } else {
-                        kolejkaRBT.push(nullptr);
-                        listRBT.push_back(nullptr);
+                        kolejkaBST.push(nullptr);
+                        listBST.push_back(nullptr);
                     }
                 } else {
-                    kolejkaRBT.push(nullptr);
-                    listRBT.push_back(nullptr);
+                    kolejkaBST.push(nullptr);
+                    listBST.push_back(nullptr);
                 }
             } else {
-                kolejkaRBT.push(nullptr);
-                listRBT.push_back(nullptr);
+                kolejkaBST.push(nullptr);
+                listBST.push_back(nullptr);
             }
             if(nextMaxSons==number) {
                 if(height1==1) {
@@ -500,97 +513,218 @@ void AiSD::RBT<key_t,data_t>::ShowRBTTree() {
                     }
                 }
                 while(number>0) {
-                    if(height1==4 && listRBT.front()!=nullptr) {
-                        for(int i=0; i<height1*6; ++i) {
-                            std::cout<<"_";
-                        }
-                        std::cout<<"|";
-                        for(int i=0; i<height1*6; ++i) {
-                            std::cout<<"_";
+                    if(height1==4) {
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*6; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*6; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                std::cout<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*6; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*6; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*12; ++i) {
+                                std::cout<<" ";
+                            }
                         }
                         for(int i=0; i<height1*3; ++i) {
                             std::cout<<"        ";
                         }
                         number-=2;
-                        listRBT.pop_front();
-                    } else if(height1==3 && listRBT.front()!=nullptr) {
-                        for(int i=0; i<height1*3; ++i) {
-                            std::cout<<"_";
+                    } else if(height1==3) {
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*3; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*3; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                std::cout<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*3; ++i) {
+                                    std::cout<<"_";
+                                }
+                                std::cout<<"_";
+                            }else{
+                                for(int i=0; i<height1*3; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*6; ++i) {
+                                std::cout<<" ";
+                            }
                         }
-                        std::cout<<"|";
-                        for(int i=0; i<height1*3; ++i) {
-                            std::cout<<"_";
-                        }
-                        std::cout<<'_';
                         for(int i=0; i<height1*2; ++i) {
                             std::cout<<"     ";
                         }
                         number-=2;
-                        listRBT.pop_front();
-                    } else if(height1==2 && listRBT.front()!=nullptr){
-                        for(int i=0; i<height1*2; ++i) {
-                            std::cout<<"_";
-                        }
-                        std::cout<<"|";
-                        for(int i=0; i<height1*2; ++i) {
-                            std::cout<<"_";
+                    } else if(height1==2 ){
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                std::cout<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*4; ++i) {
+                                std::cout<<" ";
+                            }
                         }
                         for(int i=0; i<height1; ++i) {
                             std::cout<<"       ";
                         }
                         number-=2;
-                        listRBT.pop_front();
-                    }else if(listRBT.front()==nullptr){
-                        std::cout<<"     ";
+                    }else if(height1==1 ){
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                std::cout<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    std::cout<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*4; ++i) {
+                                std::cout<<" ";
+                            }
+                        }
+                        for(int i=0; i<height1; ++i) {
+                            std::cout<<"       ";
+                        }
                         number-=2;
-                        listRBT.pop_front();
-                        parentsIsNull=true;
                     }
+                    listBST2.push_back(listBST.front());
+                    listBST.pop_front();
+
                 }
                 std::cout<<'\n';
-                if(height1==4 || height1==3) {
+                if(height1==4 || height1==3)  {
                     for(int i=0; i<height1*2; ++i) {
                         std::cout<<"    ";
                     }
-                } else {
+                } else{
                     for(int i=0; i<height1*2; ++i) {
                         std::cout<<"     ";
                     }
                 }
                 while(helpNumber!=0) {
                     if(height1==4) {
-                        std::cout<<'/';
-                        for(int i=0; i<height1*2; ++i) {
-                            std::cout<<"      ";
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->left!=nullptr){
+                                std::cout<<'/';
+                            }
                         }
-                        std::cout<<'\\';
+                            for(int i=0; i<height1*2; ++i) {
+                                std::cout<<"      ";
+                            }
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->right!=nullptr){
+                                std::cout<<'\\';
+                            }
+                        }
                         for(int i=0; i<height1; ++i) {
                             std::cout<<"    ";
                         }
-
                         helpNumber-=2;
                     } else if(height1==3) {
-                        std::cout<<'/';
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->left!=nullptr){
+                                std::cout<<'/';
+                            }
+                        }
                         for(int i=0; i<height1; ++i) {
                             std::cout<<"      ";
                         }
-                        std::cout<<'\\';
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->right!=nullptr){
+                                std::cout<<'\\';
+                            }
+                        }
                         for(int i=0; i<height1*1.7; ++i) {
                             std::cout<<"     ";
                         }
 
+
                         helpNumber-=2;
                     } else{
-                        std::cout<<'/';
-                        for(int i=0; i<height1; ++i) {
-                            std::cout<<"    ";
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->left!=nullptr){
+                                std::cout<<'/';
+                            }
                         }
-                        std::cout<<'\\';
-                        for(int i=0; i<height1; ++i) {
-                            std::cout<<"      ";
+                        std::cout<<"        ";
+
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->right!=nullptr){
+                                std::cout<<"\\  ";
+                            }
                         }
+                        if(helpNumber==6){
+                            std::cout<<"          ";
+                        }else if(helpNumber==4){
+                            for(int i=0; i<height1; ++i) {
+                                std::cout<<"        ";
+                            }
+                        }else{
+                            for(int i=0; i<height1; ++i) {
+                                std::cout<<"      ";
+                            }
+                        }
+
+
                         helpNumber-=2;
                     }
+                    listBST2.pop_front();
                 }
                 std::cout<<'\n';
                 if(height1==4 ||height1==3 ||height1==2) {
@@ -605,12 +739,360 @@ void AiSD::RBT<key_t,data_t>::ShowRBTTree() {
                 number=0;
                 --height1;
             }
-            kolejkaRBT.pop();
+            kolejkaBST.pop();
+
         }
     }
     std::cout<<'\n';
 }
+#include <fstream>
+template <AiSD::RightType key_t,AiSD::RightType data_t>
+void AiSD::RBT<key_t,data_t>::SaveRBTTREE(){
+    std::fstream zapis;
+    zapis.open("RBTTree.txt", std::ios::out);
+    RBTNode<key_t,data_t> *tmp;
+    std::list<RBTNode<key_t,data_t>*> listBST;
+    std::list<RBTNode<key_t,data_t>*> listBST2;
+    std::queue<RBTNode<key_t,data_t>*> kolejkaBST;
+    int nextMaxSons=1;
+    int number=0;
+    int height1=4;
+    bool parentsIsNull=false;
+    tmp=root;
+    if(tmp!=nullptr) {
+        kolejkaBST.push(tmp);
+        listBST.push_back(tmp);
+        for(int i=0; i<height1*3; ++i) {
+            zapis<<"    ";
+        }
+       zapis<<'\ ';
+        while(!kolejkaBST.empty() && height1!=0) {
+            tmp=kolejkaBST.front();
+            number++;
+            if(tmp!=nullptr) {
+                if(height1!=1){
+                    zapis<<tmp->key<<" "<<tmp->data;
+                    if(tmp->color==1){
+                        zapis<<" B";
+                    }else if(tmp->color==0){
+                        zapis<<" R";
+                    }else if(tmp->color==2){
+                        zapis<<" P";
+                    }
+                }
+                else{
+                    zapis<<tmp->key;
+                }
+            } else {
+                if(height1!=1){
+                    zapis<<"    ";
+                }
 
+            }
+            if(height1==3){
+                for(int i=0;i<height1*3;++i){
+                    zapis<<"     ";
+                }
+                if(number==2){
+                    zapis<<"              ";
+                }
+            }else if(height1==2){
+                for(int i=0;i<height1;++i){
+                    zapis<<"      ";
+                }
+                if(number==2){
+                   zapis<<"             ";
+                }
+            }else{
+                if(number==2 || number==6){
+                    zapis<<"         ";
+                }else if(number==4){
+                    zapis<<"         ";
+                }else{
+                    zapis<<"             ";
+                }
+            }
+            if(height1>1) {
+                if(tmp!=nullptr) {
+                    if(tmp->left!=nullptr) {
+                        kolejkaBST.push(tmp->left);
+                        listBST.push_back(tmp->left);
+                    } else {
+                        kolejkaBST.push(nullptr);
+                        listBST.push_back(nullptr);
+                    }
+                } else {
+                    kolejkaBST.push(nullptr);
+                    listBST.push_back(nullptr);
+                }
+                if(tmp!=nullptr) {
+                    if(tmp->right!=nullptr) {
+                        kolejkaBST.push(tmp->right);
+                        listBST.push_back(tmp->right);
+                    } else {
+                        kolejkaBST.push(nullptr);
+                        listBST.push_back(nullptr);
+                    }
+                } else {
+                    kolejkaBST.push(nullptr);
+                    listBST.push_back(nullptr);
+                }
+            } else {
+                kolejkaBST.push(nullptr);
+                listBST.push_back(nullptr);
+            }
+            if(nextMaxSons==number) {
+                if(height1==1) {
+                    return;
+                }
+                zapis<<'\n';
+                nextMaxSons*=2;
+                int helpNumber=nextMaxSons;
+                number=nextMaxSons;
+                if(height1==3 ||height1==4) {
+                    for(int i=0; i<height1*2; ++i) {
+                        zapis<<"    ";
+                    }
+                } else {
+                    for(int i=0; i<height1*2; ++i) {
+                        zapis<<"     ";
+                    }
+                }
+                while(number>0) {
+                    if(height1==4) {
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*6; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*6; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                zapis<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*6; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*6; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*12; ++i) {
+                                zapis<<" ";
+                            }
+                        }
+                        for(int i=0; i<height1*3; ++i) {
+                            zapis<<"        ";
+                        }
+                        number-=2;
+                    } else if(height1==3) {
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*3; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*3; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                               zapis<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*3; ++i) {
+                                    zapis<<"_";
+                                }
+                                zapis<<"_";
+                            }else{
+                                for(int i=0; i<height1*3; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*6; ++i) {
+                                zapis<<" ";
+                            }
+                        }
+                        for(int i=0; i<height1*2; ++i) {
+                            zapis<<"     ";
+                        }
+                        number-=2;
+                    } else if(height1==2 ){
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                zapis<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*4; ++i) {
+                                zapis<<" ";
+                            }
+                        }
+                        for(int i=0; i<height1; ++i) {
+                            zapis<<"       ";
+                        }
+                        number-=2;
+                    }else if(height1==1 ){
+                        if(listBST.front()!=nullptr){
+                            if(listBST.front()->left!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<" ";
+                                }
+                            }
+                            if(listBST.front()->right!=nullptr || listBST.front()->left!=nullptr){
+                                zapis<<"|";
+                            }
+                            if(listBST.front()->right!=nullptr){
+                                for(int i=0; i<height1*2; ++i) {
+                                    zapis<<"_";
+                                }
+                            }else{
+                                for(int i=0; i<height1*2; ++i) {
+                                   zapis<<" ";
+                                }
+                            }
+                        }else{
+                            for(int i=0; i<height1*4; ++i) {
+                                zapis<<" ";
+                            }
+                        }
+                        for(int i=0; i<height1; ++i) {
+                            zapis<<"       ";
+                        }
+                        number-=2;
+                    }
+                    listBST2.push_back(listBST.front());
+                    listBST.pop_front();
+
+                }
+                zapis<<'\n';
+                if(height1==4 || height1==3)  {
+                    for(int i=0; i<height1*2; ++i) {
+                        zapis<<"    ";
+                    }
+                } else{
+                    for(int i=0; i<height1*2; ++i) {
+                        zapis<<"     ";
+                    }
+                }
+                while(helpNumber!=0) {
+                    if(height1==4) {
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->left!=nullptr){
+                                zapis<<'/';
+                            }
+                        }
+                            for(int i=0; i<height1*2; ++i) {
+                                zapis<<"      ";
+                            }
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->right!=nullptr){
+                                zapis<<'\\';
+                            }
+                        }
+                        for(int i=0; i<height1; ++i) {
+                            zapis<<"    ";
+                        }
+                        helpNumber-=2;
+                    } else if(height1==3) {
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->left!=nullptr){
+                                zapis<<'/';
+                            }
+                        }
+                        for(int i=0; i<height1; ++i) {
+                            zapis<<"      ";
+                        }
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->right!=nullptr){
+                                zapis<<'\\';
+                            }
+                        }
+                        for(int i=0; i<height1*1.7; ++i) {
+                            zapis<<"     ";
+                        }
+
+
+                        helpNumber-=2;
+                    } else{
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->left!=nullptr){
+                               zapis<<'/';
+                            }
+                        }
+                        zapis<<"        ";
+
+                        if(listBST2.front()!=nullptr){
+                            if(listBST2.front()->right!=nullptr){
+                                zapis<<"\\  ";
+                            }
+                        }
+                        if(helpNumber==6){
+                            zapis<<"          ";
+                        }else if(helpNumber==4){
+                            for(int i=0; i<height1; ++i) {
+                                zapis<<"        ";
+                            }
+                        }else{
+                            for(int i=0; i<height1; ++i) {
+                                zapis<<"      ";
+                            }
+                        }
+
+
+                        helpNumber-=2;
+                    }
+                    listBST2.pop_front();
+                }
+                zapis<<'\n';
+                if(height1==4 ||height1==3 ||height1==2) {
+                    for(int i=0; i<height1*2; ++i) {
+                        zapis<<"    ";
+                    }
+                } else {
+                    for(int i=0; i<height1; ++i) {
+                        zapis<<"  ";
+                    }
+                }
+                number=0;
+                --height1;
+            }
+            kolejkaBST.pop();
+
+        }
+    }
+    zapis<<'\n';
+    zapis.close();
+
+}
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::RBT<key_t,data_t>::ShowRBT(){
     Node *tmp;
@@ -743,7 +1225,7 @@ int AiSD::RBT<key_t,data_t>::nodesCount(Node* subtree_root)
     VectorOfNodes(subtree_root,vec);
     return vec.size();
 }
-
+//JEZELI ZAMIENIAMY KOLOR DZIADKA NA CZERWONY TO JEGO DZIECI I JEGO OJCIEC NIE MOGA BYC JUZ CZERWONI BO ZABUZYLOBY TO DRZEWO CZERWONO CZARNE
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 int AiSD::RBT<key_t,data_t>::nodesCountOnLevel(const int level,Node* subtree_root)
 {

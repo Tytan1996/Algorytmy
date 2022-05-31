@@ -1,6 +1,6 @@
 /*
-
-
+    Maciej Pestka
+    Damian Szopinski 185394
 */
 #include "Testing.h"
 #include "RBT.h"
@@ -102,15 +102,6 @@ void AiSD::Testing::detailsTest() {
     if(!testClear()) {
         std::cout<<"Clear dziala zle"<<'\n';
     }
-    //if(!testMin()){
-    //std::cout<<"MIN nie dziala poprawnie"<<'\n';
-    //}
-    if(!testClear()) {
-        std::cout<<"Clear dziala zle"<<'\n';
-    }
-    //if(!testMax()){
-    // std::cout<<"MAX nie dziala poprawnie"<<'\n';
-    //}
 
 }
 void AiSD::Testing::generalTest() {
@@ -125,7 +116,13 @@ void AiSD::Testing::generalTest() {
     std::cout<<"Ile chcesz elementow w drzewie?"<<std::endl;
     std::cout<<"Ilosc elementow: ";
     std::cin>>amount;
-    srand( time( NULL ) );
+    for(size_t i=0;i<amount;++i){
+        randing(1);
+        if(!sprawdWskazniki()) {
+                ++ilosc;
+            }
+    }
+    srand( 1234 );
     int liczba;
     for(size_t i=0; i<amountTest; ++i) {
         test.Clear();
@@ -146,8 +143,9 @@ void AiSD::Testing::generalTest() {
                 if(maly>liczba){
                     maly=liczba;
                 }
-                test.Insert(liczba,"randomString");
+                test.Insert(liczba,randomString);
                 dane.push_back(liczba);
+
                 break;
 
             case 2:
@@ -165,20 +163,7 @@ void AiSD::Testing::generalTest() {
                         dane.erase(itr);
                     }
                 }
-                /*for(itr=dane.begin(); itr!=dane.end(); ++itr) {
-                    switch(opcja){
-                    case 1:
-                        if(itr<maly){
-                            maly=itr;
-                        }
-                        break;
-                    case 2:
-                        if(itr>duzy){
-                            duzy=itr;
-                        }
-                        break;
-                    }
-                }*/
+
                 break;
             }
             if(!sprawdWskazniki()) {
@@ -452,13 +437,17 @@ bool AiSD::Testing::sprawdWskazniki() {
             tmp=&kolejka.front();
             if(tmp!=nullptr){
                 if(tmp->color==0){
-                    if(tmp->left->color==0){
-                        std::cout<<"Rodzic jest czerwony i lewy syn tak samo!\n";
-                        return false;
+                    if(tmp->left!=nullptr){
+                        if(tmp->left->color==0){
+                            std::cout<<"Rodzic jest czerwony i lewy syn tak samo!\n";
+                            return false;
+                        }
                     }
-                    if(tmp->right->color==0){
-                        std::cout<<"Rodzic jest czerwony i prawy syn tak samo!\n";
-                        return false;
+                    if(tmp->right!=nullptr){
+                        if(tmp->right->color==0){
+                            std::cout<<"Rodzic  jest czerwony i prawy syn tak samo!\n";
+                            return false;
+                        }
                     }
                 }
             }

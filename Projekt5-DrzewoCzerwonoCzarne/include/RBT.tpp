@@ -1351,8 +1351,8 @@ AiSD::Color AiSD::RBT<key_t,data_t>::WhatColorIs(Node* subtree_root)
 template <AiSD::RightType key_t,AiSD::RightType data_t>
 void AiSD::RBT<key_t,data_t>::FixInsert(Node* subtree_root)
 {
-    RBTNode<key_t,data_t> *parent = subtree_root->parent;
-    RBTNode<key_t,data_t> *grand = subtree_root->parent!=nullptr?subtree_root->parent->parent:nullptr;
+    Node *parent = subtree_root->parent;
+    Node *grand = subtree_root->parent!=nullptr?subtree_root->parent->parent:nullptr;
     while(WhatColorIs(parent)==RED)
     {
         if(parent!=nullptr&&parent->parent!=nullptr
@@ -1454,9 +1454,9 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
     }
 
 
-    RBTNode<key_t,data_t>* parent=nullptr;
-    RBTNode<key_t,data_t>* brother=nullptr;
-    RBTNode<key_t,data_t>* kid=nullptr;
+    Node* parent=nullptr;
+    Node* brother=nullptr;
+    Node* kid=nullptr;
 
     if (WhatColorIs(subtree_root->left)==RED
         ||WhatColorIs(subtree_root) == RED
@@ -1498,7 +1498,7 @@ void AiSD::RBT<key_t,data_t>::FixDelete(Node* subtree_root)
     else
     {
         //PRZYPADEK 2
-        RBTNode<key_t,data_t> *ptr = subtree_root;
+        Node *ptr = subtree_root;
 
         ReplaceColor(ptr,PINK);
         while (WhatColorIs(ptr)==PINK&&ptr!=root)

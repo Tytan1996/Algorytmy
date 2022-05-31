@@ -18,6 +18,8 @@
 namespace AiSD
 {
 
+
+
     enum Color
     {
         RED=0,
@@ -67,44 +69,45 @@ namespace AiSD
     class RBT
     {
         private:
-        AiSD::RBTNode<key_t,data_t>* Delete(AiSD::RBTNode<key_t,data_t>* subtree_root, key_t key);
-        void FixInsert(RBTNode<key_t,data_t>* subtree_root);
-        void FixDelete(RBTNode<key_t,data_t>* subtree_root);
-        void rotateRight(RBTNode<key_t,data_t>* subtree_root);
-        void rotateLeft(RBTNode<key_t,data_t>* subtree_root);
+        using Node=AiSD::RBTNode<key_t,data_t>;
+        Node* Delete(Node* subtree_root, key_t key);
+        void FixInsert(Node* subtree_root);
+        void FixDelete(Node* subtree_root);
+        void rotateRight(Node* subtree_root);
+        void rotateLeft(Node* subtree_root);
 
         public:
             void Insert(const key_t k,data_t data);//zbudblowane key beda po prawej stronie poddrzewa o tym samym key
             void Delete(const key_t k);
 
-            RBTNode<key_t,data_t>* Search(const key_t k,RBTNode<key_t,data_t>* subtree_root=nullptr);
-            void Clear(RBTNode<key_t,data_t>* node=nullptr);
-            void Transplant(RBTNode<key_t,data_t>* u,RBTNode<key_t,data_t>* v);
-            RBTNode<key_t,data_t>* Min(RBTNode<key_t,data_t>* subtree_root=nullptr);
-            RBTNode<key_t,data_t>* Max(RBTNode<key_t,data_t>* subtree_root=nullptr);
-            RBTNode<key_t,data_t>* Predecessor(const key_t k,RBTNode<key_t,data_t>* subtree_root=nullptr);
-            RBTNode<key_t,data_t>* Successor(const key_t k,RBTNode<key_t,data_t>* subtree_root=nullptr);
-            void PrintAscending(RBTNode<key_t,data_t> *node=nullptr,int deep=0);
-            void VectorOfNodes(RBTNode<key_t,data_t> *node,std::vector<RBTNode<key_t,data_t>*>& vec);
-            void VectorOfNodesAscending(RBTNode<key_t,data_t> *node,std::vector<RBTNode<key_t,data_t>*>& vec);
+            Node* Search(const key_t k,Node* subtree_root=nullptr);
+            void Clear(Node* node=nullptr);
+            void Transplant(Node* u,Node* v);
+            Node* Min(Node* subtree_root=nullptr);
+            Node* Max(Node* subtree_root=nullptr);
+            Node* Predecessor(const key_t k,Node* subtree_root=nullptr);
+            Node* Successor(const key_t k,Node* subtree_root=nullptr);
+            void PrintAscending(Node *node=nullptr,int deep=0);
+            void VectorOfNodes(Node *node,std::vector<Node*>& vec);
+            void VectorOfNodesAscending(Node *node,std::vector<Node*>& vec);
             void Save(std::string src);
             void Load(std::string src);
 
-            void ListOfNodesInLevel(const int level,std::vector<AiSD::RBTNode<key_t,data_t>*>& table,AiSD::RBTNode<key_t,data_t>* node=nullptr);
-            int height(RBTNode<key_t,data_t>* subtree_root=nullptr,int sum=0);
-            int leavesCount(RBTNode<key_t,data_t>* subtree_root=nullptr);
-            int nodesCount(RBTNode<key_t,data_t>* subtree_root=nullptr);
-            int nodesCountOnLevel(const int level,RBTNode<key_t,data_t>* subtree_root=nullptr);//poziom root to liczymy jako 0
+            void ListOfNodesInLevel(const int level,std::vector<Node*>& table,Node* node=nullptr);
+            int height(Node* subtree_root=nullptr,int sum=0);
+            int leavesCount(Node* subtree_root=nullptr);
+            int nodesCount(Node* subtree_root=nullptr);
+            int nodesCountOnLevel(const int level,Node* subtree_root=nullptr);//poziom root to liczymy jako 0
 
-            void pointersInfo(RBTNode<key_t,data_t>* subtree_root);
+            void pointersInfo(Node* subtree_root);
             //metody MP
             void ShowRBTTree();
             void ShowRBT();
 
-            void ReplaceColor(RBTNode<key_t,data_t>* subtree_root,Color newColor);
-            Color WhatColorIs(RBTNode<key_t,data_t>* subtree_root);
+            void ReplaceColor(Node* subtree_root,Color newColor);
+            Color WhatColorIs(Node* subtree_root);
 
-            RBTNode<key_t,data_t> *root=nullptr;
+            Node *root=nullptr;
     };
 
 

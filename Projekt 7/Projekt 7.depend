@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1654605804 source:c:\users\student\documents\github\algorytmy\projekt 7\main.cpp
+	<iostream>
+	"RodCut.hpp"
+
+1654605838 source:c:\users\student\documents\github\algorytmy\projekt 7\src\rodcut.cpp
+	"RodCut.hpp"
+
+1654605840 c:\users\student\documents\github\algorytmy\projekt 7\include\rodcut.hpp
+	<vector>
+	<iostream>
+

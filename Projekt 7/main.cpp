@@ -5,12 +5,11 @@ using namespace std;
 
 int main()
 {
-    // 1 2 3 4
-    // 1 5 3 6
-    //n=4 wynik=10
-
+    AiSD::num n=4;
     AiSD::tab a{1,5,3,6};
-    std::cout<<AiSD::RodCutRecursive(a,4)<<"\n";
-
+    std::cout<<"Rod Cut rekurencyjnie: "<<AiSD::RodCutRecursive(a,n)<<"\n";
+    std::cout<<"Rod Cut rekurencyjnie ze spamietywaniem: "<<AiSD::RodCutRecursiveMem(a,n)<<"\n";
+    std::cout<<"Rod Cut Rekurencyjnie: "<<AiSD::RodCutBottomUp(a,n)<<"\n";
+    AiSD::printPossibilities(a,n);
     return 0;
 }

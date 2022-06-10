@@ -77,7 +77,7 @@ void AiSD::printPossibilities(tab& p,num n)
     for(num i=0;i<n;i++)
         a[i]=false;
 
-    for(num j=0;j<n*n-1;j++)
+    for(num j=0;j<pow(2,n);j++)
     {
         num h=j;
         for(num i=n-1;h>0;i--)

@@ -21,3 +21,15 @@
 1654896292 source:c:\users\user\documents\github\algorytmy\projekt 7\src\rodcut.cpp
 	"RodCut.hpp"
 
+1654951131 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\rodcut.cpp
+	"RodCut.hpp"
+
+1654951131 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\rodcut.hpp
+	<vector>
+	<iostream>
+	<cmath>
+
+1654951445 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\main.cpp
+	<iostream>
+	"RodCut.hpp"
+

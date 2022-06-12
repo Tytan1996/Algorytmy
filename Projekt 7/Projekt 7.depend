@@ -10,14 +10,17 @@
 	<vector>
 	<iostream>
 
-1654896222 source:c:\users\user\documents\github\algorytmy\projekt 7\main.cpp
+1655061050 source:c:\users\user\documents\github\algorytmy\projekt 7\main.cpp
 	<iostream>
 	"RodCut.hpp"
 
-1654896349 c:\users\user\documents\github\algorytmy\projekt 7\include\rodcut.hpp
+1655059754 c:\users\user\documents\github\algorytmy\projekt 7\include\rodcut.hpp
 	<vector>
 	<iostream>
+	<cmath>
+	<chrono>
+	<random>
 
-1654896292 source:c:\users\user\documents\github\algorytmy\projekt 7\src\rodcut.cpp
+1655060072 source:c:\users\user\documents\github\algorytmy\projekt 7\src\rodcut.cpp
 	"RodCut.hpp"
 

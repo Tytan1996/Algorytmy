@@ -114,3 +114,57 @@ void AiSD::printPossibilities(tab& p,num n,price k)
     }
     std::cout<<"MAX="<<maximum<<"\n";
 }
+
+using clockH=std::chrono::high_resolution_clock;
+
+
+/*Funkcja przeznaczona do narysowania wykresow*/
+std::random_device rd;
+void AiSD::testing()
+{
+    int ird=rd();
+    std::mt19937 gen(ird);
+    std::uniform_int_distribution<> dis(1, 1000);
+
+    std::cout<<std::endl<<"RodCutRecursive"<<std::endl;
+    AiSD::tab p;
+    //pomiar czasu
+    for(int i=0;i<300;i++)
+    {
+        p.push_back(dis(gen));
+        auto a=clockH::now();
+        AiSD::RodCutRecursive(p,p.size(),0);
+        auto b=clockH::now();
+        std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(b-a).count()<<" ";
+        if(std::chrono::duration_cast<std::chrono::microseconds>(b-a).count()>300)
+            break;
+    }
+    p.clear();
+
+    std::cout<<std::endl<<"RodCutRecursiveMem"<<std::endl;
+    for(int i=0;i<300;i++)
+    {
+        p.push_back(dis(gen));
+        auto a=clockH::now();
+        AiSD::RodCutRecursiveMem(p,p.size(),0);
+        auto b=clockH::now();
+        std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(b-a).count()<<" ";
+    }
+    p.clear();
+
+    std::cout<<std::endl<<"RodCutBottomUp"<<std::endl;
+    for(int i=0;i<300;i++)
+    {
+        p.push_back(dis(gen));
+        auto a=clockH::now();
+        AiSD::RodCutBottomUp(p,p.size(),0);
+        auto b=clockH::now();
+        std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(b-a).count()<<" ";
+    }
+    std::cout<<std::endl;
+    std::cout<<"Podtytul wykresu"<<std::endl;
+    for(int i=0;i<300;i++)
+        std::cout<<i+1<<" ";
+    p.clear();
+    std::cout<<std::endl;
+}

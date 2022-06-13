@@ -2,12 +2,12 @@
 #include "RodCut.hpp"
 #include "macierz.h"
 #include "fibonacco.h"
-
+#include "Testy.hpp"
 
 
 int main()
 {
-    //AiSD::testing();
+    AiSD::testing();
 
     AiSD::tab p{2,5,3,2};
 
@@ -17,6 +17,7 @@ int main()
     std::cout<<"Rod Cut rekurencyjnie ze spamietywaniem: "<<AiSD::RodCutRecursiveMem(p,n,k)<<"\n";
     std::cout<<"Rod Cut Rekurencyjnie: "<<AiSD::RodCutBottomUp(p,n,k)<<"\n";
     AiSD::printPossibilities(p,n,k);
+
     std::cout<<"\nRekurencja ze spametywaniem: \n";
     AiSD::calculateMatrixMemory();
     std::cout<<"\nZwykla rekurencja: \n";

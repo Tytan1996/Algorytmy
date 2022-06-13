@@ -10,18 +10,19 @@
 	<vector>
 	<iostream>
 
-1655061050 source:c:\users\user\documents\github\algorytmy\projekt 7\main.cpp
+1655147590 source:c:\users\user\documents\github\algorytmy\projekt 7\main.cpp
 	<iostream>
 	"RodCut.hpp"
+	"macierz.h"
+	"fibonacco.h"
+	"Testy.hpp"
 
-1655059754 c:\users\user\documents\github\algorytmy\projekt 7\include\rodcut.hpp
+1655147533 c:\users\user\documents\github\algorytmy\projekt 7\include\rodcut.hpp
 	<vector>
 	<iostream>
 	<cmath>
-	<chrono>
-	<random>
 
-1655060072 source:c:\users\user\documents\github\algorytmy\projekt 7\src\rodcut.cpp
+1655147500 source:c:\users\user\documents\github\algorytmy\projekt 7\src\rodcut.cpp
 	"RodCut.hpp"
 
 1655093704 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\rodcut.cpp
@@ -54,4 +55,30 @@
 
 1655147116 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\macierz.h
 	<vector>
+
+1655147252 c:\users\user\documents\github\algorytmy\projekt 7\include\macierz.h
+	<vector>
+
+1655147252 c:\users\user\documents\github\algorytmy\projekt 7\include\fibonacco.h
+	<iostream>
+
+1655147252 source:c:\users\user\documents\github\algorytmy\projekt 7\src\fibonacco.cpp
+	"fibonacco.h"
+	<iostream>
+
+1655147252 source:c:\users\user\documents\github\algorytmy\projekt 7\src\macierz.cpp
+	"macierz.h"
+	<iostream>
+	<limits>
+
+1655148137 source:c:\users\user\documents\github\algorytmy\projekt 7\src\testy.cpp
+	"Testy.hpp"
+
+1655148184 c:\users\user\documents\github\algorytmy\projekt 7\include\testy.hpp
+	<chrono>
+	<random>
+	<iostream>
+	"RodCut.hpp"
+	"macierz.h"
+	"fibonacco.h"
 

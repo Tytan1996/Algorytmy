@@ -4,8 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
-#include <chrono>
-#include <random>
+
 
 namespace AiSD
 {
@@ -16,7 +15,7 @@ namespace AiSD
     num RodCutRecursiveMem(tab& p,num n,price k);
     num RodCutBottomUp(tab& p,num n,price k);
     void printPossibilities(tab& p,num n,price k);
-    void testing();
+
 }
 
 #endif // RODCUT_HPP

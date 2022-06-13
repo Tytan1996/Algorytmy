@@ -3,14 +3,14 @@
 #include <iostream>
 
 
-size_t CiagFic(int n){
+size_t AiSD::CiagFic(int n){
     if(n<2){
         return n;
     }
     return CiagFic(n-2)+CiagFic(n-1);
 }
 
-size_t CiagFic1(int n){
+size_t AiSD::CiagFic1(int n){
     if(n<2){
          return n;
     }

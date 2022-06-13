@@ -1,46 +1,88 @@
 #include "macierz.h"
 
-/*void matrixChainOrder(int &tab){
+#include <iostream>
+#include <limits>
 
-    int m[11][11];
-    int s[11][11];
-    int lenght=tab.size();
-    for(int i=0;i<lenght;++i){
-        m[i][i]=0;
+
+AiSD::cost_t AiSD::MatrixChainRecursive(const AiSD::dim_arr& dim,AiSD::cost_arr& cost, AiSD::pos_arr& bracket_pos, size_t i,size_t j){
+
+    if(i==j){
+        return 0;
     }
-    for(int l=2;l<lenght;++l){
-        for(int i=0;i<(lenght-l+1);++i){
-            int j=i+l-1;
-            m[i][j]=-1;
-                for(int k=i;k<(j-lenght);--k){
-                int q=m[i][k]+m[k+1,j]+tab[i-1]*(tab[k])*(tab[j]);
-                if(q<m[i][j]){
-                    m[i][j]=q;
-                    s[i][j]=k;
+    AiSD::cost_t q;
+
+    cost[i][j] = std::numeric_limits<AiSD::cost_t>::max();
+    for(size_t k=i;k<j;++k){
+        q=MatrixChainRecursive(dim,cost,bracket_pos,i,k)+MatrixChainRecursive(dim,cost,bracket_pos,k+1,j)+dim[i-1]*dim[k]*dim[j];
+
+        if(q<cost[i][j]){
+            cost[i][j]=q;
+            bracket_pos[i][j]=k;
+        }
+    }
+    return cost[i][j];
+}
+
+void AiSD::MatrixChainResursive1 (const AiSD::dim_arr& dim,AiSD::cost_arr& cost, AiSD::pos_arr& bracket_pos){
+    MatrixChainRecursive(dim,cost,bracket_pos,1,cost[0].size()-1);
+}
+void AiSD::MatrixChainOrder(const AiSD::dim_arr& dim, AiSD::cost_arr& cost, AiSD::pos_arr& bracket_pos){
+    auto n=dim.size()-1;
+    for(size_t l=2;l<=n;++l){
+        for(size_t i=1;i<=n-l+1;i++){
+            auto j=i+l-1;
+            cost[i][j]=std::numeric_limits<AiSD::cost_t>::max();
+            for(size_t k=1;k<=j-1;k++){
+                auto q=cost[i][j]+cost[k+1][j]+dim[i-1]*dim[k]*dim[j];
+                if(q<cost[i][j]){
+                    cost[i][j]=q;
+                    bracket_pos[i][j]=k;
                 }
             }
-
         }
     }
 
 }
-int  MatrixChainMemoizedAux(int m,int p,int i,int n){
-    if(m[i][j]<1){
-        return m[i][j];
-    }
+void AiSD::Print(const AiSD::pos_arr& bracket_pos,size_t i,size_t j){
     if(i==j){
-        return 0;
+        std::cout<<"A"<<j;
+    }else{
+        std::cout<<"(";
+        Print(bracket_pos,i,bracket_pos[i][j]);
+        Print(bracket_pos,bracket_pos[i][j]+1,j);
+        std::cout<<")";
     }
-    else{
-        for(k=i,k<j-1;++k){
-            int q=MatrixChainMemoizedAux(m,p,i,k)+MatrixChainMemoizedAux(m,p,k+1,j)+p[i-1]*p[k]*p[j];
-            if(q<m[i][j]){
-                m[i][j]=q;
-            }
-        }
+}
+void AiSD::calculateMatrixMemory(){
+    dim_arr Macierz {30,25,20,10,10,20,25,2,3,4,5,6,7,8,9,10};
+    cost_arr cost1;
+    cost1.resize(Macierz.size());
+    for(auto& el: cost1){
+        el.resize(Macierz.size());
     }
-    return m[i,j];
+    pos_arr bracket_pos1;
+    bracket_pos1.resize(Macierz.size()-1);
+    for(auto& el: bracket_pos1){
+        el.resize(Macierz.size());
+    }
+    MatrixChainResursive1( Macierz,cost1,bracket_pos1 );
+    std::cout<<"Czas: "<<cost1[1].back();
+    std::cout<<"\nNawiasy: ";
+    Print(bracket_pos1,1,Macierz.size()-1);
+}
+void AiSD::calculateMatrix(){
+    dim_arr Macierz {30,25,20,10,10,20,25,2,3,4,5,6,7,8,9,10};
+    cost_arr cost1;
+    cost1.resize(Macierz.size());
+    for(auto& el: cost1){
+        el.resize(Macierz.size());
+    }
+    pos_arr bracket_pos1;
+    bracket_pos1.resize(Macierz.size()-1);
+    for(auto& el: bracket_pos1){
+        el.resize(Macierz.size());
+    }
+    MatrixChainOrder( Macierz,cost1,bracket_pos1 );
+    std::cout<<"Czas: "<<cost1[1].back();
+}
 
-
-
-}*/

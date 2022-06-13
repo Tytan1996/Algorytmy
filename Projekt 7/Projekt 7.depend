@@ -24,22 +24,34 @@
 1655060072 source:c:\users\user\documents\github\algorytmy\projekt 7\src\rodcut.cpp
 	"RodCut.hpp"
 
-1654951131 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\rodcut.cpp
+1655093704 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\rodcut.cpp
 	"RodCut.hpp"
 
-1654951131 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\rodcut.hpp
+1655093704 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\rodcut.hpp
 	<vector>
 	<iostream>
 	<cmath>
+	<chrono>
+	<random>
 
-1654951445 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\main.cpp
+1655147191 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\main.cpp
 	<iostream>
 	"RodCut.hpp"
+	"macierz.h"
+	"fibonacco.h"
 
-1654951526 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\fibonacco.cpp
+1655146783 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\fibonacco.cpp
 	"fibonacco.h"
 	<iostream>
 
-1654951532 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\fibonacco.h
+1655146783 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\fibonacco.h
 	<iostream>
+
+1655146723 source:d:\-=uczelnia=-\sem4\algorytmy\projekt 7\src\macierz.cpp
+	"macierz.h"
+	<iostream>
+	<limits>
+
+1655147116 d:\-=uczelnia=-\sem4\algorytmy\projekt 7\include\macierz.h
+	<vector>
 

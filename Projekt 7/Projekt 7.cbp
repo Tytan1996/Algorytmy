@@ -35,8 +35,12 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/RodCut.hpp" />
+		<Unit filename="include/fibonacco.h" />
+		<Unit filename="include/macierz.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/RodCut.cpp" />
+		<Unit filename="src/fibonacco.cpp" />
+		<Unit filename="src/macierz.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

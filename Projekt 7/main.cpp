@@ -1,7 +1,6 @@
 #include <iostream>
 #include "RodCut.hpp"
 
-using namespace std;
 
 
 int main()

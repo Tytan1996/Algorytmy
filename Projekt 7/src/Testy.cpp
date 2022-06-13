@@ -49,7 +49,7 @@ void AiSD::testing()
     }
     std::cout<<std::endl;
     std::cout<<"Podtytul wykresu"<<std::endl;
-    for(int i=0;i<300;i++)
+    for(int i=0;i<30000;i++)
         std::cout<<i+1<<" ";
     p.clear();
     std::cout<<std::endl;
@@ -59,7 +59,7 @@ void AiSD::testing()
 
 
 
-
+/*
     std::cout<<std::endl<<"Matrix"<<std::endl;
     dim_arr Macierz;
     for(int i=0;i<20;i++)
@@ -104,7 +104,7 @@ void AiSD::testing()
     }
     Macierz.clear();
 
-
+*/
 
 
 
@@ -117,7 +117,7 @@ void AiSD::testing()
         std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(b-a).count()<<" ";
     }
     std::cout<<std::endl<<"CiagFic1"<<std::endl;
-    for(int i=0;i<30;i++)
+    for(int i=0;i<30000;i++)
     {
         auto a=clockH::now();
         CiagFic1(i);

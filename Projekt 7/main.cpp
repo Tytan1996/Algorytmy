@@ -7,7 +7,7 @@
 
 int main()
 {
-    AiSD::testing();
+    //AiSD::testing();
 
     AiSD::tab p{2,5,3,2};
 
